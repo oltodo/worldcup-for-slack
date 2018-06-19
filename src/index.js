@@ -285,9 +285,9 @@ const hasStartedMatch = () => {
   return reduce(
     matches,
     (acc, match) => {
-      const diff = Math.ceil(now.diff(match.getDate()) / 1000);
+      const diff = Math.floor(now.diff(match.getDate()) / 1000 / 60);
 
-      if (diff >= 0 && diff < 90 * 60) {
+      if (diff >= 0 && diff < 200) {
         return true;
       }
 
@@ -316,12 +316,6 @@ const getComingUpMatches = () => {
 };
 
 const checkUpdates = async () => {
-  // On regarde quelles sont la date et l'heure du prochain match pour commencer le crawl.
-  // Cela évite de crawler à des moments où rien ne se passe.
-  if (live === false) {
-    live = hasStartedMatch();
-  }
-
   // On annonce les matchs à venir dans (environ) un quart d'heure
   getComingUpMatches().forEach(match => {
     if (match.getForecasted() === true) {
@@ -376,6 +370,12 @@ const init = async () => {
     matches[data.IdMatch] = createMatch(data);
     return matches;
   }, matches);
+
+  // On regarde quelles sont la date et l'heure du prochain match pour commencer le crawl.
+  // Cela évite de crawler à des moments où rien ne se passe.
+  if (live === false) {
+    live = hasStartedMatch();
+  }
 
   cronJob.start();
 
