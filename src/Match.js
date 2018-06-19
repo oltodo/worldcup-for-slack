@@ -137,7 +137,7 @@ export default class Match extends EventEmitter {
           this.emit("card", this, event, team, "yellow");
           break;
         case EVENT_SECOND_YELLOW_CARD_RED:
-          this.emit("card", this, event, team, "yellow+red");
+          this.emit("card", this, event, team, "yellow+yellow");
           break;
         case EVENT_STRAIGHT_RED:
           this.emit("card", this, event, team, "red");

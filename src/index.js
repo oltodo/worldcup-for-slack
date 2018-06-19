@@ -36,7 +36,7 @@ let matches = {};
 let live = false;
 
 const getNow = () => {
-  return IS_DEV ? moment("2018-06-18T13:46") : moment();
+  return IS_DEV ? moment("2018-06-18T14:00") : moment();
 };
 
 const sendMessageQueue = new Queue(
@@ -120,17 +120,18 @@ const handleCardEvent = (match, event, team, type) => {
   const player = find(team.Players, { IdPlayer: event.IdPlayer });
   const playerName = get(player, "ShortName.0.Description");
 
-  let msg = ":collision:";
+  let msg = "";
 
   switch (type) {
     // case "yellow":
-    //   msg += "*Carton jaune*";
+    //   msg += ":large_orange_diamond: *Carton jaune*";
     //   break;
     case "red":
-      msg += "*Carton rouge*";
+      msg += ":red_circle: *Carton rouge*";
       break;
-    case "yellow+red":
-      msg += "*Carton rouge* (deux jaunes)";
+    case "yellow+yellow":
+      msg +=
+        ":large_orange_diamond::large_orange_diamond: *Carton rouge* (deux jaunes)";
       break;
     default:
       return;
@@ -158,10 +159,12 @@ const handleGoalEvent = (match, event, team, type) => {
 
   if (determiner === "le ") {
     determiner = "du ";
+  } else {
+    determiner = `de ${determiner}`;
   }
 
   let msg = `:soccer: *Goooooal!*`;
-  msg += ` de ${COUNTRIES[team.IdCountry]["determiner"]}${teamName} ${
+  msg += ` ${determiner}${teamName} ${
     COUNTRIES[team.IdCountry]["flag"]
   } (${playerName})`;
 
