@@ -41,7 +41,7 @@ const getNow = () => {
 };
 
 const sendMessageQueue = new Queue(
-  ({ match, event, msg }, done) => {
+  ({ match, event, msg, attachments = [] }, done) => {
     const homeCountryId = get(match.getHomeTeam(), "IdCountry", "DEF");
     const homeCountryName = get(
       match.getHomeTeam(),
@@ -75,7 +75,8 @@ const sendMessageQueue = new Queue(
     text += `\n${msg}`;
 
     slackhook.send({
-      text
+      text,
+      attachments
     });
 
     done();
@@ -149,42 +150,77 @@ const handleCardEvent = (match, event, team, type) => {
   });
 };
 
+const handleOwnGoalEvent = (match, event, team) => {
+  let realTeam;
+
+  if (get(match.getHomeTeam(), "IdTeam") === team.IdTeam) {
+    realTeam = match.getAwayTeam();
+  } else {
+    realTeam = match.getHomeTeam();
+  }
+
+  const teamName = get(realTeam, "TeamName.0.Description");
+  const teamFlag = COUNTRIES[realTeam.IdCountry]["flag"];
+  const determiner = COUNTRIES[realTeam.IdCountry]["determiner"];
+  const player = find(team.Players, { IdPlayer: event.IdPlayer });
+  const playerName = get(player, "ShortName.0.Description");
+
+  const msg = `:soccer: *Goooooal! pour ${determiner}${teamName} ${teamFlag}* (${
+    event.MatchMinute
+  })`;
+
+  const attachments = [
+    {
+      text: `But de ${playerName} ${
+        COUNTRIES[team.IdCountry]["flag"]
+      } marque contre son camp :face_palm:`,
+      color: "danger"
+    }
+  ];
+
+  sendMessageQueue.push({ match, event, msg, attachments });
+};
+
 const handleGoalEvent = (match, event, team, type) => {
   console.log("New event: goal");
+
+  if (type === "own") {
+    handleOwnGoalEvent(match, event, team);
+    return;
+  }
 
   const player = find(team.Players, { IdPlayer: event.IdPlayer });
   const playerName = get(player, "ShortName.0.Description");
   const teamName = get(team, "TeamName.0.Description");
+  const determiner = COUNTRIES[team.IdCountry]["determiner"];
 
-  let determiner = COUNTRIES[team.IdCountry]["determiner"];
-
-  if (determiner === "le ") {
-    determiner = "du ";
-  } else {
-    determiner = `de ${determiner}`;
-  }
-
-  let msg = `:soccer: *Goooooal!*`;
-  msg += ` ${determiner}${teamName} ${
+  const msg = `:soccer: *Goooooal! pour ${determiner}${teamName} ${
     COUNTRIES[team.IdCountry]["flag"]
-  } (${playerName})`;
+  }* (${event.MatchMinute})`;
+
+  let attachments = [];
 
   switch (type) {
     case "freekick":
-      msg += " sur coup-franc";
+      attachments.push({
+        text: `But de ${playerName} sur coup-franc`,
+        color: "good"
+      });
       break;
     case "penalty":
-      msg += " sur penalty";
-      break;
-    case "own":
-      msg += " contre sans camp :facepalm";
+      attachments.push({
+        text: `But de ${playerName} sur penalty`,
+        color: "good"
+      });
       break;
     default:
+      attachments.push({
+        text: `But de ${playerName}`,
+        color: "good"
+      });
   }
 
-  msg += ` (${event.MatchMinute})`;
-
-  sendMessageQueue.push({ match, event, msg });
+  sendMessageQueue.push({ match, event, msg, attachments });
 };
 
 const handlePenaltyEvent = (match, event, team) => {
@@ -192,7 +228,7 @@ const handlePenaltyEvent = (match, event, team) => {
 
   let realTeam;
 
-  if (match.getHomeTeam()[team.IdTeam]) {
+  if (get(match.getHomeTeam(), "IdTeam") === team.IdTeam) {
     realTeam = match.getAwayTeam();
   } else {
     realTeam = match.getHomeTeam();
@@ -212,7 +248,7 @@ const handlePenaltyMissedEvent = (match, event, team, type) => {
 
   let realTeam;
 
-  if (match.getHomeTeam()[team.IdTeam]) {
+  if (get(match.getHomeTeam(), "IdTeam") === team.IdTeam) {
     realTeam = match.getAwayTeam();
   } else {
     realTeam = match.getHomeTeam();
