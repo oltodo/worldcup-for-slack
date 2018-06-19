@@ -24,9 +24,9 @@ import {
 
 const IS_DEV = process.env.NODE_ENV === "development";
 
-const SLACKHOOK = IS_DEV
-  ? "https://hooks.slack.com/services/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"
-  : process.env.SLACKHOOK;
+const SLACKHOOK =
+  process.env.SLACKHOOK ||
+  "https://hooks.slack.com/services/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";
 
 const slackhook = require("slack-notify")(SLACKHOOK);
 
@@ -267,7 +267,7 @@ const getMatchEvents = async match => {
     const endpoint = ENDPOINT_EVENTS(match.getStageId(), match.getId());
     console.log(`Fetching ${endpoint}`);
     const response = await requestify.get(endpoint);
-    results = response.getBody().Results;
+    results = response.getBody().Event;
   }
 
   return results;
