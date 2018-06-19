@@ -154,6 +154,12 @@ const handleGoalEvent = (match, event, team, type) => {
   const playerName = get(player, "ShortName.0.Description");
   const teamName = get(team, "TeamName.0.Description");
 
+  let determiner = COUNTRIES[team.IdCountry]["determiner"];
+
+  if (determiner === "le ") {
+    determiner = "du ";
+  }
+
   let msg = `:soccer: *Goooooal!*`;
   msg += ` de ${COUNTRIES[team.IdCountry]["determiner"]}${teamName} ${
     COUNTRIES[team.IdCountry]["flag"]
