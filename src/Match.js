@@ -85,8 +85,8 @@ export default class Match extends EventEmitter {
       this.events,
       (event1, event2) => event1.EventId === event2.EventId
     ).filter(event => {
-      const diff = Math.ceil(this.lastCheck.diff(event.Timestamp) / 1000 / 60);
-      return diff < 1;
+      const diff = Math.floor(this.lastCheck.diff(event.Timestamp) / 1000 / 60);
+      return diff <= 1;
     });
 
     console.log(`${newEvents.length} new event(s)`);
