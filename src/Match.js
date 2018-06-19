@@ -86,6 +86,8 @@ export default class Match extends EventEmitter {
       (event1, event2) => event1.EventId === event2.EventId
     ).filter(event => this.lastCheck.diff(event.Timestamp) <= 0);
 
+    console.log(`${newEvents.length} new event(s)`);
+
     newEvents.forEach(event => {
       const team = find([this.data.HomeTeam, this.data.AwayTeam], {
         IdTeam: event.IdTeam

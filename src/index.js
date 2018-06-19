@@ -1,8 +1,8 @@
 /**
  * todo:
  *
- *  - Se baser sur l'heure de début des matchs pour commencer à crawler
- *  - Avertir un quart d'heure avant du début d'un match
+ *  [x] Se baser sur l'heure de début des matchs pour commencer à crawler
+ *  [x] Avertir un quart d'heure avant du début d'un match
  *  - Gérer le cas des prolongations
  *  - Gérer le cas de la séance de tir au but
  */
