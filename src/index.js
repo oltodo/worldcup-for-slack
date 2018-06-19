@@ -268,9 +268,16 @@ const handleComingUpMatchEvent = match => {
 
   const diff = Math.ceil(Math.abs(getNow().diff(match.getDate()) / 1000 / 60));
 
-  let msg = `:soon: *Le match commence bientôt* (${diff} min) >> Pensez à vos pronos <<`;
+  const msg = `:soon: *Le match commence bientôt* (${diff} min)`;
 
-  sendMessageQueue.push({ match, msg });
+  const attachments = [
+    {
+      title: ">> Pensez à vos pronos <<",
+      title_link: "https://www.monpetitprono.com/forecast/matches-to-come"
+    }
+  ];
+
+  sendMessageQueue.push({ match, msg, attachments });
 };
 
 const createMatch = data => {
