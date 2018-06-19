@@ -282,7 +282,7 @@ const getMatchEvents = async match => {
   return results;
 };
 
-const hasStartedMatch = () => {
+const hasStartedMatch = from => {
   const now = getNow();
 
   return reduce(
@@ -290,7 +290,7 @@ const hasStartedMatch = () => {
     (acc, match) => {
       const diff = Math.floor(now.diff(match.getDate()) / 1000 / 60);
 
-      if (diff >= 0 && diff < 200) {
+      if (diff >= 0 && diff < from) {
         return true;
       }
 
@@ -329,24 +329,26 @@ const checkUpdates = async () => {
     match.setForecasted(true);
   });
 
-  if (live === false) {
+  if (live === true) {
+    let currentMatches = await getCurrentMatches();
+
+    if (currentMatches.length === 0) {
+      live = false;
+      return;
+    }
+
+    currentMatches.map(async data => {
+      const match = matches[data.IdMatch];
+      const events = await getMatchEvents(match);
+
+      match.update(data);
+      match.updateEvents(events);
+    });
+
     return;
   }
 
-  let currentMatches = await getCurrentMatches();
-
-  if (currentMatches.length === 0) {
-    live = false;
-    return;
-  }
-
-  currentMatches.map(async data => {
-    const match = matches[data.IdMatch];
-    const events = await getMatchEvents(match);
-
-    match.update(data);
-    match.updateEvents(events);
-  });
+  live = hasStartedMatch(10);
 };
 
 const cronJob = cron.job(
@@ -376,11 +378,13 @@ const init = async () => {
 
   // On regarde quelles sont la date et l'heure du prochain match pour commencer le crawl.
   // Cela évite de crawler à des moments où rien ne se passe.
-  if (live === false) {
-    live = hasStartedMatch();
-  }
+  live = hasStartedMatch(200);
 
-  cronJob.start();
+  if (IS_DEV) {
+    checkUpdates();
+  } else {
+    cronJob.start();
+  }
 
   console.log("Cron job started");
 };
