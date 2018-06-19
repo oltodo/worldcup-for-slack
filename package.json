@@ -7,7 +7,7 @@
     "build": "babel src --out-dir dist",
     "start": "babel-node src",
     "lint": "eslint --cache 'src/**/*.js'",
-    "format": "prettier --write 'src/**/*.{js,json}'",
+    "format": "prettier --write '{src,cache}/**/*.{js,json}'",
     "deploy": "now -e NODE_ENV=development --public"
   },
   "main": "bot.js",

@@ -23,6 +23,7 @@ import {
 } from "./constants";
 
 const IS_DEV = process.env.NODE_ENV === "development";
+const DEV_CURRENT_MATCH = `match${process.env.MATCH || 1}`;
 
 const SLACKHOOK =
   process.env.SLACKHOOK ||
@@ -255,7 +256,7 @@ const getCurrentMatches = async () => {
   let results;
 
   if (IS_DEV) {
-    results = require("../cache/now.json").Results;
+    results = require(`../cache/${DEV_CURRENT_MATCH}/now.json`).Results;
   } else {
     console.log(`Fetching ${ENDPOINT_NOW}`);
     const response = await requestify.get(ENDPOINT_NOW);
@@ -271,7 +272,7 @@ const getMatchEvents = async match => {
   let results;
 
   if (IS_DEV) {
-    results = require("../cache/events.json").Event;
+    results = require(`../cache/${DEV_CURRENT_MATCH}/events.json`).Event;
   } else {
     const endpoint = ENDPOINT_EVENTS(match.getStageId(), match.getId());
     console.log(`Fetching ${endpoint}`);
