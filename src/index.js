@@ -1,7 +1,16 @@
+/**
+ * todo:
+ *
+ *  - Se baser sur l'heure de début des matchs pour commencer à crawler
+ *  - Avertir un quart d'heure avant du début d'un match
+ *  - Gérer le cas des prolongations
+ *  - Gérer le cas de la séance de tir au but
+ */
 import requestify from "requestify";
 import cron from "cron";
-import { get, find } from "lodash";
+import { get, find, reduce } from "lodash";
 import Queue from "better-queue";
+import moment from "moment";
 
 import Match from "./Match";
 
@@ -13,8 +22,6 @@ import {
   COUNTRIES
 } from "./constants";
 
-require("dotenv").config();
-
 const IS_DEV = process.env.NODE_ENV === "development";
 
 const SLACKHOOK = IS_DEV
@@ -23,34 +30,42 @@ const SLACKHOOK = IS_DEV
 
 const slackhook = require("slack-notify")(SLACKHOOK);
 
-const cronJobTime = process.env.CRON_TIME || "*/10 * * * * *";
+const cronJobTime = process.env.CRON_TIME || "*/15 * * * * *";
 
 let matches = {};
+let live = false;
+
+const getNow = () => {
+  return IS_DEV ? moment("2018-06-18T13:46") : moment();
+};
 
 const sendMessageQueue = new Queue(
   ({ match, event, msg }, done) => {
-    const homeScore = get(event, "HomeGoals", 0);
-    const homeCountryId = get(match, "HomeTeam.IdCountry", "DEF");
+    const homeCountryId = get(match.getHomeTeam(), "IdCountry", "DEF");
     const homeCountryName = get(
-      match,
-      "HomeTeam.TeamName.0.Description",
+      match.getHomeTeam(),
+      "TeamName.0.Description",
       "Unknown"
     );
 
-    const awayScore = get(event, "AwayGoals", 0);
-    const awayCountryId = get(match, "AwayTeam.IdCountry", "DEF");
+    const awayCountryId = get(match.getAwayTeam(), "IdCountry", "DEF");
     const awayCountryName = get(
-      match,
-      "AwayTeam.TeamName.0.Description",
+      match.getAwayTeam(),
+      "TeamName.0.Description",
       "Unknown"
     );
     // const groupName = get(match, "GroupName.0.Description");
 
     let text = `${homeCountryName} ${
       COUNTRIES[homeCountryId]["flag"]
-    } / ${awayCountryName} ${
-      COUNTRIES[awayCountryId]["flag"]
-    } *${homeScore}-${awayScore}*`;
+    } / ${awayCountryName} ${COUNTRIES[awayCountryId]["flag"]}`;
+
+    if (event) {
+      const homeScore = get(event, "HomeGoals", 0);
+      const awayScore = get(event, "AwayGoals", 0);
+
+      text += ` *${homeScore}-${awayScore}*`;
+    }
 
     // if (groupName) {
     //   text += ` (${groupName})`;
@@ -167,10 +182,10 @@ const handlePenaltyEvent = (match, event, team) => {
 
   let realTeam;
 
-  if (match.HomeTeam[team.IdTeam]) {
-    realTeam = match.AwayTeam;
+  if (match.getHomeTeam()[team.IdTeam]) {
+    realTeam = match.getAwayTeam();
   } else {
-    realTeam = match.HomeTeam;
+    realTeam = match.getHomeTeam();
   }
 
   const teamName = get(realTeam, "TeamName.0.Description");
@@ -187,10 +202,10 @@ const handlePenaltyMissedEvent = (match, event, team, type) => {
 
   let realTeam;
 
-  if (match.HomeTeam[team.IdTeam]) {
-    realTeam = match.AwayTeam;
+  if (match.getHomeTeam()[team.IdTeam]) {
+    realTeam = match.getAwayTeam();
   } else {
-    realTeam = match.HomeTeam;
+    realTeam = match.getHomeTeam();
   }
 
   const teamName = get(realTeam, "TeamName.0.Description");
@@ -200,6 +215,16 @@ const handlePenaltyMissedEvent = (match, event, team, type) => {
   }${teamName} (${event.MatchMinute})`;
 
   sendMessageQueue.push({ match, event, msg });
+};
+
+const handleComingUpMatchEvent = match => {
+  console.log("New event: comingUpMatch");
+
+  const diff = Math.ceil(Math.abs(getNow().diff(match.getDate()) / 1000 / 60));
+
+  let msg = `:soon: *Le match commence bientôt* (${diff} min) >> Pensez à vos pronos <<`;
+
+  sendMessageQueue.push({ match, msg });
 };
 
 const createMatch = data => {
@@ -223,6 +248,7 @@ const getCurrentMatches = async () => {
   if (IS_DEV) {
     results = require("../cache/now.json").Results;
   } else {
+    console.log(`Fetching ${ENDPOINT_NOW}`);
     const response = await requestify.get(ENDPOINT_NOW);
     results = response.getBody().Results;
   }
@@ -239,6 +265,7 @@ const getMatchEvents = async match => {
     results = require("../cache/events.json").Event;
   } else {
     const endpoint = ENDPOINT_EVENTS(match.getStageId(), match.getId());
+    console.log(`Fetching ${endpoint}`);
     const response = await requestify.get(endpoint);
     results = response.getBody().Results;
   }
@@ -246,8 +273,69 @@ const getMatchEvents = async match => {
   return results;
 };
 
+const hasStartedMatch = () => {
+  const now = getNow();
+
+  return reduce(
+    matches,
+    (acc, match) => {
+      const diff = Math.ceil(now.diff(match.getDate()) / 1000);
+
+      if (diff >= 0 && diff < 90 * 60) {
+        return true;
+      }
+
+      return acc;
+    },
+    false
+  );
+};
+
+const getComingUpMatches = () => {
+  const now = getNow();
+
+  return reduce(
+    matches,
+    (acc, match) => {
+      const diff = Math.ceil(now.diff(match.getDate()) / 1000 / 60);
+
+      if (diff >= -15 && diff < 0) {
+        acc.push(match);
+      }
+
+      return acc;
+    },
+    []
+  );
+};
+
 const checkUpdates = async () => {
+  // On regarde quelles sont la date et l'heure du prochain match pour commencer le crawl.
+  // Cela évite de crawler à des moments où rien ne se passe.
+  if (live === false) {
+    live = hasStartedMatch();
+  }
+
+  // On annonce les matchs à venir dans (environ) un quart d'heure
+  getComingUpMatches().forEach(match => {
+    if (match.getForecasted() === true) {
+      return;
+    }
+
+    handleComingUpMatchEvent(match);
+    match.setForecasted(true);
+  });
+
+  if (live === false) {
+    return;
+  }
+
   let currentMatches = await getCurrentMatches();
+
+  if (currentMatches.length === 0) {
+    live = false;
+    return;
+  }
 
   currentMatches.map(async data => {
     const match = matches[data.IdMatch];
@@ -273,6 +361,7 @@ const init = async () => {
   if (IS_DEV) {
     results = require("../cache/matches.json").Results;
   } else {
+    console.log(`Fetching ${ENDPOINT_MATCHES}`);
     const response = await requestify.get(ENDPOINT_MATCHES);
     results = response.getBody().Results;
   }

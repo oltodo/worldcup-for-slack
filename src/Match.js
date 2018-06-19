@@ -24,7 +24,9 @@ export default class Match extends EventEmitter {
     super();
 
     this.data = data;
+    this.date = moment(data.Date);
     this.events = [];
+    this.forecasted = false;
 
     if (process.env.NODE_ENV === "development") {
       this.lastCheck = moment("2018-06-18T14:00");
@@ -49,6 +51,34 @@ export default class Match extends EventEmitter {
     return this.data;
   }
 
+  getDate() {
+    return this.date;
+  }
+
+  getHomeTeam() {
+    if (this.data.Home) {
+      return this.data.Home;
+    }
+
+    return this.data.HomeTeam;
+  }
+
+  getAwayTeam() {
+    if (this.data.Away) {
+      return this.data.Away;
+    }
+
+    return this.data.AwayTeam;
+  }
+
+  getForecasted() {
+    return this.forecasted;
+  }
+
+  setForecasted(value) {
+    this.forecasted = value;
+  }
+
   updateEvents(events) {
     const newEvents = differenceWith(
       events,
@@ -65,10 +95,10 @@ export default class Match extends EventEmitter {
         case EVENT_PERIOD_START:
           switch (event.Period) {
             case PERIOD_1ST_HALF:
-              this.emit("matchStart", this.data, event);
+              this.emit("matchStart", this, event);
               break;
             case PERIOD_2ND_HALF:
-              this.emit("secondPeriodStart", this.data, event);
+              this.emit("secondPeriodStart", this, event);
               break;
             default:
           }
@@ -76,46 +106,46 @@ export default class Match extends EventEmitter {
         case EVENT_PERIOD_END:
           switch (event.Period) {
             case PERIOD_1ST_HALF:
-              this.emit("firstPeriodEnd", this.data, event);
+              this.emit("firstPeriodEnd", this, event);
               break;
             case PERIOD_2ND_HALF:
-              this.emit("matchEnd", this.data, event);
+              this.emit("matchEnd", this, event);
               break;
             default:
           }
           break;
 
         case EVENT_GOAL:
-          this.emit("goal", this.data, event, team, "regular");
+          this.emit("goal", this, event, team, "regular");
           break;
         case EVENT_FREE_KICK_GOAL:
-          this.emit("goal", this.data, event, team, "freekick");
+          this.emit("goal", this, event, team, "freekick");
           break;
         case EVENT_PENALTY_GOAL:
-          this.emit("goal", this.data, event, team, "penalty");
+          this.emit("goal", this, event, team, "penalty");
           break;
         case EVENT_OWN_GOAL:
-          this.emit("goal", this.data, event, team, "own");
+          this.emit("goal", this, event, team, "own");
           break;
 
         case EVENT_YELLOW_CARD:
-          this.emit("card", this.data, event, team, "yellow");
+          this.emit("card", this, event, team, "yellow");
           break;
         case EVENT_SECOND_YELLOW_CARD_RED:
-          this.emit("card", this.data, event, team, "yellow+red");
+          this.emit("card", this, event, team, "yellow+red");
           break;
         case EVENT_STRAIGHT_RED:
-          this.emit("card", this.data, event, team, "red");
+          this.emit("card", this, event, team, "red");
           break;
 
         case EVENT_FOUL_PENALTY:
-          this.emit("penalty", this.data, event, team);
+          this.emit("penalty", this, event, team);
           break;
         case EVENT_PENALTY_MISSED:
-          this.emit("penalty missed", this.data, event, team, "missed");
+          this.emit("penalty missed", this, event, team, "missed");
           break;
         case EVENT_PENALTY_SAVED:
-          this.emit("penalty missed", this.data, event, team, "saved");
+          this.emit("penalty missed", this, event, team, "saved");
           break;
         default:
       }
