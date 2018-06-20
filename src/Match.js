@@ -1,7 +1,7 @@
 import moment from "moment";
 import { EventEmitter } from "events";
 import { differenceWith, find } from "lodash";
-import Team from "./team";
+import Team from "./Team";
 
 import {
   EVENT_GOAL,
