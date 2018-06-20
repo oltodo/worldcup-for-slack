@@ -8,7 +8,7 @@
  */
 import requestify from "requestify";
 import cron from "cron";
-import { get, find, reduce } from "lodash";
+import { get, reduce } from "lodash";
 import Queue from "better-queue";
 import moment from "moment";
 
@@ -18,8 +18,7 @@ import {
   ID_COMPETITION,
   ENDPOINT_MATCHES,
   ENDPOINT_NOW,
-  ENDPOINT_EVENTS,
-  COUNTRIES
+  ENDPOINT_EVENTS
 } from "./constants";
 
 const IS_DEV = process.env.NODE_ENV === "development";
@@ -42,24 +41,12 @@ const getNow = () => {
 
 const sendMessageQueue = new Queue(
   ({ match, event, msg, attachments = [] }, done) => {
-    const homeCountryId = get(match.getHomeTeam(), "IdCountry", "DEF");
-    const homeCountryName = get(
-      match.getHomeTeam(),
-      "TeamName.0.Description",
-      "Unknown"
-    );
+    const homeTeam = match.getHomeTeam();
+    const awayTeam = match.getAwayTeam();
 
-    const awayCountryId = get(match.getAwayTeam(), "IdCountry", "DEF");
-    const awayCountryName = get(
-      match.getAwayTeam(),
-      "TeamName.0.Description",
-      "Unknown"
-    );
     // const groupName = get(match, "GroupName.0.Description");
 
-    let text = `${homeCountryName} ${
-      COUNTRIES[homeCountryId]["flag"]
-    } / ${awayCountryName} ${COUNTRIES[awayCountryId]["flag"]}`;
+    let text = `${homeTeam.getName(true)} / ${awayTeam.getName(true)}`;
 
     if (event) {
       const homeScore = get(event, "HomeGoals", 0);
@@ -119,8 +106,7 @@ const handleSecondPeriodStartEvent = (match, event) => {
 const handleCardEvent = (match, event, team, type) => {
   console.log("New event: card");
 
-  const player = find(team.Players, { IdPlayer: event.IdPlayer });
-  const playerName = get(player, "ShortName.0.Description");
+  const playerName = team.getPlayerName(event.IdPlayer);
 
   let msg = "";
 
@@ -139,9 +125,7 @@ const handleCardEvent = (match, event, team, type) => {
       return;
   }
 
-  msg += ` pour ${playerName} ${COUNTRIES[team.IdCountry]["flag"]} (${
-    event.MatchMinute
-  })`;
+  msg += ` pour ${playerName} ${team.getFlag()} (${event.MatchMinute})`;
 
   sendMessageQueue.push({
     match,
@@ -151,30 +135,27 @@ const handleCardEvent = (match, event, team, type) => {
 };
 
 const handleOwnGoalEvent = (match, event, team) => {
-  let realTeam;
+  const oppTeam = match.getOppositeTeam(team);
 
-  if (get(match.getHomeTeam(), "IdTeam") === team.IdTeam) {
-    realTeam = match.getAwayTeam();
-  } else {
-    realTeam = match.getHomeTeam();
-  }
-
-  const teamName = get(realTeam, "TeamName.0.Description");
-  const teamFlag = COUNTRIES[realTeam.IdCountry]["flag"];
-  const determiner = COUNTRIES[realTeam.IdCountry]["determiner"];
-  const player = find(team.Players, { IdPlayer: event.IdPlayer });
-  const playerName = get(player, "ShortName.0.Description");
-
-  const msg = `:soccer: *Goooooal! pour ${determiner}${teamName} ${teamFlag}* (${
-    event.MatchMinute
-  })`;
+  const msg = `:soccer: *Goooooal! pour ${oppTeam.getNameWithDeterminer(
+    null,
+    true
+  )}* (${event.MatchMinute})`;
 
   const attachments = [
     {
-      text: `But de ${playerName} ${
-        COUNTRIES[team.IdCountry]["flag"]
-      } marque contre son camp :face_palm:`,
-      color: "danger"
+      text: `${team.getPlayerName(
+        event.IdPlayer,
+        true
+      )} marque contre son camp :face_palm:`,
+      color: "danger",
+      actions: [
+        {
+          type: "button",
+          text: ":tv: Accéder au live",
+          url: "http://neosportek.blogspot.com/p/world-cup.html"
+        }
+      ]
     }
   ];
 
@@ -189,36 +170,40 @@ const handleGoalEvent = (match, event, team, type) => {
     return;
   }
 
-  const player = find(team.Players, { IdPlayer: event.IdPlayer });
-  const playerName = get(player, "ShortName.0.Description");
-  const teamName = get(team, "TeamName.0.Description");
-  const determiner = COUNTRIES[team.IdCountry]["determiner"];
+  const playerName = team.getPlayerName(event.IdPlayer);
 
-  const msg = `:soccer: *Goooooal! pour ${determiner}${teamName} ${
-    COUNTRIES[team.IdCountry]["flag"]
-  }* (${event.MatchMinute})`;
+  const msg = `:soccer: *Goooooal! pour ${team.getNameWithDeterminer(
+    null,
+    true
+  )}* (${event.MatchMinute})`;
 
   let attachments = [];
 
   switch (type) {
     case "freekick":
       attachments.push({
-        text: `But de ${playerName} sur coup-franc`,
-        color: "good"
+        text: `But de ${playerName} sur coup-franc`
       });
       break;
     case "penalty":
       attachments.push({
-        text: `But de ${playerName} sur penalty`,
-        color: "good"
+        text: `But de ${playerName} sur penalty`
       });
       break;
     default:
       attachments.push({
-        text: `But de ${playerName}`,
-        color: "good"
+        text: `But de ${playerName}`
       });
   }
+
+  attachments[0].color = "good";
+  attachments[0].actions = [
+    {
+      type: "button",
+      text: ":tv: Accéder au live",
+      url: "http://neosportek.blogspot.com/p/world-cup.html"
+    }
+  ];
 
   sendMessageQueue.push({ match, event, msg, attachments });
 };
@@ -226,19 +211,12 @@ const handleGoalEvent = (match, event, team, type) => {
 const handlePenaltyEvent = (match, event, team) => {
   console.log("New event: penalty");
 
-  let realTeam;
+  const oppTeam = match.getOppositeTeam(team);
 
-  if (get(match.getHomeTeam(), "IdTeam") === team.IdTeam) {
-    realTeam = match.getAwayTeam();
-  } else {
-    realTeam = match.getHomeTeam();
-  }
-
-  const teamName = get(realTeam, "TeamName.0.Description");
-
-  let msg = `:exclamation: *Penalty* accordé à ${
-    COUNTRIES[team.IdCountry]["determiner"]
-  }${teamName} (${event.MatchMinute})`;
+  let msg = `:exclamation: *Penalty* accordé ${oppTeam.getNameWithDeterminer(
+    "à",
+    true
+  )} (${event.MatchMinute})`;
 
   sendMessageQueue.push({ match, event, msg });
 };
@@ -246,19 +224,12 @@ const handlePenaltyEvent = (match, event, team) => {
 const handlePenaltyMissedEvent = (match, event, team, type) => {
   console.log("New event: penaltyMissed");
 
-  let realTeam;
+  const oppTeam = match.getOppositeTeam(team);
 
-  if (get(match.getHomeTeam(), "IdTeam") === team.IdTeam) {
-    realTeam = match.getAwayTeam();
-  } else {
-    realTeam = match.getHomeTeam();
-  }
-
-  const teamName = get(realTeam, "TeamName.0.Description");
-
-  let msg = `:no_good: *Penalty raté* par ${
-    COUNTRIES[team.IdCountry]["determiner"]
-  }${teamName} (${event.MatchMinute})`;
+  let msg = `:no_good: *Penalty raté* par ${oppTeam.getNameWithDeterminer(
+    null,
+    true
+  )} (${event.MatchMinute})`;
 
   sendMessageQueue.push({ match, event, msg });
 };

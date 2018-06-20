@@ -1,6 +1,7 @@
 import moment from "moment";
 import { EventEmitter } from "events";
 import { differenceWith, find } from "lodash";
+import Team from "./team";
 
 import {
   EVENT_GOAL,
@@ -23,10 +24,11 @@ export default class Match extends EventEmitter {
   constructor(data) {
     super();
 
-    this.data = data;
     this.date = moment(data.Date);
     this.events = [];
     this.forecasted = false;
+
+    this.update(data);
 
     if (process.env.NODE_ENV === "development") {
       this.lastCheck = moment("2018-06-18T14:00");
@@ -37,6 +39,10 @@ export default class Match extends EventEmitter {
 
   update(data) {
     this.data = data;
+    this.date = moment(data.Date);
+
+    this.homeTeam = new Team(data.Home || data.HomeTeam);
+    this.awayTeam = new Team(data.Away || data.AwayTeam);
   }
 
   getId() {
@@ -47,28 +53,24 @@ export default class Match extends EventEmitter {
     return this.data.IdStage;
   }
 
-  getData() {
-    return this.data;
-  }
-
   getDate() {
     return this.date;
   }
 
   getHomeTeam() {
-    if (this.data.Home) {
-      return this.data.Home;
-    }
-
-    return this.data.HomeTeam;
+    return this.homeTeam;
   }
 
   getAwayTeam() {
-    if (this.data.Away) {
-      return this.data.Away;
+    return this.awayTeam;
+  }
+
+  getOppositeTeam(team) {
+    if (this.homeTeam.getId() === team.IdTeam) {
+      return this.homeTeam;
     }
 
-    return this.data.AwayTeam;
+    return this.awayTeam;
   }
 
   getForecasted() {
@@ -92,9 +94,10 @@ export default class Match extends EventEmitter {
     console.log(`${newEvents.length} new event(s)`);
 
     newEvents.forEach(event => {
-      const team = find([this.data.HomeTeam, this.data.AwayTeam], {
-        IdTeam: event.IdTeam
-      });
+      const team = find(
+        [this.homeTeam, this.awayTeam],
+        team => team.getId() === event.IdTeam
+      );
 
       switch (event.Type) {
         case EVENT_PERIOD_START:
