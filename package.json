@@ -5,11 +5,11 @@
   "prettier": true,
   "scripts": {
     "build": "babel src --out-dir dist",
-    "start": "babel-node src",
+    "start": "NODE_ENV=production babel-node src",
     "lint": "eslint --cache 'src/**/*.js'",
     "format": "prettier --write '{src,cache}/**/*.{js,json}'",
     "deploy": "now -e NODE_ENV=development --public",
-    "test": "NODE_ENV=development babel-node src"
+    "dev": "NODE_ENV=development babel-node src"
   },
   "main": "bot.js",
   "engines": {
