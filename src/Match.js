@@ -67,10 +67,10 @@ export default class Match extends EventEmitter {
 
   getOppositeTeam(team) {
     if (this.homeTeam.getId() === team.IdTeam) {
-      return this.homeTeam;
+      return this.awayTeam;
     }
 
-    return this.awayTeam;
+    return this.homeTeam;
   }
 
   getForecasted() {
