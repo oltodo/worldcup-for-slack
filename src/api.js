@@ -9,7 +9,7 @@ import {
 
 import { IS_DEV } from "./utils";
 
-const DEV_CURRENT_MATCH = `match${process.env.MATCH || 1}`;
+const DEV_CURRENT_MATCH = `match${Math.abs(process.argv[2]) < 5 ? process.argv[2] : 1}`;
 
 export const fetchCurrentMatches = async () => {
   let results;
