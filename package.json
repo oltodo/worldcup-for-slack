@@ -8,7 +8,8 @@
     "start": "babel-node src",
     "lint": "eslint --cache 'src/**/*.js'",
     "format": "prettier --write '{src,cache}/**/*.{js,json}'",
-    "deploy": "now -e NODE_ENV=development --public"
+    "deploy": "now -e NODE_ENV=development --public",
+    "test": "NODE_ENV=development babel-node src"
   },
   "main": "bot.js",
   "engines": {
