@@ -3,6 +3,8 @@ import { EventEmitter } from "events";
 import { differenceWith, find } from "lodash";
 import Team from "./Team";
 
+import { getNow } from "./utils";
+
 import {
   EVENT_GOAL,
   EVENT_YELLOW_CARD,
@@ -27,14 +29,9 @@ export default class Match extends EventEmitter {
     this.date = moment(data.Date);
     this.events = [];
     this.forecasted = false;
+    this.lastCheck = getNow();
 
     this.update(data);
-
-    if (process.env.NODE_ENV === "development") {
-      this.lastCheck = moment("2018-06-18T14:00");
-    } else {
-      this.lastCheck = moment();
-    }
   }
 
   update(data) {
