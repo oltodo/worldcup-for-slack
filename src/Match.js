@@ -48,7 +48,7 @@ export default class Match extends EventEmitter {
     this.status = data.MatchStatus;
     this.homeTeam = new Team(data.HomeTeam);
     this.awayTeam = new Team(data.AwayTeam);
-    this.complete = true;
+    this.complete = this.homeTeam.hasPlayers() && this.awayTeam.hasPlayers();
   }
 
   getId() {
