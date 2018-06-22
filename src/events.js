@@ -81,9 +81,9 @@ export const handleCardEvent = (match, event, team, type) => {
   let msg = "";
 
   switch (type) {
-    // case "yellow":
-    //   msg += ":large_orange_diamond: *Carton jaune*";
-    //   break;
+    case "yellow":
+      msg += ":large_orange_diamond: *Carton jaune*";
+      break;
     case "red":
       msg += ":red_circle: *Carton rouge*";
       break;
