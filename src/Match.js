@@ -42,8 +42,6 @@ export default class Match extends EventEmitter {
 
     this.homeTeam = new Team(data.Home);
     this.awayTeam = new Team(data.Away);
-
-    this.foobar = "foo";
   }
 
   update(data) {
@@ -51,12 +49,6 @@ export default class Match extends EventEmitter {
     this.homeTeam = new Team(data.HomeTeam);
     this.awayTeam = new Team(data.AwayTeam);
     this.complete = true;
-
-    this.foobar = "bar";
-  }
-
-  getFoobar() {
-    return this.foobar;
   }
 
   getId() {
