@@ -191,9 +191,21 @@ export const handlePenaltyEvent = (match, event, team) => {
   sendMessageQueue.push({ match, event, msg });
 };
 
-export const handlePenaltyMissedEvent = (match, event, team, type) => {
+export const handlePenaltyMissedEvent = (match, event, team) => {
   console.log("New event: penaltyMissed");
 
+  let msg = `:no_good: *${team.getPlayerName(
+    event.IdPlayer,
+    true
+  )} manque son penalty* (${event.MatchMinute})`;
+
+  sendMessageQueue.push({ match, event, msg });
+};
+
+export const handlePenaltySavedEvent = (match, event, team) => {
+  console.log("New event: penaltySaved");
+
+  // A déterminer
   const oppTeam = match.getOppositeTeam(team);
 
   let msg = `:no_good: *Penalty raté* par ${oppTeam.getNameWithDeterminer(
