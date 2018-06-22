@@ -6,6 +6,8 @@ import Team from "./Team";
 import { getNow } from "./utils";
 
 import {
+  EVENT_MATCH_START,
+  EVENT_MATCH_END,
   EVENT_GOAL,
   EVENT_YELLOW_CARD,
   EVENT_SECOND_YELLOW_CARD_RED,
@@ -19,35 +21,50 @@ import {
   EVENT_PENALTY_MISSED,
   EVENT_FOUL_PENALTY,
   PERIOD_1ST_HALF,
-  PERIOD_2ND_HALF
+  PERIOD_2ND_HALF,
+  MATCH_STATUS_FINISHED,
+  MATCH_STATUS_LIVE
 } from "./constants";
 
 export default class Match extends EventEmitter {
   constructor(data) {
     super();
 
-    this.date = moment(data.Date);
     this.events = [];
     this.forecasted = false;
     this.lastCheck = getNow();
+    this.complete = false;
 
-    this.update(data);
+    this.id = data.IdMatch;
+    this.stageId = data.IdStage;
+    this.date = moment(data.Date);
+    this.status = data.MatchStatus;
+
+    this.homeTeam = new Team(data.Home);
+    this.awayTeam = new Team(data.Away);
+
+    this.foobar = "foo";
   }
 
   update(data) {
-    this.data = data;
-    this.date = moment(data.Date);
+    this.status = data.MatchStatus;
+    this.homeTeam = new Team(data.HomeTeam);
+    this.awayTeam = new Team(data.AwayTeam);
+    this.complete = true;
 
-    this.homeTeam = new Team(data.Home || data.HomeTeam);
-    this.awayTeam = new Team(data.Away || data.AwayTeam);
+    this.foobar = "bar";
+  }
+
+  getFoobar() {
+    return this.foobar;
   }
 
   getId() {
-    return this.data.IdMatch;
+    return this.id;
   }
 
   getStageId() {
-    return this.data.IdStage;
+    return this.stageId;
   }
 
   getDate() {
@@ -78,6 +95,28 @@ export default class Match extends EventEmitter {
     this.forecasted = value;
   }
 
+  isLive() {
+    return this.status === MATCH_STATUS_LIVE;
+  }
+
+  isComplete() {
+    return this.complete;
+  }
+
+  shouldHaveStarted(from) {
+    if (this.status === MATCH_STATUS_FINISHED) {
+      return false;
+    }
+
+    const diff = Math.floor(getNow().diff(this.getDate()) / 1000 / 60);
+
+    return diff >= 0 && diff < from;
+  }
+
+  getName() {
+    return `${this.homeTeam.getName()} / ${this.awayTeam.getName()}`;
+  }
+
   updateEvents(events) {
     const newEvents = differenceWith(
       events,
@@ -97,10 +136,18 @@ export default class Match extends EventEmitter {
       );
 
       switch (event.Type) {
+        case EVENT_MATCH_START:
+          this.status = MATCH_STATUS_LIVE;
+          this.emit("matchStart", this, event);
+          break;
+        case EVENT_MATCH_END:
+          this.status = MATCH_STATUS_FINISHED;
+          this.emit("matchEnd", this, event);
+          break;
         case EVENT_PERIOD_START:
           switch (event.Period) {
             case PERIOD_1ST_HALF:
-              this.emit("matchStart", this, event);
+              this.emit("firstPeriodStart", this, event);
               break;
             case PERIOD_2ND_HALF:
               this.emit("secondPeriodStart", this, event);
@@ -114,7 +161,7 @@ export default class Match extends EventEmitter {
               this.emit("firstPeriodEnd", this, event);
               break;
             case PERIOD_2ND_HALF:
-              this.emit("matchEnd", this, event);
+              this.emit("secondPeriodEnd", this, event);
               break;
             default:
           }

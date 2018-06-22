@@ -23,6 +23,8 @@ export const EVENT_PENALTY_GOAL = 41;
 export const EVENT_PENALTY_SAVED = 60;
 export const EVENT_PENALTY_MISSED = 65;
 export const EVENT_FOUL_PENALTY = 72;
+export const EVENT_MATCH_START = 19;
+export const EVENT_MATCH_END = 26;
 
 // Periods
 export const PERIOD_1ST_HALF = 3;
@@ -32,7 +34,7 @@ export const PERIOD_2ND_HALF = 5;
 export const ENDPOINT_MATCHES = `${API_ENDPOINT}/calendar/matches?idCompetition=${ID_COMPETITION}&idSeason=${ID_SEASON}&count=500&language=${LOCALE}`;
 export const ENDPOINT_EVENTS = (stageId, matchId) =>
   `${API_ENDPOINT}/timelines/${ID_COMPETITION}/${ID_SEASON}/${stageId}/${matchId}?language=${LOCALE}`;
-export const ENDPOINT_NOW = `https://api.fifa.com/api/v1/live/football/now?idCompetition=${ID_COMPETITION}&idSeason=${ID_SEASON}&count=500&language=${LOCALE}`;
+export const ENDPOINT_LIVE = `https://api.fifa.com/api/v1/live/football?idCompetition=${ID_COMPETITION}&idSeason=${ID_SEASON}&count=500&language=${LOCALE}`;
 
 export const COUNTRIES = {
   RUS: { determiner: "la ", flag: "🇷🇺" },

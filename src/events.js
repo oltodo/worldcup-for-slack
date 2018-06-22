@@ -53,7 +53,7 @@ export const handleMatchEndEvent = (match, event) => {
   sendMessageQueue.push({
     match,
     event,
-    msg: `:stopwatch: *Fin du match* (${event.MatchMinute})`
+    msg: `:stopwatch: *Fin du match*`
   });
 };
 
