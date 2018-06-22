@@ -18,7 +18,9 @@ export default class Team {
     const name = get(this.data, "TeamName.0.Description", "Unknown");
 
     if (flag) {
-      return flagPositionInverted? `${this.getFlag()} ${name}` :  `${name} ${this.getFlag()}`;
+      return flagPositionInverted
+        ? `${this.getFlag()} ${name}`
+        : `${name} ${this.getFlag()}`;
     }
 
     return name;

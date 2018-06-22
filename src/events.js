@@ -22,7 +22,9 @@ const sendMessageQueue = new Queue(
       const homeScore = get(event, "HomeGoals", 0);
       const awayScore = get(event, "AwayGoals", 0);
 
-      text += ` *${homeScore}-${awayScore}*`;
+      text = ` ${homeTeam.getName(
+        true
+      )} *${homeScore}-${awayScore}* ${awayTeam.getName(true, true)} `;
     }
 
     // if (groupName) {
