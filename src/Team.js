@@ -14,11 +14,13 @@ export default class Team {
     return get(this.data, "IdCountry", "DEF");
   }
 
-  getName(flag = false) {
+  getName(flag = false, flagPositionInverted = false) {
     const name = get(this.data, "TeamName.0.Description", "Unknown");
 
     if (flag) {
-      return `${name} ${this.getFlag()}`;
+      return flagPositionInverted
+        ? `${this.getFlag()} ${name}`
+        : `${name} ${this.getFlag()}`;
     }
 
     return name;
