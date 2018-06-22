@@ -7,12 +7,12 @@
  *  - Gérer le cas de la séance de tir au but
  */
 import cron from "cron";
-import { reduce } from "lodash";
+import { map, reduce } from "lodash";
 
 import Match from "./Match";
 
 import { getNow, IS_DEV } from "./utils";
-import { fetchCurrentMatches, fetchMatchEvents, fetchMatches } from "./api";
+import { fetchLiveMatches, fetchMatchEvents, fetchMatches } from "./api";
 import {
   handleMatchStartEvent,
   handleMatchEndEvent,
@@ -25,10 +25,7 @@ import {
   handleComingUpMatchEvent
 } from "./events";
 
-const cronJobTime = process.env.CRON_TIME || "*/15 * * * * *";
-
 let matches = {};
-let live = false;
 
 const createMatch = data => {
   const match = new Match(data);
@@ -43,24 +40,6 @@ const createMatch = data => {
   match.on("card", handleCardEvent);
 
   return match;
-};
-
-const hasStartedMatch = from => {
-  const now = getNow();
-
-  return reduce(
-    matches,
-    (acc, match) => {
-      const diff = Math.floor(now.diff(match.getDate()) / 1000 / 60);
-
-      if (diff >= 0 && diff < from) {
-        return true;
-      }
-
-      return acc;
-    },
-    false
-  );
 };
 
 const getComingUpMatches = () => {
@@ -81,9 +60,12 @@ const getComingUpMatches = () => {
   );
 };
 
-const checkUpdates = async () => {
+const checkComingUpMatches = () => {
   // On annonce les matchs à venir dans (environ) un quart d'heure
-  getComingUpMatches().forEach(match => {
+  const comingUpMatches = getComingUpMatches();
+
+  comingUpMatches.forEach(match => {
+    // Si l'annonce à déjà été faite on quitte
     if (match.getForecasted() === true) {
       return;
     }
@@ -91,57 +73,76 @@ const checkUpdates = async () => {
     handleComingUpMatchEvent(match);
     match.setForecasted(true);
   });
-
-  if (live === true) {
-    let currentMatches = await fetchCurrentMatches();
-
-    if (currentMatches.length === 0) {
-      live = false;
-      return;
-    }
-
-    currentMatches.map(async data => {
-      const match = matches[data.IdMatch];
-      const events = await fetchMatchEvents(match);
-
-      match.update(data);
-      match.updateEvents(events);
-    });
-
-    return;
-  }
-
-  live = hasStartedMatch(10);
 };
 
-const cronJob = cron.job(
-  cronJobTime,
-  () => {
-    console.log("Cron execution");
-    checkUpdates();
-  },
-  false
-);
+// Cette fonction vérifie que les matchs qui sont supposés avoir commencé ont
+// bien les données complètes ; c'est à dire qu'ils possèdent les données
+// provenants de l'API `/live/football`, qui permet notamment de récupérer la
+// liste des joueurs de chaque équipe. Sans quoi certains messages ne
+// pourraient pas être contruits.
+const checkUncompleteMatches = async () => {
+  let shouldUpdate = false;
+
+  map(matches, match => {
+    // On active la mise à jour si le match à commencé et qu'il n'a pas encore toutes les données
+    if (
+      !match.isComplete() &&
+      (match.isLive() || match.shouldHaveStarted(200))
+    ) {
+      shouldUpdate = true;
+    }
+  });
+
+  if (shouldUpdate) {
+    map(await fetchLiveMatches(), data => {
+      matches[data.IdMatch].update(data);
+    });
+  }
+};
+
+const update = async () => {
+  await checkComingUpMatches();
+  await checkUncompleteMatches();
+
+  // On parcourt ensuite la liste des matchs pour savoir s'il faut en récupérer
+  // les évènements. Il faut que le match ait démarré et ait les données complètes
+  map(matches, async match => {
+    if (
+      (match.isLive() || match.shouldHaveStarted(200)) &&
+      match.isComplete()
+    ) {
+      const events = await fetchMatchEvents(match);
+      match.updateEvents(events);
+    }
+  });
+};
 
 const init = async () => {
+  // Récupération de tous les matchs de la compétition
   matches = reduce(
     await fetchMatches(),
     (acc, data) => {
       matches[data.IdMatch] = createMatch(data);
       return matches;
     },
-    matches
+    {}
   );
 
-  // On regarde quelles sont la date et l'heure du prochain match pour commencer le crawl.
-  // Cela évite de crawler à des moments où rien ne se passe.
-  live = hasStartedMatch(200);
-
   if (IS_DEV) {
-    checkUpdates();
-  } else {
-    cronJob.start();
+    update();
+    return;
   }
+
+  cron
+    .job(
+      "*/15 * * * * *",
+      () => {
+        console.log("Update");
+        update();
+      },
+      false
+    )
+    .start();
 
   console.log("Cron job started");
 };
