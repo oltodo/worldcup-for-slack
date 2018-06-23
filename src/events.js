@@ -19,7 +19,7 @@ import {
 
 const SLACKHOOK =
   process.env.SLACKHOOK ||
-  "https://hooks.slack.com/services/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";
+  "https://hooks.slack.com/services/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";
 
 const slackhook = require("slack-notify")(SLACKHOOK);
 
@@ -63,13 +63,13 @@ const sendMessageQueue = new Queue(
   ({ match, event, msg, attachments = [] }, done) => {
     const homeTeam = match.getHomeTeam();
     const awayTeam = match.getAwayTeam();
-    const matchFinished =
-      EVENT_MATCH_END === event.Type ||
-      (PERIOD_PENALTIES === event.Period && EVENT_PERIOD_END === event.Type);
-
     let text = `${homeTeam.getName(true)} / ${awayTeam.getName(true)}`;
 
     if (event) {
+      const matchFinished =
+      EVENT_MATCH_END === event.Type ||
+      (PERIOD_PENALTIES === event.Period && EVENT_PERIOD_END === event.Type);
+
       const homeScore = get(event, "HomeGoals", 0);
       const awayScore = get(event, "AwayGoals", 0);
 
