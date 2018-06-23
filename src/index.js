@@ -5,6 +5,10 @@
  *  [x] Avertir un quart d'heure avant du début d'un match
  *  - Gérer le cas des prolongations
  *  - Gérer le cas de la séance de tir au but
+ => pour se faire il faut détecter le début de période et fin de période de tirs au but avec period à 11 et un event juste avant et après les tirs
+ => QUID de gérer les tirs au but manqués ? utiliser un décompte avec un tableau + un fallback au cas où relance du bot (détection du nombre de buts réussis dans le flux incohérent avec le tableau)
+ sauvegarder les events de manière générale avec leur timestamp (voir si this.event a les infos)
+ => revoir les msgs des events pour les mettre en fin pour un recap
  */
 import cron from "cron";
 import { map, reduce } from "lodash";
@@ -16,8 +20,8 @@ import { fetchLiveMatches, fetchMatchEvents, fetchMatches } from "./api";
 import {
   handleMatchStartEvent,
   handleMatchEndEvent,
-  handleFirstPeriodEndEvent,
-  handleSecondPeriodStartEvent,
+  handlePeriodEndEvent,
+  handlePeriodStartEvent,
   handleCardEvent,
   handleGoalEvent,
   handlePenaltyEvent,
@@ -33,8 +37,8 @@ const createMatch = data => {
 
   match.on("matchStart", handleMatchStartEvent);
   match.on("matchEnd", handleMatchEndEvent);
-  match.on("firstPeriodEnd", handleFirstPeriodEndEvent);
-  match.on("secondPeriodStart", handleSecondPeriodStartEvent);
+  match.on("periodStart", handlePeriodStartEvent);
+  match.on("periodEnd", handlePeriodEndEvent);
   match.on("goal", handleGoalEvent);
   match.on("penalty", handlePenaltyEvent);
   match.on("penalty missed", handlePenaltyMissedEvent);
@@ -46,7 +50,7 @@ const createMatch = data => {
 
 const getComingUpMatches = () => {
   const now = getNow();
-
+  console.log(new Date(now));
   return reduce(
     matches,
     (acc, match) => {
@@ -109,10 +113,7 @@ const update = async () => {
   // On parcourt ensuite la liste des matchs pour savoir s'il faut en récupérer
   // les évènements. Il faut que le match ait démarré et ait les données complètes
   map(matches, async match => {
-    if (
-      (match.isLive() || match.shouldHaveStarted(200)) &&
-      match.isComplete()
-    ) {
+    if (match.isLive() && match.shouldHaveStarted(200) && match.isComplete()) {
       const events = await fetchMatchEvents(match);
       match.updateEvents(events);
     }

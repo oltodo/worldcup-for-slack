@@ -5,7 +5,7 @@ import { ENDPOINT_MATCHES, ENDPOINT_LIVE, ENDPOINT_EVENTS } from "./constants";
 import { IS_DEV } from "./utils";
 
 const DEV_CURRENT_MATCH = `match${
-  Math.abs(process.argv[2]) < 5 ? process.argv[2] : 1
+  Math.abs(process.argv[2]) < 7 ? process.argv[2] : 1
 }`;
 
 export const fetchLiveMatches = async () => {

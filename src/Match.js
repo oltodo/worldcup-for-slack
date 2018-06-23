@@ -1,6 +1,6 @@
 import moment from "moment";
 import { EventEmitter } from "events";
-import { differenceWith, find } from "lodash";
+import { differenceWith, find, filter } from "lodash";
 import Team from "./Team";
 
 import { getNow } from "./utils";
@@ -42,6 +42,7 @@ export default class Match extends EventEmitter {
 
     this.homeTeam = new Team(data.Home);
     this.awayTeam = new Team(data.Away);
+    this.finished = false;
   }
 
   update(data) {
@@ -109,6 +110,17 @@ export default class Match extends EventEmitter {
     return `${this.homeTeam.getName()} / ${this.awayTeam.getName()}`;
   }
 
+  getEvents({ eventTypes = null, period = null, teamId = null }) {
+    let result = filter(
+      this.events,
+      event =>
+        (teamId ? teamId === event.IdTeam : 1) &&
+        (eventTypes ? eventTypes.indexOf(event.Type) >= 0 : 1) &&
+        (period ? period === event.Period : 1)
+    );
+    return result;
+  }
+
   updateEvents(events) {
     const newEvents = differenceWith(
       events,
@@ -137,28 +149,11 @@ export default class Match extends EventEmitter {
           this.emit("matchEnd", this, event);
           break;
         case EVENT_PERIOD_START:
-          switch (event.Period) {
-            case PERIOD_1ST_HALF:
-              this.emit("firstPeriodStart", this, event);
-              break;
-            case PERIOD_2ND_HALF:
-              this.emit("secondPeriodStart", this, event);
-              break;
-            default:
-          }
+          this.emit("periodStart", this, event);
           break;
         case EVENT_PERIOD_END:
-          switch (event.Period) {
-            case PERIOD_1ST_HALF:
-              this.emit("firstPeriodEnd", this, event);
-              break;
-            case PERIOD_2ND_HALF:
-              this.emit("secondPeriodEnd", this, event);
-              break;
-            default:
-          }
+          this.emit("periodEnd", this, event);
           break;
-
         case EVENT_GOAL:
           this.emit("goal", this, event, team, "regular");
           break;

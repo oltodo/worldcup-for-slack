@@ -2,6 +2,20 @@ import Queue from "better-queue";
 import { get } from "lodash";
 
 import { getNow } from "./utils";
+import {
+  PERIOD_PENALTIES,
+  EVENT_PENALTY_GOAL,
+  EVENT_PENALTY_MISSED,
+  EVENT_PENALTY_SAVED,
+  PENALTY_OK,
+  PENALTY_NOK,
+  PERIOD_1ST_HALF,
+  PERIOD_2ND_HALF,
+  PERIOD_EXPAND_1ST_HALF,
+  PERIOD_EXPAND_2ND_HALF,
+  EVENT_MATCH_END,
+  EVENT_PERIOD_END
+} from "./constants";
 
 const SLACKHOOK =
   process.env.SLACKHOOK ||
@@ -9,12 +23,49 @@ const SLACKHOOK =
 
 const slackhook = require("slack-notify")(SLACKHOOK);
 
+const getPeriodName = periodId => {
+  let periodNumberName = "";
+
+  switch (periodId) {
+    case PERIOD_1ST_HALF:
+      periodNumberName = "première période";
+      break;
+    case PERIOD_2ND_HALF:
+      periodNumberName = "seconde période";
+      break;
+    case PERIOD_EXPAND_1ST_HALF:
+      periodNumberName = "première période de prolongation";
+      break;
+    case PERIOD_EXPAND_2ND_HALF:
+      periodNumberName = "seconde période de prolongation";
+      break;
+    case PERIOD_PENALTIES:
+      periodNumberName = "tirs au but";
+      break;
+    default:
+  }
+  return periodNumberName;
+};
+
+const buildPenaltiesSeriesString = data => {
+  let seriesString = "";
+  data.forEach(event => {
+    if (EVENT_PENALTY_GOAL === event.Type) {
+      seriesString += PENALTY_OK;
+    } else {
+      seriesString += PENALTY_NOK;
+    }
+  });
+  return seriesString;
+};
+
 const sendMessageQueue = new Queue(
   ({ match, event, msg, attachments = [] }, done) => {
     const homeTeam = match.getHomeTeam();
     const awayTeam = match.getAwayTeam();
-
-    // const groupName = get(match, "GroupName.0.Description");
+    const matchFinished =
+      EVENT_MATCH_END === event.Type ||
+      (PERIOD_PENALTIES === event.Period && EVENT_PERIOD_END === event.Type);
 
     let text = `${homeTeam.getName(true)} / ${awayTeam.getName(true)}`;
 
@@ -25,11 +76,63 @@ const sendMessageQueue = new Queue(
       text = ` ${homeTeam.getName(
         true
       )} *${homeScore}-${awayScore}* ${awayTeam.getName(true, true)} `;
-    }
 
-    // if (groupName) {
-    //   text += ` (${groupName})`;
-    // }
+      //Si tirs aux buts l'affichage change
+      if (PERIOD_PENALTIES === event.Period && !matchFinished) {
+        console.log("events during tirs au but");
+
+        text = `\n *------- tirs au but --------*`;
+
+        const homeGoalPenalties = match.getEvents({
+          eventTypes: [
+            EVENT_PENALTY_GOAL,
+            EVENT_PENALTY_MISSED,
+            EVENT_PENALTY_SAVED
+          ],
+          period: PERIOD_PENALTIES,
+          teamId: homeTeam.getId()
+        });
+        const awayGoalPenalties = match.getEvents({
+          eventTypes: [
+            EVENT_PENALTY_GOAL,
+            EVENT_PENALTY_MISSED,
+            EVENT_PENALTY_SAVED
+          ],
+          period: PERIOD_PENALTIES,
+          teamId: awayTeam.getId()
+        });
+        const homeGoalPenaltiesString = buildPenaltiesSeriesString(
+          homeGoalPenalties
+        );
+        const awayGoalPenaltiesString = buildPenaltiesSeriesString(
+          awayGoalPenalties
+        );
+        text += `\n ${homeTeam.getFlag()} :  ` + homeGoalPenaltiesString;
+        text += `\n ${awayTeam.getFlag()} :  ` + awayGoalPenaltiesString;
+      }
+
+      if (matchFinished) {
+        let victoryTeam = homeTeam;
+
+        if (
+          (homeScore === awayScore &&
+            event.HomePenaltyGoals < event.AwayPenaltyGoals) ||
+          homeScore < awayScore
+        ) {
+          victoryTeam = awayTeam;
+        }
+        if (
+          homeScore === awayScore &&
+          event.HomePenaltyGoals === event.AwayPenaltyGoals
+        ) {
+          victoryTeam = null;
+        }
+        console.log("victoire");
+        text += victoryTeam
+          ? `\n Victoire de ${victoryTeam.getName(true)}`
+          : `\n Match nul`;
+      }
+    }
 
     text += `\n${msg}`;
 
@@ -59,20 +162,29 @@ export const handleMatchEndEvent = (match, event) => {
   });
 };
 
-export const handleFirstPeriodEndEvent = (match, event) => {
+export const handlePeriodEndEvent = (match, event) => {
   console.log("New event: firstPeriodEnd");
 
+  const periodNumberName = getPeriodName(event.Period);
   sendMessageQueue.push({
     match,
     event,
-    msg: `:toilet: *Fin de la première période* (${event.MatchMinute})`
+    msg: `:toilet: *Fin ${periodNumberName} * (${event.MatchMinute})`
   });
+
+  if (PERIOD_PENALTIES === event.Period) {
+    handleMatchEndEvent(match, event);
+  }
 };
 
-export const handleSecondPeriodStartEvent = (match, event) => {
+export const handlePeriodStartEvent = (match, event) => {
   console.log("New event: secondPeriodStart");
-
-  sendMessageQueue.push({ match, event, msg: ":runner: *C'est reparti !*" });
+  const periodNumberName = getPeriodName(event.Period);
+  sendMessageQueue.push({
+    match,
+    event,
+    msg: `:runner: *Debut : ${periodNumberName} `
+  });
 };
 
 export const handleCardEvent = (match, event, team, type) => {
@@ -207,8 +319,8 @@ export const handlePenaltyMissedEvent = (match, event, team) => {
 export const handlePenaltySavedEvent = (match, event, team) => {
   console.log("New event: penaltySaved");
 
-  // A déterminer
-  const oppTeam = match.getOppositeTeam(team);
+  const oppTeam =
+    PERIOD_PENALTIES === event.Period ? team : match.getOppositeTeam(team);
 
   let msg = `:no_good: *Penalty raté* par ${oppTeam.getNameWithDeterminer(
     null,
