@@ -5,10 +5,6 @@
  *  [x] Avertir un quart d'heure avant du début d'un match
  *  - Gérer le cas des prolongations
  *  - Gérer le cas de la séance de tir au but
- => pour se faire il faut détecter le début de période et fin de période de tirs au but avec period à 11 et un event juste avant et après les tirs
- => QUID de gérer les tirs au but manqués ? utiliser un décompte avec un tableau + un fallback au cas où relance du bot (détection du nombre de buts réussis dans le flux incohérent avec le tableau)
- sauvegarder les events de manière générale avec leur timestamp (voir si this.event a les infos)
- => revoir les msgs des events pour les mettre en fin pour un recap
  */
 import cron from "cron";
 import { map, reduce } from "lodash";
