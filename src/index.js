@@ -22,6 +22,7 @@ import {
   handleGoalEvent,
   handlePenaltyEvent,
   handlePenaltyMissedEvent,
+  handlePenaltySavedEvent,
   handleComingUpMatchEvent
 } from "./events";
 
