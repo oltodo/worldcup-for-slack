@@ -7519,6 +7519,270 @@
       "OfficialityStatus": 0,
       "Properties": { "IdCBS": "300331552", "IdIFES": "108606" },
       "IsUpdateable": null
+    },
+    {
+      "IdCompetition": "102",
+      "IdSeason": "275916",
+      "IdStage": "275929",
+      "IdGroup": null,
+      "Weather": {
+        "Humidity": "70",
+        "Temperature": "29",
+        "WindSpeed": "6",
+        "Type": 9,
+        "TypeLocalized": [
+          {
+            "Locale": "en-GB",
+            "Description": "Partly Cloudy Night"
+          }
+        ]
+      },
+      "Attendance": "53302",
+      "IdMatch": "300394742",
+      "MatchDay": "11",
+      "StageName": [
+        {
+          "Locale": "en-GB",
+          "Description": "Round of 16"
+        }
+      ],
+      "GroupName": [],
+      "CompetitionName": [
+        {
+          "Locale": "fr-FR",
+          "Description": "Coupe du Monde U-17 de la FIFA"
+        }
+      ],
+      "Date": "2017-10-17T14:30:00Z",
+      "LocalDate": "2017-10-17T20:00:00Z",
+      "Home": {
+        "Score": 0,
+        "Side": null,
+        "IdTeam": "1889588",
+        "PictureUrl":
+          "https://api.fifa.com/api/v1/picture/flags-{format}-{size}/ENG",
+        "IdCountry": "ENG",
+        "Tactics": "",
+        "TeamType": 1,
+        "AgeType": 1,
+        "TeamName": [
+          {
+            "Locale": "fr-FR",
+            "Description": "Angleterre"
+          }
+        ],
+        "FootballType": 0,
+        "Gender": 1
+      },
+      "Away": {
+        "Score": 0,
+        "Side": null,
+        "IdTeam": "1888308",
+        "PictureUrl":
+          "https://api.fifa.com/api/v1/picture/flags-{format}-{size}/JPN",
+        "IdCountry": "JPN",
+        "Tactics": "",
+        "TeamType": 1,
+        "AgeType": 1,
+        "TeamName": [
+          {
+            "Locale": "fr-FR",
+            "Description": "Japon"
+          }
+        ],
+        "FootballType": 0,
+        "Gender": 1
+      },
+      "HomeTeamScore": 0,
+      "AwayTeamScore": 0,
+      "AggregateHomeTeamScore": 0,
+      "AggregateAwayTeamScore": 0,
+      "HomeTeamPenaltyScore": 5,
+      "AwayTeamPenaltyScore": 3,
+      "LastPeriodUpdate": null,
+      "Leg": null,
+      "IsHomeMatch": null,
+      "Stadium": {
+        "IdStadium": "5008920",
+        "Name": [
+          {
+            "Locale": "en-GB",
+            "Description": "Vivekananda Yuba Bharati Krirangan"
+          }
+        ],
+        "Capacity": null,
+        "WebAddress": null,
+        "Built": null,
+        "Roof": false,
+        "Turf": null,
+        "IdCity": "12290",
+        "CityName": [
+          {
+            "Locale": "en-GB",
+            "Description": "KOLKATA"
+          }
+        ],
+        "IdCountry": "IND",
+        "PostalCode": null,
+        "Street": null,
+        "Email": null,
+        "Fax": null,
+        "Phone": null,
+        "AffiliationCountry": null,
+        "AffiliationRegion": null,
+        "Latitude": null,
+        "Longitude": null,
+        "Length": null,
+        "Width": null,
+        "Properties": {
+          "IdCBS": "5008920",
+          "IdIFES": "5008920"
+        },
+        "IsUpdateable": null
+      },
+      "IsTicketSalesAllowed": null,
+      "MatchTime": "0'",
+      "SecondHalfTime": null,
+      "FirstHalfTime": null,
+      "FirstHalfExtraTime": null,
+      "SecondHalfExtraTime": null,
+      "Winner": "1889588",
+      "MatchReportUrl": null,
+      "PlaceHolderA": "1F",
+      "PlaceHolderB": "2E",
+      "BallPossession": {
+        "Intervals": [],
+        "LastX": [],
+        "OverallHome": 58.0,
+        "OverallAway": 42.0
+      },
+      "Officials": [
+        {
+          "IdCountry": "VEN",
+          "OfficialId": "280234",
+          "NameShort": [
+            {
+              "Locale": "en-GB",
+              "Description": "ARGOTE Jose"
+            }
+          ],
+          "Name": [
+            {
+              "Locale": "en-GB",
+              "Description": "ARGOTE Jose"
+            }
+          ],
+          "OfficialType": 1,
+          "TypeLocalized": [
+            {
+              "Locale": "en-GB",
+              "Description": "Main referee"
+            }
+          ]
+        },
+        {
+          "IdCountry": "VEN",
+          "OfficialId": "349169",
+          "NameShort": [
+            {
+              "Locale": "en-GB",
+              "Description": "MURILLO Luis"
+            }
+          ],
+          "Name": [
+            {
+              "Locale": "en-GB",
+              "Description": "MURILLO Luis"
+            }
+          ],
+          "OfficialType": 2,
+          "TypeLocalized": [
+            {
+              "Locale": "en-GB",
+              "Description": "Lineman 1"
+            }
+          ]
+        },
+        {
+          "IdCountry": "VEN",
+          "OfficialId": "328268",
+          "NameShort": [
+            {
+              "Locale": "en-GB",
+              "Description": "LOPEZ Carlos"
+            }
+          ],
+          "Name": [
+            {
+              "Locale": "en-GB",
+              "Description": "LOPEZ Carlos"
+            }
+          ],
+          "OfficialType": 3,
+          "TypeLocalized": [
+            {
+              "Locale": "en-GB",
+              "Description": "Lineman 2"
+            }
+          ]
+        },
+        {
+          "IdCountry": "MEX",
+          "OfficialId": "256570",
+          "NameShort": [
+            {
+              "Locale": "fr-FR",
+              "Description": "Jair MARRUFO"
+            }
+          ],
+          "Name": [
+            {
+              "Locale": "fr-FR",
+              "Description": "Jair MARRUFO"
+            }
+          ],
+          "OfficialType": 4,
+          "TypeLocalized": [
+            {
+              "Locale": "en-GB",
+              "Description": "Fourth official"
+            }
+          ]
+        },
+        {
+          "IdCountry": "USA",
+          "OfficialId": "348809",
+          "NameShort": [
+            {
+              "Locale": "en-GB",
+              "Description": "ANDERSON Frank"
+            }
+          ],
+          "Name": [
+            {
+              "Locale": "en-GB",
+              "Description": "ANDERSON Frank"
+            }
+          ],
+          "OfficialType": 0,
+          "TypeLocalized": [
+            {
+              "Locale": "en-GB",
+              "Description": "Unknown"
+            }
+          ]
+        }
+      ],
+      "MatchStatus": 1,
+      "ResultType": 2,
+      "MatchNumber": 41,
+      "TimeDefined": true,
+      "OfficialityStatus": 2,
+      "Properties": {
+        "IdCBS": "300394742",
+        "IdIFES": "115312"
+      },
+      "IsUpdateable": null
     }
   ]
 }
