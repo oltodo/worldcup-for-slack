@@ -37,6 +37,7 @@ const createMatch = data => {
   match.on("goal", handleGoalEvent);
   match.on("penalty", handlePenaltyEvent);
   match.on("penalty missed", handlePenaltyMissedEvent);
+  match.on("penalty saved", handlePenaltySavedEvent);
   match.on("card", handleCardEvent);
 
   return match;

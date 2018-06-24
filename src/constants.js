@@ -13,8 +13,8 @@ export const MATCH_STATUS_PREMATCH = 12; // Maybe?
 // Event Types
 export const EVENT_GOAL = 0;
 export const EVENT_YELLOW_CARD = 2;
-export const EVENT_SECOND_YELLOW_CARD_RED = 4; // Maybe?
-export const EVENT_STRAIGHT_RED = 3; // Maybe?
+export const EVENT_SECOND_YELLOW_CARD_RED = 4;
+export const EVENT_STRAIGHT_RED = 3;
 export const EVENT_PERIOD_START = 7;
 export const EVENT_PERIOD_END = 8;
 export const EVENT_OWN_GOAL = 34;

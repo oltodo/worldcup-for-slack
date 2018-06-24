@@ -48,7 +48,7 @@ export default class Match extends EventEmitter {
     this.status = data.MatchStatus;
     this.homeTeam = new Team(data.HomeTeam);
     this.awayTeam = new Team(data.AwayTeam);
-    this.complete = true;
+    this.complete = this.homeTeam.hasPlayers() && this.awayTeam.hasPlayers();
   }
 
   getId() {
@@ -186,10 +186,10 @@ export default class Match extends EventEmitter {
           this.emit("penalty", this, event, team);
           break;
         case EVENT_PENALTY_MISSED:
-          this.emit("penalty missed", this, event, team, "missed");
+          this.emit("penalty missed", this, event, team);
           break;
         case EVENT_PENALTY_SAVED:
-          this.emit("penalty missed", this, event, team, "saved");
+          this.emit("penalty saved", this, event, team);
           break;
         default:
       }

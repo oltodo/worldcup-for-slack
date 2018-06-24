@@ -66,4 +66,8 @@ export default class Team {
 
     return name;
   }
+
+  hasPlayers() {
+    return this.data.Players && this.data.Players.length > 0;
+  }
 }
