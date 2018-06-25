@@ -1,5 +1,5 @@
 {
-  "extends": ["prettier", "react-app"],
+  "extends": ["plugin:prettier/recommended"],
   "parser": "babel-eslint",
   "parserOptions": {
     "ecmaFeatures": {

@@ -6,3 +6,4 @@ cache: yarn
 
 script:
  - yarn lint
+ - yarn format --list-different
