@@ -109,7 +109,7 @@ const update = async () => {
   // On parcourt ensuite la liste des matchs pour savoir s'il faut en récupérer
   // les évènements. Il faut que le match ait démarré et ait les données complètes
   map(matches, async match => {
-    if (match.isLive() && match.shouldHaveStarted(200) && match.isComplete()) {
+    if (match.isLive() || match.shouldHaveStarted(200) && match.isComplete()) {
       const events = await fetchMatchEvents(match);
       match.updateEvents(events);
     }

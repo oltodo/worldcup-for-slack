@@ -3,7 +3,7 @@ import { EventEmitter } from "events";
 import { differenceWith, find, filter } from "lodash";
 import Team from "./Team";
 
-import { getNow } from "./utils";
+import { getNow, IS_DEV } from "./utils";
 
 import {
   EVENT_MATCH_START,
@@ -86,7 +86,7 @@ export default class Match extends EventEmitter {
   }
 
   isLive() {
-    return this.status === MATCH_STATUS_LIVE;
+    return IS_DEV ? false : this.status === MATCH_STATUS_LIVE;
   }
 
   isComplete() {
@@ -94,10 +94,10 @@ export default class Match extends EventEmitter {
   }
 
   shouldHaveStarted(from) {
-    if (this.status === MATCH_STATUS_FINISHED) {
+    if (this.status === MATCH_STATUS_FINISHED && !IS_DEV) {
       return false;
     }
-
+    //console.log("ID : " + this.getId() + "  " + new Date(getNow()) + " -> " + new Date(this.getDate()) + "IS LIVE : "+this.isLive() + " DIFF " + Math.floor(getNow().diff(this.getDate()) / 1000 / 60) + " COMPLETE " + this.isComplete());
     const diff = Math.floor(getNow().diff(this.getDate()) / 1000 / 60);
 
     return diff >= 0 && diff < from;
@@ -128,7 +128,7 @@ export default class Match extends EventEmitter {
       return diff <= 1;
     });
 
-    console.log(`${newEvents.length} new event(s)`);
+    console.log(`${newEvents.length} new event(s) for match ID ${this.getId()}`);
 
     newEvents.forEach(event => {
       const team = find(
