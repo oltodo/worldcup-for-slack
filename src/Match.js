@@ -128,7 +128,9 @@ export default class Match extends EventEmitter {
       return diff <= 1;
     });
 
-    console.log(`${newEvents.length} new event(s) for match ID ${this.getId()}`);
+    console.log(
+      `${newEvents.length} new event(s) for match ID ${this.getId()}`
+    );
 
     newEvents.forEach(event => {
       const team = find(

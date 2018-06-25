@@ -11,9 +11,9 @@ export const getNow = () => {
     case 6:
       return moment("2017-10-17T17:00");
     case 2:
-      return moment("2018-06-19T14:30"); 
+      return moment("2018-06-19T14:30");
     case 3:
-      return moment("2018-06-19T20:30"); 
+      return moment("2018-06-19T20:30");
     case 4:
       return moment("2018-06-19T17:30");
     case 5:
