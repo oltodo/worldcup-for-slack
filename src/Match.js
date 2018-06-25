@@ -40,7 +40,6 @@ export default class Match extends EventEmitter {
 
     this.homeTeam = new Team(data.Home);
     this.awayTeam = new Team(data.Away);
-    this.finished = false;
   }
 
   update(data) {

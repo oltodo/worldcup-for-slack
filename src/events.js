@@ -9,19 +9,29 @@ import {
   EVENT_PENALTY_SAVED,
   PENALTY_OK,
   PENALTY_NOK,
+  PENALTY_INCOMING,
   PERIOD_1ST_HALF,
   PERIOD_2ND_HALF,
   PERIOD_EXPAND_1ST_HALF,
   PERIOD_EXPAND_2ND_HALF,
   EVENT_MATCH_END,
-  EVENT_PERIOD_END
+  EVENT_PERIOD_END,
+  EVENT_PERIOD_START
 } from "./constants";
 
 const SLACKHOOK =
   process.env.SLACKHOOK ||
-  "https://hooks.slack.com/services/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";
+  "https://hooks.slack.com/services/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";
 
 const slackhook = require("slack-notify")(SLACKHOOK);
+
+const liveAttachment = [
+  {
+    type: "button",
+    text: ":tv: Accéder au live",
+    url: "http://neosportek.blogspot.com/p/world-cup.html"
+  }
+];
 
 const getPeriodName = periodId => {
   let periodNumberName = "";
@@ -40,23 +50,55 @@ const getPeriodName = periodId => {
       periodNumberName = "seconde période de prolongation";
       break;
     case PERIOD_PENALTIES:
-      periodNumberName = "tirs au but";
+      periodNumberName = "séance de tirs au but";
       break;
     default:
   }
   return periodNumberName;
 };
 
-const buildPenaltiesSeriesString = data => {
-  let seriesString = "";
-  data.forEach(event => {
-    if (EVENT_PENALTY_GOAL === event.Type) {
-      seriesString += PENALTY_OK;
-    } else {
-      seriesString += PENALTY_NOK;
-    }
+const buildPenaltiesSeriesScore = data => {
+  let doneShootsString = "";
+  let remainingShoots = 5;
+
+  if (data) {
+    remainingShoots =
+      data.length <= remainingShoots ? remainingShoots - data.length : 0;
+    doneShootsString = data.reduce(
+      (acc, event) =>
+        acc + (EVENT_PENALTY_GOAL === event.Type ? PENALTY_OK : PENALTY_NOK),
+      ""
+    );
+  }
+
+  const remainingShootsString = new Array(remainingShoots)
+    .fill(1)
+    .reduce(acc => acc + PENALTY_INCOMING, "");
+  return doneShootsString + remainingShootsString;
+};
+
+const buildPenaltiesSeriesMessage = match => {
+  console.log("events during tirs au but");
+  const homeTeam = match.getHomeTeam();
+  const awayTeam = match.getAwayTeam();
+  let text = "";
+
+  const homeGoalPenalties = match.getEvents({
+    eventTypes: [EVENT_PENALTY_GOAL, EVENT_PENALTY_MISSED, EVENT_PENALTY_SAVED],
+    period: PERIOD_PENALTIES,
+    teamId: homeTeam.getId()
   });
-  return seriesString;
+  const awayGoalPenalties = match.getEvents({
+    eventTypes: [EVENT_PENALTY_GOAL, EVENT_PENALTY_MISSED, EVENT_PENALTY_SAVED],
+    period: PERIOD_PENALTIES,
+    teamId: awayTeam.getId()
+  });
+  const homeGoalPenaltiesString = buildPenaltiesSeriesScore(homeGoalPenalties);
+  const awayGoalPenaltiesString = buildPenaltiesSeriesScore(awayGoalPenalties);
+  text += `\n ${homeTeam.getName(true)} \n  [${homeGoalPenaltiesString}]`;
+  text += `\n ${awayTeam.getName(true)} \n  [${awayGoalPenaltiesString}]`;
+
+  return text;
 };
 
 const sendMessageQueue = new Queue(
@@ -67,8 +109,8 @@ const sendMessageQueue = new Queue(
 
     if (event) {
       const matchFinished =
-      EVENT_MATCH_END === event.Type ||
-      (PERIOD_PENALTIES === event.Period && EVENT_PERIOD_END === event.Type);
+        EVENT_MATCH_END === event.Type ||
+        (PERIOD_PENALTIES === event.Period && EVENT_PERIOD_END === event.Type);
 
       const homeScore = get(event, "HomeGoals", 0);
       const awayScore = get(event, "AwayGoals", 0);
@@ -79,36 +121,9 @@ const sendMessageQueue = new Queue(
 
       //Si tirs aux buts l'affichage change
       if (PERIOD_PENALTIES === event.Period && !matchFinished) {
-        console.log("events during tirs au but");
-
-        text = `\n *------- tirs au but --------*`;
-
-        const homeGoalPenalties = match.getEvents({
-          eventTypes: [
-            EVENT_PENALTY_GOAL,
-            EVENT_PENALTY_MISSED,
-            EVENT_PENALTY_SAVED
-          ],
-          period: PERIOD_PENALTIES,
-          teamId: homeTeam.getId()
-        });
-        const awayGoalPenalties = match.getEvents({
-          eventTypes: [
-            EVENT_PENALTY_GOAL,
-            EVENT_PENALTY_MISSED,
-            EVENT_PENALTY_SAVED
-          ],
-          period: PERIOD_PENALTIES,
-          teamId: awayTeam.getId()
-        });
-        const homeGoalPenaltiesString = buildPenaltiesSeriesString(
-          homeGoalPenalties
-        );
-        const awayGoalPenaltiesString = buildPenaltiesSeriesString(
-          awayGoalPenalties
-        );
-        text += `\n ${homeTeam.getFlag()} :  ` + homeGoalPenaltiesString;
-        text += `\n ${awayTeam.getFlag()} :  ` + awayGoalPenaltiesString;
+        const penaltiesSeriesString = buildPenaltiesSeriesMessage(match);
+        attachments.push({ text: penaltiesSeriesString });
+        msg = EVENT_PERIOD_START === event.Type ? msg : "";
       }
 
       if (matchFinished) {
@@ -165,11 +180,11 @@ export const handleMatchEndEvent = (match, event) => {
 export const handlePeriodEndEvent = (match, event) => {
   console.log("New event: firstPeriodEnd");
 
-  const periodNumberName = getPeriodName(event.Period);
+  const periodName = getPeriodName(event.Period);
   sendMessageQueue.push({
     match,
     event,
-    msg: `:toilet: *Fin ${periodNumberName} * (${event.MatchMinute})`
+    msg: `:toilet: *Fin de la ${periodName} * (${event.MatchMinute})`
   });
 
   if (PERIOD_PENALTIES === event.Period) {
@@ -179,11 +194,11 @@ export const handlePeriodEndEvent = (match, event) => {
 
 export const handlePeriodStartEvent = (match, event) => {
   console.log("New event: secondPeriodStart");
-  const periodNumberName = getPeriodName(event.Period);
+  const periodName = getPeriodName(event.Period);
   sendMessageQueue.push({
     match,
     event,
-    msg: `:runner: *Debut : ${periodNumberName} `
+    msg: `:runner: *Debut de la ${periodName} `
   });
 };
 
@@ -233,13 +248,7 @@ export const handleOwnGoalEvent = (match, event, team) => {
         true
       )} marque contre son camp :face_palm:`,
       color: "danger",
-      actions: [
-        {
-          type: "button",
-          text: ":tv: Accéder au live",
-          url: "http://neosportek.blogspot.com/p/world-cup.html"
-        }
-      ]
+      actions: liveAttachment
     }
   ];
 
@@ -255,6 +264,7 @@ export const handleGoalEvent = (match, event, team, type) => {
   }
 
   const playerName = team.getPlayerName(event.IdPlayer);
+  const playerFlag = team.getFlag();
 
   const msg = `:soccer: *Goooooal! pour ${team.getNameWithDeterminer(
     null,
@@ -271,7 +281,10 @@ export const handleGoalEvent = (match, event, team, type) => {
       break;
     case "penalty":
       attachments.push({
-        text: `But de ${playerName} sur penalty`
+        text:
+          PERIOD_PENALTIES === event.Period
+            ? `But de ${playerName} ${playerFlag} sur penalty`
+            : `But de ${playerName} sur penalty`
       });
       break;
     default:
@@ -281,13 +294,7 @@ export const handleGoalEvent = (match, event, team, type) => {
   }
 
   attachments[0].color = "good";
-  attachments[0].actions = [
-    {
-      type: "button",
-      text: ":tv: Accéder au live",
-      url: "http://neosportek.blogspot.com/p/world-cup.html"
-    }
-  ];
+  attachments[0].actions = liveAttachment;
 
   sendMessageQueue.push({ match, event, msg, attachments });
 };
@@ -319,15 +326,25 @@ export const handlePenaltyMissedEvent = (match, event, team) => {
 export const handlePenaltySavedEvent = (match, event, team) => {
   console.log("New event: penaltySaved");
 
-  const oppTeam =
-    PERIOD_PENALTIES === event.Period ? team : match.getOppositeTeam(team);
+  const gardien = match.getOppositeTeam(team).getPlayerName(event.IdSubPlayer);
+  const gardienFlag = match.getOppositeTeam(team).getFlag();
 
-  let msg = `:no_good: *Penalty raté* par ${oppTeam.getNameWithDeterminer(
+  let msg = `:no_good: *Penalty raté* par ${team.getNameWithDeterminer(
     null,
     true
   )} (${event.MatchMinute})`;
 
-  sendMessageQueue.push({ match, event, msg });
+  const playerName = team.getPlayerName(event.IdPlayer);
+  const playerFlag = team.getFlag();
+  const attachments = [
+    {
+      text: `Tir de ${playerName} ${playerFlag} arrêté par le gardien ${gardien} ${gardienFlag}`,
+      color: "danger",
+      actions: liveAttachment
+    }
+  ];
+
+  sendMessageQueue.push({ match, event, msg, attachments });
 };
 
 export const handleComingUpMatchEvent = match => {
