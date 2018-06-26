@@ -1,6 +1,11 @@
 import requestify from "requestify";
 
-import { ENDPOINT_MATCHES, ENDPOINT_LIVE, ENDPOINT_EVENTS } from "./constants";
+import {
+  ID_COMPETITION,
+  ENDPOINT_MATCHES,
+  ENDPOINT_LIVE,
+  ENDPOINT_EVENTS
+} from "./constants";
 
 import { IS_DEV } from "./utils";
 
@@ -15,8 +20,11 @@ export const fetchLiveMatches = async () => {
 
   console.log(`Fetching ${ENDPOINT_LIVE}`);
   const response = await requestify.get(ENDPOINT_LIVE);
+  const matches = response.getBody().Results;
 
-  return response.getBody().Results;
+  return matches.filter(
+    ({ IdCompetition }) => IdCompetition === ID_COMPETITION
+  );
 };
 
 export const fetchMatchEvents = async match => {
