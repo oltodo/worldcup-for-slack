@@ -221,7 +221,7 @@ export const handlePenaltySavedEvent = (match, event, team) => {
 export const handleComingUpMatchEvent = match => {
   console.log("New event: comingUpMatch");
 
-  const diff = Math.ceil(Math.abs(getNow().diff(match.getDate()) / 1000 / 60));
+  const diff = Math.floor(Math.abs(getNow().diff(match.getDate()) / 1000 / 60));
 
   const msg = `:soon: *Le match commence bientôt* (${diff} min)`;
 
