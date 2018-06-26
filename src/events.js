@@ -14,8 +14,6 @@ const sendMessageQueue = new Queue(
     const homeTeam = match.getHomeTeam();
     const awayTeam = match.getAwayTeam();
 
-    // const groupName = get(match, "GroupName.0.Description");
-
     let text = `${homeTeam.getName(true)} / ${awayTeam.getName(true)}`;
 
     if (event) {
@@ -26,10 +24,6 @@ const sendMessageQueue = new Queue(
         true
       )} *${homeScore}-${awayScore}* ${awayTeam.getName(true, true)} `;
     }
-
-    // if (groupName) {
-    //   text += ` (${groupName})`;
-    // }
 
     text += `\n${msg}`;
 
@@ -88,8 +82,7 @@ export const handleCardEvent = (match, event, team, player, type) => {
       msg += ":red_circle: *Carton rouge*";
       break;
     case "yellow+yellow":
-      msg +=
-        ":large_orange_diamond::large_orange_diamond: *Carton rouge* (deux jaunes)";
+      msg += ":red_circle: *Carton rouge* (deux jaunes)";
       break;
     default:
       return;
@@ -239,7 +232,9 @@ export const handleVarEvent = (match, event) => {
     return;
   }
 
-  const msg = `:soon: *Penalty annulé après VAR* (${event.MatchMinute})`;
+  const msg = `:no_entry_sign: *Penalty annulé après VAR* (${
+    event.MatchMinute
+  })`;
 
   sendMessageQueue.push({ match, msg });
 };
