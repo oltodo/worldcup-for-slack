@@ -320,7 +320,7 @@ export const handlePenaltySavedEvent = (match, event, team, player) => {
     event.MatchMinute
   })`;
 
-  sendMessageQueue.push({ match, event, msg, attachments });
+  sendMessageQueue.push({ match, event, msg });
 };
 
 export const handleComingUpMatchEvent = match => {

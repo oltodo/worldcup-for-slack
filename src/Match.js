@@ -87,7 +87,7 @@ export default class Match extends EventEmitter {
   }
 
   isLive() {
-    return IS_DEV ? false : this.status === MATCH_STATUS_LIVE;
+    return this.status === MATCH_STATUS_LIVE;
   }
 
   isComplete() {
