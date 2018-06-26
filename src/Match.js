@@ -120,7 +120,7 @@ export default class Match extends EventEmitter {
         (eventTypes ? eventTypes.indexOf(event.Type) >= 0 : 1) &&
         (period ? period === event.Period : 1)
     );
-    console.log(this.events);
+
     return result;
   }
 
@@ -156,6 +156,7 @@ export default class Match extends EventEmitter {
       `${newEvents.length} new event(s) for match ID ${this.getId()}`
     );
 
+    this.events = events;
     newEvents.forEach(event => {
       const team = this.getTeam(event.IdTeam);
       const player = this.getPlayer(event.IdPlayer);
@@ -187,7 +188,6 @@ export default class Match extends EventEmitter {
         case EVENT_OWN_GOAL:
           this.emit("goal", this, event, team, player, "own");
           break;
-
         case EVENT_YELLOW_CARD:
           this.emit("card", this, event, team, player, "yellow");
           break;
@@ -218,8 +218,6 @@ export default class Match extends EventEmitter {
         default:
       }
     });
-
-    this.events = events;
     this.lastCheck = moment();
   }
 }
