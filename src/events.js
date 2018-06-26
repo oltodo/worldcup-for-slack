@@ -245,7 +245,7 @@ export const handleVarEvent = (match, event) => {
     return;
   }
 
-  const msg = `:soon: *Penalty annulé après VAR* (${event.MatchMinute})`;
+  const msg = `:no_entry_sign: *Penalty annulé après VAR* (${event.MatchMinute})`;
 
   sendMessageQueue.push({ match, msg });
 };
