@@ -23,7 +23,7 @@ export const fetchLiveMatches = async () => {
   const matches = response.getBody().Results;
 
   return matches.filter(
-    ({ IdCompetition }) => IdCompetition === ID_COMPETITION
+    ({ IdCompetition }) => parseInt(IdCompetition, 10) === ID_COMPETITION
   );
 };
 
