@@ -363,3 +363,24 @@ export const handleComingUpMatchEvent = match => {
 
   sendMessageQueue.push({ match, msg, attachments });
 };
+
+export const handleVarEvent = (match, event) => {
+  console.log("New event: VAR");
+
+  // Le but n'est pas de traiter tous les cas d'arbitrage vidéo possibles
+  // mais simplement d'indiquer quand un but ou un penalty — ayant été annoncé —
+  // est finalement annulé.
+  // Ce code est donc basé sur les investigations menées dans cette issue :
+  // https://github.com/j0k3r/worldcup-slack-bot/issues/9
+
+  // Donc si j'en crois ce qui y est écrit, si on a la clé "Result" à 4, c'est
+  // qu'un penalty à été annulé.
+
+  if (event.VarDetail !== 4) {
+    return;
+  }
+
+  const msg = `:soon: *Penalty annulé après VAR* (${event.MatchMinute})`;
+
+  sendMessageQueue.push({ match, msg });
+};
