@@ -1,5 +1,5 @@
 import Queue from "better-queue";
-import { get } from "lodash";
+import { get, range } from "lodash";
 
 import { getNow } from "./utils";
 import {
@@ -21,7 +21,7 @@ import {
 
 const SLACKHOOK =
   process.env.SLACKHOOK ||
-  "https://hooks.slack.com/services/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";
+  "https://hooks.slack.com/services/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";
 
 const slackhook = require("slack-notify")(SLACKHOOK);
 
@@ -71,34 +71,34 @@ const buildPenaltiesSeriesScore = data => {
     );
   }
 
-  const remainingShootsString = new Array(remainingShoots)
-    .fill(1)
+  const remainingShootsString = range(remainingShoots)
     .reduce(acc => acc + PENALTY_INCOMING, "");
   return doneShootsString + remainingShootsString;
 };
 
-const buildPenaltiesSeriesMessage = match => {
+const buildPenaltiesSeriesfields = match => {
   console.log("events during tirs au but");
+  
   const homeTeam = match.getHomeTeam();
   const awayTeam = match.getAwayTeam();
-  let text = "";
 
-  const homeGoalPenalties = match.getEvents({
-    eventTypes: [EVENT_PENALTY_GOAL, EVENT_PENALTY_MISSED, EVENT_PENALTY_SAVED],
-    period: PERIOD_PENALTIES,
-    teamId: homeTeam.getId()
-  });
-  const awayGoalPenalties = match.getEvents({
-    eventTypes: [EVENT_PENALTY_GOAL, EVENT_PENALTY_MISSED, EVENT_PENALTY_SAVED],
-    period: PERIOD_PENALTIES,
-    teamId: awayTeam.getId()
-  });
-  const homeGoalPenaltiesString = buildPenaltiesSeriesScore(homeGoalPenalties);
-  const awayGoalPenaltiesString = buildPenaltiesSeriesScore(awayGoalPenalties);
-  text += `\n ${homeTeam.getName(true)} \n  [${homeGoalPenaltiesString}]`;
-  text += `\n ${awayTeam.getName(true)} \n  [${awayGoalPenaltiesString}]`;
+  const fields = [homeTeam, awayTeam].map(team => {
+    
+    const events =  match.getEvents({
+        eventTypes: [EVENT_PENALTY_GOAL, EVENT_PENALTY_MISSED, EVENT_PENALTY_SAVED],
+        period: PERIOD_PENALTIES,
+        teamId: team.getId()
+      });
+    console.log(events);
+    const scoreString = buildPenaltiesSeriesScore(events);
 
-  return text;
+    return {
+      title: `${team.getName(true)}`,
+      text: `[${scoreString}]`
+    }
+  });
+
+  return fields;
 };
 
 const sendMessageQueue = new Queue(
@@ -108,45 +108,12 @@ const sendMessageQueue = new Queue(
     let text = `${homeTeam.getName(true)} / ${awayTeam.getName(true)}`;
 
     if (event) {
-      const matchFinished =
-        EVENT_MATCH_END === event.Type ||
-        (PERIOD_PENALTIES === event.Period && EVENT_PERIOD_END === event.Type);
-
       const homeScore = get(event, "HomeGoals", 0);
       const awayScore = get(event, "AwayGoals", 0);
 
       text = ` ${homeTeam.getName(
         true
       )} *${homeScore}-${awayScore}* ${awayTeam.getName(true, true)} `;
-
-      //Si tirs aux buts l'affichage change
-      if (PERIOD_PENALTIES === event.Period && !matchFinished) {
-        const penaltiesSeriesString = buildPenaltiesSeriesMessage(match);
-        attachments.push({ text: penaltiesSeriesString });
-        msg = EVENT_PERIOD_START === event.Type ? msg : "";
-      }
-
-      if (matchFinished) {
-        let victoryTeam = homeTeam;
-
-        if (
-          (homeScore === awayScore &&
-            event.HomePenaltyGoals < event.AwayPenaltyGoals) ||
-          homeScore < awayScore
-        ) {
-          victoryTeam = awayTeam;
-        }
-        if (
-          homeScore === awayScore &&
-          event.HomePenaltyGoals === event.AwayPenaltyGoals
-        ) {
-          victoryTeam = null;
-        }
-        console.log("victoire");
-        text += victoryTeam
-          ? `\n Victoire de ${victoryTeam.getName(true)}`
-          : `\n Match nul`;
-      }
     }
 
     text += `\n${msg}`;
@@ -263,6 +230,7 @@ export const handleGoalEvent = (match, event, team, player, type) => {
   )}* (${event.MatchMinute})`;
 
   let attachments = [];
+  let addLiveAttachment = true;
 
   switch (type) {
     case "freekick":
@@ -274,9 +242,18 @@ export const handleGoalEvent = (match, event, team, player, type) => {
       attachments.push({
         text:
           PERIOD_PENALTIES === event.Period
-            ? `But de ${player.nameWithFlag} sur penalty`
+            ? `But de ${player.nameWithFlag}`
             : `But de ${player.name} sur penalty`
       });
+      //Si tirs aux buts l'affichage change
+      if (PERIOD_PENALTIES === event.Period) {
+        const penaltiesSeriesFields = buildPenaltiesSeriesfields(match);
+        //console.log(penaltiesSeriesFields);
+        attachments = attachments.concat(penaltiesSeriesFields);
+        console.log(attachments);
+        msg = "";
+        addLiveAttachment = false;
+      }
       break;
     default:
       attachments.push({
@@ -285,7 +262,11 @@ export const handleGoalEvent = (match, event, team, player, type) => {
   }
 
   attachments[0].color = "good";
-  attachments[0].actions = liveAttachment;
+  if(addLiveAttachment)
+  {
+    attachments[0].actions = liveAttachment;
+  }
+
 
   sendMessageQueue.push({ match, event, msg, attachments });
 };
@@ -306,11 +287,24 @@ export const handlePenaltyEvent = (match, event, team) => {
 export const handlePenaltyMissedEvent = (match, event, team, player) => {
   console.log("New event: penaltyMissed");
 
+  let attachments = [];
   let msg = `:no_good: *${
     player.nameWithFlag
   } manque son penalty (non-cadré)* (${event.MatchMinute})`;
 
-  sendMessageQueue.push({ match, event, msg });
+  //Si tirs aux buts l'affichage change
+  if (PERIOD_PENALTIES === event.Period) {
+
+    attachments.push({
+        text:`Tir manqué par ${playerName} ${playerFlag}`
+      });
+
+    const penaltiesSeriesFields = buildPenaltiesSeriesfields(match);
+    attachments = attachments.concat(penaltiesSeriesFields);
+    msg = "";
+  }
+
+  sendMessageQueue.push({ match, event, msg, attachments});
 };
 
 export const handlePenaltySavedEvent = (match, event, team, player) => {
@@ -320,7 +314,15 @@ export const handlePenaltySavedEvent = (match, event, team, player) => {
     event.MatchMinute
   })`;
 
-  sendMessageQueue.push({ match, event, msg });
+  //Si tirs aux buts l'affichage change
+  if (PERIOD_PENALTIES === event.Period) {
+    const penaltiesSeriesFields = buildPenaltiesSeriesfields(match);
+    attachments[0].actions = "";
+    attachments = attachments.concat(penaltiesSeriesFields);
+    msg = "";
+  }
+
+  sendMessageQueue.push({ match, event, msg, attachments });
 };
 
 export const handleComingUpMatchEvent = match => {
