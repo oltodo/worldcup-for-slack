@@ -224,7 +224,7 @@ export const handleGoalEvent = (match, event, team, player, type) => {
     return;
   }
 
-  const msg = `:soccer: *Goooooal! pour ${team.getNameWithDeterminer(
+  let msg = `:soccer: *Goooooal! pour ${team.getNameWithDeterminer(
     null,
     true
   )}* (${event.MatchMinute})`;
@@ -314,12 +314,12 @@ export const handlePenaltySavedEvent = (match, event, team, player) => {
     event.MatchMinute
   })`;
 
+  let attachments = [];
+
   //Si tirs aux buts l'affichage change
   if (PERIOD_PENALTIES === event.Period) {
     const penaltiesSeriesFields = buildPenaltiesSeriesfields(match);
-    attachments[0].actions = "";
-    attachments = attachments.concat(penaltiesSeriesFields);
-    msg = "";
+    attachments=penaltiesSeriesFields;
   }
 
   sendMessageQueue.push({ match, event, msg, attachments });

@@ -120,6 +120,7 @@ export default class Match extends EventEmitter {
         (eventTypes ? eventTypes.indexOf(event.Type) >= 0 : 1) &&
         (period ? period === event.Period : 1)
     );
+    console.log(this.events);
     return result;
   }
 

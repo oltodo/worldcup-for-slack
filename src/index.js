@@ -116,6 +116,8 @@ const update = async () => {
       (match.shouldHaveStarted(200) && match.isComplete())
     ) {
       const events = await fetchMatchEvents(match);
+    console.log("events");
+    console.log(events);
       match.updateEvents(events);
     }
   });
