@@ -25,6 +25,7 @@ export const EVENT_PENALTY_MISSED = 65;
 export const EVENT_FOUL_PENALTY = 72;
 export const EVENT_MATCH_START = 19;
 export const EVENT_MATCH_END = 26;
+export const EVENT_VAR = 71;
 
 // Periods
 export const PERIOD_1ST_HALF = 3;

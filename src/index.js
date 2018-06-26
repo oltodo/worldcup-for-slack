@@ -23,7 +23,8 @@ import {
   handlePenaltyEvent,
   handlePenaltyMissedEvent,
   handlePenaltySavedEvent,
-  handleComingUpMatchEvent
+  handleComingUpMatchEvent,
+  handleVarEvent
 } from "./events";
 
 let matches = {};
@@ -40,6 +41,7 @@ const createMatch = data => {
   match.on("penalty missed", handlePenaltyMissedEvent);
   match.on("penalty saved", handlePenaltySavedEvent);
   match.on("card", handleCardEvent);
+  match.on("var", handleVarEvent);
 
   return match;
 };

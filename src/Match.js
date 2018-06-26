@@ -20,6 +20,7 @@ import {
   EVENT_PENALTY_SAVED,
   EVENT_PENALTY_MISSED,
   EVENT_FOUL_PENALTY,
+  EVENT_VAR,
   PERIOD_1ST_HALF,
   PERIOD_2ND_HALF,
   MATCH_STATUS_FINISHED,
@@ -116,7 +117,11 @@ export default class Match extends EventEmitter {
       (event1, event2) => event1.EventId === event2.EventId
     ).filter(event => {
       const diff = Math.floor(this.lastCheck.diff(event.Timestamp) / 1000 / 60);
-      return diff <= 1;
+
+      // Il semblerait que des évènements soient rajoutés antérieurement à la timeline,
+      // le plus souvent après un arbitrage vidéo. On met donc une valeur assez
+      // élevée pour en tenir compte (la VAR prend rarement plus de 5 min).
+      return diff <= 5;
     });
 
     console.log(`${newEvents.length} new event(s)`);
@@ -190,6 +195,10 @@ export default class Match extends EventEmitter {
           break;
         case EVENT_PENALTY_SAVED:
           this.emit("penalty saved", this, event, team);
+          break;
+
+        case EVENT_VAR:
+          this.emit("var", this, event);
           break;
         default:
       }
