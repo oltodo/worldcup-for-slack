@@ -91,7 +91,7 @@ export const handleCardEvent = (match, event, team, type) => {
       break;
     case "yellow+yellow":
       msg +=
-        ":large_orange_diamond::large_orange_diamond: *Carton rouge* (deux jaunes)";
+        ":red_circle: *Carton rouge* (deux jaunes)";
       break;
     default:
       return;
