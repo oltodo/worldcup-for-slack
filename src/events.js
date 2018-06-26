@@ -14,8 +14,6 @@ const sendMessageQueue = new Queue(
     const homeTeam = match.getHomeTeam();
     const awayTeam = match.getAwayTeam();
 
-    // const groupName = get(match, "GroupName.0.Description");
-
     let text = `${homeTeam.getName(true)} / ${awayTeam.getName(true)}`;
 
     if (event) {
@@ -26,10 +24,6 @@ const sendMessageQueue = new Queue(
         true
       )} *${homeScore}-${awayScore}* ${awayTeam.getName(true, true)} `;
     }
-
-    // if (groupName) {
-    //   text += ` (${groupName})`;
-    // }
 
     text += `\n${msg}`;
 
