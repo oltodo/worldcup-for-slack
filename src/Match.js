@@ -122,15 +122,10 @@ export default class Match extends EventEmitter {
   }
 
   getPlayer(playerId) {
-    const team = find([this.homeTeam, this.awayTeam], team =>
-      team.getPlayer(playerId)
+    return [this.homeTeam, this.awayTeam].reduce(
+      (acc, team) => acc || team.getPlayer(playerId),
+      null
     );
-
-    if (team) {
-      return team.getPlayer(playerId);
-    }
-
-    return null;
   }
 
   updateEvents(events) {
