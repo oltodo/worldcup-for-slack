@@ -10,7 +10,7 @@ const DEV_CURRENT_MATCH = `match${
 
 export const fetchLiveMatches = async () => {
   if (IS_DEV) {
-    return require(`../cache/live.json`).Results;
+    return require(`../cache/${DEV_CURRENT_MATCH}/live.json`).Results;
   }
 
   console.log(`Fetching ${ENDPOINT_LIVE}`);

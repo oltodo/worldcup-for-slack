@@ -1,9 +1,9 @@
 import moment from "moment";
 import { EventEmitter } from "events";
-import { differenceWith, find } from "lodash";
+import { differenceWith, find, get } from "lodash";
 import Team from "./Team";
 
-import { getNow } from "./utils";
+import { getNow, IS_DEV } from "./utils";
 
 import {
   EVENT_MATCH_START,
@@ -41,8 +41,8 @@ export default class Match extends EventEmitter {
     this.date = moment(data.Date);
     this.status = data.MatchStatus;
 
-    this.homeTeam = new Team(data.Home);
-    this.awayTeam = new Team(data.Away);
+    this.homeTeam = data.Home ? new Team(data.Home) : null;
+    this.awayTeam = data.Away ? new Team(data.Away) : null;
   }
 
   update(data) {
@@ -97,6 +97,10 @@ export default class Match extends EventEmitter {
   }
 
   shouldHaveStarted(from) {
+    if (IS_DEV) {
+      return true;
+    }
+
     if (this.status === MATCH_STATUS_FINISHED) {
       return false;
     }
@@ -108,6 +112,25 @@ export default class Match extends EventEmitter {
 
   getName() {
     return `${this.homeTeam.getName()} / ${this.awayTeam.getName()}`;
+  }
+
+  getTeam(teamId) {
+    return (
+      find([this.homeTeam, this.awayTeam], team => team.getId() === teamId) ||
+      null
+    );
+  }
+
+  getPlayer(playerId) {
+    const team = find([this.homeTeam, this.awayTeam], team =>
+      team.getPlayer(playerId)
+    );
+
+    if (team) {
+      return team.getPlayer(playerId);
+    }
+
+    return null;
   }
 
   updateEvents(events) {
@@ -127,10 +150,8 @@ export default class Match extends EventEmitter {
     console.log(`${newEvents.length} new event(s)`);
 
     newEvents.forEach(event => {
-      const team = find(
-        [this.homeTeam, this.awayTeam],
-        team => team.getId() === event.IdTeam
-      );
+      const team = this.getTeam(event.IdTeam);
+      const player = this.getPlayer(event.IdPlayer);
 
       switch (event.Type) {
         case EVENT_MATCH_START:
@@ -165,36 +186,40 @@ export default class Match extends EventEmitter {
           break;
 
         case EVENT_GOAL:
-          this.emit("goal", this, event, team, "regular");
+          this.emit("goal", this, event, team, player, "regular");
           break;
         case EVENT_FREE_KICK_GOAL:
-          this.emit("goal", this, event, team, "freekick");
+          this.emit("goal", this, event, team, player, "freekick");
           break;
         case EVENT_PENALTY_GOAL:
-          this.emit("goal", this, event, team, "penalty");
+          this.emit("goal", this, event, team, player, "penalty");
           break;
         case EVENT_OWN_GOAL:
-          this.emit("goal", this, event, team, "own");
+          this.emit("goal", this, event, team, player, "own");
           break;
 
         case EVENT_YELLOW_CARD:
-          this.emit("card", this, event, team, "yellow");
+          this.emit("card", this, event, team, player, "yellow");
           break;
         case EVENT_SECOND_YELLOW_CARD_RED:
-          this.emit("card", this, event, team, "yellow+yellow");
+          this.emit("card", this, event, team, player, "yellow+yellow");
           break;
         case EVENT_STRAIGHT_RED:
-          this.emit("card", this, event, team, "red");
+          this.emit("card", this, event, team, player, "red");
           break;
 
         case EVENT_FOUL_PENALTY:
-          this.emit("penalty", this, event, team);
+          this.emit("penalty", this, event, team, player);
           break;
         case EVENT_PENALTY_MISSED:
-          this.emit("penalty missed", this, event, team);
+          this.emit("penalty missed", this, event, team, player);
           break;
         case EVENT_PENALTY_SAVED:
-          this.emit("penalty saved", this, event, team);
+          this.emit("penalty saved", this, event, team, player);
+          break;
+
+        case EVENT_VAR:
+          this.emit("var", this, event);
           break;
 
         case EVENT_VAR:

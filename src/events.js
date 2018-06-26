@@ -75,10 +75,8 @@ export const handleSecondPeriodStartEvent = (match, event) => {
   sendMessageQueue.push({ match, event, msg: ":runner: *C'est reparti !*" });
 };
 
-export const handleCardEvent = (match, event, team, type) => {
+export const handleCardEvent = (match, event, team, player, type) => {
   console.log("New event: card");
-
-  const playerName = team.getPlayerName(event.IdPlayer);
 
   let msg = "";
 
@@ -97,7 +95,7 @@ export const handleCardEvent = (match, event, team, type) => {
       return;
   }
 
-  msg += ` pour ${playerName} ${team.getFlag()} (${event.MatchMinute})`;
+  msg += ` pour ${player.nameWithFlag} (${event.MatchMinute})`;
 
   sendMessageQueue.push({
     match,
@@ -106,7 +104,7 @@ export const handleCardEvent = (match, event, team, type) => {
   });
 };
 
-export const handleOwnGoalEvent = (match, event, team) => {
+export const handleOwnGoalEvent = (match, event, team, player) => {
   const oppTeam = match.getOppositeTeam(team);
 
   const msg = `:soccer: *Goooooal! pour ${oppTeam.getNameWithDeterminer(
@@ -116,10 +114,7 @@ export const handleOwnGoalEvent = (match, event, team) => {
 
   const attachments = [
     {
-      text: `${team.getPlayerName(
-        event.IdPlayer,
-        true
-      )} marque contre son camp :face_palm:`,
+      text: `${player.nameWithFlag} marque contre son camp :face_palm:`,
       color: "danger",
       actions: [
         {
@@ -134,15 +129,13 @@ export const handleOwnGoalEvent = (match, event, team) => {
   sendMessageQueue.push({ match, event, msg, attachments });
 };
 
-export const handleGoalEvent = (match, event, team, type) => {
+export const handleGoalEvent = (match, event, team, player, type) => {
   console.log("New event: goal");
 
   if (type === "own") {
-    handleOwnGoalEvent(match, event, team);
+    handleOwnGoalEvent(match, event, team, player);
     return;
   }
-
-  const playerName = team.getPlayerName(event.IdPlayer);
 
   const msg = `:soccer: *Goooooal! pour ${team.getNameWithDeterminer(
     null,
@@ -154,17 +147,17 @@ export const handleGoalEvent = (match, event, team, type) => {
   switch (type) {
     case "freekick":
       attachments.push({
-        text: `But de ${playerName} sur coup-franc`
+        text: `But de ${player.nameWithFlag} sur coup-franc`
       });
       break;
     case "penalty":
       attachments.push({
-        text: `But de ${playerName} sur penalty`
+        text: `But de ${player.nameWithFlag} sur penalty`
       });
       break;
     default:
       attachments.push({
-        text: `But de ${playerName}`
+        text: `But de ${player.nameWithFlag}`
       });
   }
 
@@ -193,27 +186,22 @@ export const handlePenaltyEvent = (match, event, team) => {
   sendMessageQueue.push({ match, event, msg });
 };
 
-export const handlePenaltyMissedEvent = (match, event, team) => {
+export const handlePenaltyMissedEvent = (match, event, team, player) => {
   console.log("New event: penaltyMissed");
 
-  let msg = `:no_good: *${team.getPlayerName(
-    event.IdPlayer,
-    true
-  )} manque son penalty* (${event.MatchMinute})`;
+  let msg = `:no_good: *${
+    player.nameWithFlag
+  } manque son penalty (non-cadré)* (${event.MatchMinute})`;
 
   sendMessageQueue.push({ match, event, msg });
 };
 
-export const handlePenaltySavedEvent = (match, event, team) => {
+export const handlePenaltySavedEvent = (match, event, team, player) => {
   console.log("New event: penaltySaved");
 
-  // A déterminer
-  const oppTeam = match.getOppositeTeam(team);
-
-  let msg = `:no_good: *Penalty raté* par ${oppTeam.getNameWithDeterminer(
-    null,
-    true
-  )} (${event.MatchMinute})`;
+  let msg = `:no_good: *${player.nameWithFlag} manque son penalty (sauvé)* (${
+    event.MatchMinute
+  })`;
 
   sendMessageQueue.push({ match, event, msg });
 };
