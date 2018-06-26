@@ -123,14 +123,9 @@ const update = async () => {
 
 const init = async () => {
   // Récupération de tous les matchs de la compétition
-  matches = reduce(
-    await fetchMatches(),
-    (acc, data) => {
-      matches[data.IdMatch] = createMatch(data);
-      return matches;
-    },
-    {}
-  );
+  map(await fetchMatches(), data => {
+    matches[data.IdMatch] = createMatch(data);
+  });
 
   if (IS_DEV) {
     update();

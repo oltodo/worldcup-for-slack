@@ -1,29 +1,45 @@
-import { get, find } from "lodash";
+import { get, find, reduce, size } from "lodash";
 import { COUNTRIES } from "./constants";
 
 export default class Team {
   constructor(data) {
-    this.data = data;
+    this.id = data.IdTeam;
+    this.countryId = get(data, "IdCountry", "DEF");
+    this.name = get(data, "TeamName.0.Description", "Unknown");
+
+    this.players = reduce(
+      data.Players,
+      (acc, player) => {
+        const name = get(player, "PlayerName.0.Description", "Inconnu");
+
+        return {
+          ...acc,
+          [player.IdPlayer]: {
+            name,
+            nameWithFlag: `${name} ${this.getFlag()}`
+          }
+        };
+      },
+      {}
+    );
   }
 
   getId() {
-    return this.data.IdTeam;
+    return this.id;
   }
 
   getCountryId() {
-    return get(this.data, "IdCountry", "DEF");
+    return this.countryId;
   }
 
   getName(flag = false, flagPositionInverted = false) {
-    const name = get(this.data, "TeamName.0.Description", "Unknown");
-
     if (flag) {
       return flagPositionInverted
-        ? `${this.getFlag()} ${name}`
-        : `${name} ${this.getFlag()}`;
+        ? `${this.getFlag()} ${this.name}`
+        : `${this.name} ${this.getFlag()}`;
     }
 
-    return name;
+    return this.name;
   }
 
   getNameWithDeterminer(prefix = null, flag = false) {
@@ -56,18 +72,11 @@ export default class Team {
     return COUNTRIES[this.getCountryId()]["flag"];
   }
 
-  getPlayerName(playerId, flag = false) {
-    const player = find(this.data.Players, { IdPlayer: playerId });
-    const name = get(player, "ShortName.0.Description", "Inconnu");
-
-    if (flag) {
-      return `${name} ${this.getFlag()}`;
-    }
-
-    return name;
+  getPlayer(playerId) {
+    return get(this.players, playerId, null);
   }
 
   hasPlayers() {
-    return this.data.Players && this.data.Players.length > 0;
+    return size(this.players) > 0;
   }
 }

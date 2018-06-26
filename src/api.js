@@ -1,6 +1,11 @@
 import requestify from "requestify";
 
-import { ENDPOINT_MATCHES, ENDPOINT_LIVE, ENDPOINT_EVENTS } from "./constants";
+import {
+  ID_COMPETITION,
+  ENDPOINT_MATCHES,
+  ENDPOINT_LIVE,
+  ENDPOINT_EVENTS
+} from "./constants";
 
 import { IS_DEV } from "./utils";
 
@@ -10,13 +15,16 @@ const DEV_CURRENT_MATCH = `match${
 
 export const fetchLiveMatches = async () => {
   if (IS_DEV) {
-    return require(`../cache/live.json`).Results;
+    return require(`../cache/${DEV_CURRENT_MATCH}/live.json`).Results;
   }
 
   console.log(`Fetching ${ENDPOINT_LIVE}`);
   const response = await requestify.get(ENDPOINT_LIVE);
+  const matches = response.getBody().Results;
 
-  return response.getBody().Results;
+  return matches.filter(
+    ({ IdCompetition }) => parseInt(IdCompetition, 10) === ID_COMPETITION
+  );
 };
 
 export const fetchMatchEvents = async match => {

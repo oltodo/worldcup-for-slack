@@ -38,7 +38,7 @@ export const PERIOD_PENALTIES = 11;
 export const ENDPOINT_MATCHES = `${API_ENDPOINT}/calendar/matches?idCompetition=${ID_COMPETITION}&idSeason=${ID_SEASON}&count=500&language=${LOCALE}`;
 export const ENDPOINT_EVENTS = (stageId, matchId) =>
   `${API_ENDPOINT}/timelines/${ID_COMPETITION}/${ID_SEASON}/${stageId}/${matchId}?language=${LOCALE}`;
-export const ENDPOINT_LIVE = `https://api.fifa.com/api/v1/live/football?idCompetition=${ID_COMPETITION}&idSeason=${ID_SEASON}&count=500&language=${LOCALE}`;
+export const ENDPOINT_LIVE = `https://api.fifa.com/api/v1/live/football/now?idCompetition=${ID_COMPETITION}&idSeason=${ID_SEASON}&count=500&language=${LOCALE}`;
 
 // Penalties display
 export const PENALTY_OK = ":large_blue_circle:";

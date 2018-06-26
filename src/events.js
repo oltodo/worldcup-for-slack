@@ -202,10 +202,8 @@ export const handlePeriodStartEvent = (match, event) => {
   });
 };
 
-export const handleCardEvent = (match, event, team, type) => {
+export const handleCardEvent = (match, event, team, player, type) => {
   console.log("New event: card");
-
-  const playerName = team.getPlayerName(event.IdPlayer);
 
   let msg = "";
 
@@ -217,14 +215,13 @@ export const handleCardEvent = (match, event, team, type) => {
       msg += ":red_circle: *Carton rouge*";
       break;
     case "yellow+yellow":
-      msg +=
-        ":large_orange_diamond::large_orange_diamond: *Carton rouge* (deux jaunes)";
+      msg += ":red_circle: *Carton rouge* (deux jaunes)";
       break;
     default:
       return;
   }
 
-  msg += ` pour ${playerName} ${team.getFlag()} (${event.MatchMinute})`;
+  msg += ` pour ${player.nameWithFlag} (${event.MatchMinute})`;
 
   sendMessageQueue.push({
     match,
@@ -233,7 +230,7 @@ export const handleCardEvent = (match, event, team, type) => {
   });
 };
 
-export const handleOwnGoalEvent = (match, event, team) => {
+export const handleOwnGoalEvent = (match, event, team, player) => {
   const oppTeam = match.getOppositeTeam(team);
 
   const msg = `:soccer: *Goooooal! pour ${oppTeam.getNameWithDeterminer(
@@ -243,10 +240,7 @@ export const handleOwnGoalEvent = (match, event, team) => {
 
   const attachments = [
     {
-      text: `${team.getPlayerName(
-        event.IdPlayer,
-        true
-      )} marque contre son camp :face_palm:`,
+      text: `${player.nameWithFlag} marque contre son camp :face_palm:`,
       color: "danger",
       actions: liveAttachment
     }
@@ -255,16 +249,13 @@ export const handleOwnGoalEvent = (match, event, team) => {
   sendMessageQueue.push({ match, event, msg, attachments });
 };
 
-export const handleGoalEvent = (match, event, team, type) => {
+export const handleGoalEvent = (match, event, team, player, type) => {
   console.log("New event: goal");
 
   if (type === "own") {
-    handleOwnGoalEvent(match, event, team);
+    handleOwnGoalEvent(match, event, team, player);
     return;
   }
-
-  const playerName = team.getPlayerName(event.IdPlayer);
-  const playerFlag = team.getFlag();
 
   const msg = `:soccer: *Goooooal! pour ${team.getNameWithDeterminer(
     null,
@@ -276,20 +267,20 @@ export const handleGoalEvent = (match, event, team, type) => {
   switch (type) {
     case "freekick":
       attachments.push({
-        text: `But de ${playerName} sur coup-franc`
+        text: `But de ${player.nameWithFlag} sur coup-franc`
       });
       break;
     case "penalty":
       attachments.push({
         text:
           PERIOD_PENALTIES === event.Period
-            ? `But de ${playerName} ${playerFlag} sur penalty`
-            : `But de ${playerName} sur penalty`
+            ? `But de ${player.nameWithFlag} sur penalty`
+            : `But de ${player.name} sur penalty`
       });
       break;
     default:
       attachments.push({
-        text: `But de ${playerName}`
+        text: `But de ${player.nameWithFlag}`
       });
   }
 
@@ -312,37 +303,22 @@ export const handlePenaltyEvent = (match, event, team) => {
   sendMessageQueue.push({ match, event, msg });
 };
 
-export const handlePenaltyMissedEvent = (match, event, team) => {
+export const handlePenaltyMissedEvent = (match, event, team, player) => {
   console.log("New event: penaltyMissed");
 
-  let msg = `:no_good: *${team.getPlayerName(
-    event.IdPlayer,
-    true
-  )} manque son penalty* (${event.MatchMinute})`;
+  let msg = `:no_good: *${
+    player.nameWithFlag
+  } manque son penalty (non-cadré)* (${event.MatchMinute})`;
 
   sendMessageQueue.push({ match, event, msg });
 };
 
-export const handlePenaltySavedEvent = (match, event, team) => {
+export const handlePenaltySavedEvent = (match, event, team, player) => {
   console.log("New event: penaltySaved");
 
-  const gardien = match.getOppositeTeam(team).getPlayerName(event.IdSubPlayer);
-  const gardienFlag = match.getOppositeTeam(team).getFlag();
-
-  let msg = `:no_good: *Penalty raté* par ${team.getNameWithDeterminer(
-    null,
-    true
-  )} (${event.MatchMinute})`;
-
-  const playerName = team.getPlayerName(event.IdPlayer);
-  const playerFlag = team.getFlag();
-  const attachments = [
-    {
-      text: `Tir de ${playerName} ${playerFlag} arrêté par le gardien ${gardien} ${gardienFlag}`,
-      color: "danger",
-      actions: liveAttachment
-    }
-  ];
+  let msg = `:no_good: *${player.nameWithFlag} manque son penalty (sauvé)* (${
+    event.MatchMinute
+  })`;
 
   sendMessageQueue.push({ match, event, msg, attachments });
 };
@@ -350,7 +326,7 @@ export const handlePenaltySavedEvent = (match, event, team) => {
 export const handleComingUpMatchEvent = match => {
   console.log("New event: comingUpMatch");
 
-  const diff = Math.ceil(Math.abs(getNow().diff(match.getDate()) / 1000 / 60));
+  const diff = Math.floor(Math.abs(getNow().diff(match.getDate()) / 1000 / 60));
 
   const msg = `:soon: *Le match commence bientôt* (${diff} min)`;
 
@@ -380,7 +356,9 @@ export const handleVarEvent = (match, event) => {
     return;
   }
 
-  const msg = `:soon: *Penalty annulé après VAR* (${event.MatchMinute})`;
+  const msg = `:no_entry_sign: *Penalty annulé après VAR* (${
+    event.MatchMinute
+  })`;
 
   sendMessageQueue.push({ match, msg });
 };
