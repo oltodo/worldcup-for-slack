@@ -84,8 +84,7 @@ export const handleCardEvent = (match, event, team, type) => {
       msg += ":red_circle: *Carton rouge*";
       break;
     case "yellow+yellow":
-      msg +=
-        ":red_circle: *Carton rouge* (deux jaunes)";
+      msg += ":red_circle: *Carton rouge* (deux jaunes)";
       break;
     default:
       return;
@@ -245,7 +244,9 @@ export const handleVarEvent = (match, event) => {
     return;
   }
 
-  const msg = `:no_entry_sign: *Penalty annulé après VAR* (${event.MatchMinute})`;
+  const msg = `:no_entry_sign: *Penalty annulé après VAR* (${
+    event.MatchMinute
+  })`;
 
   sendMessageQueue.push({ match, msg });
 };
