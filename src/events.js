@@ -170,7 +170,7 @@ export const handlePeriodStartEvent = (match, event) => {
   sendMessageQueue.push({
     match,
     event,
-    msg: `:runner: *Debut de la ${periodName} `
+    msg: `:runner: *Debut de la ${periodName}* `
   });
 };
 
