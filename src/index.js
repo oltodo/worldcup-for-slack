@@ -48,7 +48,7 @@ const createMatch = data => {
 
 const getComingUpMatches = () => {
   const now = getNow();
-  console.log(new Date(now));
+
   return reduce(
     matches,
     (acc, match) => {
@@ -112,8 +112,8 @@ const update = async () => {
   // les évènements. Il faut que le match ait démarré et ait les données complètes
   map(matches, async match => {
     if (
-      match.isLive() ||
-      (match.shouldHaveStarted(200) && match.isComplete())
+      (match.isLive() || match.shouldHaveStarted(200)) &&
+      match.isComplete()
     ) {
       const events = await fetchMatchEvents(match);
       match.updateEvents(events);

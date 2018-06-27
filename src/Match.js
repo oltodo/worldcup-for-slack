@@ -95,10 +95,6 @@ export default class Match extends EventEmitter {
   }
 
   shouldHaveStarted(from) {
-    if (IS_DEV) {
-      return true;
-    }
-
     if (this.status === MATCH_STATUS_FINISHED) {
       return false;
     }
