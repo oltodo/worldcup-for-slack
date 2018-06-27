@@ -108,13 +108,14 @@ export default class Match extends EventEmitter {
     return `${this.homeTeam.getName()} / ${this.awayTeam.getName()}`;
   }
 
-  getEvents({ eventTypes = null, period = null, teamId = null }) {
+  getEvents({ eventTypes = null, period = null, teamId = null, until = null }) {
     let result = filter(
       this.events,
       event =>
-        (teamId ? teamId === event.IdTeam : 1) &&
-        (eventTypes ? eventTypes.indexOf(event.Type) >= 0 : 1) &&
-        (period ? period === event.Period : 1)
+        (teamId ? teamId === event.IdTeam : true) &&
+        (eventTypes ? eventTypes.indexOf(event.Type) >= 0 : true) &&
+        (period ? period === event.Period : true) &&
+        (until ? moment(event.Timestamp).diff(until) <= 0 : true)
     );
 
     return result;
