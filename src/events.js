@@ -318,11 +318,11 @@ export const handlePenaltySavedEvent = (match, event, team, player) => {
 
   //Si tirs aux buts l'affichage change
   if (PERIOD_PENALTIES === event.Period) {
-    attachments.push({text : `Tir manqué de ${player.nameWithFlag} (arrêt)`});
+    attachments.push({ text: `Tir manqué de ${player.nameWithFlag} (arrêt)` });
     attachments[0].color = "danger";
     const penaltiesSeriesFields = buildPenaltiesSeriesfields(match);
     attachments = attachments.concat(penaltiesSeriesFields);
-    msg = ""
+    msg = "";
   }
 
   sendMessageQueue.push({ match, event, msg, attachments });
