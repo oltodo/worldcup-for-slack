@@ -99,7 +99,7 @@ const buildPenaltiesSeriesfields = match => {
 
     return {
       title: `${team.getName(true)}`,
-      text: `[${scoreString}]`
+      text: `*${scoreString}*`
     };
   });
 
