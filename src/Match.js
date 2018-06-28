@@ -150,7 +150,7 @@ export default class Match extends EventEmitter {
     });
 
     console.log(
-      `${newEvents.length} new event(s) for match ID ${this.getId()}`
+      `${newEvents.length} new event(s) for ${this.getName()} (${this.getId()})`
     );
 
     this.events = events;
