@@ -1,5 +1,5 @@
 {
-  "extends": ["prettier", "airbnb-base"],
+  "extends": ["prettier", "airbnb"],
   "parser": "babel-eslint",
   "parserOptions": {
     "ecmaFeatures": {
