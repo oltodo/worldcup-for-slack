@@ -224,7 +224,7 @@ export const handleGoalEvent = (match, event, team, player, type) => {
   console.log("New event: goal");
 
   if (event.Period === PERIOD_PENALTIES) {
-    handlePenaltyShootOutEvent(match, event, team, player);
+    handlePenaltyShootOutGoalEvent(match, event, team, player);
     return;
   }
 
@@ -286,7 +286,7 @@ export const handlePenaltyMissedEvent = (match, event, team, player) => {
   console.log("New event: penaltyMissed");
 
   if (event.Period === PERIOD_PENALTIES) {
-    handlePenaltyShootOutEvent(match, event, team, player);
+    handlePenaltyShootOutGoalEvent(match, event, team, player);
     return;
   }
 
@@ -302,7 +302,7 @@ export const handlePenaltySavedEvent = (match, event, team, player) => {
   console.log("New event: penaltySaved");
 
   if (event.Period === PERIOD_PENALTIES) {
-    handlePenaltyShootOutEvent(match, event, team, player);
+    handlePenaltyShootOutGoalEvent(match, event, team, player);
     return;
   }
 
@@ -315,7 +315,7 @@ export const handlePenaltySavedEvent = (match, event, team, player) => {
   sendMessageQueue.push({ match, event, msg, attachments });
 };
 
-export const handlePenaltyShootOutEvent = (match, event, team, player) => {
+export const handlePenaltyShootOutGoalEvent = (match, event, team, player) => {
   let text = "";
   let color = "";
   let attachments = [];
