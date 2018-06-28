@@ -79,8 +79,6 @@ const buildPenaltiesSeriesScore = data => {
 };
 
 const buildPenaltiesSeriesfields = (match, time) => {
-  console.log("events during tirs au but");
-
   const homeTeam = match.getHomeTeam();
   const awayTeam = match.getAwayTeam();
 
@@ -100,7 +98,7 @@ const buildPenaltiesSeriesfields = (match, time) => {
 
     return {
       title: `${team.getName(true)}`,
-      text: `*${scoreString}*`
+      value: `*${scoreString}*`
     };
   });
 
@@ -108,7 +106,7 @@ const buildPenaltiesSeriesfields = (match, time) => {
 };
 
 const sendMessageQueue = new Queue(
-  ({ match, event, msg, attachments = [] }, done) => {
+  ({ match, event, msg = "", attachments = [] }, done) => {
     const homeTeam = match.getHomeTeam();
     const awayTeam = match.getAwayTeam();
     let text = `${homeTeam.getName(true)} / ${awayTeam.getName(true)}`;
@@ -225,6 +223,11 @@ export const handleOwnGoalEvent = (match, event, team, player) => {
 export const handleGoalEvent = (match, event, team, player, type) => {
   console.log("New event: goal");
 
+  if (event.Period === PERIOD_PENALTIES) {
+    handlePenaltyShootOutGoalEvent(match, event, team, player);
+    return;
+  }
+
   if (type === "own") {
     handleOwnGoalEvent(match, event, team, player);
     return;
@@ -251,16 +254,6 @@ export const handleGoalEvent = (match, event, team, player, type) => {
             ? `But de ${player.nameWithFlag}`
             : `But de ${player.name} sur penalty`
       });
-      //Si tirs aux buts l'affichage change
-      if (PERIOD_PENALTIES === event.Period) {
-        const penaltiesSeriesFields = buildPenaltiesSeriesfields(
-          match,
-          event.Timestamp
-        );
-        attachments = attachments.concat(penaltiesSeriesFields);
-        msg = "";
-        addLiveAttachment = false;
-      }
       break;
     default:
       attachments.push({
@@ -292,24 +285,15 @@ export const handlePenaltyEvent = (match, event, team) => {
 export const handlePenaltyMissedEvent = (match, event, team, player) => {
   console.log("New event: penaltyMissed");
 
+  if (event.Period === PERIOD_PENALTIES) {
+    handlePenaltyShootOutGoalEvent(match, event, team, player);
+    return;
+  }
+
   let attachments = [];
   let msg = `:no_good: *${
     player.nameWithFlag
   } manque son penalty (non-cadré)* (${event.MatchMinute})`;
-
-  //Si tirs aux buts l'affichage change
-  if (PERIOD_PENALTIES === event.Period) {
-    attachments.push({
-      text: `Tir manqué par ${playerName} ${playerFlag}`
-    });
-
-    const penaltiesSeriesFields = buildPenaltiesSeriesfields(
-      match,
-      event.Timestamp
-    );
-    attachments = attachments.concat(penaltiesSeriesFields);
-    msg = "";
-  }
 
   sendMessageQueue.push({ match, event, msg, attachments });
 };
@@ -317,25 +301,56 @@ export const handlePenaltyMissedEvent = (match, event, team, player) => {
 export const handlePenaltySavedEvent = (match, event, team, player) => {
   console.log("New event: penaltySaved");
 
+  if (event.Period === PERIOD_PENALTIES) {
+    handlePenaltyShootOutGoalEvent(match, event, team, player);
+    return;
+  }
+
   let msg = `:no_good: *${player.nameWithFlag} manque son penalty (sauvé)* (${
     event.MatchMinute
   })`;
 
   let attachments = [];
 
-  //Si tirs aux buts l'affichage change
-  if (PERIOD_PENALTIES === event.Period) {
-    attachments.push({ text: `Tir manqué de ${player.nameWithFlag} (arrêt)` });
-    attachments[0].color = "danger";
-    const penaltiesSeriesFields = buildPenaltiesSeriesfields(
-      match,
-      event.Timestamp
-    );
-    attachments = attachments.concat(penaltiesSeriesFields);
-    msg = "";
+  sendMessageQueue.push({ match, event, msg, attachments });
+};
+
+export const handlePenaltyShootOutGoalEvent = (match, event, team, player) => {
+  let text = "";
+  let color = "";
+  let attachments = [];
+
+  switch (event.Type) {
+    case EVENT_PENALTY_GOAL:
+      attachments.push({
+        text: `:carlton: ${player.nameWithFlag} marque son penalty`,
+        color: "good"
+      });
+      break;
+    case EVENT_PENALTY_MISSED:
+      attachments.push({
+        text: `:haha: ${player.nameWithFlag} manque son penalty`,
+        color: "danger"
+      });
+      break;
+    case EVENT_PENALTY_SAVED:
+      attachments.push({
+        text: `:mkeyebrows: Le gardien arrête le penalty de ${
+          player.nameWithFlag
+        }`,
+        color: "danger"
+      });
+      break;
+    default:
   }
 
-  sendMessageQueue.push({ match, event, msg, attachments });
+  attachments[0].fields = buildPenaltiesSeriesfields(match, event.Timestamp);
+
+  sendMessageQueue.push({
+    match,
+    event,
+    attachments
+  });
 };
 
 export const handleComingUpMatchEvent = match => {
