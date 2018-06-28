@@ -78,7 +78,7 @@ const buildPenaltiesSeriesScore = data => {
   return doneShootsString + remainingShootsString;
 };
 
-const buildPenaltiesSeriesfields = match => {
+const buildPenaltiesSeriesfields = (match, time) => {
   console.log("events during tirs au but");
 
   const homeTeam = match.getHomeTeam();
@@ -92,7 +92,8 @@ const buildPenaltiesSeriesfields = match => {
         EVENT_PENALTY_SAVED
       ],
       period: PERIOD_PENALTIES,
-      teamId: team.getId()
+      teamId: team.getId(),
+      until: time
     });
 
     const scoreString = buildPenaltiesSeriesScore(events);
@@ -252,7 +253,10 @@ export const handleGoalEvent = (match, event, team, player, type) => {
       });
       //Si tirs aux buts l'affichage change
       if (PERIOD_PENALTIES === event.Period) {
-        const penaltiesSeriesFields = buildPenaltiesSeriesfields(match);
+        const penaltiesSeriesFields = buildPenaltiesSeriesfields(
+          match,
+          event.Timestamp
+        );
         attachments = attachments.concat(penaltiesSeriesFields);
         msg = "";
         addLiveAttachment = false;
@@ -299,7 +303,10 @@ export const handlePenaltyMissedEvent = (match, event, team, player) => {
       text: `Tir manqué par ${playerName} ${playerFlag}`
     });
 
-    const penaltiesSeriesFields = buildPenaltiesSeriesfields(match);
+    const penaltiesSeriesFields = buildPenaltiesSeriesfields(
+      match,
+      event.Timestamp
+    );
     attachments = attachments.concat(penaltiesSeriesFields);
     msg = "";
   }
@@ -320,7 +327,10 @@ export const handlePenaltySavedEvent = (match, event, team, player) => {
   if (PERIOD_PENALTIES === event.Period) {
     attachments.push({ text: `Tir manqué de ${player.nameWithFlag} (arrêt)` });
     attachments[0].color = "danger";
-    const penaltiesSeriesFields = buildPenaltiesSeriesfields(match);
+    const penaltiesSeriesFields = buildPenaltiesSeriesfields(
+      match,
+      event.Timestamp
+    );
     attachments = attachments.concat(penaltiesSeriesFields);
     msg = "";
   }
