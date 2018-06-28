@@ -34,7 +34,7 @@ export const fetchMatchEvents = async (match) => {
 
 export const fetchMatches = async () => {
   if (isDev()) {
-    return (await import('../cache/matches.json')).Results
+    return (await import('../cache/matches.json')).Results;
   }
 
   log(`Fetching ${ENDPOINT_MATCHES}`);
