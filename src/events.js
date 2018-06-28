@@ -122,20 +122,20 @@ const sendMessageQueue = new Queue(
 export const handlePeriodStartEvent = (match, event) => {
   log('New event: periodStart');
 
-  let title = null;
+  let title = ':redsiren:';
 
   const { Period } = event;
 
   if (Period === PERIOD_1ST_HALF) {
-    title = ':zap: Le match commence !';
+    title = `${title} C'est parti, le match commence !`;
   } else if (Period === PERIOD_2ND_HALF) {
-    title = 'Le match reprend !';
+    title = `${title} La mi-temps est terminée, le match reprend !`;
   } else if (Period === PERIOD_EXPAND_1ST_HALF) {
-    title = 'Les prolongations commencent !';
+    title = `${title} C'est parti pour cette première période de prolongation !`;
   } else if (Period === PERIOD_EXPAND_2ND_HALF) {
-    title = 'Les prolongations reprennent !';
+    title = `${title} La pause est finie, le prolongation reprend !`;
   } else if (Period === PERIOD_PENALTIES) {
-    title = "C'est le début de la séance de tirs au but !";
+    title = `${title} C'est le début de la séance de tirs au but !`;
   } else {
     return;
   }
@@ -189,7 +189,7 @@ export const handlePeriodEndEvent = (/* match, event */) => {
 export const handleCardEvent = (match, event, team, player, type) => {
   log('New event: card');
 
-  let title = event.MatchMinute;
+  let title = `(${event.MatchMinute})`;
 
   switch (type) {
     case 'yellow':
