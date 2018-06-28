@@ -60,8 +60,7 @@
         "Score": 1,
         "Side": null,
         "IdTeam": "43941",
-        "PictureUrl":
-          "https://api.fifa.com/api/v1/picture/flags-{format}-{size}/DEN",
+        "PictureUrl": "https://api.fifa.com/api/v1/picture/flags-{format}-{size}/DEN",
         "IdCountry": "DEN",
         "TeamType": 1,
         "AgeType": 7,
@@ -84,12 +83,8 @@
             "Status": 1,
             "SpecialStatus": 2,
             "Captain": false,
-            "PlayerName": [
-              { "Locale": "en-GB", "Description": "Kasper  SCHMEICHEL" }
-            ],
-            "ShortName": [
-              { "Locale": "en-GB", "Description": "Kasper  SCHMEICHEL" }
-            ],
+            "PlayerName": [{ "Locale": "en-GB", "Description": "Kasper  SCHMEICHEL" }],
+            "ShortName": [{ "Locale": "en-GB", "Description": "Kasper  SCHMEICHEL" }],
             "Position": 0,
             "FieldStatus": 1,
             "LineupX": -0.895238,
@@ -116,12 +111,8 @@
             "Status": 1,
             "SpecialStatus": 2,
             "Captain": false,
-            "PlayerName": [
-              { "Locale": "en-GB", "Description": "Andreas CHRISTENSEN" }
-            ],
-            "ShortName": [
-              { "Locale": "en-GB", "Description": "Andreas CHRISTENSEN" }
-            ],
+            "PlayerName": [{ "Locale": "en-GB", "Description": "Andreas CHRISTENSEN" }],
+            "ShortName": [{ "Locale": "en-GB", "Description": "Andreas CHRISTENSEN" }],
             "Position": 1,
             "FieldStatus": 1,
             "LineupX": -0.504762,
@@ -134,12 +125,8 @@
             "Status": 1,
             "SpecialStatus": 6,
             "Captain": false,
-            "PlayerName": [
-              { "Locale": "en-GB", "Description": "Thomas DELANEY" }
-            ],
-            "ShortName": [
-              { "Locale": "en-GB", "Description": "Thomas DELANEY" }
-            ],
+            "PlayerName": [{ "Locale": "en-GB", "Description": "Thomas DELANEY" }],
+            "ShortName": [{ "Locale": "en-GB", "Description": "Thomas DELANEY" }],
             "Position": 2,
             "FieldStatus": 1,
             "LineupX": 0.057143,
@@ -152,12 +139,8 @@
             "Status": 1,
             "SpecialStatus": 2,
             "Captain": false,
-            "PlayerName": [
-              { "Locale": "en-GB", "Description": "Nicolai JORGENSEN" }
-            ],
-            "ShortName": [
-              { "Locale": "en-GB", "Description": "Nicolai JORGENSEN" }
-            ],
+            "PlayerName": [{ "Locale": "en-GB", "Description": "Nicolai JORGENSEN" }],
+            "ShortName": [{ "Locale": "en-GB", "Description": "Nicolai JORGENSEN" }],
             "Position": 3,
             "FieldStatus": 2,
             "LineupX": 0.552381,
@@ -170,12 +153,8 @@
             "Status": 1,
             "SpecialStatus": 2,
             "Captain": false,
-            "PlayerName": [
-              { "Locale": "en-GB", "Description": "Christian ERIKSEN" }
-            ],
-            "ShortName": [
-              { "Locale": "en-GB", "Description": "Christian ERIKSEN" }
-            ],
+            "PlayerName": [{ "Locale": "en-GB", "Description": "Christian ERIKSEN" }],
+            "ShortName": [{ "Locale": "en-GB", "Description": "Christian ERIKSEN" }],
             "Position": 2,
             "FieldStatus": 1,
             "LineupX": 0.057143,
@@ -188,12 +167,8 @@
             "Status": 1,
             "SpecialStatus": 2,
             "Captain": false,
-            "PlayerName": [
-              { "Locale": "en-GB", "Description": "Henrik DALSGAARD" }
-            ],
-            "ShortName": [
-              { "Locale": "en-GB", "Description": "Henrik DALSGAARD" }
-            ],
+            "PlayerName": [{ "Locale": "en-GB", "Description": "Henrik DALSGAARD" }],
+            "ShortName": [{ "Locale": "en-GB", "Description": "Henrik DALSGAARD" }],
             "Position": 1,
             "FieldStatus": 1,
             "LineupX": -0.390476,
@@ -206,12 +181,8 @@
             "Status": 1,
             "SpecialStatus": 2,
             "Captain": false,
-            "PlayerName": [
-              { "Locale": "en-GB", "Description": "Jens Stryger LARSEN" }
-            ],
-            "ShortName": [
-              { "Locale": "en-GB", "Description": "Jens Stryger LARSEN" }
-            ],
+            "PlayerName": [{ "Locale": "en-GB", "Description": "Jens Stryger LARSEN" }],
+            "ShortName": [{ "Locale": "en-GB", "Description": "Jens Stryger LARSEN" }],
             "Position": 1,
             "FieldStatus": 1,
             "LineupX": -0.390476,
@@ -224,9 +195,7 @@
             "Status": 1,
             "SpecialStatus": 2,
             "Captain": false,
-            "PlayerName": [
-              { "Locale": "en-GB", "Description": "Lasse SCHONE" }
-            ],
+            "PlayerName": [{ "Locale": "en-GB", "Description": "Lasse SCHONE" }],
             "ShortName": [{ "Locale": "en-GB", "Description": "Lasse SCHONE" }],
             "Position": 2,
             "FieldStatus": 1,
@@ -240,12 +209,8 @@
             "Status": 1,
             "SpecialStatus": 6,
             "Captain": false,
-            "PlayerName": [
-              { "Locale": "en-GB", "Description": "Yussuf Yurary POULSEN" }
-            ],
-            "ShortName": [
-              { "Locale": "en-GB", "Description": "Yussuf Yurary POULSEN" }
-            ],
+            "PlayerName": [{ "Locale": "en-GB", "Description": "Yussuf Yurary POULSEN" }],
+            "ShortName": [{ "Locale": "en-GB", "Description": "Yussuf Yurary POULSEN" }],
             "Position": 3,
             "FieldStatus": 2,
             "LineupX": 0.552381,
@@ -272,12 +237,8 @@
             "Status": 2,
             "SpecialStatus": null,
             "Captain": false,
-            "PlayerName": [
-              { "Locale": "en-GB", "Description": "Michael KROHN-DEHLI" }
-            ],
-            "ShortName": [
-              { "Locale": "en-GB", "Description": "Michael KROHN-DEHLI" }
-            ],
+            "PlayerName": [{ "Locale": "en-GB", "Description": "Michael KROHN-DEHLI" }],
+            "ShortName": [{ "Locale": "en-GB", "Description": "Michael KROHN-DEHLI" }],
             "Position": 2,
             "FieldStatus": 2,
             "LineupX": null,
@@ -290,12 +251,8 @@
             "Status": 2,
             "SpecialStatus": null,
             "Captain": false,
-            "PlayerName": [
-              { "Locale": "en-GB", "Description": "Jannik VESTERGAARD" }
-            ],
-            "ShortName": [
-              { "Locale": "en-GB", "Description": "Jannik VESTERGAARD" }
-            ],
+            "PlayerName": [{ "Locale": "en-GB", "Description": "Jannik VESTERGAARD" }],
+            "ShortName": [{ "Locale": "en-GB", "Description": "Jannik VESTERGAARD" }],
             "Position": 1,
             "FieldStatus": 2,
             "LineupX": null,
@@ -308,12 +265,8 @@
             "Status": 2,
             "SpecialStatus": null,
             "Captain": false,
-            "PlayerName": [
-              { "Locale": "en-GB", "Description": "Jonas KNUDSEN" }
-            ],
-            "ShortName": [
-              { "Locale": "en-GB", "Description": "Jonas KNUDSEN" }
-            ],
+            "PlayerName": [{ "Locale": "en-GB", "Description": "Jonas KNUDSEN" }],
+            "ShortName": [{ "Locale": "en-GB", "Description": "Jonas KNUDSEN" }],
             "Position": 1,
             "FieldStatus": 2,
             "LineupX": null,
@@ -326,12 +279,8 @@
             "Status": 2,
             "SpecialStatus": null,
             "Captain": false,
-            "PlayerName": [
-              { "Locale": "en-GB", "Description": "Martin BRAITHWAITE" }
-            ],
-            "ShortName": [
-              { "Locale": "en-GB", "Description": "Martin BRAITHWAITE" }
-            ],
+            "PlayerName": [{ "Locale": "en-GB", "Description": "Martin BRAITHWAITE" }],
+            "ShortName": [{ "Locale": "en-GB", "Description": "Martin BRAITHWAITE" }],
             "Position": 3,
             "FieldStatus": 1,
             "LineupX": null,
@@ -344,12 +293,8 @@
             "Status": 2,
             "SpecialStatus": null,
             "Captain": false,
-            "PlayerName": [
-              { "Locale": "en-GB", "Description": "Kasper DOLBERG" }
-            ],
-            "ShortName": [
-              { "Locale": "en-GB", "Description": "Kasper DOLBERG" }
-            ],
+            "PlayerName": [{ "Locale": "en-GB", "Description": "Kasper DOLBERG" }],
+            "ShortName": [{ "Locale": "en-GB", "Description": "Kasper DOLBERG" }],
             "Position": 3,
             "FieldStatus": 2,
             "LineupX": null,
@@ -362,12 +307,8 @@
             "Status": 2,
             "SpecialStatus": null,
             "Captain": false,
-            "PlayerName": [
-              { "Locale": "en-GB", "Description": "Mathias  JORGENSEN" }
-            ],
-            "ShortName": [
-              { "Locale": "en-GB", "Description": "Mathias  JORGENSEN" }
-            ],
+            "PlayerName": [{ "Locale": "en-GB", "Description": "Mathias  JORGENSEN" }],
+            "ShortName": [{ "Locale": "en-GB", "Description": "Mathias  JORGENSEN" }],
             "Position": 1,
             "FieldStatus": 2,
             "LineupX": null,
@@ -380,12 +321,8 @@
             "Status": 2,
             "SpecialStatus": null,
             "Captain": false,
-            "PlayerName": [
-              { "Locale": "en-GB", "Description": "Viktor FISCHER" }
-            ],
-            "ShortName": [
-              { "Locale": "en-GB", "Description": "Viktor FISCHER" }
-            ],
+            "PlayerName": [{ "Locale": "en-GB", "Description": "Viktor FISCHER" }],
+            "ShortName": [{ "Locale": "en-GB", "Description": "Viktor FISCHER" }],
             "Position": 3,
             "FieldStatus": 2,
             "LineupX": null,
@@ -412,12 +349,8 @@
             "Status": 2,
             "SpecialStatus": null,
             "Captain": false,
-            "PlayerName": [
-              { "Locale": "en-GB", "Description": "Lukas LERAGER" }
-            ],
-            "ShortName": [
-              { "Locale": "en-GB", "Description": "Lukas LERAGER" }
-            ],
+            "PlayerName": [{ "Locale": "en-GB", "Description": "Lukas LERAGER" }],
+            "ShortName": [{ "Locale": "en-GB", "Description": "Lukas LERAGER" }],
             "Position": 2,
             "FieldStatus": 2,
             "LineupX": null,
@@ -430,12 +363,8 @@
             "Status": 2,
             "SpecialStatus": null,
             "Captain": false,
-            "PlayerName": [
-              { "Locale": "en-GB", "Description": "Andreas CORNELIUS" }
-            ],
-            "ShortName": [
-              { "Locale": "en-GB", "Description": "Andreas CORNELIUS" }
-            ],
+            "PlayerName": [{ "Locale": "en-GB", "Description": "Andreas CORNELIUS" }],
+            "ShortName": [{ "Locale": "en-GB", "Description": "Andreas CORNELIUS" }],
             "Position": 3,
             "FieldStatus": 1,
             "LineupX": null,
@@ -448,12 +377,8 @@
             "Status": 2,
             "SpecialStatus": null,
             "Captain": false,
-            "PlayerName": [
-              { "Locale": "en-GB", "Description": "Frederik RONNOW" }
-            ],
-            "ShortName": [
-              { "Locale": "en-GB", "Description": "Frederik RONNOW" }
-            ],
+            "PlayerName": [{ "Locale": "en-GB", "Description": "Frederik RONNOW" }],
+            "ShortName": [{ "Locale": "en-GB", "Description": "Frederik RONNOW" }],
             "Position": 0,
             "FieldStatus": 2,
             "LineupX": null,
@@ -466,12 +391,8 @@
             "Status": 2,
             "SpecialStatus": 16,
             "Captain": false,
-            "PlayerName": [
-              { "Locale": "en-GB", "Description": "William KVIST" }
-            ],
-            "ShortName": [
-              { "Locale": "en-GB", "Description": "William KVIST" }
-            ],
+            "PlayerName": [{ "Locale": "en-GB", "Description": "William KVIST" }],
+            "ShortName": [{ "Locale": "en-GB", "Description": "William KVIST" }],
             "Position": 2,
             "FieldStatus": 2,
             "LineupX": -0.07619,
@@ -519,12 +440,8 @@
             "SubstitutePosition": 3,
             "IdPlayerOff": "336133",
             "IdPlayerOn": "372857",
-            "PlayerOffName": [
-              { "Locale": "en-GB", "Description": "Yussuf Yurary POULSEN" }
-            ],
-            "PlayerOnName": [
-              { "Locale": "en-GB", "Description": "Martin BRAITHWAITE" }
-            ],
+            "PlayerOffName": [{ "Locale": "en-GB", "Description": "Yussuf Yurary POULSEN" }],
+            "PlayerOnName": [{ "Locale": "en-GB", "Description": "Martin BRAITHWAITE" }],
             "Minute": "59'",
             "IdTeam": "43941"
           },
@@ -535,12 +452,8 @@
             "SubstitutePosition": 3,
             "IdPlayerOff": "360184",
             "IdPlayerOn": "360188",
-            "PlayerOffName": [
-              { "Locale": "en-GB", "Description": "Nicolai JORGENSEN" }
-            ],
-            "PlayerOnName": [
-              { "Locale": "en-GB", "Description": "Andreas CORNELIUS" }
-            ],
+            "PlayerOffName": [{ "Locale": "en-GB", "Description": "Nicolai JORGENSEN" }],
+            "PlayerOnName": [{ "Locale": "en-GB", "Description": "Andreas CORNELIUS" }],
             "Minute": "68'",
             "IdTeam": "43941"
           }
@@ -552,8 +465,7 @@
         "Score": 1,
         "Side": null,
         "IdTeam": "43976",
-        "PictureUrl":
-          "https://api.fifa.com/api/v1/picture/flags-{format}-{size}/AUS",
+        "PictureUrl": "https://api.fifa.com/api/v1/picture/flags-{format}-{size}/AUS",
         "IdCountry": "AUS",
         "TeamType": 1,
         "AgeType": 7,
@@ -590,12 +502,8 @@
             "Status": 1,
             "SpecialStatus": 2,
             "Captain": false,
-            "PlayerName": [
-              { "Locale": "en-GB", "Description": "Mark MILLIGAN" }
-            ],
-            "ShortName": [
-              { "Locale": "en-GB", "Description": "Mark MILLIGAN" }
-            ],
+            "PlayerName": [{ "Locale": "en-GB", "Description": "Mark MILLIGAN" }],
+            "ShortName": [{ "Locale": "en-GB", "Description": "Mark MILLIGAN" }],
             "Position": 1,
             "FieldStatus": 1,
             "LineupX": -0.504762,
@@ -608,12 +516,8 @@
             "Status": 1,
             "SpecialStatus": 6,
             "Captain": false,
-            "PlayerName": [
-              { "Locale": "en-GB", "Description": "Mathew LECKIE" }
-            ],
-            "ShortName": [
-              { "Locale": "en-GB", "Description": "Mathew LECKIE" }
-            ],
+            "PlayerName": [{ "Locale": "en-GB", "Description": "Mathew LECKIE" }],
+            "ShortName": [{ "Locale": "en-GB", "Description": "Mathew LECKIE" }],
             "Position": 3,
             "FieldStatus": 1,
             "LineupX": 0.142857,
@@ -626,9 +530,7 @@
             "Status": 1,
             "SpecialStatus": 2,
             "Captain": false,
-            "PlayerName": [
-              { "Locale": "en-GB", "Description": "Robbie KRUSE" }
-            ],
+            "PlayerName": [{ "Locale": "en-GB", "Description": "Robbie KRUSE" }],
             "ShortName": [{ "Locale": "en-GB", "Description": "Robbie KRUSE" }],
             "Position": 3,
             "FieldStatus": 2,
@@ -642,12 +544,8 @@
             "Status": 1,
             "SpecialStatus": 2,
             "Captain": false,
-            "PlayerName": [
-              { "Locale": "en-GB", "Description": "Andrew NABBOUT" }
-            ],
-            "ShortName": [
-              { "Locale": "en-GB", "Description": "Andrew NABBOUT" }
-            ],
+            "PlayerName": [{ "Locale": "en-GB", "Description": "Andrew NABBOUT" }],
+            "ShortName": [{ "Locale": "en-GB", "Description": "Andrew NABBOUT" }],
             "Position": 3,
             "FieldStatus": 2,
             "LineupX": 0.552381,
@@ -674,9 +572,7 @@
             "Status": 1,
             "SpecialStatus": 3,
             "Captain": true,
-            "PlayerName": [
-              { "Locale": "en-GB", "Description": "Mile JEDINAK" }
-            ],
+            "PlayerName": [{ "Locale": "en-GB", "Description": "Mile JEDINAK" }],
             "ShortName": [{ "Locale": "en-GB", "Description": "Mile JEDINAK" }],
             "Position": 2,
             "FieldStatus": 1,
@@ -704,12 +600,8 @@
             "Status": 1,
             "SpecialStatus": 6,
             "Captain": false,
-            "PlayerName": [
-              { "Locale": "en-GB", "Description": "Joshua RISDON" }
-            ],
-            "ShortName": [
-              { "Locale": "en-GB", "Description": "Joshua RISDON" }
-            ],
+            "PlayerName": [{ "Locale": "en-GB", "Description": "Joshua RISDON" }],
+            "ShortName": [{ "Locale": "en-GB", "Description": "Joshua RISDON" }],
             "Position": 1,
             "FieldStatus": 1,
             "LineupX": -0.390476,
@@ -722,12 +614,8 @@
             "Status": 1,
             "SpecialStatus": 2,
             "Captain": false,
-            "PlayerName": [
-              { "Locale": "en-GB", "Description": "Trent SAINSBURY" }
-            ],
-            "ShortName": [
-              { "Locale": "en-GB", "Description": "Trent SAINSBURY" }
-            ],
+            "PlayerName": [{ "Locale": "en-GB", "Description": "Trent SAINSBURY" }],
+            "ShortName": [{ "Locale": "en-GB", "Description": "Trent SAINSBURY" }],
             "Position": 1,
             "FieldStatus": 1,
             "LineupX": -0.504762,
@@ -754,12 +642,8 @@
             "Status": 2,
             "SpecialStatus": null,
             "Captain": false,
-            "PlayerName": [
-              { "Locale": "en-GB", "Description": "Milos DEGENEK" }
-            ],
-            "ShortName": [
-              { "Locale": "en-GB", "Description": "Milos DEGENEK" }
-            ],
+            "PlayerName": [{ "Locale": "en-GB", "Description": "Milos DEGENEK" }],
+            "ShortName": [{ "Locale": "en-GB", "Description": "Milos DEGENEK" }],
             "Position": 1,
             "FieldStatus": 2,
             "LineupX": null,
@@ -772,12 +656,8 @@
             "Status": 2,
             "SpecialStatus": null,
             "Captain": false,
-            "PlayerName": [
-              { "Locale": "en-GB", "Description": "James MEREDITH" }
-            ],
-            "ShortName": [
-              { "Locale": "en-GB", "Description": "James MEREDITH" }
-            ],
+            "PlayerName": [{ "Locale": "en-GB", "Description": "James MEREDITH" }],
+            "ShortName": [{ "Locale": "en-GB", "Description": "James MEREDITH" }],
             "Position": 1,
             "FieldStatus": 2,
             "LineupX": null,
@@ -804,12 +684,8 @@
             "Status": 2,
             "SpecialStatus": null,
             "Captain": false,
-            "PlayerName": [
-              { "Locale": "en-GB", "Description": "Matthew JURMAN" }
-            ],
-            "ShortName": [
-              { "Locale": "en-GB", "Description": "Matthew JURMAN" }
-            ],
+            "PlayerName": [{ "Locale": "en-GB", "Description": "Matthew JURMAN" }],
+            "ShortName": [{ "Locale": "en-GB", "Description": "Matthew JURMAN" }],
             "Position": 1,
             "FieldStatus": 2,
             "LineupX": null,
@@ -822,12 +698,8 @@
             "Status": 2,
             "SpecialStatus": null,
             "Captain": false,
-            "PlayerName": [
-              { "Locale": "en-GB", "Description": "Massimo LUONGO" }
-            ],
-            "ShortName": [
-              { "Locale": "en-GB", "Description": "Massimo LUONGO" }
-            ],
+            "PlayerName": [{ "Locale": "en-GB", "Description": "Massimo LUONGO" }],
+            "ShortName": [{ "Locale": "en-GB", "Description": "Massimo LUONGO" }],
             "Position": 2,
             "FieldStatus": 2,
             "LineupX": null,
@@ -868,12 +740,8 @@
             "Status": 2,
             "SpecialStatus": null,
             "Captain": false,
-            "PlayerName": [
-              { "Locale": "en-GB", "Description": "Jamie MacLAREN" }
-            ],
-            "ShortName": [
-              { "Locale": "en-GB", "Description": "Jamie MacLAREN" }
-            ],
+            "PlayerName": [{ "Locale": "en-GB", "Description": "Jamie MacLAREN" }],
+            "ShortName": [{ "Locale": "en-GB", "Description": "Jamie MacLAREN" }],
             "Position": 3,
             "FieldStatus": 2,
             "LineupX": null,
@@ -886,12 +754,8 @@
             "Status": 2,
             "SpecialStatus": null,
             "Captain": false,
-            "PlayerName": [
-              { "Locale": "en-GB", "Description": "Daniel ARZANI" }
-            ],
-            "ShortName": [
-              { "Locale": "en-GB", "Description": "Daniel ARZANI" }
-            ],
+            "PlayerName": [{ "Locale": "en-GB", "Description": "Daniel ARZANI" }],
+            "ShortName": [{ "Locale": "en-GB", "Description": "Daniel ARZANI" }],
             "Position": 3,
             "FieldStatus": 1,
             "LineupX": null,
@@ -904,12 +768,8 @@
             "Status": 2,
             "SpecialStatus": null,
             "Captain": false,
-            "PlayerName": [
-              { "Locale": "en-GB", "Description": "Danny VUKOVIC" }
-            ],
-            "ShortName": [
-              { "Locale": "en-GB", "Description": "Danny VUKOVIC" }
-            ],
+            "PlayerName": [{ "Locale": "en-GB", "Description": "Danny VUKOVIC" }],
+            "ShortName": [{ "Locale": "en-GB", "Description": "Danny VUKOVIC" }],
             "Position": 0,
             "FieldStatus": 2,
             "LineupX": null,
@@ -922,12 +782,8 @@
             "Status": 2,
             "SpecialStatus": null,
             "Captain": false,
-            "PlayerName": [
-              { "Locale": "en-GB", "Description": "Dimitrios PETRATOS" }
-            ],
-            "ShortName": [
-              { "Locale": "en-GB", "Description": "Dimitrios PETRATOS" }
-            ],
+            "PlayerName": [{ "Locale": "en-GB", "Description": "Dimitrios PETRATOS" }],
+            "ShortName": [{ "Locale": "en-GB", "Description": "Dimitrios PETRATOS" }],
             "Position": 3,
             "FieldStatus": 2,
             "LineupX": null,
@@ -940,12 +796,8 @@
             "Status": 2,
             "SpecialStatus": null,
             "Captain": false,
-            "PlayerName": [
-              { "Locale": "en-GB", "Description": "Jackson IRVINE" }
-            ],
-            "ShortName": [
-              { "Locale": "en-GB", "Description": "Jackson IRVINE" }
-            ],
+            "PlayerName": [{ "Locale": "en-GB", "Description": "Jackson IRVINE" }],
+            "ShortName": [{ "Locale": "en-GB", "Description": "Jackson IRVINE" }],
             "Position": 2,
             "FieldStatus": 1,
             "LineupX": null,
@@ -972,12 +824,8 @@
             "SubstitutePosition": 3,
             "IdPlayerOff": "229043",
             "IdPlayerOn": "389503",
-            "PlayerOffName": [
-              { "Locale": "en-GB", "Description": "Robbie KRUSE" }
-            ],
-            "PlayerOnName": [
-              { "Locale": "en-GB", "Description": "Daniel ARZANI" }
-            ],
+            "PlayerOffName": [{ "Locale": "en-GB", "Description": "Robbie KRUSE" }],
+            "PlayerOnName": [{ "Locale": "en-GB", "Description": "Daniel ARZANI" }],
             "Minute": "68'",
             "IdTeam": "43976"
           },
@@ -988,12 +836,8 @@
             "SubstitutePosition": 3,
             "IdPlayerOff": "411241",
             "IdPlayerOn": "379785",
-            "PlayerOffName": [
-              { "Locale": "en-GB", "Description": "Andrew NABBOUT" }
-            ],
-            "PlayerOnName": [
-              { "Locale": "en-GB", "Description": "Tomi JURIC" }
-            ],
+            "PlayerOffName": [{ "Locale": "en-GB", "Description": "Andrew NABBOUT" }],
+            "PlayerOnName": [{ "Locale": "en-GB", "Description": "Tomi JURIC" }],
             "Minute": "75'",
             "IdTeam": "43976"
           },
@@ -1004,12 +848,8 @@
             "SubstitutePosition": 2,
             "IdPlayerOff": "367641",
             "IdPlayerOn": "355775",
-            "PlayerOffName": [
-              { "Locale": "en-GB", "Description": "Tom ROGIC" }
-            ],
-            "PlayerOnName": [
-              { "Locale": "en-GB", "Description": "Jackson IRVINE" }
-            ],
+            "PlayerOffName": [{ "Locale": "en-GB", "Description": "Tom ROGIC" }],
+            "PlayerOnName": [{ "Locale": "en-GB", "Description": "Jackson IRVINE" }],
             "Minute": "82'",
             "IdTeam": "43976"
           }
@@ -1032,9 +872,7 @@
           "NameShort": [{ "Locale": "en-GB", "Description": "MATEU Antonio" }],
           "Name": [{ "Locale": "en-GB", "Description": "MATEU Antonio" }],
           "OfficialType": 1,
-          "TypeLocalized": [
-            { "Locale": "en-GB", "Description": "Main referee" }
-          ]
+          "TypeLocalized": [{ "Locale": "en-GB", "Description": "Main referee" }]
         },
         {
           "IdCountry": "ESP",
@@ -1058,9 +896,7 @@
           "NameShort": [{ "Locale": "en-GB", "Description": "TESSEMA Bamlak" }],
           "Name": [{ "Locale": "en-GB", "Description": "TESSEMA Bamlak" }],
           "OfficialType": 4,
-          "TypeLocalized": [
-            { "Locale": "en-GB", "Description": "Fourth official" }
-          ]
+          "TypeLocalized": [{ "Locale": "en-GB", "Description": "Fourth official" }]
         },
         {
           "IdCountry": "USA",
@@ -1089,9 +925,7 @@
           "NameShort": [{ "Locale": "fr-FR", "Description": "Jair MARRUFO" }],
           "Name": [{ "Locale": "fr-FR", "Description": "Jair MARRUFO" }],
           "OfficialType": 8,
-          "TypeLocalized": [
-            { "Locale": "en-GB", "Description": "Assistant VAR" }
-          ]
+          "TypeLocalized": [{ "Locale": "en-GB", "Description": "Assistant VAR" }]
         },
         {
           "IdCountry": "ITA",
@@ -1104,14 +938,10 @@
         {
           "IdCountry": "CRC",
           "OfficialId": "383469",
-          "NameShort": [
-            { "Locale": "en-GB", "Description": "MORA Juan Carlos" }
-          ],
+          "NameShort": [{ "Locale": "en-GB", "Description": "MORA Juan Carlos" }],
           "Name": [{ "Locale": "en-GB", "Description": "MORA Juan Carlos" }],
           "OfficialType": 10,
-          "TypeLocalized": [
-            { "Locale": "en-GB", "Description": "Reserve Assistant Referee" }
-          ]
+          "TypeLocalized": [{ "Locale": "en-GB", "Description": "Reserve Assistant Referee" }]
         }
       ],
       "MatchStatus": 0,

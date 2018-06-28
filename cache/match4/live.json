@@ -60,8 +60,7 @@
         "Score": 1,
         "Side": null,
         "IdTeam": "43962",
-        "PictureUrl":
-          "https://api.fifa.com/api/v1/picture/flags-{format}-{size}/POL",
+        "PictureUrl": "https://api.fifa.com/api/v1/picture/flags-{format}-{size}/POL",
         "IdCountry": "POL",
         "TeamType": 1,
         "AgeType": 7,
@@ -84,12 +83,8 @@
             "Status": 1,
             "SpecialStatus": 2,
             "Captain": false,
-            "PlayerName": [
-              { "Locale": "en-GB", "Description": "Wojciech SZCZESNY" }
-            ],
-            "ShortName": [
-              { "Locale": "en-GB", "Description": "Wojciech SZCZESNY" }
-            ],
+            "PlayerName": [{ "Locale": "en-GB", "Description": "Wojciech SZCZESNY" }],
+            "ShortName": [{ "Locale": "en-GB", "Description": "Wojciech SZCZESNY" }],
             "Position": 0,
             "FieldStatus": 1,
             "LineupX": -0.895238,
@@ -102,12 +97,8 @@
             "Status": 1,
             "SpecialStatus": 2,
             "Captain": false,
-            "PlayerName": [
-              { "Locale": "en-GB", "Description": "Michal PAZDAN" }
-            ],
-            "ShortName": [
-              { "Locale": "en-GB", "Description": "Michal PAZDAN" }
-            ],
+            "PlayerName": [{ "Locale": "en-GB", "Description": "Michal PAZDAN" }],
+            "ShortName": [{ "Locale": "en-GB", "Description": "Michal PAZDAN" }],
             "Position": 1,
             "FieldStatus": 1,
             "LineupX": -0.504762,
@@ -120,12 +111,8 @@
             "Status": 1,
             "SpecialStatus": 2,
             "Captain": false,
-            "PlayerName": [
-              { "Locale": "en-GB", "Description": "Thiago CIONEK" }
-            ],
-            "ShortName": [
-              { "Locale": "en-GB", "Description": "Thiago CIONEK" }
-            ],
+            "PlayerName": [{ "Locale": "en-GB", "Description": "Thiago CIONEK" }],
+            "ShortName": [{ "Locale": "en-GB", "Description": "Thiago CIONEK" }],
             "Position": 1,
             "FieldStatus": 1,
             "LineupX": -0.504762,
@@ -138,12 +125,8 @@
             "Status": 1,
             "SpecialStatus": 2,
             "Captain": false,
-            "PlayerName": [
-              { "Locale": "en-GB", "Description": "Arkadiusz MILIK" }
-            ],
-            "ShortName": [
-              { "Locale": "en-GB", "Description": "Arkadiusz MILIK" }
-            ],
+            "PlayerName": [{ "Locale": "en-GB", "Description": "Arkadiusz MILIK" }],
+            "ShortName": [{ "Locale": "en-GB", "Description": "Arkadiusz MILIK" }],
             "Position": 3,
             "FieldStatus": 2,
             "LineupX": 0.242857,
@@ -156,12 +139,8 @@
             "Status": 1,
             "SpecialStatus": 3,
             "Captain": true,
-            "PlayerName": [
-              { "Locale": "en-GB", "Description": "Robert LEWANDOWSKI" }
-            ],
-            "ShortName": [
-              { "Locale": "en-GB", "Description": "Robert LEWANDOWSKI" }
-            ],
+            "PlayerName": [{ "Locale": "en-GB", "Description": "Robert LEWANDOWSKI" }],
+            "ShortName": [{ "Locale": "en-GB", "Description": "Robert LEWANDOWSKI" }],
             "Position": 3,
             "FieldStatus": 1,
             "LineupX": 0.666667,
@@ -174,12 +153,8 @@
             "Status": 1,
             "SpecialStatus": 2,
             "Captain": false,
-            "PlayerName": [
-              { "Locale": "en-GB", "Description": "Grzegorz KRYCHOWIAK" }
-            ],
-            "ShortName": [
-              { "Locale": "en-GB", "Description": "Grzegorz KRYCHOWIAK" }
-            ],
+            "PlayerName": [{ "Locale": "en-GB", "Description": "Grzegorz KRYCHOWIAK" }],
+            "ShortName": [{ "Locale": "en-GB", "Description": "Grzegorz KRYCHOWIAK" }],
             "Position": 2,
             "FieldStatus": 1,
             "LineupX": -0.038095,
@@ -192,12 +167,8 @@
             "Status": 1,
             "SpecialStatus": 2,
             "Captain": false,
-            "PlayerName": [
-              { "Locale": "en-GB", "Description": "Kamil GROSICKI" }
-            ],
-            "ShortName": [
-              { "Locale": "en-GB", "Description": "Kamil GROSICKI" }
-            ],
+            "PlayerName": [{ "Locale": "en-GB", "Description": "Kamil GROSICKI" }],
+            "ShortName": [{ "Locale": "en-GB", "Description": "Kamil GROSICKI" }],
             "Position": 2,
             "FieldStatus": 1,
             "LineupX": 0.242857,
@@ -210,9 +181,7 @@
             "Status": 1,
             "SpecialStatus": 2,
             "Captain": false,
-            "PlayerName": [
-              { "Locale": "en-GB", "Description": "Maciej RYBUS" }
-            ],
+            "PlayerName": [{ "Locale": "en-GB", "Description": "Maciej RYBUS" }],
             "ShortName": [{ "Locale": "en-GB", "Description": "Maciej RYBUS" }],
             "Position": 2,
             "FieldStatus": 1,
@@ -226,12 +195,8 @@
             "Status": 1,
             "SpecialStatus": 2,
             "Captain": false,
-            "PlayerName": [
-              { "Locale": "en-GB", "Description": "Jakub BLASZCZYKOWSKI" }
-            ],
-            "ShortName": [
-              { "Locale": "en-GB", "Description": "Jakub BLASZCZYKOWSKI" }
-            ],
+            "PlayerName": [{ "Locale": "en-GB", "Description": "Jakub BLASZCZYKOWSKI" }],
+            "ShortName": [{ "Locale": "en-GB", "Description": "Jakub BLASZCZYKOWSKI" }],
             "Position": 2,
             "FieldStatus": 2,
             "LineupX": 0.242857,
@@ -244,12 +209,8 @@
             "Status": 1,
             "SpecialStatus": 2,
             "Captain": false,
-            "PlayerName": [
-              { "Locale": "en-GB", "Description": "Piotr ZIELINSKI" }
-            ],
-            "ShortName": [
-              { "Locale": "en-GB", "Description": "Piotr ZIELINSKI" }
-            ],
+            "PlayerName": [{ "Locale": "en-GB", "Description": "Piotr ZIELINSKI" }],
+            "ShortName": [{ "Locale": "en-GB", "Description": "Piotr ZIELINSKI" }],
             "Position": 2,
             "FieldStatus": 1,
             "LineupX": -0.038095,
@@ -262,12 +223,8 @@
             "Status": 1,
             "SpecialStatus": 2,
             "Captain": false,
-            "PlayerName": [
-              { "Locale": "en-GB", "Description": "Lukasz PISZCZEK" }
-            ],
-            "ShortName": [
-              { "Locale": "en-GB", "Description": "Lukasz PISZCZEK" }
-            ],
+            "PlayerName": [{ "Locale": "en-GB", "Description": "Lukasz PISZCZEK" }],
+            "ShortName": [{ "Locale": "en-GB", "Description": "Lukasz PISZCZEK" }],
             "Position": 1,
             "FieldStatus": 2,
             "LineupX": -0.390476,
@@ -280,12 +237,8 @@
             "Status": 2,
             "SpecialStatus": null,
             "Captain": false,
-            "PlayerName": [
-              { "Locale": "en-GB", "Description": "Artur JEDRZEJCZYK" }
-            ],
-            "ShortName": [
-              { "Locale": "en-GB", "Description": "Artur JEDRZEJCZYK" }
-            ],
+            "PlayerName": [{ "Locale": "en-GB", "Description": "Artur JEDRZEJCZYK" }],
+            "ShortName": [{ "Locale": "en-GB", "Description": "Artur JEDRZEJCZYK" }],
             "Position": 1,
             "FieldStatus": 2,
             "LineupX": null,
@@ -298,9 +251,7 @@
             "Status": 2,
             "SpecialStatus": null,
             "Captain": false,
-            "PlayerName": [
-              { "Locale": "en-GB", "Description": "Jan BEDNAREK" }
-            ],
+            "PlayerName": [{ "Locale": "en-GB", "Description": "Jan BEDNAREK" }],
             "ShortName": [{ "Locale": "en-GB", "Description": "Jan BEDNAREK" }],
             "Position": 1,
             "FieldStatus": 1,
@@ -314,12 +265,8 @@
             "Status": 2,
             "SpecialStatus": null,
             "Captain": false,
-            "PlayerName": [
-              { "Locale": "en-GB", "Description": "Jacek GORALSKI" }
-            ],
-            "ShortName": [
-              { "Locale": "en-GB", "Description": "Jacek GORALSKI" }
-            ],
+            "PlayerName": [{ "Locale": "en-GB", "Description": "Jacek GORALSKI" }],
+            "ShortName": [{ "Locale": "en-GB", "Description": "Jacek GORALSKI" }],
             "Position": 2,
             "FieldStatus": 2,
             "LineupX": null,
@@ -332,12 +279,8 @@
             "Status": 2,
             "SpecialStatus": null,
             "Captain": false,
-            "PlayerName": [
-              { "Locale": "en-GB", "Description": "Karol LINETTY" }
-            ],
-            "ShortName": [
-              { "Locale": "en-GB", "Description": "Karol LINETTY" }
-            ],
+            "PlayerName": [{ "Locale": "en-GB", "Description": "Karol LINETTY" }],
+            "ShortName": [{ "Locale": "en-GB", "Description": "Karol LINETTY" }],
             "Position": 2,
             "FieldStatus": 2,
             "LineupX": null,
@@ -350,12 +293,8 @@
             "Status": 2,
             "SpecialStatus": null,
             "Captain": false,
-            "PlayerName": [
-              { "Locale": "en-GB", "Description": "Bartosz BIALKOWSKI" }
-            ],
-            "ShortName": [
-              { "Locale": "en-GB", "Description": "Bartosz BIALKOWSKI" }
-            ],
+            "PlayerName": [{ "Locale": "en-GB", "Description": "Bartosz BIALKOWSKI" }],
+            "ShortName": [{ "Locale": "en-GB", "Description": "Bartosz BIALKOWSKI" }],
             "Position": 0,
             "FieldStatus": 2,
             "LineupX": null,
@@ -368,12 +307,8 @@
             "Status": 2,
             "SpecialStatus": null,
             "Captain": false,
-            "PlayerName": [
-              { "Locale": "en-GB", "Description": "Lukasz TEODORCZYK" }
-            ],
-            "ShortName": [
-              { "Locale": "en-GB", "Description": "Lukasz TEODORCZYK" }
-            ],
+            "PlayerName": [{ "Locale": "en-GB", "Description": "Lukasz TEODORCZYK" }],
+            "ShortName": [{ "Locale": "en-GB", "Description": "Lukasz TEODORCZYK" }],
             "Position": 3,
             "FieldStatus": 2,
             "LineupX": null,
@@ -400,12 +335,8 @@
             "Status": 2,
             "SpecialStatus": null,
             "Captain": false,
-            "PlayerName": [
-              { "Locale": "en-GB", "Description": "Slawomir PESZKO" }
-            ],
-            "ShortName": [
-              { "Locale": "en-GB", "Description": "Slawomir PESZKO" }
-            ],
+            "PlayerName": [{ "Locale": "en-GB", "Description": "Slawomir PESZKO" }],
+            "ShortName": [{ "Locale": "en-GB", "Description": "Slawomir PESZKO" }],
             "Position": 2,
             "FieldStatus": 2,
             "LineupX": null,
@@ -418,12 +349,8 @@
             "Status": 2,
             "SpecialStatus": null,
             "Captain": false,
-            "PlayerName": [
-              { "Locale": "en-GB", "Description": "Bartosz BERESZYNSKI" }
-            ],
-            "ShortName": [
-              { "Locale": "en-GB", "Description": "Bartosz BERESZYNSKI" }
-            ],
+            "PlayerName": [{ "Locale": "en-GB", "Description": "Bartosz BERESZYNSKI" }],
+            "ShortName": [{ "Locale": "en-GB", "Description": "Bartosz BERESZYNSKI" }],
             "Position": 1,
             "FieldStatus": 1,
             "LineupX": null,
@@ -436,12 +363,8 @@
             "Status": 2,
             "SpecialStatus": null,
             "Captain": false,
-            "PlayerName": [
-              { "Locale": "en-GB", "Description": "Rafal KURZAWA" }
-            ],
-            "ShortName": [
-              { "Locale": "en-GB", "Description": "Rafal KURZAWA" }
-            ],
+            "PlayerName": [{ "Locale": "en-GB", "Description": "Rafal KURZAWA" }],
+            "ShortName": [{ "Locale": "en-GB", "Description": "Rafal KURZAWA" }],
             "Position": 2,
             "FieldStatus": 2,
             "LineupX": null,
@@ -454,12 +377,8 @@
             "Status": 2,
             "SpecialStatus": null,
             "Captain": false,
-            "PlayerName": [
-              { "Locale": "en-GB", "Description": "Lukasz FABIANSKI" }
-            ],
-            "ShortName": [
-              { "Locale": "en-GB", "Description": "Lukasz FABIANSKI" }
-            ],
+            "PlayerName": [{ "Locale": "en-GB", "Description": "Lukasz FABIANSKI" }],
+            "ShortName": [{ "Locale": "en-GB", "Description": "Lukasz FABIANSKI" }],
             "Position": 0,
             "FieldStatus": 2,
             "LineupX": null,
@@ -472,12 +391,8 @@
             "Status": 2,
             "SpecialStatus": null,
             "Captain": false,
-            "PlayerName": [
-              { "Locale": "en-GB", "Description": "Dawid KOWNACKI" }
-            ],
-            "ShortName": [
-              { "Locale": "en-GB", "Description": "Dawid KOWNACKI" }
-            ],
+            "PlayerName": [{ "Locale": "en-GB", "Description": "Dawid KOWNACKI" }],
+            "ShortName": [{ "Locale": "en-GB", "Description": "Dawid KOWNACKI" }],
             "Position": 3,
             "FieldStatus": 1,
             "LineupX": null,
@@ -515,12 +430,8 @@
             "SubstitutePosition": 1,
             "IdPlayerOff": "216944",
             "IdPlayerOn": "406995",
-            "PlayerOffName": [
-              { "Locale": "en-GB", "Description": "Jakub BLASZCZYKOWSKI" }
-            ],
-            "PlayerOnName": [
-              { "Locale": "en-GB", "Description": "Jan BEDNAREK" }
-            ],
+            "PlayerOffName": [{ "Locale": "en-GB", "Description": "Jakub BLASZCZYKOWSKI" }],
+            "PlayerOnName": [{ "Locale": "en-GB", "Description": "Jan BEDNAREK" }],
             "Minute": "46'",
             "IdTeam": "43962"
           },
@@ -531,12 +442,8 @@
             "SubstitutePosition": 3,
             "IdPlayerOff": "362823",
             "IdPlayerOn": "411482",
-            "PlayerOffName": [
-              { "Locale": "en-GB", "Description": "Arkadiusz MILIK" }
-            ],
-            "PlayerOnName": [
-              { "Locale": "en-GB", "Description": "Dawid KOWNACKI" }
-            ],
+            "PlayerOffName": [{ "Locale": "en-GB", "Description": "Arkadiusz MILIK" }],
+            "PlayerOnName": [{ "Locale": "en-GB", "Description": "Dawid KOWNACKI" }],
             "Minute": "73'",
             "IdTeam": "43962"
           },
@@ -547,12 +454,8 @@
             "SubstitutePosition": 1,
             "IdPlayerOff": "216955",
             "IdPlayerOn": "370435",
-            "PlayerOffName": [
-              { "Locale": "en-GB", "Description": "Lukasz PISZCZEK" }
-            ],
-            "PlayerOnName": [
-              { "Locale": "en-GB", "Description": "Bartosz BERESZYNSKI" }
-            ],
+            "PlayerOffName": [{ "Locale": "en-GB", "Description": "Lukasz PISZCZEK" }],
+            "PlayerOnName": [{ "Locale": "en-GB", "Description": "Bartosz BERESZYNSKI" }],
             "Minute": "83'",
             "IdTeam": "43962"
           }
@@ -564,8 +467,7 @@
         "Score": 2,
         "Side": null,
         "IdTeam": "43879",
-        "PictureUrl":
-          "https://api.fifa.com/api/v1/picture/flags-{format}-{size}/SEN",
+        "PictureUrl": "https://api.fifa.com/api/v1/picture/flags-{format}-{size}/SEN",
         "IdCountry": "SEN",
         "TeamType": 1,
         "AgeType": 7,
@@ -588,12 +490,8 @@
             "Status": 1,
             "SpecialStatus": 2,
             "Captain": false,
-            "PlayerName": [
-              { "Locale": "en-GB", "Description": "Khadim NDIAYE" }
-            ],
-            "ShortName": [
-              { "Locale": "en-GB", "Description": "Khadim NDIAYE" }
-            ],
+            "PlayerName": [{ "Locale": "en-GB", "Description": "Khadim NDIAYE" }],
+            "ShortName": [{ "Locale": "en-GB", "Description": "Khadim NDIAYE" }],
             "Position": 0,
             "FieldStatus": 1,
             "LineupX": -0.895238,
@@ -606,12 +504,8 @@
             "Status": 1,
             "SpecialStatus": 2,
             "Captain": false,
-            "PlayerName": [
-              { "Locale": "en-GB", "Description": "Kalidou KOULIBALY" }
-            ],
-            "ShortName": [
-              { "Locale": "en-GB", "Description": "Kalidou KOULIBALY" }
-            ],
+            "PlayerName": [{ "Locale": "en-GB", "Description": "Kalidou KOULIBALY" }],
+            "ShortName": [{ "Locale": "en-GB", "Description": "Kalidou KOULIBALY" }],
             "Position": 1,
             "FieldStatus": 1,
             "LineupX": -0.504762,
@@ -624,12 +518,8 @@
             "Status": 1,
             "SpecialStatus": 2,
             "Captain": false,
-            "PlayerName": [
-              { "Locale": "en-GB", "Description": "Idrissa Gana GUEYE" }
-            ],
-            "ShortName": [
-              { "Locale": "en-GB", "Description": "Idrissa Gana GUEYE" }
-            ],
+            "PlayerName": [{ "Locale": "en-GB", "Description": "Idrissa Gana GUEYE" }],
+            "ShortName": [{ "Locale": "en-GB", "Description": "Idrissa Gana GUEYE" }],
             "Position": 2,
             "FieldStatus": 1,
             "LineupX": -0.009524,
@@ -684,12 +574,8 @@
             "Status": 1,
             "SpecialStatus": 2,
             "Captain": false,
-            "PlayerName": [
-              { "Locale": "en-GB", "Description": "Youssouf SABALY" }
-            ],
-            "ShortName": [
-              { "Locale": "en-GB", "Description": "Youssouf SABALY" }
-            ],
+            "PlayerName": [{ "Locale": "en-GB", "Description": "Youssouf SABALY" }],
+            "ShortName": [{ "Locale": "en-GB", "Description": "Youssouf SABALY" }],
             "Position": 1,
             "FieldStatus": 1,
             "LineupX": -0.390476,
@@ -702,12 +588,8 @@
             "Status": 1,
             "SpecialStatus": 2,
             "Captain": false,
-            "PlayerName": [
-              { "Locale": "en-GB", "Description": "Alfred NDIAYE" }
-            ],
-            "ShortName": [
-              { "Locale": "en-GB", "Description": "Alfred NDIAYE" }
-            ],
+            "PlayerName": [{ "Locale": "en-GB", "Description": "Alfred NDIAYE" }],
+            "ShortName": [{ "Locale": "en-GB", "Description": "Alfred NDIAYE" }],
             "Position": 2,
             "FieldStatus": 2,
             "LineupX": -0.009524,
@@ -720,9 +602,7 @@
             "Status": 1,
             "SpecialStatus": 2,
             "Captain": false,
-            "PlayerName": [
-              { "Locale": "en-GB", "Description": "Ismaila SARR" }
-            ],
+            "PlayerName": [{ "Locale": "en-GB", "Description": "Ismaila SARR" }],
             "ShortName": [{ "Locale": "en-GB", "Description": "Ismaila SARR" }],
             "Position": 3,
             "FieldStatus": 1,
@@ -750,9 +630,7 @@
             "Status": 1,
             "SpecialStatus": 2,
             "Captain": false,
-            "PlayerName": [
-              { "Locale": "en-GB", "Description": "Moussa WAGUE" }
-            ],
+            "PlayerName": [{ "Locale": "en-GB", "Description": "Moussa WAGUE" }],
             "ShortName": [{ "Locale": "en-GB", "Description": "Moussa WAGUE" }],
             "Position": 1,
             "FieldStatus": 1,
@@ -766,12 +644,8 @@
             "Status": 2,
             "SpecialStatus": null,
             "Captain": false,
-            "PlayerName": [
-              { "Locale": "en-GB", "Description": "Abdoulaye DIALLO" }
-            ],
-            "ShortName": [
-              { "Locale": "en-GB", "Description": "Abdoulaye DIALLO" }
-            ],
+            "PlayerName": [{ "Locale": "en-GB", "Description": "Abdoulaye DIALLO" }],
+            "ShortName": [{ "Locale": "en-GB", "Description": "Abdoulaye DIALLO" }],
             "Position": 0,
             "FieldStatus": 2,
             "LineupX": null,
@@ -784,12 +658,8 @@
             "Status": 2,
             "SpecialStatus": null,
             "Captain": false,
-            "PlayerName": [
-              { "Locale": "en-GB", "Description": "Adama MBENGUE" }
-            ],
-            "ShortName": [
-              { "Locale": "en-GB", "Description": "Adama MBENGUE" }
-            ],
+            "PlayerName": [{ "Locale": "en-GB", "Description": "Adama MBENGUE" }],
+            "ShortName": [{ "Locale": "en-GB", "Description": "Adama MBENGUE" }],
             "Position": 1,
             "FieldStatus": 2,
             "LineupX": null,
@@ -830,12 +700,8 @@
             "Status": 2,
             "SpecialStatus": null,
             "Captain": false,
-            "PlayerName": [
-              { "Locale": "en-GB", "Description": "Cheikhou KOUYATE" }
-            ],
-            "ShortName": [
-              { "Locale": "en-GB", "Description": "Cheikhou KOUYATE" }
-            ],
+            "PlayerName": [{ "Locale": "en-GB", "Description": "Cheikhou KOUYATE" }],
+            "ShortName": [{ "Locale": "en-GB", "Description": "Cheikhou KOUYATE" }],
             "Position": 2,
             "FieldStatus": 1,
             "LineupX": null,
@@ -848,9 +714,7 @@
             "Status": 2,
             "SpecialStatus": null,
             "Captain": false,
-            "PlayerName": [
-              { "Locale": "en-GB", "Description": "Cheikh NDOYE" }
-            ],
+            "PlayerName": [{ "Locale": "en-GB", "Description": "Cheikh NDOYE" }],
             "ShortName": [{ "Locale": "en-GB", "Description": "Cheikh NDOYE" }],
             "Position": 2,
             "FieldStatus": 1,
@@ -864,12 +728,8 @@
             "Status": 2,
             "SpecialStatus": null,
             "Captain": false,
-            "PlayerName": [
-              { "Locale": "en-GB", "Description": "Moussa KONATE" }
-            ],
-            "ShortName": [
-              { "Locale": "en-GB", "Description": "Moussa KONATE" }
-            ],
+            "PlayerName": [{ "Locale": "en-GB", "Description": "Moussa KONATE" }],
+            "ShortName": [{ "Locale": "en-GB", "Description": "Moussa KONATE" }],
             "Position": 3,
             "FieldStatus": 1,
             "LineupX": null,
@@ -882,9 +742,7 @@
             "Status": 2,
             "SpecialStatus": null,
             "Captain": false,
-            "PlayerName": [
-              { "Locale": "en-GB", "Description": "Diafra SAKHO" }
-            ],
+            "PlayerName": [{ "Locale": "en-GB", "Description": "Diafra SAKHO" }],
             "ShortName": [{ "Locale": "en-GB", "Description": "Diafra SAKHO" }],
             "Position": 3,
             "FieldStatus": 2,
@@ -898,12 +756,8 @@
             "Status": 2,
             "SpecialStatus": null,
             "Captain": false,
-            "PlayerName": [
-              { "Locale": "en-GB", "Description": "Pape Alioune NDIAYE" }
-            ],
-            "ShortName": [
-              { "Locale": "en-GB", "Description": "Pape Alioune NDIAYE" }
-            ],
+            "PlayerName": [{ "Locale": "en-GB", "Description": "Pape Alioune NDIAYE" }],
+            "ShortName": [{ "Locale": "en-GB", "Description": "Pape Alioune NDIAYE" }],
             "Position": 2,
             "FieldStatus": 2,
             "LineupX": null,
@@ -930,12 +784,8 @@
             "Status": 2,
             "SpecialStatus": null,
             "Captain": false,
-            "PlayerName": [
-              { "Locale": "en-GB", "Description": "Lamine GASSAMA" }
-            ],
-            "ShortName": [
-              { "Locale": "en-GB", "Description": "Lamine GASSAMA" }
-            ],
+            "PlayerName": [{ "Locale": "en-GB", "Description": "Lamine GASSAMA" }],
+            "ShortName": [{ "Locale": "en-GB", "Description": "Lamine GASSAMA" }],
             "Position": 1,
             "FieldStatus": 2,
             "LineupX": null,
@@ -948,9 +798,7 @@
             "Status": 2,
             "SpecialStatus": null,
             "Captain": false,
-            "PlayerName": [
-              { "Locale": "en-GB", "Description": "Alfred GOMIS" }
-            ],
+            "PlayerName": [{ "Locale": "en-GB", "Description": "Alfred GOMIS" }],
             "ShortName": [{ "Locale": "en-GB", "Description": "Alfred GOMIS" }],
             "Position": 0,
             "FieldStatus": 2,
@@ -1008,12 +856,8 @@
             "SubstitutePosition": 2,
             "IdPlayerOff": "330687",
             "IdPlayerOn": "395925",
-            "PlayerOffName": [
-              { "Locale": "en-GB", "Description": "Mame DIOUF" }
-            ],
-            "PlayerOnName": [
-              { "Locale": "en-GB", "Description": "Cheikh NDOYE" }
-            ],
+            "PlayerOffName": [{ "Locale": "en-GB", "Description": "Mame DIOUF" }],
+            "PlayerOnName": [{ "Locale": "en-GB", "Description": "Cheikh NDOYE" }],
             "Minute": "62'",
             "IdTeam": "43879"
           },
@@ -1024,12 +868,8 @@
             "SubstitutePosition": 3,
             "IdPlayerOff": "336000",
             "IdPlayerOn": "353782",
-            "PlayerOffName": [
-              { "Locale": "en-GB", "Description": "Mbaye NIANG" }
-            ],
-            "PlayerOnName": [
-              { "Locale": "en-GB", "Description": "Moussa KONATE" }
-            ],
+            "PlayerOffName": [{ "Locale": "en-GB", "Description": "Mbaye NIANG" }],
+            "PlayerOnName": [{ "Locale": "en-GB", "Description": "Moussa KONATE" }],
             "Minute": "75'",
             "IdTeam": "43879"
           },
@@ -1040,12 +880,8 @@
             "SubstitutePosition": 2,
             "IdPlayerOff": "274154",
             "IdPlayerOn": "353765",
-            "PlayerOffName": [
-              { "Locale": "en-GB", "Description": "Alfred NDIAYE" }
-            ],
-            "PlayerOnName": [
-              { "Locale": "en-GB", "Description": "Cheikhou KOUYATE" }
-            ],
+            "PlayerOffName": [{ "Locale": "en-GB", "Description": "Alfred NDIAYE" }],
+            "PlayerOnName": [{ "Locale": "en-GB", "Description": "Cheikhou KOUYATE" }],
             "Minute": "87'",
             "IdTeam": "43879"
           }
@@ -1078,19 +914,13 @@
             }
           ],
           "OfficialType": 1,
-          "TypeLocalized": [
-            { "Locale": "en-GB", "Description": "Main referee" }
-          ]
+          "TypeLocalized": [{ "Locale": "en-GB", "Description": "Main referee" }]
         },
         {
           "IdCountry": "BHR",
           "OfficialId": "280121",
-          "NameShort": [
-            { "Locale": "fr-FR", "Description": "ABDULLA TULEFAT Yaser Khalil" }
-          ],
-          "Name": [
-            { "Locale": "fr-FR", "Description": "ABDULLA TULEFAT Yaser Khalil" }
-          ],
+          "NameShort": [{ "Locale": "fr-FR", "Description": "ABDULLA TULEFAT Yaser Khalil" }],
+          "Name": [{ "Locale": "fr-FR", "Description": "ABDULLA TULEFAT Yaser Khalil" }],
           "OfficialType": 2,
           "TypeLocalized": [{ "Locale": "en-GB", "Description": "Lineman 1" }]
         },
@@ -1105,16 +935,10 @@
         {
           "IdCountry": "QAT",
           "OfficialId": "361083",
-          "NameShort": [
-            { "Locale": "en-GB", "Description": "AL JASSIM Abdulrahman" }
-          ],
-          "Name": [
-            { "Locale": "en-GB", "Description": "AL JASSIM Abdulrahman" }
-          ],
+          "NameShort": [{ "Locale": "en-GB", "Description": "AL JASSIM Abdulrahman" }],
+          "Name": [{ "Locale": "en-GB", "Description": "AL JASSIM Abdulrahman" }],
           "OfficialType": 4,
-          "TypeLocalized": [
-            { "Locale": "en-GB", "Description": "Fourth official" }
-          ]
+          "TypeLocalized": [{ "Locale": "en-GB", "Description": "Fourth official" }]
         },
         {
           "IdCountry": "POR",
@@ -1140,16 +964,10 @@
         {
           "IdCountry": "POR",
           "OfficialId": "383651",
-          "NameShort": [
-            { "Locale": "en-GB", "Description": "LOPES MARTINS Tiago Bruno" }
-          ],
-          "Name": [
-            { "Locale": "en-GB", "Description": "LOPES MARTINS Tiago Bruno" }
-          ],
+          "NameShort": [{ "Locale": "en-GB", "Description": "LOPES MARTINS Tiago Bruno" }],
+          "Name": [{ "Locale": "en-GB", "Description": "LOPES MARTINS Tiago Bruno" }],
           "OfficialType": 8,
-          "TypeLocalized": [
-            { "Locale": "en-GB", "Description": "Assistant VAR" }
-          ]
+          "TypeLocalized": [{ "Locale": "en-GB", "Description": "Assistant VAR" }]
         },
         {
           "IdCountry": "BRA",
@@ -1162,14 +980,10 @@
         {
           "IdCountry": "UAE",
           "OfficialId": "348536",
-          "NameShort": [
-            { "Locale": "en-GB", "Description": "ALHAMMADI Mohamed" }
-          ],
+          "NameShort": [{ "Locale": "en-GB", "Description": "ALHAMMADI Mohamed" }],
           "Name": [{ "Locale": "en-GB", "Description": "ALHAMMADI Mohamed" }],
           "OfficialType": 10,
-          "TypeLocalized": [
-            { "Locale": "en-GB", "Description": "Reserve Assistant Referee" }
-          ]
+          "TypeLocalized": [{ "Locale": "en-GB", "Description": "Reserve Assistant Referee" }]
         }
       ],
       "MatchStatus": 0,

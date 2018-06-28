@@ -19,17 +19,14 @@
       "MatchDay": "1",
       "StageName": [{ "Locale": "fr-FR", "Description": "Phase de groupes" }],
       "GroupName": [{ "Locale": "fr-FR", "Description": "Groupe A" }],
-      "CompetitionName": [
-        { "Locale": "fr-FR", "Description": "Coupe du Monde de la FIFA™" }
-      ],
+      "CompetitionName": [{ "Locale": "fr-FR", "Description": "Coupe du Monde de la FIFA™" }],
       "Date": "2018-06-14T15:00:00Z",
       "LocalDate": "2018-06-14T18:00:00Z",
       "Home": {
         "Score": 5,
         "Side": null,
         "IdTeam": "43965",
-        "PictureUrl":
-          "https://api.fifa.com/api/v1/picture/flags-{format}-{size}/RUS",
+        "PictureUrl": "https://api.fifa.com/api/v1/picture/flags-{format}-{size}/RUS",
         "IdCountry": "RUS",
         "Tactics": "4-2-3-1",
         "TeamType": 1,
@@ -42,8 +39,7 @@
         "Score": 0,
         "Side": null,
         "IdTeam": "43835",
-        "PictureUrl":
-          "https://api.fifa.com/api/v1/picture/flags-{format}-{size}/KSA",
+        "PictureUrl": "https://api.fifa.com/api/v1/picture/flags-{format}-{size}/KSA",
         "IdCountry": "KSA",
         "Tactics": "4-5-1",
         "TeamType": 1,
@@ -109,9 +105,7 @@
           "NameShort": [{ "Locale": "en-GB", "Description": "PITANA Nestor" }],
           "Name": [{ "Locale": "en-GB", "Description": "PITANA Nestor" }],
           "OfficialType": 1,
-          "TypeLocalized": [
-            { "Locale": "en-GB", "Description": "Main referee" }
-          ]
+          "TypeLocalized": [{ "Locale": "en-GB", "Description": "Main referee" }]
         },
         {
           "IdCountry": "ARG",
@@ -124,9 +118,7 @@
         {
           "IdCountry": "ARG",
           "OfficialId": "328260",
-          "NameShort": [
-            { "Locale": "fr-FR", "Description": "BELATTI Juan Pablo" }
-          ],
+          "NameShort": [{ "Locale": "fr-FR", "Description": "BELATTI Juan Pablo" }],
           "Name": [{ "Locale": "fr-FR", "Description": "BELATTI Juan Pablo" }],
           "OfficialType": 3,
           "TypeLocalized": [{ "Locale": "en-GB", "Description": "Lineman 2" }]
@@ -137,16 +129,12 @@
           "NameShort": [{ "Locale": "en-GB", "Description": "RICCI Sandro" }],
           "Name": [{ "Locale": "en-GB", "Description": "RICCI Sandro" }],
           "OfficialType": 4,
-          "TypeLocalized": [
-            { "Locale": "en-GB", "Description": "Fourth official" }
-          ]
+          "TypeLocalized": [{ "Locale": "en-GB", "Description": "Fourth official" }]
         },
         {
           "IdCountry": "ITA",
           "OfficialId": "399108",
-          "NameShort": [
-            { "Locale": "en-GB", "Description": "IRRATI Massimiliano" }
-          ],
+          "NameShort": [{ "Locale": "en-GB", "Description": "IRRATI Massimiliano" }],
           "Name": [{ "Locale": "en-GB", "Description": "IRRATI Massimiliano" }],
           "OfficialType": 5,
           "TypeLocalized": [
@@ -170,9 +158,7 @@
           "NameShort": [{ "Locale": "en-GB", "Description": "Mauro VIGLIANO" }],
           "Name": [{ "Locale": "en-GB", "Description": "Mauro VIGLIANO" }],
           "OfficialType": 8,
-          "TypeLocalized": [
-            { "Locale": "en-GB", "Description": "Assistant VAR" }
-          ]
+          "TypeLocalized": [{ "Locale": "en-GB", "Description": "Assistant VAR" }]
         },
         {
           "IdCountry": "ITA",
@@ -185,14 +171,10 @@
         {
           "IdCountry": "BRA",
           "OfficialId": "288493",
-          "NameShort": [
-            { "Locale": "en-GB", "Description": "DE CARVALHO Emerson" }
-          ],
+          "NameShort": [{ "Locale": "en-GB", "Description": "DE CARVALHO Emerson" }],
           "Name": [{ "Locale": "en-GB", "Description": "DE CARVALHO Emerson" }],
           "OfficialType": 10,
-          "TypeLocalized": [
-            { "Locale": "en-GB", "Description": "Reserve Assistant Referee" }
-          ]
+          "TypeLocalized": [{ "Locale": "en-GB", "Description": "Reserve Assistant Referee" }]
         }
       ],
       "MatchStatus": 0,
@@ -220,17 +202,14 @@
       "MatchDay": "2",
       "StageName": [{ "Locale": "fr-FR", "Description": "Phase de groupes" }],
       "GroupName": [{ "Locale": "fr-FR", "Description": "Groupe A" }],
-      "CompetitionName": [
-        { "Locale": "fr-FR", "Description": "Coupe du Monde de la FIFA™" }
-      ],
+      "CompetitionName": [{ "Locale": "fr-FR", "Description": "Coupe du Monde de la FIFA™" }],
       "Date": "2018-06-15T12:00:00Z",
       "LocalDate": "2018-06-15T17:00:00Z",
       "Home": {
         "Score": 0,
         "Side": null,
         "IdTeam": "43855",
-        "PictureUrl":
-          "https://api.fifa.com/api/v1/picture/flags-{format}-{size}/EGY",
+        "PictureUrl": "https://api.fifa.com/api/v1/picture/flags-{format}-{size}/EGY",
         "IdCountry": "EGY",
         "Tactics": "4-2-3-1",
         "TeamType": 1,
@@ -243,8 +222,7 @@
         "Score": 1,
         "Side": null,
         "IdTeam": "43930",
-        "PictureUrl":
-          "https://api.fifa.com/api/v1/picture/flags-{format}-{size}/URU",
+        "PictureUrl": "https://api.fifa.com/api/v1/picture/flags-{format}-{size}/URU",
         "IdCountry": "URU",
         "Tactics": "4-4-2",
         "TeamType": 1,
@@ -310,16 +288,12 @@
           "NameShort": [{ "Locale": "fr-FR", "Description": "KUIPERS Bjorn" }],
           "Name": [{ "Locale": "fr-FR", "Description": "KUIPERS Bjorn" }],
           "OfficialType": 1,
-          "TypeLocalized": [
-            { "Locale": "en-GB", "Description": "Main referee" }
-          ]
+          "TypeLocalized": [{ "Locale": "en-GB", "Description": "Main referee" }]
         },
         {
           "IdCountry": "NED",
           "OfficialId": "262674",
-          "NameShort": [
-            { "Locale": "fr-FR", "Description": "VAN ROEKEL Sander" }
-          ],
+          "NameShort": [{ "Locale": "fr-FR", "Description": "VAN ROEKEL Sander" }],
           "Name": [{ "Locale": "fr-FR", "Description": "VAN ROEKEL Sander" }],
           "OfficialType": 2,
           "TypeLocalized": [{ "Locale": "en-GB", "Description": "Lineman 1" }]
@@ -338,9 +312,7 @@
           "NameShort": [{ "Locale": "en-GB", "Description": "MAZIC Milorad" }],
           "Name": [{ "Locale": "en-GB", "Description": "MAZIC Milorad" }],
           "OfficialType": 4,
-          "TypeLocalized": [
-            { "Locale": "en-GB", "Description": "Fourth official" }
-          ]
+          "TypeLocalized": [{ "Locale": "en-GB", "Description": "Fourth official" }]
         },
         {
           "IdCountry": "CUW",
@@ -369,9 +341,7 @@
           "NameShort": [{ "Locale": "en-GB", "Description": "GIL Pawel" }],
           "Name": [{ "Locale": "en-GB", "Description": "GIL Pawel" }],
           "OfficialType": 8,
-          "TypeLocalized": [
-            { "Locale": "en-GB", "Description": "Assistant VAR" }
-          ]
+          "TypeLocalized": [{ "Locale": "en-GB", "Description": "Assistant VAR" }]
         },
         {
           "IdCountry": "FRA",
@@ -387,9 +357,7 @@
           "NameShort": [{ "Locale": "en-GB", "Description": "RISTIC Milovan" }],
           "Name": [{ "Locale": "en-GB", "Description": "RISTIC Milovan" }],
           "OfficialType": 10,
-          "TypeLocalized": [
-            { "Locale": "en-GB", "Description": "Reserve Assistant Referee" }
-          ]
+          "TypeLocalized": [{ "Locale": "en-GB", "Description": "Reserve Assistant Referee" }]
         }
       ],
       "MatchStatus": 0,
@@ -417,17 +385,14 @@
       "MatchDay": "2",
       "StageName": [{ "Locale": "fr-FR", "Description": "Phase de groupes" }],
       "GroupName": [{ "Locale": "fr-FR", "Description": "Groupe B" }],
-      "CompetitionName": [
-        { "Locale": "fr-FR", "Description": "Coupe du Monde de la FIFA™" }
-      ],
+      "CompetitionName": [{ "Locale": "fr-FR", "Description": "Coupe du Monde de la FIFA™" }],
       "Date": "2018-06-15T15:00:00Z",
       "LocalDate": "2018-06-15T18:00:00Z",
       "Home": {
         "Score": 0,
         "Side": null,
         "IdTeam": "43872",
-        "PictureUrl":
-          "https://api.fifa.com/api/v1/picture/flags-{format}-{size}/MAR",
+        "PictureUrl": "https://api.fifa.com/api/v1/picture/flags-{format}-{size}/MAR",
         "IdCountry": "MAR",
         "Tactics": "3-4-3",
         "TeamType": 1,
@@ -440,8 +405,7 @@
         "Score": 1,
         "Side": null,
         "IdTeam": "43817",
-        "PictureUrl":
-          "https://api.fifa.com/api/v1/picture/flags-{format}-{size}/IRN",
+        "PictureUrl": "https://api.fifa.com/api/v1/picture/flags-{format}-{size}/IRN",
         "IdCountry": "IRN",
         "Tactics": "3-4-3",
         "TeamType": 1,
@@ -461,9 +425,7 @@
       "IsHomeMatch": null,
       "Stadium": {
         "IdStadium": "5031303",
-        "Name": [
-          { "Locale": "fr-FR", "Description": "Stade de Saint-Pétersbourg" }
-        ],
+        "Name": [{ "Locale": "fr-FR", "Description": "Stade de Saint-Pétersbourg" }],
         "Capacity": null,
         "WebAddress": null,
         "Built": null,
@@ -509,9 +471,7 @@
           "NameShort": [{ "Locale": "en-GB", "Description": "CAKIR Cuneyt" }],
           "Name": [{ "Locale": "en-GB", "Description": "CAKIR Cuneyt" }],
           "OfficialType": 1,
-          "TypeLocalized": [
-            { "Locale": "en-GB", "Description": "Main referee" }
-          ]
+          "TypeLocalized": [{ "Locale": "en-GB", "Description": "Main referee" }]
         },
         {
           "IdCountry": "TUR",
@@ -535,9 +495,7 @@
           "NameShort": [{ "Locale": "en-GB", "Description": "KARASEV Sergey" }],
           "Name": [{ "Locale": "en-GB", "Description": "KARASEV Sergey" }],
           "OfficialType": 4,
-          "TypeLocalized": [
-            { "Locale": "en-GB", "Description": "Fourth official" }
-          ]
+          "TypeLocalized": [{ "Locale": "en-GB", "Description": "Fourth official" }]
         },
         {
           "IdCountry": "GER",
@@ -563,14 +521,10 @@
         {
           "IdCountry": "GER",
           "OfficialId": "373388",
-          "NameShort": [
-            { "Locale": "en-GB", "Description": "Bastian DANKERT" }
-          ],
+          "NameShort": [{ "Locale": "en-GB", "Description": "Bastian DANKERT" }],
           "Name": [{ "Locale": "en-GB", "Description": "Bastian DANKERT" }],
           "OfficialType": 8,
-          "TypeLocalized": [
-            { "Locale": "en-GB", "Description": "Assistant VAR" }
-          ]
+          "TypeLocalized": [{ "Locale": "en-GB", "Description": "Assistant VAR" }]
         },
         {
           "IdCountry": "MEX",
@@ -583,14 +537,10 @@
         {
           "IdCountry": "RUS",
           "OfficialId": "175984",
-          "NameShort": [
-            { "Locale": "fr-FR", "Description": "AVERIANOV Anton" }
-          ],
+          "NameShort": [{ "Locale": "fr-FR", "Description": "AVERIANOV Anton" }],
           "Name": [{ "Locale": "fr-FR", "Description": "AVERIANOV Anton" }],
           "OfficialType": 10,
-          "TypeLocalized": [
-            { "Locale": "en-GB", "Description": "Reserve Assistant Referee" }
-          ]
+          "TypeLocalized": [{ "Locale": "en-GB", "Description": "Reserve Assistant Referee" }]
         }
       ],
       "MatchStatus": 0,
@@ -611,26 +561,21 @@
         "Temperature": "24",
         "WindSpeed": "10",
         "Type": 9,
-        "TypeLocalized": [
-          { "Locale": "en-GB", "Description": "Partly Cloudy Night" }
-        ]
+        "TypeLocalized": [{ "Locale": "en-GB", "Description": "Partly Cloudy Night" }]
       },
       "Attendance": "43866",
       "IdMatch": "300331524",
       "MatchDay": "2",
       "StageName": [{ "Locale": "fr-FR", "Description": "Phase de groupes" }],
       "GroupName": [{ "Locale": "fr-FR", "Description": "Groupe B" }],
-      "CompetitionName": [
-        { "Locale": "fr-FR", "Description": "Coupe du Monde de la FIFA™" }
-      ],
+      "CompetitionName": [{ "Locale": "fr-FR", "Description": "Coupe du Monde de la FIFA™" }],
       "Date": "2018-06-15T18:00:00Z",
       "LocalDate": "2018-06-15T21:00:00Z",
       "Home": {
         "Score": 3,
         "Side": null,
         "IdTeam": "43963",
-        "PictureUrl":
-          "https://api.fifa.com/api/v1/picture/flags-{format}-{size}/POR",
+        "PictureUrl": "https://api.fifa.com/api/v1/picture/flags-{format}-{size}/POR",
         "IdCountry": "POR",
         "Tactics": "4-2-3-1",
         "TeamType": 1,
@@ -643,8 +588,7 @@
         "Score": 3,
         "Side": null,
         "IdTeam": "43969",
-        "PictureUrl":
-          "https://api.fifa.com/api/v1/picture/flags-{format}-{size}/ESP",
+        "PictureUrl": "https://api.fifa.com/api/v1/picture/flags-{format}-{size}/ESP",
         "IdCountry": "ESP",
         "Tactics": "4-2-3-1",
         "TeamType": 1,
@@ -707,24 +651,16 @@
         {
           "IdCountry": "ITA",
           "OfficialId": "284253",
-          "NameShort": [
-            { "Locale": "en-GB", "Description": "ROCCHI Gianluca" }
-          ],
+          "NameShort": [{ "Locale": "en-GB", "Description": "ROCCHI Gianluca" }],
           "Name": [{ "Locale": "en-GB", "Description": "ROCCHI Gianluca" }],
           "OfficialType": 1,
-          "TypeLocalized": [
-            { "Locale": "en-GB", "Description": "Main referee" }
-          ]
+          "TypeLocalized": [{ "Locale": "en-GB", "Description": "Main referee" }]
         },
         {
           "IdCountry": "ITA",
           "OfficialId": "302232",
-          "NameShort": [
-            { "Locale": "en-GB", "Description": "DI LIBERATORE Elenito" }
-          ],
-          "Name": [
-            { "Locale": "en-GB", "Description": "DI LIBERATORE Elenito" }
-          ],
+          "NameShort": [{ "Locale": "en-GB", "Description": "DI LIBERATORE Elenito" }],
+          "Name": [{ "Locale": "en-GB", "Description": "DI LIBERATORE Elenito" }],
           "OfficialType": 2,
           "TypeLocalized": [{ "Locale": "en-GB", "Description": "Lineman 1" }]
         },
@@ -742,16 +678,12 @@
           "NameShort": [{ "Locale": "en-GB", "Description": "SATO Ryuji" }],
           "Name": [{ "Locale": "en-GB", "Description": "SATO Ryuji" }],
           "OfficialType": 4,
-          "TypeLocalized": [
-            { "Locale": "en-GB", "Description": "Fourth official" }
-          ]
+          "TypeLocalized": [{ "Locale": "en-GB", "Description": "Fourth official" }]
         },
         {
           "IdCountry": "ITA",
           "OfficialId": "399108",
-          "NameShort": [
-            { "Locale": "en-GB", "Description": "IRRATI Massimiliano" }
-          ],
+          "NameShort": [{ "Locale": "en-GB", "Description": "IRRATI Massimiliano" }],
           "Name": [{ "Locale": "en-GB", "Description": "IRRATI Massimiliano" }],
           "OfficialType": 5,
           "TypeLocalized": [
@@ -775,9 +707,7 @@
           "NameShort": [{ "Locale": "en-GB", "Description": "Paolo VALERI" }],
           "Name": [{ "Locale": "en-GB", "Description": "Paolo VALERI" }],
           "OfficialType": 8,
-          "TypeLocalized": [
-            { "Locale": "en-GB", "Description": "Assistant VAR" }
-          ]
+          "TypeLocalized": [{ "Locale": "en-GB", "Description": "Assistant VAR" }]
         },
         {
           "IdCountry": "ITA",
@@ -793,9 +723,7 @@
           "NameShort": [{ "Locale": "fr-FR", "Description": "SAGARA Toru" }],
           "Name": [{ "Locale": "fr-FR", "Description": "SAGARA Toru" }],
           "OfficialType": 10,
-          "TypeLocalized": [
-            { "Locale": "en-GB", "Description": "Reserve Assistant Referee" }
-          ]
+          "TypeLocalized": [{ "Locale": "en-GB", "Description": "Reserve Assistant Referee" }]
         }
       ],
       "MatchStatus": 0,
@@ -823,17 +751,14 @@
       "MatchDay": "3",
       "StageName": [{ "Locale": "fr-FR", "Description": "Phase de groupes" }],
       "GroupName": [{ "Locale": "fr-FR", "Description": "Groupe C" }],
-      "CompetitionName": [
-        { "Locale": "fr-FR", "Description": "Coupe du Monde de la FIFA™" }
-      ],
+      "CompetitionName": [{ "Locale": "fr-FR", "Description": "Coupe du Monde de la FIFA™" }],
       "Date": "2018-06-16T10:00:00Z",
       "LocalDate": "2018-06-16T13:00:00Z",
       "Home": {
         "Score": 2,
         "Side": null,
         "IdTeam": "43946",
-        "PictureUrl":
-          "https://api.fifa.com/api/v1/picture/flags-{format}-{size}/FRA",
+        "PictureUrl": "https://api.fifa.com/api/v1/picture/flags-{format}-{size}/FRA",
         "IdCountry": "FRA",
         "Tactics": "4-3-3",
         "TeamType": 1,
@@ -846,8 +771,7 @@
         "Score": 1,
         "Side": null,
         "IdTeam": "43976",
-        "PictureUrl":
-          "https://api.fifa.com/api/v1/picture/flags-{format}-{size}/AUS",
+        "PictureUrl": "https://api.fifa.com/api/v1/picture/flags-{format}-{size}/AUS",
         "IdCountry": "AUS",
         "Tactics": "4-2-3-1",
         "TeamType": 1,
@@ -913,9 +837,7 @@
           "NameShort": [{ "Locale": "en-GB", "Description": "CUNHA Andres" }],
           "Name": [{ "Locale": "en-GB", "Description": "CUNHA Andres" }],
           "OfficialType": 1,
-          "TypeLocalized": [
-            { "Locale": "en-GB", "Description": "Main referee" }
-          ]
+          "TypeLocalized": [{ "Locale": "en-GB", "Description": "Main referee" }]
         },
         {
           "IdCountry": "URU",
@@ -928,9 +850,7 @@
         {
           "IdCountry": "URU",
           "OfficialId": "241594",
-          "NameShort": [
-            { "Locale": "en-GB", "Description": "ESPINOSA Mauricio" }
-          ],
+          "NameShort": [{ "Locale": "en-GB", "Description": "ESPINOSA Mauricio" }],
           "Name": [{ "Locale": "en-GB", "Description": "ESPINOSA Mauricio" }],
           "OfficialType": 3,
           "TypeLocalized": [{ "Locale": "en-GB", "Description": "Lineman 2" }]
@@ -941,9 +861,7 @@
           "NameShort": [{ "Locale": "en-GB", "Description": "Julio BASCUÑAN" }],
           "Name": [{ "Locale": "en-GB", "Description": "Julio BASCUÑAN" }],
           "OfficialType": 4,
-          "TypeLocalized": [
-            { "Locale": "en-GB", "Description": "Fourth official" }
-          ]
+          "TypeLocalized": [{ "Locale": "en-GB", "Description": "Fourth official" }]
         },
         {
           "IdCountry": "ARG",
@@ -969,16 +887,10 @@
         {
           "IdCountry": "POR",
           "OfficialId": "383651",
-          "NameShort": [
-            { "Locale": "en-GB", "Description": "LOPES MARTINS Tiago Bruno" }
-          ],
-          "Name": [
-            { "Locale": "en-GB", "Description": "LOPES MARTINS Tiago Bruno" }
-          ],
+          "NameShort": [{ "Locale": "en-GB", "Description": "LOPES MARTINS Tiago Bruno" }],
+          "Name": [{ "Locale": "en-GB", "Description": "LOPES MARTINS Tiago Bruno" }],
           "OfficialType": 8,
-          "TypeLocalized": [
-            { "Locale": "en-GB", "Description": "Assistant VAR" }
-          ]
+          "TypeLocalized": [{ "Locale": "en-GB", "Description": "Assistant VAR" }]
         },
         {
           "IdCountry": "MEX",
@@ -991,14 +903,10 @@
         {
           "IdCountry": "CHI",
           "OfficialId": "373943",
-          "NameShort": [
-            { "Locale": "en-GB", "Description": "SCHIEMANN Christian" }
-          ],
+          "NameShort": [{ "Locale": "en-GB", "Description": "SCHIEMANN Christian" }],
           "Name": [{ "Locale": "en-GB", "Description": "SCHIEMANN Christian" }],
           "OfficialType": 10,
-          "TypeLocalized": [
-            { "Locale": "en-GB", "Description": "Reserve Assistant Referee" }
-          ]
+          "TypeLocalized": [{ "Locale": "en-GB", "Description": "Reserve Assistant Referee" }]
         }
       ],
       "MatchStatus": 0,
@@ -1026,17 +934,14 @@
       "MatchDay": "3",
       "StageName": [{ "Locale": "fr-FR", "Description": "Phase de groupes" }],
       "GroupName": [{ "Locale": "fr-FR", "Description": "Groupe D" }],
-      "CompetitionName": [
-        { "Locale": "fr-FR", "Description": "Coupe du Monde de la FIFA™" }
-      ],
+      "CompetitionName": [{ "Locale": "fr-FR", "Description": "Coupe du Monde de la FIFA™" }],
       "Date": "2018-06-16T13:00:00Z",
       "LocalDate": "2018-06-16T16:00:00Z",
       "Home": {
         "Score": 1,
         "Side": null,
         "IdTeam": "43922",
-        "PictureUrl":
-          "https://api.fifa.com/api/v1/picture/flags-{format}-{size}/ARG",
+        "PictureUrl": "https://api.fifa.com/api/v1/picture/flags-{format}-{size}/ARG",
         "IdCountry": "ARG",
         "Tactics": "4-2-3-1",
         "TeamType": 1,
@@ -1049,8 +954,7 @@
         "Score": 1,
         "Side": null,
         "IdTeam": "43951",
-        "PictureUrl":
-          "https://api.fifa.com/api/v1/picture/flags-{format}-{size}/ISL",
+        "PictureUrl": "https://api.fifa.com/api/v1/picture/flags-{format}-{size}/ISL",
         "IdCountry": "ISL",
         "Tactics": "4-5-1",
         "TeamType": 1,
@@ -1113,21 +1017,15 @@
         {
           "IdCountry": "POL",
           "OfficialId": "327975",
-          "NameShort": [
-            { "Locale": "en-GB", "Description": "MARCINIAK Szymon" }
-          ],
+          "NameShort": [{ "Locale": "en-GB", "Description": "MARCINIAK Szymon" }],
           "Name": [{ "Locale": "en-GB", "Description": "MARCINIAK Szymon" }],
           "OfficialType": 1,
-          "TypeLocalized": [
-            { "Locale": "en-GB", "Description": "Main referee" }
-          ]
+          "TypeLocalized": [{ "Locale": "en-GB", "Description": "Main referee" }]
         },
         {
           "IdCountry": "POL",
           "OfficialId": "314292",
-          "NameShort": [
-            { "Locale": "en-GB", "Description": "SOKOLNICKI Pawel" }
-          ],
+          "NameShort": [{ "Locale": "en-GB", "Description": "SOKOLNICKI Pawel" }],
           "Name": [{ "Locale": "en-GB", "Description": "SOKOLNICKI Pawel" }],
           "OfficialType": 2,
           "TypeLocalized": [{ "Locale": "en-GB", "Description": "Lineman 1" }]
@@ -1135,9 +1033,7 @@
         {
           "IdCountry": "POL",
           "OfficialId": "327977",
-          "NameShort": [
-            { "Locale": "en-GB", "Description": "LISTKIEWICZ Tomasz" }
-          ],
+          "NameShort": [{ "Locale": "en-GB", "Description": "LISTKIEWICZ Tomasz" }],
           "Name": [{ "Locale": "en-GB", "Description": "LISTKIEWICZ Tomasz" }],
           "OfficialType": 3,
           "TypeLocalized": [{ "Locale": "en-GB", "Description": "Lineman 2" }]
@@ -1148,9 +1044,7 @@
           "NameShort": [{ "Locale": "en-GB", "Description": "ROLDAN Wilmar" }],
           "Name": [{ "Locale": "en-GB", "Description": "ROLDAN Wilmar" }],
           "OfficialType": 4,
-          "TypeLocalized": [
-            { "Locale": "en-GB", "Description": "Fourth official" }
-          ]
+          "TypeLocalized": [{ "Locale": "en-GB", "Description": "Fourth official" }]
         },
         {
           "IdCountry": "USA",
@@ -1179,9 +1073,7 @@
           "NameShort": [{ "Locale": "en-GB", "Description": "GIL Pawel" }],
           "Name": [{ "Locale": "en-GB", "Description": "GIL Pawel" }],
           "OfficialType": 8,
-          "TypeLocalized": [
-            { "Locale": "en-GB", "Description": "Assistant VAR" }
-          ]
+          "TypeLocalized": [{ "Locale": "en-GB", "Description": "Assistant VAR" }]
         },
         {
           "IdCountry": "BOL",
@@ -1194,14 +1086,10 @@
         {
           "IdCountry": "COL",
           "OfficialId": "349161",
-          "NameShort": [
-            { "Locale": "en-GB", "Description": "GUZMAN Alexander" }
-          ],
+          "NameShort": [{ "Locale": "en-GB", "Description": "GUZMAN Alexander" }],
           "Name": [{ "Locale": "en-GB", "Description": "GUZMAN Alexander" }],
           "OfficialType": 10,
-          "TypeLocalized": [
-            { "Locale": "en-GB", "Description": "Reserve Assistant Referee" }
-          ]
+          "TypeLocalized": [{ "Locale": "en-GB", "Description": "Reserve Assistant Referee" }]
         }
       ],
       "MatchStatus": 0,
@@ -1229,17 +1117,14 @@
       "MatchDay": "3",
       "StageName": [{ "Locale": "fr-FR", "Description": "Phase de groupes" }],
       "GroupName": [{ "Locale": "fr-FR", "Description": "Groupe C" }],
-      "CompetitionName": [
-        { "Locale": "fr-FR", "Description": "Coupe du Monde de la FIFA™" }
-      ],
+      "CompetitionName": [{ "Locale": "fr-FR", "Description": "Coupe du Monde de la FIFA™" }],
       "Date": "2018-06-16T16:00:00Z",
       "LocalDate": "2018-06-16T19:00:00Z",
       "Home": {
         "Score": 0,
         "Side": null,
         "IdTeam": "43929",
-        "PictureUrl":
-          "https://api.fifa.com/api/v1/picture/flags-{format}-{size}/PER",
+        "PictureUrl": "https://api.fifa.com/api/v1/picture/flags-{format}-{size}/PER",
         "IdCountry": "PER",
         "Tactics": "4-2-3-1",
         "TeamType": 1,
@@ -1252,8 +1137,7 @@
         "Score": 1,
         "Side": null,
         "IdTeam": "43941",
-        "PictureUrl":
-          "https://api.fifa.com/api/v1/picture/flags-{format}-{size}/DEN",
+        "PictureUrl": "https://api.fifa.com/api/v1/picture/flags-{format}-{size}/DEN",
         "IdCountry": "DEN",
         "Tactics": "4-3-3",
         "TeamType": 1,
@@ -1319,28 +1203,20 @@
           "NameShort": [{ "Locale": "en-GB", "Description": "GASSAMA Bakary" }],
           "Name": [{ "Locale": "en-GB", "Description": "GASSAMA Bakary" }],
           "OfficialType": 1,
-          "TypeLocalized": [
-            { "Locale": "en-GB", "Description": "Main referee" }
-          ]
+          "TypeLocalized": [{ "Locale": "en-GB", "Description": "Main referee" }]
         },
         {
           "IdCountry": "BDI",
           "OfficialId": "204741",
-          "NameShort": [
-            { "Locale": "en-GB", "Description": "BIRUMUSHAHU Jean Claude" }
-          ],
-          "Name": [
-            { "Locale": "en-GB", "Description": "BIRUMUSHAHU Jean Claude" }
-          ],
+          "NameShort": [{ "Locale": "en-GB", "Description": "BIRUMUSHAHU Jean Claude" }],
+          "Name": [{ "Locale": "en-GB", "Description": "BIRUMUSHAHU Jean Claude" }],
           "OfficialType": 2,
           "TypeLocalized": [{ "Locale": "en-GB", "Description": "Lineman 1" }]
         },
         {
           "IdCountry": "ALG",
           "OfficialId": "302457",
-          "NameShort": [
-            { "Locale": "fr-FR", "Description": "ETCHIALI Abdelhak" }
-          ],
+          "NameShort": [{ "Locale": "fr-FR", "Description": "ETCHIALI Abdelhak" }],
           "Name": [{ "Locale": "fr-FR", "Description": "ETCHIALI Abdelhak" }],
           "OfficialType": 3,
           "TypeLocalized": [{ "Locale": "en-GB", "Description": "Lineman 2" }]
@@ -1348,14 +1224,10 @@
         {
           "IdCountry": "ALG",
           "OfficialId": "328113",
-          "NameShort": [
-            { "Locale": "en-GB", "Description": "ABID CHAREF Mehdi" }
-          ],
+          "NameShort": [{ "Locale": "en-GB", "Description": "ABID CHAREF Mehdi" }],
           "Name": [{ "Locale": "en-GB", "Description": "ABID CHAREF Mehdi" }],
           "OfficialType": 4,
-          "TypeLocalized": [
-            { "Locale": "en-GB", "Description": "Fourth official" }
-          ]
+          "TypeLocalized": [{ "Locale": "en-GB", "Description": "Fourth official" }]
         },
         {
           "IdCountry": "GER",
@@ -1381,14 +1253,10 @@
         {
           "IdCountry": "GER",
           "OfficialId": "373388",
-          "NameShort": [
-            { "Locale": "en-GB", "Description": "Bastian DANKERT" }
-          ],
+          "NameShort": [{ "Locale": "en-GB", "Description": "Bastian DANKERT" }],
           "Name": [{ "Locale": "en-GB", "Description": "Bastian DANKERT" }],
           "OfficialType": 8,
-          "TypeLocalized": [
-            { "Locale": "en-GB", "Description": "Assistant VAR" }
-          ]
+          "TypeLocalized": [{ "Locale": "en-GB", "Description": "Assistant VAR" }]
         },
         {
           "IdCountry": "CUW",
@@ -1404,9 +1272,7 @@
           "NameShort": [{ "Locale": "en-GB", "Description": "HMILA Anouar" }],
           "Name": [{ "Locale": "en-GB", "Description": "HMILA Anouar" }],
           "OfficialType": 10,
-          "TypeLocalized": [
-            { "Locale": "en-GB", "Description": "Reserve Assistant Referee" }
-          ]
+          "TypeLocalized": [{ "Locale": "en-GB", "Description": "Reserve Assistant Referee" }]
         }
       ],
       "MatchStatus": 0,
@@ -1434,17 +1300,14 @@
       "MatchDay": "3",
       "StageName": [{ "Locale": "fr-FR", "Description": "Phase de groupes" }],
       "GroupName": [{ "Locale": "fr-FR", "Description": "Groupe D" }],
-      "CompetitionName": [
-        { "Locale": "fr-FR", "Description": "Coupe du Monde de la FIFA™" }
-      ],
+      "CompetitionName": [{ "Locale": "fr-FR", "Description": "Coupe du Monde de la FIFA™" }],
       "Date": "2018-06-16T19:00:00Z",
       "LocalDate": "2018-06-16T21:00:00Z",
       "Home": {
         "Score": 2,
         "Side": null,
         "IdTeam": "43938",
-        "PictureUrl":
-          "https://api.fifa.com/api/v1/picture/flags-{format}-{size}/CRO",
+        "PictureUrl": "https://api.fifa.com/api/v1/picture/flags-{format}-{size}/CRO",
         "IdCountry": "CRO",
         "Tactics": "4-2-3-1",
         "TeamType": 1,
@@ -1457,8 +1320,7 @@
         "Score": 0,
         "Side": null,
         "IdTeam": "43876",
-        "PictureUrl":
-          "https://api.fifa.com/api/v1/picture/flags-{format}-{size}/NGA",
+        "PictureUrl": "https://api.fifa.com/api/v1/picture/flags-{format}-{size}/NGA",
         "IdCountry": "NGA",
         "Tactics": "4-2-3-1",
         "TeamType": 1,
@@ -1524,16 +1386,12 @@
           "NameShort": [{ "Locale": "en-GB", "Description": "RICCI Sandro" }],
           "Name": [{ "Locale": "en-GB", "Description": "RICCI Sandro" }],
           "OfficialType": 1,
-          "TypeLocalized": [
-            { "Locale": "en-GB", "Description": "Main referee" }
-          ]
+          "TypeLocalized": [{ "Locale": "en-GB", "Description": "Main referee" }]
         },
         {
           "IdCountry": "BRA",
           "OfficialId": "288493",
-          "NameShort": [
-            { "Locale": "en-GB", "Description": "DE CARVALHO Emerson" }
-          ],
+          "NameShort": [{ "Locale": "en-GB", "Description": "DE CARVALHO Emerson" }],
           "Name": [{ "Locale": "en-GB", "Description": "DE CARVALHO Emerson" }],
           "OfficialType": 2,
           "TypeLocalized": [{ "Locale": "en-GB", "Description": "Lineman 1" }]
@@ -1541,9 +1399,7 @@
         {
           "IdCountry": "BRA",
           "OfficialId": "328573",
-          "NameShort": [
-            { "Locale": "en-GB", "Description": "VAN GASSE Marcelo" }
-          ],
+          "NameShort": [{ "Locale": "en-GB", "Description": "VAN GASSE Marcelo" }],
           "Name": [{ "Locale": "en-GB", "Description": "VAN GASSE Marcelo" }],
           "OfficialType": 3,
           "TypeLocalized": [{ "Locale": "en-GB", "Description": "Lineman 2" }]
@@ -1551,14 +1407,10 @@
         {
           "IdCountry": "ESP",
           "OfficialId": "328166",
-          "NameShort": [
-            { "Locale": "en-GB", "Description": "MATEU LAHOZ Antonio" }
-          ],
+          "NameShort": [{ "Locale": "en-GB", "Description": "MATEU LAHOZ Antonio" }],
           "Name": [{ "Locale": "en-GB", "Description": "MATEU LAHOZ Antonio" }],
           "OfficialType": 4,
-          "TypeLocalized": [
-            { "Locale": "en-GB", "Description": "Fourth official" }
-          ]
+          "TypeLocalized": [{ "Locale": "en-GB", "Description": "Fourth official" }]
         },
         {
           "IdCountry": "ITA",
@@ -1587,9 +1439,7 @@
           "NameShort": [{ "Locale": "en-GB", "Description": "SAMPAIO Wilton" }],
           "Name": [{ "Locale": "en-GB", "Description": "SAMPAIO Wilton" }],
           "OfficialType": 8,
-          "TypeLocalized": [
-            { "Locale": "en-GB", "Description": "Assistant VAR" }
-          ]
+          "TypeLocalized": [{ "Locale": "en-GB", "Description": "Assistant VAR" }]
         },
         {
           "IdCountry": "POR",
@@ -1602,14 +1452,10 @@
         {
           "IdCountry": "ESP",
           "OfficialId": "348849",
-          "NameShort": [
-            { "Locale": "en-GB", "Description": "CEBRIAN DEVIS Pau" }
-          ],
+          "NameShort": [{ "Locale": "en-GB", "Description": "CEBRIAN DEVIS Pau" }],
           "Name": [{ "Locale": "en-GB", "Description": "CEBRIAN DEVIS Pau" }],
           "OfficialType": 10,
-          "TypeLocalized": [
-            { "Locale": "en-GB", "Description": "Reserve Assistant Referee" }
-          ]
+          "TypeLocalized": [{ "Locale": "en-GB", "Description": "Reserve Assistant Referee" }]
         }
       ],
       "MatchStatus": 0,
@@ -1637,17 +1483,14 @@
       "MatchDay": "4",
       "StageName": [{ "Locale": "fr-FR", "Description": "Phase de groupes" }],
       "GroupName": [{ "Locale": "fr-FR", "Description": "Groupe E" }],
-      "CompetitionName": [
-        { "Locale": "fr-FR", "Description": "Coupe du Monde de la FIFA™" }
-      ],
+      "CompetitionName": [{ "Locale": "fr-FR", "Description": "Coupe du Monde de la FIFA™" }],
       "Date": "2018-06-17T12:00:00Z",
       "LocalDate": "2018-06-17T16:00:00Z",
       "Home": {
         "Score": 0,
         "Side": null,
         "IdTeam": "43901",
-        "PictureUrl":
-          "https://api.fifa.com/api/v1/picture/flags-{format}-{size}/CRC",
+        "PictureUrl": "https://api.fifa.com/api/v1/picture/flags-{format}-{size}/CRC",
         "IdCountry": "CRC",
         "Tactics": "5-4-1",
         "TeamType": 1,
@@ -1660,8 +1503,7 @@
         "Score": 1,
         "Side": null,
         "IdTeam": "1902465",
-        "PictureUrl":
-          "https://api.fifa.com/api/v1/picture/flags-{format}-{size}/SRB",
+        "PictureUrl": "https://api.fifa.com/api/v1/picture/flags-{format}-{size}/SRB",
         "IdCountry": "SRB",
         "Tactics": "4-2-3-1",
         "TeamType": 1,
@@ -1724,14 +1566,10 @@
         {
           "IdCountry": "SEN",
           "OfficialId": "283626",
-          "NameShort": [
-            { "Locale": "en-GB", "Description": "DIEDHIOU Malang" }
-          ],
+          "NameShort": [{ "Locale": "en-GB", "Description": "DIEDHIOU Malang" }],
           "Name": [{ "Locale": "en-GB", "Description": "DIEDHIOU Malang" }],
           "OfficialType": 1,
-          "TypeLocalized": [
-            { "Locale": "en-GB", "Description": "Main referee" }
-          ]
+          "TypeLocalized": [{ "Locale": "en-GB", "Description": "Main referee" }]
         },
         {
           "IdCountry": "SEN",
@@ -1752,16 +1590,10 @@
         {
           "IdCountry": "ETH",
           "OfficialId": "260752",
-          "NameShort": [
-            { "Locale": "en-GB", "Description": "TESSEMA WEYESA Bamlak" }
-          ],
-          "Name": [
-            { "Locale": "en-GB", "Description": "TESSEMA WEYESA Bamlak" }
-          ],
+          "NameShort": [{ "Locale": "en-GB", "Description": "TESSEMA WEYESA Bamlak" }],
+          "Name": [{ "Locale": "en-GB", "Description": "TESSEMA WEYESA Bamlak" }],
           "OfficialType": 4,
-          "TypeLocalized": [
-            { "Locale": "en-GB", "Description": "Fourth official" }
-          ]
+          "TypeLocalized": [{ "Locale": "en-GB", "Description": "Fourth official" }]
         },
         {
           "IdCountry": "FRA",
@@ -1790,9 +1622,7 @@
           "NameShort": [{ "Locale": "en-GB", "Description": "GIL Pawel" }],
           "Name": [{ "Locale": "en-GB", "Description": "GIL Pawel" }],
           "OfficialType": 8,
-          "TypeLocalized": [
-            { "Locale": "en-GB", "Description": "Assistant VAR" }
-          ]
+          "TypeLocalized": [{ "Locale": "en-GB", "Description": "Assistant VAR" }]
         },
         {
           "IdCountry": "POR",
@@ -1808,9 +1638,7 @@
           "NameShort": [{ "Locale": "fr-FR", "Description": "KALUGIN Tikhon" }],
           "Name": [{ "Locale": "fr-FR", "Description": "KALUGIN Tikhon" }],
           "OfficialType": 10,
-          "TypeLocalized": [
-            { "Locale": "en-GB", "Description": "Reserve Assistant Referee" }
-          ]
+          "TypeLocalized": [{ "Locale": "en-GB", "Description": "Reserve Assistant Referee" }]
         }
       ],
       "MatchStatus": 0,
@@ -1838,17 +1666,14 @@
       "MatchDay": "4",
       "StageName": [{ "Locale": "fr-FR", "Description": "Phase de groupes" }],
       "GroupName": [{ "Locale": "fr-FR", "Description": "Groupe F" }],
-      "CompetitionName": [
-        { "Locale": "fr-FR", "Description": "Coupe du Monde de la FIFA™" }
-      ],
+      "CompetitionName": [{ "Locale": "fr-FR", "Description": "Coupe du Monde de la FIFA™" }],
       "Date": "2018-06-17T15:00:00Z",
       "LocalDate": "2018-06-17T18:00:00Z",
       "Home": {
         "Score": 0,
         "Side": null,
         "IdTeam": "43948",
-        "PictureUrl":
-          "https://api.fifa.com/api/v1/picture/flags-{format}-{size}/GER",
+        "PictureUrl": "https://api.fifa.com/api/v1/picture/flags-{format}-{size}/GER",
         "IdCountry": "GER",
         "Tactics": "4-2-3-1",
         "TeamType": 1,
@@ -1861,8 +1686,7 @@
         "Score": 1,
         "Side": null,
         "IdTeam": "43911",
-        "PictureUrl":
-          "https://api.fifa.com/api/v1/picture/flags-{format}-{size}/MEX",
+        "PictureUrl": "https://api.fifa.com/api/v1/picture/flags-{format}-{size}/MEX",
         "IdCountry": "MEX",
         "Tactics": "4-2-3-1",
         "TeamType": 1,
@@ -1925,14 +1749,10 @@
         {
           "IdCountry": "IRN",
           "OfficialId": "283448",
-          "NameShort": [
-            { "Locale": "en-GB", "Description": "FAGHANI Alireza" }
-          ],
+          "NameShort": [{ "Locale": "en-GB", "Description": "FAGHANI Alireza" }],
           "Name": [{ "Locale": "en-GB", "Description": "FAGHANI Alireza" }],
           "OfficialType": 1,
-          "TypeLocalized": [
-            { "Locale": "en-GB", "Description": "Main referee" }
-          ]
+          "TypeLocalized": [{ "Locale": "en-GB", "Description": "Main referee" }]
         },
         {
           "IdCountry": "IRN",
@@ -1945,35 +1765,23 @@
         {
           "IdCountry": "IRN",
           "OfficialId": "348739",
-          "NameShort": [
-            { "Locale": "en-GB", "Description": "MANSOURI Mohammadreza" }
-          ],
-          "Name": [
-            { "Locale": "en-GB", "Description": "MANSOURI Mohammadreza" }
-          ],
+          "NameShort": [{ "Locale": "en-GB", "Description": "MANSOURI Mohammadreza" }],
+          "Name": [{ "Locale": "en-GB", "Description": "MANSOURI Mohammadreza" }],
           "OfficialType": 3,
           "TypeLocalized": [{ "Locale": "en-GB", "Description": "Lineman 2" }]
         },
         {
           "IdCountry": "UAE",
           "OfficialId": "317981",
-          "NameShort": [
-            { "Locale": "en-GB", "Description": "Mohammed ABDULLA HASSAN" }
-          ],
-          "Name": [
-            { "Locale": "en-GB", "Description": "Mohammed ABDULLA HASSAN" }
-          ],
+          "NameShort": [{ "Locale": "en-GB", "Description": "Mohammed ABDULLA HASSAN" }],
+          "Name": [{ "Locale": "en-GB", "Description": "Mohammed ABDULLA HASSAN" }],
           "OfficialType": 4,
-          "TypeLocalized": [
-            { "Locale": "en-GB", "Description": "Fourth official" }
-          ]
+          "TypeLocalized": [{ "Locale": "en-GB", "Description": "Fourth official" }]
         },
         {
           "IdCountry": "ITA",
           "OfficialId": "399108",
-          "NameShort": [
-            { "Locale": "en-GB", "Description": "IRRATI Massimiliano" }
-          ],
+          "NameShort": [{ "Locale": "en-GB", "Description": "IRRATI Massimiliano" }],
           "Name": [{ "Locale": "en-GB", "Description": "IRRATI Massimiliano" }],
           "OfficialType": 5,
           "TypeLocalized": [
@@ -1997,9 +1805,7 @@
           "NameShort": [{ "Locale": "en-GB", "Description": "SAMPAIO Wilton" }],
           "Name": [{ "Locale": "en-GB", "Description": "SAMPAIO Wilton" }],
           "OfficialType": 8,
-          "TypeLocalized": [
-            { "Locale": "en-GB", "Description": "Assistant VAR" }
-          ]
+          "TypeLocalized": [{ "Locale": "en-GB", "Description": "Assistant VAR" }]
         },
         {
           "IdCountry": "USA",
@@ -2012,14 +1818,10 @@
         {
           "IdCountry": "UAE",
           "OfficialId": "348536",
-          "NameShort": [
-            { "Locale": "en-GB", "Description": "ALHAMMADI Mohamed" }
-          ],
+          "NameShort": [{ "Locale": "en-GB", "Description": "ALHAMMADI Mohamed" }],
           "Name": [{ "Locale": "en-GB", "Description": "ALHAMMADI Mohamed" }],
           "OfficialType": 10,
-          "TypeLocalized": [
-            { "Locale": "en-GB", "Description": "Reserve Assistant Referee" }
-          ]
+          "TypeLocalized": [{ "Locale": "en-GB", "Description": "Reserve Assistant Referee" }]
         }
       ],
       "MatchStatus": 0,
@@ -2040,26 +1842,21 @@
         "Temperature": "25",
         "WindSpeed": "16",
         "Type": 9,
-        "TypeLocalized": [
-          { "Locale": "en-GB", "Description": "Partly Cloudy Night" }
-        ]
+        "TypeLocalized": [{ "Locale": "en-GB", "Description": "Partly Cloudy Night" }]
       },
       "Attendance": "43109",
       "IdMatch": "300331525",
       "MatchDay": "4",
       "StageName": [{ "Locale": "fr-FR", "Description": "Phase de groupes" }],
       "GroupName": [{ "Locale": "fr-FR", "Description": "Groupe E" }],
-      "CompetitionName": [
-        { "Locale": "fr-FR", "Description": "Coupe du Monde de la FIFA™" }
-      ],
+      "CompetitionName": [{ "Locale": "fr-FR", "Description": "Coupe du Monde de la FIFA™" }],
       "Date": "2018-06-17T18:00:00Z",
       "LocalDate": "2018-06-17T21:00:00Z",
       "Home": {
         "Score": 1,
         "Side": null,
         "IdTeam": "43924",
-        "PictureUrl":
-          "https://api.fifa.com/api/v1/picture/flags-{format}-{size}/BRA",
+        "PictureUrl": "https://api.fifa.com/api/v1/picture/flags-{format}-{size}/BRA",
         "IdCountry": "BRA",
         "Tactics": "4-2-3-1",
         "TeamType": 1,
@@ -2072,8 +1869,7 @@
         "Score": 1,
         "Side": null,
         "IdTeam": "43971",
-        "PictureUrl":
-          "https://api.fifa.com/api/v1/picture/flags-{format}-{size}/SUI",
+        "PictureUrl": "https://api.fifa.com/api/v1/picture/flags-{format}-{size}/SUI",
         "IdCountry": "SUI",
         "Tactics": "4-2-3-1",
         "TeamType": 1,
@@ -2139,16 +1935,12 @@
           "NameShort": [{ "Locale": "en-GB", "Description": "César RAMOS" }],
           "Name": [{ "Locale": "en-GB", "Description": "César RAMOS" }],
           "OfficialType": 1,
-          "TypeLocalized": [
-            { "Locale": "en-GB", "Description": "Main referee" }
-          ]
+          "TypeLocalized": [{ "Locale": "en-GB", "Description": "Main referee" }]
         },
         {
           "IdCountry": "MEX",
           "OfficialId": "239960",
-          "NameShort": [
-            { "Locale": "en-GB", "Description": "TORRENTERA Marvin" }
-          ],
+          "NameShort": [{ "Locale": "en-GB", "Description": "TORRENTERA Marvin" }],
           "Name": [{ "Locale": "en-GB", "Description": "TORRENTERA Marvin" }],
           "OfficialType": 2,
           "TypeLocalized": [{ "Locale": "en-GB", "Description": "Lineman 1" }]
@@ -2156,9 +1948,7 @@
         {
           "IdCountry": "MEX",
           "OfficialId": "374814",
-          "NameShort": [
-            { "Locale": "en-GB", "Description": "HERNANDEZ Miguel" }
-          ],
+          "NameShort": [{ "Locale": "en-GB", "Description": "HERNANDEZ Miguel" }],
           "Name": [{ "Locale": "en-GB", "Description": "HERNANDEZ Miguel" }],
           "OfficialType": 3,
           "TypeLocalized": [{ "Locale": "en-GB", "Description": "Lineman 2" }]
@@ -2169,9 +1959,7 @@
           "NameShort": [{ "Locale": "en-GB", "Description": "PITTI John" }],
           "Name": [{ "Locale": "en-GB", "Description": "PITTI John" }],
           "OfficialType": 4,
-          "TypeLocalized": [
-            { "Locale": "en-GB", "Description": "Fourth official" }
-          ]
+          "TypeLocalized": [{ "Locale": "en-GB", "Description": "Fourth official" }]
         },
         {
           "IdCountry": "ITA",
@@ -2189,12 +1977,8 @@
         {
           "IdCountry": "ITA",
           "OfficialId": "302232",
-          "NameShort": [
-            { "Locale": "en-GB", "Description": "DI LIBERATORE Elenito" }
-          ],
-          "Name": [
-            { "Locale": "en-GB", "Description": "DI LIBERATORE Elenito" }
-          ],
+          "NameShort": [{ "Locale": "en-GB", "Description": "DI LIBERATORE Elenito" }],
+          "Name": [{ "Locale": "en-GB", "Description": "DI LIBERATORE Elenito" }],
           "OfficialType": 7,
           "TypeLocalized": [{ "Locale": "en-GB", "Description": "Offside VAR" }]
         },
@@ -2204,16 +1988,12 @@
           "NameShort": [{ "Locale": "en-GB", "Description": "Mauro VIGLIANO" }],
           "Name": [{ "Locale": "en-GB", "Description": "Mauro VIGLIANO" }],
           "OfficialType": 8,
-          "TypeLocalized": [
-            { "Locale": "en-GB", "Description": "Assistant VAR" }
-          ]
+          "TypeLocalized": [{ "Locale": "en-GB", "Description": "Assistant VAR" }]
         },
         {
           "IdCountry": "ITA",
           "OfficialId": "284253",
-          "NameShort": [
-            { "Locale": "en-GB", "Description": "ROCCHI Gianluca" }
-          ],
+          "NameShort": [{ "Locale": "en-GB", "Description": "ROCCHI Gianluca" }],
           "Name": [{ "Locale": "en-GB", "Description": "ROCCHI Gianluca" }],
           "OfficialType": 9,
           "TypeLocalized": [{ "Locale": "en-GB", "Description": "Support VAR" }]
@@ -2221,14 +2001,10 @@
         {
           "IdCountry": "PAN",
           "OfficialId": "284271",
-          "NameShort": [
-            { "Locale": "en-GB", "Description": "VICTORIA Gabriel" }
-          ],
+          "NameShort": [{ "Locale": "en-GB", "Description": "VICTORIA Gabriel" }],
           "Name": [{ "Locale": "en-GB", "Description": "VICTORIA Gabriel" }],
           "OfficialType": 10,
-          "TypeLocalized": [
-            { "Locale": "en-GB", "Description": "Reserve Assistant Referee" }
-          ]
+          "TypeLocalized": [{ "Locale": "en-GB", "Description": "Reserve Assistant Referee" }]
         }
       ],
       "MatchStatus": 0,
@@ -2250,17 +2026,14 @@
       "MatchDay": null,
       "StageName": [{ "Locale": "fr-FR", "Description": "Phase de groupes" }],
       "GroupName": [{ "Locale": "fr-FR", "Description": "Groupe F" }],
-      "CompetitionName": [
-        { "Locale": "fr-FR", "Description": "Coupe du Monde de la FIFA™" }
-      ],
+      "CompetitionName": [{ "Locale": "fr-FR", "Description": "Coupe du Monde de la FIFA™" }],
       "Date": "2018-06-18T12:00:00Z",
       "LocalDate": "2018-06-18T15:00:00Z",
       "Home": {
         "Score": null,
         "Side": null,
         "IdTeam": "43970",
-        "PictureUrl":
-          "https://api.fifa.com/api/v1/picture/flags-{format}-{size}/SWE",
+        "PictureUrl": "https://api.fifa.com/api/v1/picture/flags-{format}-{size}/SWE",
         "IdCountry": "SWE",
         "Tactics": null,
         "TeamType": 1,
@@ -2273,15 +2046,12 @@
         "Score": null,
         "Side": null,
         "IdTeam": "43822",
-        "PictureUrl":
-          "https://api.fifa.com/api/v1/picture/flags-{format}-{size}/KOR",
+        "PictureUrl": "https://api.fifa.com/api/v1/picture/flags-{format}-{size}/KOR",
         "IdCountry": "KOR",
         "Tactics": null,
         "TeamType": 1,
         "AgeType": 7,
-        "TeamName": [
-          { "Locale": "fr-FR", "Description": "République de Corée" }
-        ],
+        "TeamName": [{ "Locale": "fr-FR", "Description": "République de Corée" }],
         "FootballType": 0,
         "Gender": 1
       },
@@ -2296,9 +2066,7 @@
       "IsHomeMatch": null,
       "Stadium": {
         "IdStadium": "5001165",
-        "Name": [
-          { "Locale": "en-GB", "Description": "Nizhny Novgorod Stadium" }
-        ],
+        "Name": [{ "Locale": "en-GB", "Description": "Nizhny Novgorod Stadium" }],
         "Capacity": null,
         "WebAddress": null,
         "Built": null,
@@ -2339,9 +2107,7 @@
           "NameShort": [{ "Locale": "fr-FR", "Description": "AGUILAR Joel" }],
           "Name": [{ "Locale": "fr-FR", "Description": "AGUILAR Joel" }],
           "OfficialType": 1,
-          "TypeLocalized": [
-            { "Locale": "en-GB", "Description": "Main referee" }
-          ]
+          "TypeLocalized": [{ "Locale": "en-GB", "Description": "Main referee" }]
         },
         {
           "IdCountry": "SLV",
@@ -2354,12 +2120,8 @@
         {
           "IdCountry": "CRC",
           "OfficialId": "383469",
-          "NameShort": [
-            { "Locale": "en-GB", "Description": "MORA ARAYA Juan Carlos" }
-          ],
-          "Name": [
-            { "Locale": "en-GB", "Description": "MORA ARAYA Juan Carlos" }
-          ],
+          "NameShort": [{ "Locale": "en-GB", "Description": "MORA ARAYA Juan Carlos" }],
+          "Name": [{ "Locale": "en-GB", "Description": "MORA ARAYA Juan Carlos" }],
           "OfficialType": 3,
           "TypeLocalized": [{ "Locale": "en-GB", "Description": "Lineman 2" }]
         },
@@ -2369,9 +2131,7 @@
           "NameShort": [{ "Locale": "fr-FR", "Description": "HAUATA Norbert" }],
           "Name": [{ "Locale": "fr-FR", "Description": "HAUATA Norbert" }],
           "OfficialType": 4,
-          "TypeLocalized": [
-            { "Locale": "en-GB", "Description": "Fourth official" }
-          ]
+          "TypeLocalized": [{ "Locale": "en-GB", "Description": "Fourth official" }]
         },
         {
           "IdCountry": "ARG",
@@ -2392,9 +2152,7 @@
           "NameShort": [{ "Locale": "en-GB", "Description": "BRIAL Bertrand" }],
           "Name": [{ "Locale": "en-GB", "Description": "BRIAL Bertrand" }],
           "OfficialType": 6,
-          "TypeLocalized": [
-            { "Locale": "en-GB", "Description": "Reserve referee" }
-          ]
+          "TypeLocalized": [{ "Locale": "en-GB", "Description": "Reserve referee" }]
         },
         {
           "IdCountry": "QAT",
@@ -2407,16 +2165,10 @@
         {
           "IdCountry": "QAT",
           "OfficialId": "361083",
-          "NameShort": [
-            { "Locale": "en-GB", "Description": "AL JASSIM Abdulrahman" }
-          ],
-          "Name": [
-            { "Locale": "en-GB", "Description": "AL JASSIM Abdulrahman" }
-          ],
+          "NameShort": [{ "Locale": "en-GB", "Description": "AL JASSIM Abdulrahman" }],
+          "Name": [{ "Locale": "en-GB", "Description": "AL JASSIM Abdulrahman" }],
           "OfficialType": 8,
-          "TypeLocalized": [
-            { "Locale": "en-GB", "Description": "Assistant VAR" }
-          ]
+          "TypeLocalized": [{ "Locale": "en-GB", "Description": "Assistant VAR" }]
         },
         {
           "IdCountry": "ITA",
@@ -2446,17 +2198,14 @@
       "MatchDay": null,
       "StageName": [{ "Locale": "fr-FR", "Description": "Phase de groupes" }],
       "GroupName": [{ "Locale": "fr-FR", "Description": "Groupe G" }],
-      "CompetitionName": [
-        { "Locale": "fr-FR", "Description": "Coupe du Monde de la FIFA™" }
-      ],
+      "CompetitionName": [{ "Locale": "fr-FR", "Description": "Coupe du Monde de la FIFA™" }],
       "Date": "2018-06-18T15:00:00Z",
       "LocalDate": "2018-06-18T18:00:00Z",
       "Home": {
         "Score": null,
         "Side": null,
         "IdTeam": "43935",
-        "PictureUrl":
-          "https://api.fifa.com/api/v1/picture/flags-{format}-{size}/BEL",
+        "PictureUrl": "https://api.fifa.com/api/v1/picture/flags-{format}-{size}/BEL",
         "IdCountry": "BEL",
         "Tactics": null,
         "TeamType": 1,
@@ -2469,8 +2218,7 @@
         "Score": null,
         "Side": null,
         "IdTeam": "43914",
-        "PictureUrl":
-          "https://api.fifa.com/api/v1/picture/flags-{format}-{size}/PAN",
+        "PictureUrl": "https://api.fifa.com/api/v1/picture/flags-{format}-{size}/PAN",
         "IdCountry": "PAN",
         "Tactics": null,
         "TeamType": 1,
@@ -2531,16 +2279,12 @@
           "NameShort": [{ "Locale": "en-GB", "Description": "SIKAZWE Janny" }],
           "Name": [{ "Locale": "en-GB", "Description": "SIKAZWE Janny" }],
           "OfficialType": 1,
-          "TypeLocalized": [
-            { "Locale": "en-GB", "Description": "Main referee" }
-          ]
+          "TypeLocalized": [{ "Locale": "en-GB", "Description": "Main referee" }]
         },
         {
           "IdCountry": "ANG",
           "OfficialId": "302677",
-          "NameShort": [
-            { "Locale": "en-GB", "Description": "DOS SANTOS Jerson" }
-          ],
+          "NameShort": [{ "Locale": "en-GB", "Description": "DOS SANTOS Jerson" }],
           "Name": [{ "Locale": "en-GB", "Description": "DOS SANTOS Jerson" }],
           "OfficialType": 2,
           "TypeLocalized": [{ "Locale": "en-GB", "Description": "Lineman 1" }]
@@ -2559,16 +2303,12 @@
           "NameShort": [{ "Locale": "en-GB", "Description": "SATO Ryuji" }],
           "Name": [{ "Locale": "en-GB", "Description": "SATO Ryuji" }],
           "OfficialType": 4,
-          "TypeLocalized": [
-            { "Locale": "en-GB", "Description": "Fourth official" }
-          ]
+          "TypeLocalized": [{ "Locale": "en-GB", "Description": "Fourth official" }]
         },
         {
           "IdCountry": "GER",
           "OfficialId": "373388",
-          "NameShort": [
-            { "Locale": "en-GB", "Description": "Bastian DANKERT" }
-          ],
+          "NameShort": [{ "Locale": "en-GB", "Description": "Bastian DANKERT" }],
           "Name": [{ "Locale": "en-GB", "Description": "Bastian DANKERT" }],
           "OfficialType": 5,
           "TypeLocalized": [
@@ -2584,16 +2324,12 @@
           "NameShort": [{ "Locale": "fr-FR", "Description": "SAGARA Toru" }],
           "Name": [{ "Locale": "fr-FR", "Description": "SAGARA Toru" }],
           "OfficialType": 6,
-          "TypeLocalized": [
-            { "Locale": "en-GB", "Description": "Reserve referee" }
-          ]
+          "TypeLocalized": [{ "Locale": "en-GB", "Description": "Reserve referee" }]
         },
         {
           "IdCountry": "NED",
           "OfficialId": "262674",
-          "NameShort": [
-            { "Locale": "fr-FR", "Description": "VAN ROEKEL Sander" }
-          ],
+          "NameShort": [{ "Locale": "fr-FR", "Description": "VAN ROEKEL Sander" }],
           "Name": [{ "Locale": "fr-FR", "Description": "VAN ROEKEL Sander" }],
           "OfficialType": 7,
           "TypeLocalized": [{ "Locale": "en-GB", "Description": "Offside VAR" }]
@@ -2604,9 +2340,7 @@
           "NameShort": [{ "Locale": "en-GB", "Description": "Felix ZWAYER" }],
           "Name": [{ "Locale": "en-GB", "Description": "Felix ZWAYER" }],
           "OfficialType": 8,
-          "TypeLocalized": [
-            { "Locale": "en-GB", "Description": "Assistant VAR" }
-          ]
+          "TypeLocalized": [{ "Locale": "en-GB", "Description": "Assistant VAR" }]
         },
         {
           "IdCountry": "CUW",
@@ -2636,17 +2370,14 @@
       "MatchDay": null,
       "StageName": [{ "Locale": "fr-FR", "Description": "Phase de groupes" }],
       "GroupName": [{ "Locale": "fr-FR", "Description": "Groupe G" }],
-      "CompetitionName": [
-        { "Locale": "fr-FR", "Description": "Coupe du Monde de la FIFA™" }
-      ],
+      "CompetitionName": [{ "Locale": "fr-FR", "Description": "Coupe du Monde de la FIFA™" }],
       "Date": "2018-06-18T18:00:00Z",
       "LocalDate": "2018-06-18T21:00:00Z",
       "Home": {
         "Score": null,
         "Side": null,
         "IdTeam": "43888",
-        "PictureUrl":
-          "https://api.fifa.com/api/v1/picture/flags-{format}-{size}/TUN",
+        "PictureUrl": "https://api.fifa.com/api/v1/picture/flags-{format}-{size}/TUN",
         "IdCountry": "TUN",
         "Tactics": null,
         "TeamType": 1,
@@ -2659,8 +2390,7 @@
         "Score": null,
         "Side": null,
         "IdTeam": "43942",
-        "PictureUrl":
-          "https://api.fifa.com/api/v1/picture/flags-{format}-{size}/ENG",
+        "PictureUrl": "https://api.fifa.com/api/v1/picture/flags-{format}-{size}/ENG",
         "IdCountry": "ENG",
         "Tactics": null,
         "TeamType": 1,
@@ -2721,16 +2451,12 @@
           "NameShort": [{ "Locale": "en-GB", "Description": "ROLDAN Wilmar" }],
           "Name": [{ "Locale": "en-GB", "Description": "ROLDAN Wilmar" }],
           "OfficialType": 1,
-          "TypeLocalized": [
-            { "Locale": "en-GB", "Description": "Main referee" }
-          ]
+          "TypeLocalized": [{ "Locale": "en-GB", "Description": "Main referee" }]
         },
         {
           "IdCountry": "COL",
           "OfficialId": "349161",
-          "NameShort": [
-            { "Locale": "en-GB", "Description": "GUZMAN Alexander" }
-          ],
+          "NameShort": [{ "Locale": "en-GB", "Description": "GUZMAN Alexander" }],
           "Name": [{ "Locale": "en-GB", "Description": "GUZMAN Alexander" }],
           "OfficialType": 2,
           "TypeLocalized": [{ "Locale": "en-GB", "Description": "Lineman 1" }]
@@ -2738,9 +2464,7 @@
         {
           "IdCountry": "COL",
           "OfficialId": "361235",
-          "NameShort": [
-            { "Locale": "en-GB", "Description": "DE LA CRUZ Cristian" }
-          ],
+          "NameShort": [{ "Locale": "en-GB", "Description": "DE LA CRUZ Cristian" }],
           "Name": [{ "Locale": "en-GB", "Description": "DE LA CRUZ Cristian" }],
           "OfficialType": 3,
           "TypeLocalized": [{ "Locale": "en-GB", "Description": "Lineman 2" }]
@@ -2748,14 +2472,10 @@
         {
           "IdCountry": "CRC",
           "OfficialId": "348562",
-          "NameShort": [
-            { "Locale": "en-GB", "Description": "MONTERO Ricardo" }
-          ],
+          "NameShort": [{ "Locale": "en-GB", "Description": "MONTERO Ricardo" }],
           "Name": [{ "Locale": "en-GB", "Description": "MONTERO Ricardo" }],
           "OfficialType": 4,
-          "TypeLocalized": [
-            { "Locale": "en-GB", "Description": "Fourth official" }
-          ]
+          "TypeLocalized": [{ "Locale": "en-GB", "Description": "Fourth official" }]
         },
         {
           "IdCountry": "BRA",
@@ -2773,21 +2493,15 @@
         {
           "IdCountry": "JPN",
           "OfficialId": "374340",
-          "NameShort": [
-            { "Locale": "en-GB", "Description": "YAMAUCHI Hiroshi" }
-          ],
+          "NameShort": [{ "Locale": "en-GB", "Description": "YAMAUCHI Hiroshi" }],
           "Name": [{ "Locale": "en-GB", "Description": "YAMAUCHI Hiroshi" }],
           "OfficialType": 6,
-          "TypeLocalized": [
-            { "Locale": "en-GB", "Description": "Reserve referee" }
-          ]
+          "TypeLocalized": [{ "Locale": "en-GB", "Description": "Reserve referee" }]
         },
         {
           "IdCountry": "BRA",
           "OfficialId": "288493",
-          "NameShort": [
-            { "Locale": "en-GB", "Description": "DE CARVALHO Emerson" }
-          ],
+          "NameShort": [{ "Locale": "en-GB", "Description": "DE CARVALHO Emerson" }],
           "Name": [{ "Locale": "en-GB", "Description": "DE CARVALHO Emerson" }],
           "OfficialType": 7,
           "TypeLocalized": [{ "Locale": "en-GB", "Description": "Offside VAR" }]
@@ -2798,19 +2512,13 @@
           "NameShort": [{ "Locale": "en-GB", "Description": "VARGAS Gery" }],
           "Name": [{ "Locale": "en-GB", "Description": "VARGAS Gery" }],
           "OfficialType": 8,
-          "TypeLocalized": [
-            { "Locale": "en-GB", "Description": "Assistant VAR" }
-          ]
+          "TypeLocalized": [{ "Locale": "en-GB", "Description": "Assistant VAR" }]
         },
         {
           "IdCountry": "POR",
           "OfficialId": "383651",
-          "NameShort": [
-            { "Locale": "en-GB", "Description": "LOPES MARTINS Tiago Bruno" }
-          ],
-          "Name": [
-            { "Locale": "en-GB", "Description": "LOPES MARTINS Tiago Bruno" }
-          ],
+          "NameShort": [{ "Locale": "en-GB", "Description": "LOPES MARTINS Tiago Bruno" }],
+          "Name": [{ "Locale": "en-GB", "Description": "LOPES MARTINS Tiago Bruno" }],
           "OfficialType": 9,
           "TypeLocalized": [{ "Locale": "en-GB", "Description": "Support VAR" }]
         }
@@ -2834,17 +2542,14 @@
       "MatchDay": null,
       "StageName": [{ "Locale": "fr-FR", "Description": "Phase de groupes" }],
       "GroupName": [{ "Locale": "fr-FR", "Description": "Groupe H" }],
-      "CompetitionName": [
-        { "Locale": "fr-FR", "Description": "Coupe du Monde de la FIFA™" }
-      ],
+      "CompetitionName": [{ "Locale": "fr-FR", "Description": "Coupe du Monde de la FIFA™" }],
       "Date": "2018-06-19T12:00:00Z",
       "LocalDate": "2018-06-19T15:00:00Z",
       "Home": {
         "Score": null,
         "Side": null,
         "IdTeam": "43926",
-        "PictureUrl":
-          "https://api.fifa.com/api/v1/picture/flags-{format}-{size}/COL",
+        "PictureUrl": "https://api.fifa.com/api/v1/picture/flags-{format}-{size}/COL",
         "IdCountry": "COL",
         "Tactics": null,
         "TeamType": 1,
@@ -2857,8 +2562,7 @@
         "Score": null,
         "Side": null,
         "IdTeam": "43819",
-        "PictureUrl":
-          "https://api.fifa.com/api/v1/picture/flags-{format}-{size}/JPN",
+        "PictureUrl": "https://api.fifa.com/api/v1/picture/flags-{format}-{size}/JPN",
         "IdCountry": "JPN",
         "Tactics": null,
         "TeamType": 1,
@@ -2919,16 +2623,12 @@
           "NameShort": [{ "Locale": "en-GB", "Description": "Damir SKOMINA" }],
           "Name": [{ "Locale": "en-GB", "Description": "Damir SKOMINA" }],
           "OfficialType": 1,
-          "TypeLocalized": [
-            { "Locale": "en-GB", "Description": "Main referee" }
-          ]
+          "TypeLocalized": [{ "Locale": "en-GB", "Description": "Main referee" }]
         },
         {
           "IdCountry": "SVN",
           "OfficialId": "361549",
-          "NameShort": [
-            { "Locale": "en-GB", "Description": "Jure PRAPROTNIK" }
-          ],
+          "NameShort": [{ "Locale": "en-GB", "Description": "Jure PRAPROTNIK" }],
           "Name": [{ "Locale": "en-GB", "Description": "Jure PRAPROTNIK" }],
           "OfficialType": 2,
           "TypeLocalized": [{ "Locale": "en-GB", "Description": "Lineman 1" }]
@@ -2944,14 +2644,10 @@
         {
           "IdCountry": "ALG",
           "OfficialId": "328113",
-          "NameShort": [
-            { "Locale": "en-GB", "Description": "ABID CHAREF Mehdi" }
-          ],
+          "NameShort": [{ "Locale": "en-GB", "Description": "ABID CHAREF Mehdi" }],
           "Name": [{ "Locale": "en-GB", "Description": "ABID CHAREF Mehdi" }],
           "OfficialType": 4,
-          "TypeLocalized": [
-            { "Locale": "en-GB", "Description": "Fourth official" }
-          ]
+          "TypeLocalized": [{ "Locale": "en-GB", "Description": "Fourth official" }]
         },
         {
           "IdCountry": "TUN",
@@ -2959,9 +2655,7 @@
           "NameShort": [{ "Locale": "en-GB", "Description": "HMILA Anouar" }],
           "Name": [{ "Locale": "en-GB", "Description": "HMILA Anouar" }],
           "OfficialType": 6,
-          "TypeLocalized": [
-            { "Locale": "en-GB", "Description": "Reserve referee" }
-          ]
+          "TypeLocalized": [{ "Locale": "en-GB", "Description": "Reserve referee" }]
         }
       ],
       "MatchStatus": 1,
@@ -2983,17 +2677,14 @@
       "MatchDay": null,
       "StageName": [{ "Locale": "fr-FR", "Description": "Phase de groupes" }],
       "GroupName": [{ "Locale": "fr-FR", "Description": "Groupe H" }],
-      "CompetitionName": [
-        { "Locale": "fr-FR", "Description": "Coupe du Monde de la FIFA™" }
-      ],
+      "CompetitionName": [{ "Locale": "fr-FR", "Description": "Coupe du Monde de la FIFA™" }],
       "Date": "2018-06-19T15:00:00Z",
       "LocalDate": "2018-06-19T18:00:00Z",
       "Home": {
         "Score": null,
         "Side": null,
         "IdTeam": "43962",
-        "PictureUrl":
-          "https://api.fifa.com/api/v1/picture/flags-{format}-{size}/POL",
+        "PictureUrl": "https://api.fifa.com/api/v1/picture/flags-{format}-{size}/POL",
         "IdCountry": "POL",
         "Tactics": null,
         "TeamType": 1,
@@ -3006,8 +2697,7 @@
         "Score": null,
         "Side": null,
         "IdTeam": "43879",
-        "PictureUrl":
-          "https://api.fifa.com/api/v1/picture/flags-{format}-{size}/SEN",
+        "PictureUrl": "https://api.fifa.com/api/v1/picture/flags-{format}-{size}/SEN",
         "IdCountry": "SEN",
         "Tactics": null,
         "TeamType": 1,
@@ -3078,19 +2768,13 @@
             }
           ],
           "OfficialType": 1,
-          "TypeLocalized": [
-            { "Locale": "en-GB", "Description": "Main referee" }
-          ]
+          "TypeLocalized": [{ "Locale": "en-GB", "Description": "Main referee" }]
         },
         {
           "IdCountry": "BHR",
           "OfficialId": "280121",
-          "NameShort": [
-            { "Locale": "fr-FR", "Description": "ABDULLA TULEFAT Yaser Khalil" }
-          ],
-          "Name": [
-            { "Locale": "fr-FR", "Description": "ABDULLA TULEFAT Yaser Khalil" }
-          ],
+          "NameShort": [{ "Locale": "fr-FR", "Description": "ABDULLA TULEFAT Yaser Khalil" }],
+          "Name": [{ "Locale": "fr-FR", "Description": "ABDULLA TULEFAT Yaser Khalil" }],
           "OfficialType": 2,
           "TypeLocalized": [{ "Locale": "en-GB", "Description": "Lineman 1" }]
         },
@@ -3105,28 +2789,18 @@
         {
           "IdCountry": "QAT",
           "OfficialId": "361083",
-          "NameShort": [
-            { "Locale": "en-GB", "Description": "AL JASSIM Abdulrahman" }
-          ],
-          "Name": [
-            { "Locale": "en-GB", "Description": "AL JASSIM Abdulrahman" }
-          ],
+          "NameShort": [{ "Locale": "en-GB", "Description": "AL JASSIM Abdulrahman" }],
+          "Name": [{ "Locale": "en-GB", "Description": "AL JASSIM Abdulrahman" }],
           "OfficialType": 4,
-          "TypeLocalized": [
-            { "Locale": "en-GB", "Description": "Fourth official" }
-          ]
+          "TypeLocalized": [{ "Locale": "en-GB", "Description": "Fourth official" }]
         },
         {
           "IdCountry": "UAE",
           "OfficialId": "348536",
-          "NameShort": [
-            { "Locale": "en-GB", "Description": "ALHAMMADI Mohamed" }
-          ],
+          "NameShort": [{ "Locale": "en-GB", "Description": "ALHAMMADI Mohamed" }],
           "Name": [{ "Locale": "en-GB", "Description": "ALHAMMADI Mohamed" }],
           "OfficialType": 6,
-          "TypeLocalized": [
-            { "Locale": "en-GB", "Description": "Reserve referee" }
-          ]
+          "TypeLocalized": [{ "Locale": "en-GB", "Description": "Reserve referee" }]
         }
       ],
       "MatchStatus": 1,
@@ -3148,17 +2822,14 @@
       "MatchDay": null,
       "StageName": [{ "Locale": "fr-FR", "Description": "Phase de groupes" }],
       "GroupName": [{ "Locale": "fr-FR", "Description": "Groupe A" }],
-      "CompetitionName": [
-        { "Locale": "fr-FR", "Description": "Coupe du Monde de la FIFA™" }
-      ],
+      "CompetitionName": [{ "Locale": "fr-FR", "Description": "Coupe du Monde de la FIFA™" }],
       "Date": "2018-06-19T18:00:00Z",
       "LocalDate": "2018-06-19T21:00:00Z",
       "Home": {
         "Score": null,
         "Side": null,
         "IdTeam": "43965",
-        "PictureUrl":
-          "https://api.fifa.com/api/v1/picture/flags-{format}-{size}/RUS",
+        "PictureUrl": "https://api.fifa.com/api/v1/picture/flags-{format}-{size}/RUS",
         "IdCountry": "RUS",
         "Tactics": null,
         "TeamType": 1,
@@ -3171,8 +2842,7 @@
         "Score": null,
         "Side": null,
         "IdTeam": "43855",
-        "PictureUrl":
-          "https://api.fifa.com/api/v1/picture/flags-{format}-{size}/EGY",
+        "PictureUrl": "https://api.fifa.com/api/v1/picture/flags-{format}-{size}/EGY",
         "IdCountry": "EGY",
         "Tactics": null,
         "TeamType": 1,
@@ -3192,9 +2862,7 @@
       "IsHomeMatch": null,
       "Stadium": {
         "IdStadium": "5031303",
-        "Name": [
-          { "Locale": "fr-FR", "Description": "Stade de Saint-Pétersbourg" }
-        ],
+        "Name": [{ "Locale": "fr-FR", "Description": "Stade de Saint-Pétersbourg" }],
         "Capacity": null,
         "WebAddress": null,
         "Built": null,
@@ -3232,21 +2900,15 @@
         {
           "IdCountry": "ARG",
           "OfficialId": "315089",
-          "NameShort": [
-            { "Locale": "en-GB", "Description": "CACERES Enrique" }
-          ],
+          "NameShort": [{ "Locale": "en-GB", "Description": "CACERES Enrique" }],
           "Name": [{ "Locale": "en-GB", "Description": "CACERES Enrique" }],
           "OfficialType": 1,
-          "TypeLocalized": [
-            { "Locale": "en-GB", "Description": "Main referee" }
-          ]
+          "TypeLocalized": [{ "Locale": "en-GB", "Description": "Main referee" }]
         },
         {
           "IdCountry": "PAR",
           "OfficialId": "360921",
-          "NameShort": [
-            { "Locale": "en-GB", "Description": "CARDOZO Eduardo" }
-          ],
+          "NameShort": [{ "Locale": "en-GB", "Description": "CARDOZO Eduardo" }],
           "Name": [{ "Locale": "en-GB", "Description": "CARDOZO Eduardo" }],
           "OfficialType": 2,
           "TypeLocalized": [{ "Locale": "en-GB", "Description": "Lineman 1" }]
@@ -3265,9 +2927,7 @@
           "NameShort": [{ "Locale": "en-GB", "Description": "CAKIR Cuneyt" }],
           "Name": [{ "Locale": "en-GB", "Description": "CAKIR Cuneyt" }],
           "OfficialType": 4,
-          "TypeLocalized": [
-            { "Locale": "en-GB", "Description": "Fourth official" }
-          ]
+          "TypeLocalized": [{ "Locale": "en-GB", "Description": "Fourth official" }]
         },
         {
           "IdCountry": "TUR",
@@ -3275,9 +2935,7 @@
           "NameShort": [{ "Locale": "en-GB", "Description": "DURAN Bahattin" }],
           "Name": [{ "Locale": "en-GB", "Description": "DURAN Bahattin" }],
           "OfficialType": 6,
-          "TypeLocalized": [
-            { "Locale": "en-GB", "Description": "Reserve referee" }
-          ]
+          "TypeLocalized": [{ "Locale": "en-GB", "Description": "Reserve referee" }]
         }
       ],
       "MatchStatus": 1,
@@ -3299,17 +2957,14 @@
       "MatchDay": null,
       "StageName": [{ "Locale": "fr-FR", "Description": "Phase de groupes" }],
       "GroupName": [{ "Locale": "fr-FR", "Description": "Groupe B" }],
-      "CompetitionName": [
-        { "Locale": "fr-FR", "Description": "Coupe du Monde de la FIFA™" }
-      ],
+      "CompetitionName": [{ "Locale": "fr-FR", "Description": "Coupe du Monde de la FIFA™" }],
       "Date": "2018-06-20T12:00:00Z",
       "LocalDate": "2018-06-20T15:00:00Z",
       "Home": {
         "Score": null,
         "Side": null,
         "IdTeam": "43963",
-        "PictureUrl":
-          "https://api.fifa.com/api/v1/picture/flags-{format}-{size}/POR",
+        "PictureUrl": "https://api.fifa.com/api/v1/picture/flags-{format}-{size}/POR",
         "IdCountry": "POR",
         "Tactics": null,
         "TeamType": 1,
@@ -3322,8 +2977,7 @@
         "Score": null,
         "Side": null,
         "IdTeam": "43872",
-        "PictureUrl":
-          "https://api.fifa.com/api/v1/picture/flags-{format}-{size}/MAR",
+        "PictureUrl": "https://api.fifa.com/api/v1/picture/flags-{format}-{size}/MAR",
         "IdCountry": "MAR",
         "Tactics": null,
         "TeamType": 1,
@@ -3397,17 +3051,14 @@
       "MatchDay": null,
       "StageName": [{ "Locale": "fr-FR", "Description": "Phase de groupes" }],
       "GroupName": [{ "Locale": "fr-FR", "Description": "Groupe A" }],
-      "CompetitionName": [
-        { "Locale": "fr-FR", "Description": "Coupe du Monde de la FIFA™" }
-      ],
+      "CompetitionName": [{ "Locale": "fr-FR", "Description": "Coupe du Monde de la FIFA™" }],
       "Date": "2018-06-20T15:00:00Z",
       "LocalDate": "2018-06-20T18:00:00Z",
       "Home": {
         "Score": null,
         "Side": null,
         "IdTeam": "43930",
-        "PictureUrl":
-          "https://api.fifa.com/api/v1/picture/flags-{format}-{size}/URU",
+        "PictureUrl": "https://api.fifa.com/api/v1/picture/flags-{format}-{size}/URU",
         "IdCountry": "URU",
         "Tactics": null,
         "TeamType": 1,
@@ -3420,8 +3071,7 @@
         "Score": null,
         "Side": null,
         "IdTeam": "43835",
-        "PictureUrl":
-          "https://api.fifa.com/api/v1/picture/flags-{format}-{size}/KSA",
+        "PictureUrl": "https://api.fifa.com/api/v1/picture/flags-{format}-{size}/KSA",
         "IdCountry": "KSA",
         "Tactics": null,
         "TeamType": 1,
@@ -3495,17 +3145,14 @@
       "MatchDay": null,
       "StageName": [{ "Locale": "fr-FR", "Description": "Phase de groupes" }],
       "GroupName": [{ "Locale": "fr-FR", "Description": "Groupe B" }],
-      "CompetitionName": [
-        { "Locale": "fr-FR", "Description": "Coupe du Monde de la FIFA™" }
-      ],
+      "CompetitionName": [{ "Locale": "fr-FR", "Description": "Coupe du Monde de la FIFA™" }],
       "Date": "2018-06-20T18:00:00Z",
       "LocalDate": "2018-06-20T21:00:00Z",
       "Home": {
         "Score": null,
         "Side": null,
         "IdTeam": "43817",
-        "PictureUrl":
-          "https://api.fifa.com/api/v1/picture/flags-{format}-{size}/IRN",
+        "PictureUrl": "https://api.fifa.com/api/v1/picture/flags-{format}-{size}/IRN",
         "IdCountry": "IRN",
         "Tactics": null,
         "TeamType": 1,
@@ -3518,8 +3165,7 @@
         "Score": null,
         "Side": null,
         "IdTeam": "43969",
-        "PictureUrl":
-          "https://api.fifa.com/api/v1/picture/flags-{format}-{size}/ESP",
+        "PictureUrl": "https://api.fifa.com/api/v1/picture/flags-{format}-{size}/ESP",
         "IdCountry": "ESP",
         "Tactics": null,
         "TeamType": 1,
@@ -3593,17 +3239,14 @@
       "MatchDay": null,
       "StageName": [{ "Locale": "fr-FR", "Description": "Phase de groupes" }],
       "GroupName": [{ "Locale": "fr-FR", "Description": "Groupe C" }],
-      "CompetitionName": [
-        { "Locale": "fr-FR", "Description": "Coupe du Monde de la FIFA™" }
-      ],
+      "CompetitionName": [{ "Locale": "fr-FR", "Description": "Coupe du Monde de la FIFA™" }],
       "Date": "2018-06-21T12:00:00Z",
       "LocalDate": "2018-06-21T16:00:00Z",
       "Home": {
         "Score": null,
         "Side": null,
         "IdTeam": "43941",
-        "PictureUrl":
-          "https://api.fifa.com/api/v1/picture/flags-{format}-{size}/DEN",
+        "PictureUrl": "https://api.fifa.com/api/v1/picture/flags-{format}-{size}/DEN",
         "IdCountry": "DEN",
         "Tactics": null,
         "TeamType": 1,
@@ -3616,8 +3259,7 @@
         "Score": null,
         "Side": null,
         "IdTeam": "43976",
-        "PictureUrl":
-          "https://api.fifa.com/api/v1/picture/flags-{format}-{size}/AUS",
+        "PictureUrl": "https://api.fifa.com/api/v1/picture/flags-{format}-{size}/AUS",
         "IdCountry": "AUS",
         "Tactics": null,
         "TeamType": 1,
@@ -3691,17 +3333,14 @@
       "MatchDay": null,
       "StageName": [{ "Locale": "fr-FR", "Description": "Phase de groupes" }],
       "GroupName": [{ "Locale": "fr-FR", "Description": "Groupe C" }],
-      "CompetitionName": [
-        { "Locale": "fr-FR", "Description": "Coupe du Monde de la FIFA™" }
-      ],
+      "CompetitionName": [{ "Locale": "fr-FR", "Description": "Coupe du Monde de la FIFA™" }],
       "Date": "2018-06-21T15:00:00Z",
       "LocalDate": "2018-06-21T20:00:00Z",
       "Home": {
         "Score": null,
         "Side": null,
         "IdTeam": "43946",
-        "PictureUrl":
-          "https://api.fifa.com/api/v1/picture/flags-{format}-{size}/FRA",
+        "PictureUrl": "https://api.fifa.com/api/v1/picture/flags-{format}-{size}/FRA",
         "IdCountry": "FRA",
         "Tactics": null,
         "TeamType": 1,
@@ -3714,8 +3353,7 @@
         "Score": null,
         "Side": null,
         "IdTeam": "43929",
-        "PictureUrl":
-          "https://api.fifa.com/api/v1/picture/flags-{format}-{size}/PER",
+        "PictureUrl": "https://api.fifa.com/api/v1/picture/flags-{format}-{size}/PER",
         "IdCountry": "PER",
         "Tactics": null,
         "TeamType": 1,
@@ -3789,17 +3427,14 @@
       "MatchDay": null,
       "StageName": [{ "Locale": "fr-FR", "Description": "Phase de groupes" }],
       "GroupName": [{ "Locale": "fr-FR", "Description": "Groupe D" }],
-      "CompetitionName": [
-        { "Locale": "fr-FR", "Description": "Coupe du Monde de la FIFA™" }
-      ],
+      "CompetitionName": [{ "Locale": "fr-FR", "Description": "Coupe du Monde de la FIFA™" }],
       "Date": "2018-06-21T18:00:00Z",
       "LocalDate": "2018-06-21T21:00:00Z",
       "Home": {
         "Score": null,
         "Side": null,
         "IdTeam": "43922",
-        "PictureUrl":
-          "https://api.fifa.com/api/v1/picture/flags-{format}-{size}/ARG",
+        "PictureUrl": "https://api.fifa.com/api/v1/picture/flags-{format}-{size}/ARG",
         "IdCountry": "ARG",
         "Tactics": null,
         "TeamType": 1,
@@ -3812,8 +3447,7 @@
         "Score": null,
         "Side": null,
         "IdTeam": "43938",
-        "PictureUrl":
-          "https://api.fifa.com/api/v1/picture/flags-{format}-{size}/CRO",
+        "PictureUrl": "https://api.fifa.com/api/v1/picture/flags-{format}-{size}/CRO",
         "IdCountry": "CRO",
         "Tactics": null,
         "TeamType": 1,
@@ -3833,9 +3467,7 @@
       "IsHomeMatch": null,
       "Stadium": {
         "IdStadium": "5001165",
-        "Name": [
-          { "Locale": "en-GB", "Description": "Nizhny Novgorod Stadium" }
-        ],
+        "Name": [{ "Locale": "en-GB", "Description": "Nizhny Novgorod Stadium" }],
         "Capacity": null,
         "WebAddress": null,
         "Built": null,
@@ -3889,17 +3521,14 @@
       "MatchDay": null,
       "StageName": [{ "Locale": "fr-FR", "Description": "Phase de groupes" }],
       "GroupName": [{ "Locale": "fr-FR", "Description": "Groupe E" }],
-      "CompetitionName": [
-        { "Locale": "fr-FR", "Description": "Coupe du Monde de la FIFA™" }
-      ],
+      "CompetitionName": [{ "Locale": "fr-FR", "Description": "Coupe du Monde de la FIFA™" }],
       "Date": "2018-06-22T12:00:00Z",
       "LocalDate": "2018-06-22T15:00:00Z",
       "Home": {
         "Score": null,
         "Side": null,
         "IdTeam": "43924",
-        "PictureUrl":
-          "https://api.fifa.com/api/v1/picture/flags-{format}-{size}/BRA",
+        "PictureUrl": "https://api.fifa.com/api/v1/picture/flags-{format}-{size}/BRA",
         "IdCountry": "BRA",
         "Tactics": null,
         "TeamType": 1,
@@ -3912,8 +3541,7 @@
         "Score": null,
         "Side": null,
         "IdTeam": "43901",
-        "PictureUrl":
-          "https://api.fifa.com/api/v1/picture/flags-{format}-{size}/CRC",
+        "PictureUrl": "https://api.fifa.com/api/v1/picture/flags-{format}-{size}/CRC",
         "IdCountry": "CRC",
         "Tactics": null,
         "TeamType": 1,
@@ -3933,9 +3561,7 @@
       "IsHomeMatch": null,
       "Stadium": {
         "IdStadium": "5031303",
-        "Name": [
-          { "Locale": "fr-FR", "Description": "Stade de Saint-Pétersbourg" }
-        ],
+        "Name": [{ "Locale": "fr-FR", "Description": "Stade de Saint-Pétersbourg" }],
         "Capacity": null,
         "WebAddress": null,
         "Built": null,
@@ -3989,17 +3615,14 @@
       "MatchDay": null,
       "StageName": [{ "Locale": "fr-FR", "Description": "Phase de groupes" }],
       "GroupName": [{ "Locale": "fr-FR", "Description": "Groupe D" }],
-      "CompetitionName": [
-        { "Locale": "fr-FR", "Description": "Coupe du Monde de la FIFA™" }
-      ],
+      "CompetitionName": [{ "Locale": "fr-FR", "Description": "Coupe du Monde de la FIFA™" }],
       "Date": "2018-06-22T15:00:00Z",
       "LocalDate": "2018-06-22T18:00:00Z",
       "Home": {
         "Score": null,
         "Side": null,
         "IdTeam": "43876",
-        "PictureUrl":
-          "https://api.fifa.com/api/v1/picture/flags-{format}-{size}/NGA",
+        "PictureUrl": "https://api.fifa.com/api/v1/picture/flags-{format}-{size}/NGA",
         "IdCountry": "NGA",
         "Tactics": null,
         "TeamType": 1,
@@ -4012,8 +3635,7 @@
         "Score": null,
         "Side": null,
         "IdTeam": "43951",
-        "PictureUrl":
-          "https://api.fifa.com/api/v1/picture/flags-{format}-{size}/ISL",
+        "PictureUrl": "https://api.fifa.com/api/v1/picture/flags-{format}-{size}/ISL",
         "IdCountry": "ISL",
         "Tactics": null,
         "TeamType": 1,
@@ -4087,17 +3709,14 @@
       "MatchDay": null,
       "StageName": [{ "Locale": "fr-FR", "Description": "Phase de groupes" }],
       "GroupName": [{ "Locale": "fr-FR", "Description": "Groupe E" }],
-      "CompetitionName": [
-        { "Locale": "fr-FR", "Description": "Coupe du Monde de la FIFA™" }
-      ],
+      "CompetitionName": [{ "Locale": "fr-FR", "Description": "Coupe du Monde de la FIFA™" }],
       "Date": "2018-06-22T18:00:00Z",
       "LocalDate": "2018-06-22T20:00:00Z",
       "Home": {
         "Score": null,
         "Side": null,
         "IdTeam": "1902465",
-        "PictureUrl":
-          "https://api.fifa.com/api/v1/picture/flags-{format}-{size}/SRB",
+        "PictureUrl": "https://api.fifa.com/api/v1/picture/flags-{format}-{size}/SRB",
         "IdCountry": "SRB",
         "Tactics": null,
         "TeamType": 1,
@@ -4110,8 +3729,7 @@
         "Score": null,
         "Side": null,
         "IdTeam": "43971",
-        "PictureUrl":
-          "https://api.fifa.com/api/v1/picture/flags-{format}-{size}/SUI",
+        "PictureUrl": "https://api.fifa.com/api/v1/picture/flags-{format}-{size}/SUI",
         "IdCountry": "SUI",
         "Tactics": null,
         "TeamType": 1,
@@ -4185,17 +3803,14 @@
       "MatchDay": null,
       "StageName": [{ "Locale": "fr-FR", "Description": "Phase de groupes" }],
       "GroupName": [{ "Locale": "fr-FR", "Description": "Groupe G" }],
-      "CompetitionName": [
-        { "Locale": "fr-FR", "Description": "Coupe du Monde de la FIFA™" }
-      ],
+      "CompetitionName": [{ "Locale": "fr-FR", "Description": "Coupe du Monde de la FIFA™" }],
       "Date": "2018-06-23T12:00:00Z",
       "LocalDate": "2018-06-23T15:00:00Z",
       "Home": {
         "Score": null,
         "Side": null,
         "IdTeam": "43935",
-        "PictureUrl":
-          "https://api.fifa.com/api/v1/picture/flags-{format}-{size}/BEL",
+        "PictureUrl": "https://api.fifa.com/api/v1/picture/flags-{format}-{size}/BEL",
         "IdCountry": "BEL",
         "Tactics": null,
         "TeamType": 1,
@@ -4208,8 +3823,7 @@
         "Score": null,
         "Side": null,
         "IdTeam": "43888",
-        "PictureUrl":
-          "https://api.fifa.com/api/v1/picture/flags-{format}-{size}/TUN",
+        "PictureUrl": "https://api.fifa.com/api/v1/picture/flags-{format}-{size}/TUN",
         "IdCountry": "TUN",
         "Tactics": null,
         "TeamType": 1,
@@ -4283,24 +3897,19 @@
       "MatchDay": null,
       "StageName": [{ "Locale": "fr-FR", "Description": "Phase de groupes" }],
       "GroupName": [{ "Locale": "fr-FR", "Description": "Groupe F" }],
-      "CompetitionName": [
-        { "Locale": "fr-FR", "Description": "Coupe du Monde de la FIFA™" }
-      ],
+      "CompetitionName": [{ "Locale": "fr-FR", "Description": "Coupe du Monde de la FIFA™" }],
       "Date": "2018-06-23T15:00:00Z",
       "LocalDate": "2018-06-23T18:00:00Z",
       "Home": {
         "Score": null,
         "Side": null,
         "IdTeam": "43822",
-        "PictureUrl":
-          "https://api.fifa.com/api/v1/picture/flags-{format}-{size}/KOR",
+        "PictureUrl": "https://api.fifa.com/api/v1/picture/flags-{format}-{size}/KOR",
         "IdCountry": "KOR",
         "Tactics": null,
         "TeamType": 1,
         "AgeType": 7,
-        "TeamName": [
-          { "Locale": "fr-FR", "Description": "République de Corée" }
-        ],
+        "TeamName": [{ "Locale": "fr-FR", "Description": "République de Corée" }],
         "FootballType": 0,
         "Gender": 1
       },
@@ -4308,8 +3917,7 @@
         "Score": null,
         "Side": null,
         "IdTeam": "43911",
-        "PictureUrl":
-          "https://api.fifa.com/api/v1/picture/flags-{format}-{size}/MEX",
+        "PictureUrl": "https://api.fifa.com/api/v1/picture/flags-{format}-{size}/MEX",
         "IdCountry": "MEX",
         "Tactics": null,
         "TeamType": 1,
@@ -4383,17 +3991,14 @@
       "MatchDay": null,
       "StageName": [{ "Locale": "fr-FR", "Description": "Phase de groupes" }],
       "GroupName": [{ "Locale": "fr-FR", "Description": "Groupe F" }],
-      "CompetitionName": [
-        { "Locale": "fr-FR", "Description": "Coupe du Monde de la FIFA™" }
-      ],
+      "CompetitionName": [{ "Locale": "fr-FR", "Description": "Coupe du Monde de la FIFA™" }],
       "Date": "2018-06-23T18:00:00Z",
       "LocalDate": "2018-06-23T21:00:00Z",
       "Home": {
         "Score": null,
         "Side": null,
         "IdTeam": "43948",
-        "PictureUrl":
-          "https://api.fifa.com/api/v1/picture/flags-{format}-{size}/GER",
+        "PictureUrl": "https://api.fifa.com/api/v1/picture/flags-{format}-{size}/GER",
         "IdCountry": "GER",
         "Tactics": null,
         "TeamType": 1,
@@ -4406,8 +4011,7 @@
         "Score": null,
         "Side": null,
         "IdTeam": "43970",
-        "PictureUrl":
-          "https://api.fifa.com/api/v1/picture/flags-{format}-{size}/SWE",
+        "PictureUrl": "https://api.fifa.com/api/v1/picture/flags-{format}-{size}/SWE",
         "IdCountry": "SWE",
         "Tactics": null,
         "TeamType": 1,
@@ -4481,17 +4085,14 @@
       "MatchDay": null,
       "StageName": [{ "Locale": "fr-FR", "Description": "Phase de groupes" }],
       "GroupName": [{ "Locale": "fr-FR", "Description": "Groupe G" }],
-      "CompetitionName": [
-        { "Locale": "fr-FR", "Description": "Coupe du Monde de la FIFA™" }
-      ],
+      "CompetitionName": [{ "Locale": "fr-FR", "Description": "Coupe du Monde de la FIFA™" }],
       "Date": "2018-06-24T12:00:00Z",
       "LocalDate": "2018-06-24T15:00:00Z",
       "Home": {
         "Score": null,
         "Side": null,
         "IdTeam": "43942",
-        "PictureUrl":
-          "https://api.fifa.com/api/v1/picture/flags-{format}-{size}/ENG",
+        "PictureUrl": "https://api.fifa.com/api/v1/picture/flags-{format}-{size}/ENG",
         "IdCountry": "ENG",
         "Tactics": null,
         "TeamType": 1,
@@ -4504,8 +4105,7 @@
         "Score": null,
         "Side": null,
         "IdTeam": "43914",
-        "PictureUrl":
-          "https://api.fifa.com/api/v1/picture/flags-{format}-{size}/PAN",
+        "PictureUrl": "https://api.fifa.com/api/v1/picture/flags-{format}-{size}/PAN",
         "IdCountry": "PAN",
         "Tactics": null,
         "TeamType": 1,
@@ -4525,9 +4125,7 @@
       "IsHomeMatch": null,
       "Stadium": {
         "IdStadium": "5001165",
-        "Name": [
-          { "Locale": "en-GB", "Description": "Nizhny Novgorod Stadium" }
-        ],
+        "Name": [{ "Locale": "en-GB", "Description": "Nizhny Novgorod Stadium" }],
         "Capacity": null,
         "WebAddress": null,
         "Built": null,
@@ -4581,17 +4179,14 @@
       "MatchDay": null,
       "StageName": [{ "Locale": "fr-FR", "Description": "Phase de groupes" }],
       "GroupName": [{ "Locale": "fr-FR", "Description": "Groupe H" }],
-      "CompetitionName": [
-        { "Locale": "fr-FR", "Description": "Coupe du Monde de la FIFA™" }
-      ],
+      "CompetitionName": [{ "Locale": "fr-FR", "Description": "Coupe du Monde de la FIFA™" }],
       "Date": "2018-06-24T15:00:00Z",
       "LocalDate": "2018-06-24T20:00:00Z",
       "Home": {
         "Score": null,
         "Side": null,
         "IdTeam": "43819",
-        "PictureUrl":
-          "https://api.fifa.com/api/v1/picture/flags-{format}-{size}/JPN",
+        "PictureUrl": "https://api.fifa.com/api/v1/picture/flags-{format}-{size}/JPN",
         "IdCountry": "JPN",
         "Tactics": null,
         "TeamType": 1,
@@ -4604,8 +4199,7 @@
         "Score": null,
         "Side": null,
         "IdTeam": "43879",
-        "PictureUrl":
-          "https://api.fifa.com/api/v1/picture/flags-{format}-{size}/SEN",
+        "PictureUrl": "https://api.fifa.com/api/v1/picture/flags-{format}-{size}/SEN",
         "IdCountry": "SEN",
         "Tactics": null,
         "TeamType": 1,
@@ -4679,17 +4273,14 @@
       "MatchDay": null,
       "StageName": [{ "Locale": "fr-FR", "Description": "Phase de groupes" }],
       "GroupName": [{ "Locale": "fr-FR", "Description": "Groupe H" }],
-      "CompetitionName": [
-        { "Locale": "fr-FR", "Description": "Coupe du Monde de la FIFA™" }
-      ],
+      "CompetitionName": [{ "Locale": "fr-FR", "Description": "Coupe du Monde de la FIFA™" }],
       "Date": "2018-06-24T18:00:00Z",
       "LocalDate": "2018-06-24T21:00:00Z",
       "Home": {
         "Score": null,
         "Side": null,
         "IdTeam": "43962",
-        "PictureUrl":
-          "https://api.fifa.com/api/v1/picture/flags-{format}-{size}/POL",
+        "PictureUrl": "https://api.fifa.com/api/v1/picture/flags-{format}-{size}/POL",
         "IdCountry": "POL",
         "Tactics": null,
         "TeamType": 1,
@@ -4702,8 +4293,7 @@
         "Score": null,
         "Side": null,
         "IdTeam": "43926",
-        "PictureUrl":
-          "https://api.fifa.com/api/v1/picture/flags-{format}-{size}/COL",
+        "PictureUrl": "https://api.fifa.com/api/v1/picture/flags-{format}-{size}/COL",
         "IdCountry": "COL",
         "Tactics": null,
         "TeamType": 1,
@@ -4777,17 +4367,14 @@
       "MatchDay": null,
       "StageName": [{ "Locale": "fr-FR", "Description": "Phase de groupes" }],
       "GroupName": [{ "Locale": "fr-FR", "Description": "Groupe A" }],
-      "CompetitionName": [
-        { "Locale": "fr-FR", "Description": "Coupe du Monde de la FIFA™" }
-      ],
+      "CompetitionName": [{ "Locale": "fr-FR", "Description": "Coupe du Monde de la FIFA™" }],
       "Date": "2018-06-25T14:00:00Z",
       "LocalDate": "2018-06-25T18:00:00Z",
       "Home": {
         "Score": null,
         "Side": null,
         "IdTeam": "43930",
-        "PictureUrl":
-          "https://api.fifa.com/api/v1/picture/flags-{format}-{size}/URU",
+        "PictureUrl": "https://api.fifa.com/api/v1/picture/flags-{format}-{size}/URU",
         "IdCountry": "URU",
         "Tactics": null,
         "TeamType": 1,
@@ -4800,8 +4387,7 @@
         "Score": null,
         "Side": null,
         "IdTeam": "43965",
-        "PictureUrl":
-          "https://api.fifa.com/api/v1/picture/flags-{format}-{size}/RUS",
+        "PictureUrl": "https://api.fifa.com/api/v1/picture/flags-{format}-{size}/RUS",
         "IdCountry": "RUS",
         "Tactics": null,
         "TeamType": 1,
@@ -4875,17 +4461,14 @@
       "MatchDay": null,
       "StageName": [{ "Locale": "fr-FR", "Description": "Phase de groupes" }],
       "GroupName": [{ "Locale": "fr-FR", "Description": "Groupe A" }],
-      "CompetitionName": [
-        { "Locale": "fr-FR", "Description": "Coupe du Monde de la FIFA™" }
-      ],
+      "CompetitionName": [{ "Locale": "fr-FR", "Description": "Coupe du Monde de la FIFA™" }],
       "Date": "2018-06-25T14:00:00Z",
       "LocalDate": "2018-06-25T17:00:00Z",
       "Home": {
         "Score": null,
         "Side": null,
         "IdTeam": "43835",
-        "PictureUrl":
-          "https://api.fifa.com/api/v1/picture/flags-{format}-{size}/KSA",
+        "PictureUrl": "https://api.fifa.com/api/v1/picture/flags-{format}-{size}/KSA",
         "IdCountry": "KSA",
         "Tactics": null,
         "TeamType": 1,
@@ -4898,8 +4481,7 @@
         "Score": null,
         "Side": null,
         "IdTeam": "43855",
-        "PictureUrl":
-          "https://api.fifa.com/api/v1/picture/flags-{format}-{size}/EGY",
+        "PictureUrl": "https://api.fifa.com/api/v1/picture/flags-{format}-{size}/EGY",
         "IdCountry": "EGY",
         "Tactics": null,
         "TeamType": 1,
@@ -4973,17 +4555,14 @@
       "MatchDay": null,
       "StageName": [{ "Locale": "fr-FR", "Description": "Phase de groupes" }],
       "GroupName": [{ "Locale": "fr-FR", "Description": "Groupe B" }],
-      "CompetitionName": [
-        { "Locale": "fr-FR", "Description": "Coupe du Monde de la FIFA™" }
-      ],
+      "CompetitionName": [{ "Locale": "fr-FR", "Description": "Coupe du Monde de la FIFA™" }],
       "Date": "2018-06-25T18:00:00Z",
       "LocalDate": "2018-06-25T20:00:00Z",
       "Home": {
         "Score": null,
         "Side": null,
         "IdTeam": "43969",
-        "PictureUrl":
-          "https://api.fifa.com/api/v1/picture/flags-{format}-{size}/ESP",
+        "PictureUrl": "https://api.fifa.com/api/v1/picture/flags-{format}-{size}/ESP",
         "IdCountry": "ESP",
         "Tactics": null,
         "TeamType": 1,
@@ -4996,8 +4575,7 @@
         "Score": null,
         "Side": null,
         "IdTeam": "43872",
-        "PictureUrl":
-          "https://api.fifa.com/api/v1/picture/flags-{format}-{size}/MAR",
+        "PictureUrl": "https://api.fifa.com/api/v1/picture/flags-{format}-{size}/MAR",
         "IdCountry": "MAR",
         "Tactics": null,
         "TeamType": 1,
@@ -5071,17 +4649,14 @@
       "MatchDay": null,
       "StageName": [{ "Locale": "fr-FR", "Description": "Phase de groupes" }],
       "GroupName": [{ "Locale": "fr-FR", "Description": "Groupe B" }],
-      "CompetitionName": [
-        { "Locale": "fr-FR", "Description": "Coupe du Monde de la FIFA™" }
-      ],
+      "CompetitionName": [{ "Locale": "fr-FR", "Description": "Coupe du Monde de la FIFA™" }],
       "Date": "2018-06-25T18:00:00Z",
       "LocalDate": "2018-06-25T21:00:00Z",
       "Home": {
         "Score": null,
         "Side": null,
         "IdTeam": "43817",
-        "PictureUrl":
-          "https://api.fifa.com/api/v1/picture/flags-{format}-{size}/IRN",
+        "PictureUrl": "https://api.fifa.com/api/v1/picture/flags-{format}-{size}/IRN",
         "IdCountry": "IRN",
         "Tactics": null,
         "TeamType": 1,
@@ -5094,8 +4669,7 @@
         "Score": null,
         "Side": null,
         "IdTeam": "43963",
-        "PictureUrl":
-          "https://api.fifa.com/api/v1/picture/flags-{format}-{size}/POR",
+        "PictureUrl": "https://api.fifa.com/api/v1/picture/flags-{format}-{size}/POR",
         "IdCountry": "POR",
         "Tactics": null,
         "TeamType": 1,
@@ -5169,17 +4743,14 @@
       "MatchDay": null,
       "StageName": [{ "Locale": "fr-FR", "Description": "Phase de groupes" }],
       "GroupName": [{ "Locale": "fr-FR", "Description": "Groupe C" }],
-      "CompetitionName": [
-        { "Locale": "fr-FR", "Description": "Coupe du Monde de la FIFA™" }
-      ],
+      "CompetitionName": [{ "Locale": "fr-FR", "Description": "Coupe du Monde de la FIFA™" }],
       "Date": "2018-06-26T14:00:00Z",
       "LocalDate": "2018-06-26T17:00:00Z",
       "Home": {
         "Score": null,
         "Side": null,
         "IdTeam": "43976",
-        "PictureUrl":
-          "https://api.fifa.com/api/v1/picture/flags-{format}-{size}/AUS",
+        "PictureUrl": "https://api.fifa.com/api/v1/picture/flags-{format}-{size}/AUS",
         "IdCountry": "AUS",
         "Tactics": null,
         "TeamType": 1,
@@ -5192,8 +4763,7 @@
         "Score": null,
         "Side": null,
         "IdTeam": "43929",
-        "PictureUrl":
-          "https://api.fifa.com/api/v1/picture/flags-{format}-{size}/PER",
+        "PictureUrl": "https://api.fifa.com/api/v1/picture/flags-{format}-{size}/PER",
         "IdCountry": "PER",
         "Tactics": null,
         "TeamType": 1,
@@ -5267,17 +4837,14 @@
       "MatchDay": null,
       "StageName": [{ "Locale": "fr-FR", "Description": "Phase de groupes" }],
       "GroupName": [{ "Locale": "fr-FR", "Description": "Groupe C" }],
-      "CompetitionName": [
-        { "Locale": "fr-FR", "Description": "Coupe du Monde de la FIFA™" }
-      ],
+      "CompetitionName": [{ "Locale": "fr-FR", "Description": "Coupe du Monde de la FIFA™" }],
       "Date": "2018-06-26T14:00:00Z",
       "LocalDate": "2018-06-26T17:00:00Z",
       "Home": {
         "Score": null,
         "Side": null,
         "IdTeam": "43941",
-        "PictureUrl":
-          "https://api.fifa.com/api/v1/picture/flags-{format}-{size}/DEN",
+        "PictureUrl": "https://api.fifa.com/api/v1/picture/flags-{format}-{size}/DEN",
         "IdCountry": "DEN",
         "Tactics": null,
         "TeamType": 1,
@@ -5290,8 +4857,7 @@
         "Score": null,
         "Side": null,
         "IdTeam": "43946",
-        "PictureUrl":
-          "https://api.fifa.com/api/v1/picture/flags-{format}-{size}/FRA",
+        "PictureUrl": "https://api.fifa.com/api/v1/picture/flags-{format}-{size}/FRA",
         "IdCountry": "FRA",
         "Tactics": null,
         "TeamType": 1,
@@ -5365,17 +4931,14 @@
       "MatchDay": null,
       "StageName": [{ "Locale": "fr-FR", "Description": "Phase de groupes" }],
       "GroupName": [{ "Locale": "fr-FR", "Description": "Groupe D" }],
-      "CompetitionName": [
-        { "Locale": "fr-FR", "Description": "Coupe du Monde de la FIFA™" }
-      ],
+      "CompetitionName": [{ "Locale": "fr-FR", "Description": "Coupe du Monde de la FIFA™" }],
       "Date": "2018-06-26T18:00:00Z",
       "LocalDate": "2018-06-26T21:00:00Z",
       "Home": {
         "Score": null,
         "Side": null,
         "IdTeam": "43876",
-        "PictureUrl":
-          "https://api.fifa.com/api/v1/picture/flags-{format}-{size}/NGA",
+        "PictureUrl": "https://api.fifa.com/api/v1/picture/flags-{format}-{size}/NGA",
         "IdCountry": "NGA",
         "Tactics": null,
         "TeamType": 1,
@@ -5388,8 +4951,7 @@
         "Score": null,
         "Side": null,
         "IdTeam": "43922",
-        "PictureUrl":
-          "https://api.fifa.com/api/v1/picture/flags-{format}-{size}/ARG",
+        "PictureUrl": "https://api.fifa.com/api/v1/picture/flags-{format}-{size}/ARG",
         "IdCountry": "ARG",
         "Tactics": null,
         "TeamType": 1,
@@ -5409,9 +4971,7 @@
       "IsHomeMatch": null,
       "Stadium": {
         "IdStadium": "5031303",
-        "Name": [
-          { "Locale": "fr-FR", "Description": "Stade de Saint-Pétersbourg" }
-        ],
+        "Name": [{ "Locale": "fr-FR", "Description": "Stade de Saint-Pétersbourg" }],
         "Capacity": null,
         "WebAddress": null,
         "Built": null,
@@ -5465,17 +5025,14 @@
       "MatchDay": null,
       "StageName": [{ "Locale": "fr-FR", "Description": "Phase de groupes" }],
       "GroupName": [{ "Locale": "fr-FR", "Description": "Groupe D" }],
-      "CompetitionName": [
-        { "Locale": "fr-FR", "Description": "Coupe du Monde de la FIFA™" }
-      ],
+      "CompetitionName": [{ "Locale": "fr-FR", "Description": "Coupe du Monde de la FIFA™" }],
       "Date": "2018-06-26T18:00:00Z",
       "LocalDate": "2018-06-26T21:00:00Z",
       "Home": {
         "Score": null,
         "Side": null,
         "IdTeam": "43951",
-        "PictureUrl":
-          "https://api.fifa.com/api/v1/picture/flags-{format}-{size}/ISL",
+        "PictureUrl": "https://api.fifa.com/api/v1/picture/flags-{format}-{size}/ISL",
         "IdCountry": "ISL",
         "Tactics": null,
         "TeamType": 1,
@@ -5488,8 +5045,7 @@
         "Score": null,
         "Side": null,
         "IdTeam": "43938",
-        "PictureUrl":
-          "https://api.fifa.com/api/v1/picture/flags-{format}-{size}/CRO",
+        "PictureUrl": "https://api.fifa.com/api/v1/picture/flags-{format}-{size}/CRO",
         "IdCountry": "CRO",
         "Tactics": null,
         "TeamType": 1,
@@ -5563,24 +5119,19 @@
       "MatchDay": null,
       "StageName": [{ "Locale": "fr-FR", "Description": "Phase de groupes" }],
       "GroupName": [{ "Locale": "fr-FR", "Description": "Groupe F" }],
-      "CompetitionName": [
-        { "Locale": "fr-FR", "Description": "Coupe du Monde de la FIFA™" }
-      ],
+      "CompetitionName": [{ "Locale": "fr-FR", "Description": "Coupe du Monde de la FIFA™" }],
       "Date": "2018-06-27T14:00:00Z",
       "LocalDate": "2018-06-27T17:00:00Z",
       "Home": {
         "Score": null,
         "Side": null,
         "IdTeam": "43822",
-        "PictureUrl":
-          "https://api.fifa.com/api/v1/picture/flags-{format}-{size}/KOR",
+        "PictureUrl": "https://api.fifa.com/api/v1/picture/flags-{format}-{size}/KOR",
         "IdCountry": "KOR",
         "Tactics": null,
         "TeamType": 1,
         "AgeType": 7,
-        "TeamName": [
-          { "Locale": "fr-FR", "Description": "République de Corée" }
-        ],
+        "TeamName": [{ "Locale": "fr-FR", "Description": "République de Corée" }],
         "FootballType": 0,
         "Gender": 1
       },
@@ -5588,8 +5139,7 @@
         "Score": null,
         "Side": null,
         "IdTeam": "43948",
-        "PictureUrl":
-          "https://api.fifa.com/api/v1/picture/flags-{format}-{size}/GER",
+        "PictureUrl": "https://api.fifa.com/api/v1/picture/flags-{format}-{size}/GER",
         "IdCountry": "GER",
         "Tactics": null,
         "TeamType": 1,
@@ -5663,17 +5213,14 @@
       "MatchDay": null,
       "StageName": [{ "Locale": "fr-FR", "Description": "Phase de groupes" }],
       "GroupName": [{ "Locale": "fr-FR", "Description": "Groupe F" }],
-      "CompetitionName": [
-        { "Locale": "fr-FR", "Description": "Coupe du Monde de la FIFA™" }
-      ],
+      "CompetitionName": [{ "Locale": "fr-FR", "Description": "Coupe du Monde de la FIFA™" }],
       "Date": "2018-06-27T14:00:00Z",
       "LocalDate": "2018-06-27T19:00:00Z",
       "Home": {
         "Score": null,
         "Side": null,
         "IdTeam": "43911",
-        "PictureUrl":
-          "https://api.fifa.com/api/v1/picture/flags-{format}-{size}/MEX",
+        "PictureUrl": "https://api.fifa.com/api/v1/picture/flags-{format}-{size}/MEX",
         "IdCountry": "MEX",
         "Tactics": null,
         "TeamType": 1,
@@ -5686,8 +5233,7 @@
         "Score": null,
         "Side": null,
         "IdTeam": "43970",
-        "PictureUrl":
-          "https://api.fifa.com/api/v1/picture/flags-{format}-{size}/SWE",
+        "PictureUrl": "https://api.fifa.com/api/v1/picture/flags-{format}-{size}/SWE",
         "IdCountry": "SWE",
         "Tactics": null,
         "TeamType": 1,
@@ -5761,17 +5307,14 @@
       "MatchDay": null,
       "StageName": [{ "Locale": "fr-FR", "Description": "Phase de groupes" }],
       "GroupName": [{ "Locale": "fr-FR", "Description": "Groupe E" }],
-      "CompetitionName": [
-        { "Locale": "fr-FR", "Description": "Coupe du Monde de la FIFA™" }
-      ],
+      "CompetitionName": [{ "Locale": "fr-FR", "Description": "Coupe du Monde de la FIFA™" }],
       "Date": "2018-06-27T18:00:00Z",
       "LocalDate": "2018-06-27T21:00:00Z",
       "Home": {
         "Score": null,
         "Side": null,
         "IdTeam": "1902465",
-        "PictureUrl":
-          "https://api.fifa.com/api/v1/picture/flags-{format}-{size}/SRB",
+        "PictureUrl": "https://api.fifa.com/api/v1/picture/flags-{format}-{size}/SRB",
         "IdCountry": "SRB",
         "Tactics": null,
         "TeamType": 1,
@@ -5784,8 +5327,7 @@
         "Score": null,
         "Side": null,
         "IdTeam": "43924",
-        "PictureUrl":
-          "https://api.fifa.com/api/v1/picture/flags-{format}-{size}/BRA",
+        "PictureUrl": "https://api.fifa.com/api/v1/picture/flags-{format}-{size}/BRA",
         "IdCountry": "BRA",
         "Tactics": null,
         "TeamType": 1,
@@ -5859,17 +5401,14 @@
       "MatchDay": null,
       "StageName": [{ "Locale": "fr-FR", "Description": "Phase de groupes" }],
       "GroupName": [{ "Locale": "fr-FR", "Description": "Groupe E" }],
-      "CompetitionName": [
-        { "Locale": "fr-FR", "Description": "Coupe du Monde de la FIFA™" }
-      ],
+      "CompetitionName": [{ "Locale": "fr-FR", "Description": "Coupe du Monde de la FIFA™" }],
       "Date": "2018-06-27T18:00:00Z",
       "LocalDate": "2018-06-27T21:00:00Z",
       "Home": {
         "Score": null,
         "Side": null,
         "IdTeam": "43971",
-        "PictureUrl":
-          "https://api.fifa.com/api/v1/picture/flags-{format}-{size}/SUI",
+        "PictureUrl": "https://api.fifa.com/api/v1/picture/flags-{format}-{size}/SUI",
         "IdCountry": "SUI",
         "Tactics": null,
         "TeamType": 1,
@@ -5882,8 +5421,7 @@
         "Score": null,
         "Side": null,
         "IdTeam": "43901",
-        "PictureUrl":
-          "https://api.fifa.com/api/v1/picture/flags-{format}-{size}/CRC",
+        "PictureUrl": "https://api.fifa.com/api/v1/picture/flags-{format}-{size}/CRC",
         "IdCountry": "CRC",
         "Tactics": null,
         "TeamType": 1,
@@ -5903,9 +5441,7 @@
       "IsHomeMatch": null,
       "Stadium": {
         "IdStadium": "5001165",
-        "Name": [
-          { "Locale": "en-GB", "Description": "Nizhny Novgorod Stadium" }
-        ],
+        "Name": [{ "Locale": "en-GB", "Description": "Nizhny Novgorod Stadium" }],
         "Capacity": null,
         "WebAddress": null,
         "Built": null,
@@ -5959,17 +5495,14 @@
       "MatchDay": null,
       "StageName": [{ "Locale": "fr-FR", "Description": "Phase de groupes" }],
       "GroupName": [{ "Locale": "fr-FR", "Description": "Groupe H" }],
-      "CompetitionName": [
-        { "Locale": "fr-FR", "Description": "Coupe du Monde de la FIFA™" }
-      ],
+      "CompetitionName": [{ "Locale": "fr-FR", "Description": "Coupe du Monde de la FIFA™" }],
       "Date": "2018-06-28T14:00:00Z",
       "LocalDate": "2018-06-28T17:00:00Z",
       "Home": {
         "Score": null,
         "Side": null,
         "IdTeam": "43819",
-        "PictureUrl":
-          "https://api.fifa.com/api/v1/picture/flags-{format}-{size}/JPN",
+        "PictureUrl": "https://api.fifa.com/api/v1/picture/flags-{format}-{size}/JPN",
         "IdCountry": "JPN",
         "Tactics": null,
         "TeamType": 1,
@@ -5982,8 +5515,7 @@
         "Score": null,
         "Side": null,
         "IdTeam": "43962",
-        "PictureUrl":
-          "https://api.fifa.com/api/v1/picture/flags-{format}-{size}/POL",
+        "PictureUrl": "https://api.fifa.com/api/v1/picture/flags-{format}-{size}/POL",
         "IdCountry": "POL",
         "Tactics": null,
         "TeamType": 1,
@@ -6057,17 +5589,14 @@
       "MatchDay": null,
       "StageName": [{ "Locale": "fr-FR", "Description": "Phase de groupes" }],
       "GroupName": [{ "Locale": "fr-FR", "Description": "Groupe H" }],
-      "CompetitionName": [
-        { "Locale": "fr-FR", "Description": "Coupe du Monde de la FIFA™" }
-      ],
+      "CompetitionName": [{ "Locale": "fr-FR", "Description": "Coupe du Monde de la FIFA™" }],
       "Date": "2018-06-28T14:00:00Z",
       "LocalDate": "2018-06-28T18:00:00Z",
       "Home": {
         "Score": null,
         "Side": null,
         "IdTeam": "43879",
-        "PictureUrl":
-          "https://api.fifa.com/api/v1/picture/flags-{format}-{size}/SEN",
+        "PictureUrl": "https://api.fifa.com/api/v1/picture/flags-{format}-{size}/SEN",
         "IdCountry": "SEN",
         "Tactics": null,
         "TeamType": 1,
@@ -6080,8 +5609,7 @@
         "Score": null,
         "Side": null,
         "IdTeam": "43926",
-        "PictureUrl":
-          "https://api.fifa.com/api/v1/picture/flags-{format}-{size}/COL",
+        "PictureUrl": "https://api.fifa.com/api/v1/picture/flags-{format}-{size}/COL",
         "IdCountry": "COL",
         "Tactics": null,
         "TeamType": 1,
@@ -6155,17 +5683,14 @@
       "MatchDay": null,
       "StageName": [{ "Locale": "fr-FR", "Description": "Phase de groupes" }],
       "GroupName": [{ "Locale": "fr-FR", "Description": "Groupe G" }],
-      "CompetitionName": [
-        { "Locale": "fr-FR", "Description": "Coupe du Monde de la FIFA™" }
-      ],
+      "CompetitionName": [{ "Locale": "fr-FR", "Description": "Coupe du Monde de la FIFA™" }],
       "Date": "2018-06-28T18:00:00Z",
       "LocalDate": "2018-06-28T21:00:00Z",
       "Home": {
         "Score": null,
         "Side": null,
         "IdTeam": "43914",
-        "PictureUrl":
-          "https://api.fifa.com/api/v1/picture/flags-{format}-{size}/PAN",
+        "PictureUrl": "https://api.fifa.com/api/v1/picture/flags-{format}-{size}/PAN",
         "IdCountry": "PAN",
         "Tactics": null,
         "TeamType": 1,
@@ -6178,8 +5703,7 @@
         "Score": null,
         "Side": null,
         "IdTeam": "43888",
-        "PictureUrl":
-          "https://api.fifa.com/api/v1/picture/flags-{format}-{size}/TUN",
+        "PictureUrl": "https://api.fifa.com/api/v1/picture/flags-{format}-{size}/TUN",
         "IdCountry": "TUN",
         "Tactics": null,
         "TeamType": 1,
@@ -6253,17 +5777,14 @@
       "MatchDay": null,
       "StageName": [{ "Locale": "fr-FR", "Description": "Phase de groupes" }],
       "GroupName": [{ "Locale": "fr-FR", "Description": "Groupe G" }],
-      "CompetitionName": [
-        { "Locale": "fr-FR", "Description": "Coupe du Monde de la FIFA™" }
-      ],
+      "CompetitionName": [{ "Locale": "fr-FR", "Description": "Coupe du Monde de la FIFA™" }],
       "Date": "2018-06-28T18:00:00Z",
       "LocalDate": "2018-06-28T20:00:00Z",
       "Home": {
         "Score": null,
         "Side": null,
         "IdTeam": "43942",
-        "PictureUrl":
-          "https://api.fifa.com/api/v1/picture/flags-{format}-{size}/ENG",
+        "PictureUrl": "https://api.fifa.com/api/v1/picture/flags-{format}-{size}/ENG",
         "IdCountry": "ENG",
         "Tactics": null,
         "TeamType": 1,
@@ -6276,8 +5797,7 @@
         "Score": null,
         "Side": null,
         "IdTeam": "43935",
-        "PictureUrl":
-          "https://api.fifa.com/api/v1/picture/flags-{format}-{size}/BEL",
+        "PictureUrl": "https://api.fifa.com/api/v1/picture/flags-{format}-{size}/BEL",
         "IdCountry": "BEL",
         "Tactics": null,
         "TeamType": 1,
@@ -6349,13 +5869,9 @@
       "Attendance": null,
       "IdMatch": "300331537",
       "MatchDay": null,
-      "StageName": [
-        { "Locale": "fr-FR", "Description": "Huitièmes de finale" }
-      ],
+      "StageName": [{ "Locale": "fr-FR", "Description": "Huitièmes de finale" }],
       "GroupName": [],
-      "CompetitionName": [
-        { "Locale": "fr-FR", "Description": "Coupe du Monde de la FIFA™" }
-      ],
+      "CompetitionName": [{ "Locale": "fr-FR", "Description": "Coupe du Monde de la FIFA™" }],
       "Date": "2018-06-30T14:00:00Z",
       "LocalDate": "2018-06-30T17:00:00Z",
       "Home": null,
@@ -6423,13 +5939,9 @@
       "Attendance": null,
       "IdMatch": "300331544",
       "MatchDay": null,
-      "StageName": [
-        { "Locale": "fr-FR", "Description": "Huitièmes de finale" }
-      ],
+      "StageName": [{ "Locale": "fr-FR", "Description": "Huitièmes de finale" }],
       "GroupName": [],
-      "CompetitionName": [
-        { "Locale": "fr-FR", "Description": "Coupe du Monde de la FIFA™" }
-      ],
+      "CompetitionName": [{ "Locale": "fr-FR", "Description": "Coupe du Monde de la FIFA™" }],
       "Date": "2018-06-30T18:00:00Z",
       "LocalDate": "2018-06-30T21:00:00Z",
       "Home": null,
@@ -6497,13 +6009,9 @@
       "Attendance": null,
       "IdMatch": "300331517",
       "MatchDay": null,
-      "StageName": [
-        { "Locale": "fr-FR", "Description": "Huitièmes de finale" }
-      ],
+      "StageName": [{ "Locale": "fr-FR", "Description": "Huitièmes de finale" }],
       "GroupName": [],
-      "CompetitionName": [
-        { "Locale": "fr-FR", "Description": "Coupe du Monde de la FIFA™" }
-      ],
+      "CompetitionName": [{ "Locale": "fr-FR", "Description": "Coupe du Monde de la FIFA™" }],
       "Date": "2018-07-01T14:00:00Z",
       "LocalDate": "2018-07-01T17:00:00Z",
       "Home": null,
@@ -6571,13 +6079,9 @@
       "Attendance": null,
       "IdMatch": "300331498",
       "MatchDay": null,
-      "StageName": [
-        { "Locale": "fr-FR", "Description": "Huitièmes de finale" }
-      ],
+      "StageName": [{ "Locale": "fr-FR", "Description": "Huitièmes de finale" }],
       "GroupName": [],
-      "CompetitionName": [
-        { "Locale": "fr-FR", "Description": "Coupe du Monde de la FIFA™" }
-      ],
+      "CompetitionName": [{ "Locale": "fr-FR", "Description": "Coupe du Monde de la FIFA™" }],
       "Date": "2018-07-01T18:00:00Z",
       "LocalDate": "2018-07-01T21:00:00Z",
       "Home": null,
@@ -6593,9 +6097,7 @@
       "IsHomeMatch": null,
       "Stadium": {
         "IdStadium": "5001165",
-        "Name": [
-          { "Locale": "en-GB", "Description": "Nizhny Novgorod Stadium" }
-        ],
+        "Name": [{ "Locale": "en-GB", "Description": "Nizhny Novgorod Stadium" }],
         "Capacity": null,
         "WebAddress": null,
         "Built": null,
@@ -6647,13 +6149,9 @@
       "Attendance": null,
       "IdMatch": "300331535",
       "MatchDay": null,
-      "StageName": [
-        { "Locale": "fr-FR", "Description": "Huitièmes de finale" }
-      ],
+      "StageName": [{ "Locale": "fr-FR", "Description": "Huitièmes de finale" }],
       "GroupName": [],
-      "CompetitionName": [
-        { "Locale": "fr-FR", "Description": "Coupe du Monde de la FIFA™" }
-      ],
+      "CompetitionName": [{ "Locale": "fr-FR", "Description": "Coupe du Monde de la FIFA™" }],
       "Date": "2018-07-02T14:00:00Z",
       "LocalDate": "2018-07-02T18:00:00Z",
       "Home": null,
@@ -6721,13 +6219,9 @@
       "Attendance": null,
       "IdMatch": "300331551",
       "MatchDay": null,
-      "StageName": [
-        { "Locale": "fr-FR", "Description": "Huitièmes de finale" }
-      ],
+      "StageName": [{ "Locale": "fr-FR", "Description": "Huitièmes de finale" }],
       "GroupName": [],
-      "CompetitionName": [
-        { "Locale": "fr-FR", "Description": "Coupe du Monde de la FIFA™" }
-      ],
+      "CompetitionName": [{ "Locale": "fr-FR", "Description": "Coupe du Monde de la FIFA™" }],
       "Date": "2018-07-02T18:00:00Z",
       "LocalDate": "2018-07-02T21:00:00Z",
       "Home": null,
@@ -6795,13 +6289,9 @@
       "Attendance": null,
       "IdMatch": "300331514",
       "MatchDay": null,
-      "StageName": [
-        { "Locale": "fr-FR", "Description": "Huitièmes de finale" }
-      ],
+      "StageName": [{ "Locale": "fr-FR", "Description": "Huitièmes de finale" }],
       "GroupName": [],
-      "CompetitionName": [
-        { "Locale": "fr-FR", "Description": "Coupe du Monde de la FIFA™" }
-      ],
+      "CompetitionName": [{ "Locale": "fr-FR", "Description": "Coupe du Monde de la FIFA™" }],
       "Date": "2018-07-03T14:00:00Z",
       "LocalDate": "2018-07-03T17:00:00Z",
       "Home": null,
@@ -6817,9 +6307,7 @@
       "IsHomeMatch": null,
       "Stadium": {
         "IdStadium": "5031303",
-        "Name": [
-          { "Locale": "fr-FR", "Description": "Stade de Saint-Pétersbourg" }
-        ],
+        "Name": [{ "Locale": "fr-FR", "Description": "Stade de Saint-Pétersbourg" }],
         "Capacity": null,
         "WebAddress": null,
         "Built": null,
@@ -6871,13 +6359,9 @@
       "Attendance": null,
       "IdMatch": "300331542",
       "MatchDay": null,
-      "StageName": [
-        { "Locale": "fr-FR", "Description": "Huitièmes de finale" }
-      ],
+      "StageName": [{ "Locale": "fr-FR", "Description": "Huitièmes de finale" }],
       "GroupName": [],
-      "CompetitionName": [
-        { "Locale": "fr-FR", "Description": "Coupe du Monde de la FIFA™" }
-      ],
+      "CompetitionName": [{ "Locale": "fr-FR", "Description": "Coupe du Monde de la FIFA™" }],
       "Date": "2018-07-03T18:00:00Z",
       "LocalDate": "2018-07-03T21:00:00Z",
       "Home": null,
@@ -6947,9 +6431,7 @@
       "MatchDay": null,
       "StageName": [{ "Locale": "fr-FR", "Description": "Quarts de finale" }],
       "GroupName": [],
-      "CompetitionName": [
-        { "Locale": "fr-FR", "Description": "Coupe du Monde de la FIFA™" }
-      ],
+      "CompetitionName": [{ "Locale": "fr-FR", "Description": "Coupe du Monde de la FIFA™" }],
       "Date": "2018-07-06T14:00:00Z",
       "LocalDate": "2018-07-06T17:00:00Z",
       "Home": null,
@@ -6965,9 +6447,7 @@
       "IsHomeMatch": null,
       "Stadium": {
         "IdStadium": "5001165",
-        "Name": [
-          { "Locale": "en-GB", "Description": "Nizhny Novgorod Stadium" }
-        ],
+        "Name": [{ "Locale": "en-GB", "Description": "Nizhny Novgorod Stadium" }],
         "Capacity": null,
         "WebAddress": null,
         "Built": null,
@@ -7021,9 +6501,7 @@
       "MatchDay": null,
       "StageName": [{ "Locale": "fr-FR", "Description": "Quarts de finale" }],
       "GroupName": [],
-      "CompetitionName": [
-        { "Locale": "fr-FR", "Description": "Coupe du Monde de la FIFA™" }
-      ],
+      "CompetitionName": [{ "Locale": "fr-FR", "Description": "Coupe du Monde de la FIFA™" }],
       "Date": "2018-07-06T18:00:00Z",
       "LocalDate": "2018-07-06T21:00:00Z",
       "Home": null,
@@ -7093,9 +6571,7 @@
       "MatchDay": null,
       "StageName": [{ "Locale": "fr-FR", "Description": "Quarts de finale" }],
       "GroupName": [],
-      "CompetitionName": [
-        { "Locale": "fr-FR", "Description": "Coupe du Monde de la FIFA™" }
-      ],
+      "CompetitionName": [{ "Locale": "fr-FR", "Description": "Coupe du Monde de la FIFA™" }],
       "Date": "2018-07-07T14:00:00Z",
       "LocalDate": "2018-07-07T18:00:00Z",
       "Home": null,
@@ -7165,9 +6641,7 @@
       "MatchDay": null,
       "StageName": [{ "Locale": "fr-FR", "Description": "Quarts de finale" }],
       "GroupName": [],
-      "CompetitionName": [
-        { "Locale": "fr-FR", "Description": "Coupe du Monde de la FIFA™" }
-      ],
+      "CompetitionName": [{ "Locale": "fr-FR", "Description": "Coupe du Monde de la FIFA™" }],
       "Date": "2018-07-07T18:00:00Z",
       "LocalDate": "2018-07-07T21:00:00Z",
       "Home": null,
@@ -7237,9 +6711,7 @@
       "MatchDay": null,
       "StageName": [{ "Locale": "fr-FR", "Description": "Demi-finales" }],
       "GroupName": [],
-      "CompetitionName": [
-        { "Locale": "fr-FR", "Description": "Coupe du Monde de la FIFA™" }
-      ],
+      "CompetitionName": [{ "Locale": "fr-FR", "Description": "Coupe du Monde de la FIFA™" }],
       "Date": "2018-07-10T18:00:00Z",
       "LocalDate": "2018-07-10T21:00:00Z",
       "Home": null,
@@ -7255,9 +6727,7 @@
       "IsHomeMatch": null,
       "Stadium": {
         "IdStadium": "5031303",
-        "Name": [
-          { "Locale": "fr-FR", "Description": "Stade de Saint-Pétersbourg" }
-        ],
+        "Name": [{ "Locale": "fr-FR", "Description": "Stade de Saint-Pétersbourg" }],
         "Capacity": null,
         "WebAddress": null,
         "Built": null,
@@ -7311,9 +6781,7 @@
       "MatchDay": null,
       "StageName": [{ "Locale": "fr-FR", "Description": "Demi-finales" }],
       "GroupName": [],
-      "CompetitionName": [
-        { "Locale": "fr-FR", "Description": "Coupe du Monde de la FIFA™" }
-      ],
+      "CompetitionName": [{ "Locale": "fr-FR", "Description": "Coupe du Monde de la FIFA™" }],
       "Date": "2018-07-11T18:00:00Z",
       "LocalDate": "2018-07-11T21:00:00Z",
       "Home": null,
@@ -7381,13 +6849,9 @@
       "Attendance": null,
       "IdMatch": "300331536",
       "MatchDay": null,
-      "StageName": [
-        { "Locale": "fr-FR", "Description": "Match pour la troisième place" }
-      ],
+      "StageName": [{ "Locale": "fr-FR", "Description": "Match pour la troisième place" }],
       "GroupName": [],
-      "CompetitionName": [
-        { "Locale": "fr-FR", "Description": "Coupe du Monde de la FIFA™" }
-      ],
+      "CompetitionName": [{ "Locale": "fr-FR", "Description": "Coupe du Monde de la FIFA™" }],
       "Date": "2018-07-14T14:00:00Z",
       "LocalDate": "2018-07-14T17:00:00Z",
       "Home": null,
@@ -7403,9 +6867,7 @@
       "IsHomeMatch": null,
       "Stadium": {
         "IdStadium": "5031303",
-        "Name": [
-          { "Locale": "fr-FR", "Description": "Stade de Saint-Pétersbourg" }
-        ],
+        "Name": [{ "Locale": "fr-FR", "Description": "Stade de Saint-Pétersbourg" }],
         "Capacity": null,
         "WebAddress": null,
         "Built": null,
@@ -7459,9 +6921,7 @@
       "MatchDay": null,
       "StageName": [{ "Locale": "fr-FR", "Description": "Finale" }],
       "GroupName": [],
-      "CompetitionName": [
-        { "Locale": "fr-FR", "Description": "Coupe du Monde de la FIFA™" }
-      ],
+      "CompetitionName": [{ "Locale": "fr-FR", "Description": "Coupe du Monde de la FIFA™" }],
       "Date": "2018-07-15T15:00:00Z",
       "LocalDate": "2018-07-15T18:00:00Z",
       "Home": null,
@@ -7559,8 +7019,7 @@
         "Score": 0,
         "Side": null,
         "IdTeam": "1889588",
-        "PictureUrl":
-          "https://api.fifa.com/api/v1/picture/flags-{format}-{size}/ENG",
+        "PictureUrl": "https://api.fifa.com/api/v1/picture/flags-{format}-{size}/ENG",
         "IdCountry": "ENG",
         "Tactics": "",
         "TeamType": 1,
@@ -7578,8 +7037,7 @@
         "Score": 0,
         "Side": null,
         "IdTeam": "1888308",
-        "PictureUrl":
-          "https://api.fifa.com/api/v1/picture/flags-{format}-{size}/JPN",
+        "PictureUrl": "https://api.fifa.com/api/v1/picture/flags-{format}-{size}/JPN",
         "IdCountry": "JPN",
         "Tactics": "",
         "TeamType": 1,

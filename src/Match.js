@@ -1,9 +1,9 @@
-import moment from "moment";
-import { EventEmitter } from "events";
-import { differenceWith, find, filter } from "lodash";
-import Team from "./Team";
+import moment from 'moment';
+import { EventEmitter } from 'events';
+import { differenceWith, find, filter } from 'lodash';
+import Team from './Team';
 
-import { getNow, IS_DEV } from "./utils";
+import { getNow, log } from './utils';
 
 import {
   EVENT_MATCH_START,
@@ -22,8 +22,8 @@ import {
   EVENT_FOUL_PENALTY,
   EVENT_VAR,
   MATCH_STATUS_FINISHED,
-  MATCH_STATUS_LIVE
-} from "./constants";
+  MATCH_STATUS_LIVE,
+} from './constants';
 
 export default class Match extends EventEmitter {
   constructor(data) {
@@ -108,30 +108,28 @@ export default class Match extends EventEmitter {
     return `${this.homeTeam.getName()} / ${this.awayTeam.getName()}`;
   }
 
-  getEvents({ eventTypes = null, period = null, teamId = null, until = null }) {
-    let result = filter(
+  getEvents({
+    eventTypes = null, period = null, teamId = null, until = null,
+  }) {
+    const result = filter(
       this.events,
-      event =>
-        (teamId ? teamId === event.IdTeam : true) &&
-        (eventTypes ? eventTypes.indexOf(event.Type) >= 0 : true) &&
-        (period ? period === event.Period : true) &&
-        (until ? moment(event.Timestamp).diff(until) <= 0 : true)
+      event => (teamId ? teamId === event.IdTeam : true)
+        && (eventTypes ? eventTypes.indexOf(event.Type) >= 0 : true)
+        && (period ? period === event.Period : true)
+        && (until ? moment(event.Timestamp).diff(until) <= 0 : true),
     );
 
     return result;
   }
 
   getTeam(teamId) {
-    return (
-      find([this.homeTeam, this.awayTeam], team => team.getId() === teamId) ||
-      null
-    );
+    return find([this.homeTeam, this.awayTeam], team => team.getId() === teamId) || null;
   }
 
   getPlayer(playerId) {
     return [this.homeTeam, this.awayTeam].reduce(
       (acc, team) => acc || team.getPlayer(playerId),
-      null
+      null,
     );
   }
 
@@ -139,8 +137,8 @@ export default class Match extends EventEmitter {
     const newEvents = differenceWith(
       events,
       this.events,
-      (event1, event2) => event1.EventId === event2.EventId
-    ).filter(event => {
+      (event1, event2) => event1.EventId === event2.EventId,
+    ).filter((event) => {
       const diff = Math.floor(this.lastCheck.diff(event.Timestamp) / 1000 / 60);
 
       // Il semblerait que des évènements soient rajoutés antérieurement à la timeline,
@@ -149,68 +147,60 @@ export default class Match extends EventEmitter {
       return diff <= 5;
     });
 
-    console.log(
-      `${newEvents.length} new event(s) for ${this.getName()} (${this.getId()})`
-    );
+    log(`${newEvents.length} new event(s) for ${this.getName()} (${this.getId()})`);
 
     this.events = events;
-    newEvents.forEach(event => {
+    newEvents.forEach((event) => {
       const team = this.getTeam(event.IdTeam);
       const player = this.getPlayer(event.IdPlayer);
 
       switch (event.Type) {
         case EVENT_MATCH_START:
           this.status = MATCH_STATUS_LIVE;
-          this.emit("matchStart", this, event);
+          this.emit('matchStart', this, event);
           break;
         case EVENT_MATCH_END:
           this.status = MATCH_STATUS_FINISHED;
-          this.emit("matchEnd", this, event);
+          this.emit('matchEnd', this, event);
           break;
         case EVENT_PERIOD_START:
-          this.emit("periodStart", this, event);
+          this.emit('periodStart', this, event);
           break;
         case EVENT_PERIOD_END:
-          this.emit("periodEnd", this, event);
+          this.emit('periodEnd', this, event);
           break;
         case EVENT_GOAL:
-          this.emit("goal", this, event, team, player, "regular");
+          this.emit('goal', this, event, team, player, 'regular');
           break;
         case EVENT_FREE_KICK_GOAL:
-          this.emit("goal", this, event, team, player, "freekick");
+          this.emit('goal', this, event, team, player, 'freekick');
           break;
         case EVENT_PENALTY_GOAL:
-          this.emit("goal", this, event, team, player, "penalty");
+          this.emit('goal', this, event, team, player, 'penalty');
           break;
         case EVENT_OWN_GOAL:
-          this.emit("goal", this, event, team, player, "own");
+          this.emit('goal', this, event, team, player, 'own');
           break;
         case EVENT_YELLOW_CARD:
-          this.emit("card", this, event, team, player, "yellow");
+          this.emit('card', this, event, team, player, 'yellow');
           break;
         case EVENT_SECOND_YELLOW_CARD_RED:
-          this.emit("card", this, event, team, player, "yellow+yellow");
+          this.emit('card', this, event, team, player, 'yellow+yellow');
           break;
         case EVENT_STRAIGHT_RED:
-          this.emit("card", this, event, team, player, "red");
+          this.emit('card', this, event, team, player, 'red');
           break;
-
         case EVENT_FOUL_PENALTY:
-          this.emit("penalty", this, event, team, player);
+          this.emit('penalty', this, event, team, player);
           break;
         case EVENT_PENALTY_MISSED:
-          this.emit("penalty missed", this, event, team, player);
+          this.emit('penalty missed', this, event, team, player);
           break;
         case EVENT_PENALTY_SAVED:
-          this.emit("penalty saved", this, event, team, player);
+          this.emit('penalty saved', this, event, team, player);
           break;
-
         case EVENT_VAR:
-          this.emit("var", this, event);
-          break;
-
-        case EVENT_VAR:
-          this.emit("var", this, event);
+          this.emit('var', this, event);
           break;
         default:
       }
