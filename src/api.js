@@ -10,7 +10,7 @@ const DEV_CURRENT_MATCH = `match${Math.abs(process.argv[2]) < 7 ? process.argv[2
 
 export const fetchLiveMatches = async () => {
   if (isDev()) {
-    return import(`../cache/${DEV_CURRENT_MATCH}/live.json`).Results;
+    return (await import(`../cache/${DEV_CURRENT_MATCH}/live.json`)).Results;
   }
 
   log(`Fetching ${ENDPOINT_LIVE}`);
@@ -22,7 +22,7 @@ export const fetchLiveMatches = async () => {
 
 export const fetchMatchEvents = async (match) => {
   if (isDev()) {
-    return import(`../cache/${DEV_CURRENT_MATCH}/events.json`).Event;
+    return (await import(`../cache/${DEV_CURRENT_MATCH}/events.json`)).Event;
   }
 
   const endpoint = ENDPOINT_EVENTS(match.getStageId(), match.getId());
@@ -34,7 +34,7 @@ export const fetchMatchEvents = async (match) => {
 
 export const fetchMatches = async () => {
   if (isDev()) {
-    return import('../cache/matches.json').Results;
+    return (await import('../cache/matches.json')).Results
   }
 
   log(`Fetching ${ENDPOINT_MATCHES}`);
