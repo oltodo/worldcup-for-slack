@@ -3,9 +3,10 @@ import { EventEmitter } from 'events';
 import { differenceWith, find, filter } from 'lodash';
 import Team from './Team';
 
-import { getNow, log } from './utils';
+import { getNow, log, isDev } from './utils';
 
 import {
+  ID_GROUP_STAGE,
   EVENT_MATCH_START,
   EVENT_MATCH_END,
   EVENT_GOAL,
@@ -19,6 +20,7 @@ import {
   EVENT_PENALTY_GOAL,
   EVENT_PENALTY_SAVED,
   EVENT_PENALTY_MISSED,
+  EVENT_PENALTY_CROSSBAR,
   EVENT_FOUL_PENALTY,
   EVENT_VAR,
   MATCH_STATUS_FINISHED,
@@ -94,7 +96,15 @@ export default class Match extends EventEmitter {
     return this.complete;
   }
 
+  isGroupStage() {
+    return this.getStageId() === ID_GROUP_STAGE;
+  }
+
   shouldHaveStarted(from) {
+    if (isDev()) {
+      return true;
+    }
+
     if (this.status === MATCH_STATUS_FINISHED) {
       return false;
     }
@@ -175,11 +185,20 @@ export default class Match extends EventEmitter {
         case EVENT_FREE_KICK_GOAL:
           this.emit('goal', this, event, team, player, 'freekick');
           break;
+        case EVENT_OWN_GOAL:
+          this.emit('goal', this, event, team, player, 'own');
+          break;
         case EVENT_PENALTY_GOAL:
           this.emit('goal', this, event, team, player, 'penalty');
           break;
-        case EVENT_OWN_GOAL:
-          this.emit('goal', this, event, team, player, 'own');
+        case EVENT_PENALTY_MISSED:
+          this.emit('penaltyFailed', this, event, team, player);
+          break;
+        case EVENT_PENALTY_SAVED:
+          this.emit('penaltyFailed', this, event, team, player);
+          break;
+        case EVENT_PENALTY_CROSSBAR:
+          this.emit('penaltyFailed', this, event, team, player);
           break;
         case EVENT_YELLOW_CARD:
           this.emit('card', this, event, team, player, 'yellow');
@@ -192,12 +211,6 @@ export default class Match extends EventEmitter {
           break;
         case EVENT_FOUL_PENALTY:
           this.emit('penalty', this, event, team, player);
-          break;
-        case EVENT_PENALTY_MISSED:
-          this.emit('penalty missed', this, event, team, player);
-          break;
-        case EVENT_PENALTY_SAVED:
-          this.emit('penalty saved', this, event, team, player);
           break;
         case EVENT_VAR:
           this.emit('var', this, event);

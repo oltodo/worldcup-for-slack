@@ -8,6 +8,8 @@ export const getNow = () => {
   }
 
   switch (Math.abs(process.argv[2])) {
+    case 7:
+      return moment('2017-06-04T09:00:00Z');
     case 6:
       return moment('2017-10-17T17:00');
     case 2:

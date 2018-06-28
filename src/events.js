@@ -1,12 +1,12 @@
 import Queue from 'better-queue';
-import { get, range } from 'lodash';
+import { get, shuffle, chain } from 'lodash';
 
 import { getNow, log } from './utils';
 import {
-  PERIOD_PENALTIES,
   EVENT_PENALTY_GOAL,
   EVENT_PENALTY_MISSED,
   EVENT_PENALTY_SAVED,
+  EVENT_PENALTY_CROSSBAR,
   PENALTY_OK,
   PENALTY_NOK,
   PENALTY_INCOMING,
@@ -14,10 +14,14 @@ import {
   PERIOD_2ND_HALF,
   PERIOD_EXPAND_1ST_HALF,
   PERIOD_EXPAND_2ND_HALF,
+  PERIOD_PENALTIES,
+  EMOJIS_FOR_GOAL,
+  EMOJIS_FOR_PENALTY_MISSED,
+  EMOJIS_FOR_PENALTY_SAVED,
 } from './constants';
 
 const SLACKHOOK = process.env.SLACKHOOK
-  || 'https://hooks.slack.com/services/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';
+  || 'https://hooks.slack.com/services/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';
 
 const slackhook = require('slack-notify')(SLACKHOOK);
 
@@ -29,45 +33,17 @@ const liveAttachment = [
   },
 ];
 
-const getPeriodName = (periodId) => {
-  let periodNumberName = '';
+const getGoalEmoji = () => shuffle(EMOJIS_FOR_GOAL)[0];
+const getPenaltyMissedEmoji = () => shuffle(EMOJIS_FOR_PENALTY_MISSED)[0];
+const getPenaltySavedEmoji = () => shuffle(EMOJIS_FOR_PENALTY_SAVED)[0];
 
-  switch (periodId) {
-    case PERIOD_1ST_HALF:
-      periodNumberName = 'première période';
-      break;
-    case PERIOD_2ND_HALF:
-      periodNumberName = 'seconde période';
-      break;
-    case PERIOD_EXPAND_1ST_HALF:
-      periodNumberName = 'première période de prolongation';
-      break;
-    case PERIOD_EXPAND_2ND_HALF:
-      periodNumberName = 'seconde période de prolongation';
-      break;
-    case PERIOD_PENALTIES:
-      periodNumberName = 'séance de tirs au but';
-      break;
-    default:
-  }
-  return periodNumberName;
-};
-
-const buildPenaltiesSeriesScore = (data) => {
-  let doneShootsString = '';
-  let remainingShoots = 5;
-
-  if (data) {
-    remainingShoots = data.length <= remainingShoots ? remainingShoots - data.length : 0;
-    doneShootsString = data.reduce(
-      (acc, event) => acc + (EVENT_PENALTY_GOAL === event.Type ? PENALTY_OK : PENALTY_NOK),
-      '',
-    );
-  }
-
-  const remainingShootsString = range(remainingShoots).reduce(acc => acc + PENALTY_INCOMING, '');
-  return doneShootsString + remainingShootsString;
-};
+const buildPenaltiesSeriesScore = events => chain(Array(5))
+  .fill(PENALTY_INCOMING)
+  .assign(events.map(event => (event.Type === EVENT_PENALTY_GOAL ? PENALTY_OK : PENALTY_NOK)))
+  .chunk(5)
+  .map(chunk => chunk.join(''))
+  .join(' ')
+  .value();
 
 const buildPenaltiesSeriesfields = (match, time) => {
   const homeTeam = match.getHomeTeam();
@@ -75,7 +51,12 @@ const buildPenaltiesSeriesfields = (match, time) => {
 
   const fields = [homeTeam, awayTeam].map((team) => {
     const events = match.getEvents({
-      eventTypes: [EVENT_PENALTY_GOAL, EVENT_PENALTY_MISSED, EVENT_PENALTY_SAVED],
+      eventTypes: [
+        EVENT_PENALTY_GOAL,
+        EVENT_PENALTY_MISSED,
+        EVENT_PENALTY_SAVED,
+        EVENT_PENALTY_CROSSBAR,
+      ],
       period: PERIOD_PENALTIES,
       teamId: team.getId(),
       until: time,
@@ -92,9 +73,27 @@ const buildPenaltiesSeriesfields = (match, time) => {
   return fields;
 };
 
+const getPenaltyFailedTitle = (type, player) => {
+  switch (type) {
+    case EVENT_PENALTY_GOAL:
+      return `${getGoalEmoji()} ${player.nameWithFlag} marque le tir au but`;
+    case EVENT_PENALTY_MISSED:
+      return `${getPenaltyMissedEmoji()} ${player.nameWithFlag} manque son penalty`;
+    case EVENT_PENALTY_SAVED:
+      return `${getPenaltySavedEmoji()} Le gardien arrête le penalty de ${player.nameWithFlag}`;
+    case EVENT_PENALTY_CROSSBAR:
+      return `${getPenaltyMissedEmoji()} ${
+        player.nameWithFlag
+      } tire son penalty sur la barre transversale`;
+    default:
+  }
+
+  return null;
+};
+
 const sendMessageQueue = new Queue(
   ({
-    match, event, msg = '', attachments = [],
+    match, event, title, attachments = [],
   }, done) => {
     const homeTeam = match.getHomeTeam();
     const awayTeam = match.getAwayTeam();
@@ -110,11 +109,9 @@ const sendMessageQueue = new Queue(
       )} `;
     }
 
-    text += `\n${msg}`;
-
     slackhook.send({
       text,
-      attachments,
+      attachments: [{ title, color: 'good' }, ...attachments],
     });
 
     done();
@@ -122,85 +119,126 @@ const sendMessageQueue = new Queue(
   { afterProcessDelay: 1000 },
 );
 
-export const handleMatchStartEvent = (match, event) => {
-  log('New event: matchStart');
-
-  sendMessageQueue.push({ match, event, msg: ":zap: *C'est parti !*" });
-};
-
-export const handleMatchEndEvent = (match, event) => {
-  log('New event: matchEnd');
-
-  sendMessageQueue.push({
-    match,
-    event,
-    msg: ':stopwatch: *Fin du match*',
-  });
-};
-
-export const handlePeriodEndEvent = (match, event) => {
-  log('New event: firstPeriodEnd');
-
-  const periodName = getPeriodName(event.Period);
-  sendMessageQueue.push({
-    match,
-    event,
-    msg: `:toilet: *Fin de la ${periodName} * (${event.MatchMinute})`,
-  });
-
-  if (PERIOD_PENALTIES === event.Period) {
-    handleMatchEndEvent(match, event);
-  }
-};
-
 export const handlePeriodStartEvent = (match, event) => {
-  log('New event: secondPeriodStart');
-  const periodName = getPeriodName(event.Period);
+  log('New event: periodStart');
+
+  let title = null;
+
+  const { Period } = event;
+
+  if (Period === PERIOD_1ST_HALF) {
+    title = ':zap: Le match commence !';
+  } else if (Period === PERIOD_2ND_HALF) {
+    title = 'Le match reprend !';
+  } else if (Period === PERIOD_EXPAND_1ST_HALF) {
+    title = 'Les prolongations commencent !';
+  } else if (Period === PERIOD_EXPAND_2ND_HALF) {
+    title = 'Les prolongations reprennent !';
+  } else if (Period === PERIOD_PENALTIES) {
+    title = "C'est le début de la séance de tirs au but !";
+  } else {
+    return;
+  }
+
   sendMessageQueue.push({
     match,
     event,
-    msg: `:runner: *Debut de la ${periodName}* `,
+    title,
   });
+};
+
+export const handlePeriodEndEvent = (/* match, event */) => {
+  // log('New event: firstPeriodEnd');
+  //
+  // const title = null;
+  // const {
+  //   Period, MatchMinute, HomeGoals, AwayGoals,
+  // } = event;
+  //   if (Period === PERIOD_1ST_HALF) {
+  //     title = `Fin de la première période. (${MatchMinute})`;
+  //   } else {
+  //
+  //     if (!match.isGroupStage() && HomeGoals === AwayGoals) {
+  //
+  //     }
+  //
+  //
+  //
+  //     if (Period === PERIOD_2ND_HALF) {
+  //     }
+  //
+  //     title = 'Le match reprend !';
+  //   } else if (Period === PERIOD_EXPAND_1ST_HALF) {
+  //     title = 'Les prolongations commencent !';
+  //   } else if (Period === PERIOD_EXPAND_2ND_HALF) {
+  //     title = 'Les prolongations reprennent !';
+  //   } else if (Period === PERIOD_PENALTIES) {
+  //     title = "C'est le début de la séance de tirs au but !";
+  //   } else {
+  //     return;
+  //   }
+  // }
+  //
+  // sendMessageQueue.push({
+  //   match,
+  //   event,
+  //   title,
+  // });
 };
 
 export const handleCardEvent = (match, event, team, player, type) => {
   log('New event: card');
 
-  let msg = '';
+  let title = event.MatchMinute;
 
   switch (type) {
     case 'yellow':
-      msg += ':large_orange_diamond: *Carton jaune*';
+      title = `:yellow_card: Carton jaune ${title}`;
       break;
     case 'red':
-      msg += ':red_circle: *Carton rouge*';
+      title = `:red_card: Carton rouge ${title}`;
       break;
     case 'yellow+yellow':
-      msg += ':red_circle: *Carton rouge* (deux jaunes)';
+      title = `:red_card: Carton rouge (deux jaunes) ${title}`;
       break;
     default:
       return;
   }
 
-  msg += ` pour ${player.nameWithFlag} (${event.MatchMinute})`;
+  const text = `Pour ${player.nameWithFlag}`;
 
   sendMessageQueue.push({
     match,
     event,
-    msg,
+    title,
+    attachments: [{ text }],
+  });
+};
+
+export const handlePenaltyEvent = (match, event, team) => {
+  log('New event: penalty');
+
+  const oppTeam = match.getOppositeTeam(team);
+
+  sendMessageQueue.push({
+    match,
+    event,
+    title: `:exclamation: Penalty accordé ${oppTeam.getNameWithDeterminer('à', true)} (${
+      event.MatchMinute
+    })`,
   });
 };
 
 export const handleOwnGoalEvent = (match, event, team, player) => {
   const oppTeam = match.getOppositeTeam(team);
 
-  const msg = `:soccer: *Goooooal! pour ${oppTeam.getNameWithDeterminer(null, true)}* (${
+  const title = `:soccer: Goooooal! pour ${oppTeam.getNameWithDeterminer(null, true)} (${
     event.MatchMinute
   })`;
 
   const attachments = [
     {
-      text: `${player.nameWithFlag} marque contre son camp :face_palm:`,
+      text: `${player.nameWithFlag} marque contre son camp :facepalm:`,
       color: 'danger',
       actions: liveAttachment,
     },
@@ -209,42 +247,17 @@ export const handleOwnGoalEvent = (match, event, team, player) => {
   sendMessageQueue.push({
     match,
     event,
-    msg,
+    title,
     attachments,
   });
 };
 
 export const handlePenaltyShootOutGoalEvent = (match, event, team, player) => {
-  const attachments = [];
-
-  switch (event.Type) {
-    case EVENT_PENALTY_GOAL:
-      attachments.push({
-        text: `:carlton: ${player.nameWithFlag} marque son penalty`,
-        color: 'good',
-      });
-      break;
-    case EVENT_PENALTY_MISSED:
-      attachments.push({
-        text: `:haha: ${player.nameWithFlag} manque son penalty`,
-        color: 'danger',
-      });
-      break;
-    case EVENT_PENALTY_SAVED:
-      attachments.push({
-        text: `:mkeyebrows: Le gardien arrête le penalty de ${player.nameWithFlag}`,
-        color: 'danger',
-      });
-      break;
-    default:
-  }
-
-  attachments[0].fields = buildPenaltiesSeriesfields(match, event.Timestamp);
-
   sendMessageQueue.push({
     match,
     event,
-    attachments,
+    title: getPenaltyFailedTitle(event.Type, player),
+    attachments: [{ fields: buildPenaltiesSeriesfields(match, event.Timestamp) }],
   });
 };
 
@@ -261,98 +274,48 @@ export const handleGoalEvent = (match, event, team, player, type) => {
     return;
   }
 
-  const msg = `:soccer: *Goooooal! pour ${team.getNameWithDeterminer(null, true)}* (${
+  const title = `${getGoalEmoji()} Goooooal! pour ${team.getNameWithDeterminer(null, true)} (${
     event.MatchMinute
   })`;
 
-  const attachments = [];
-  const addLiveAttachment = true;
+  let text;
 
   switch (type) {
     case 'freekick':
-      attachments.push({
-        text: `But de ${player.nameWithFlag} sur coup-franc`,
-      });
+      text = `But de ${player.nameWithFlag} sur coup-franc`;
       break;
     case 'penalty':
-      attachments.push({
-        text:
-          PERIOD_PENALTIES === event.Period
-            ? `But de ${player.nameWithFlag}`
-            : `But de ${player.name} sur penalty`,
-      });
+      text = `But de ${player.name} sur penalty`;
       break;
     default:
-      attachments.push({
-        text: `But de ${player.nameWithFlag}`,
-      });
-  }
-
-  attachments[0].color = 'good';
-  if (addLiveAttachment) {
-    attachments[0].actions = liveAttachment;
+      text = `But de ${player.nameWithFlag}`;
   }
 
   sendMessageQueue.push({
     match,
     event,
-    msg,
-    attachments,
+    title,
+    attachments: [
+      {
+        text,
+        actions: liveAttachment,
+      },
+    ],
   });
 };
 
-export const handlePenaltyEvent = (match, event, team) => {
-  log('New event: penalty');
-
-  const oppTeam = match.getOppositeTeam(team);
-
-  const msg = `:exclamation: *Penalty* accordé ${oppTeam.getNameWithDeterminer('à', true)} (${
-    event.MatchMinute
-  })`;
-
-  sendMessageQueue.push({ match, event, msg });
-};
-
-export const handlePenaltyMissedEvent = (match, event, team, player) => {
-  log('New event: penaltyMissed');
+export const handlePenaltyFailedEvent = (match, event, team, player) => {
+  log('New event: penaltyFailed');
 
   if (event.Period === PERIOD_PENALTIES) {
     handlePenaltyShootOutGoalEvent(match, event, team, player);
     return;
   }
 
-  const attachments = [];
-  const msg = `:no_good: *${player.nameWithFlag} manque son penalty (non-cadré)* (${
-    event.MatchMinute
-  })`;
-
   sendMessageQueue.push({
     match,
     event,
-    msg,
-    attachments,
-  });
-};
-
-export const handlePenaltySavedEvent = (match, event, team, player) => {
-  log('New event: penaltySaved');
-
-  if (event.Period === PERIOD_PENALTIES) {
-    handlePenaltyShootOutGoalEvent(match, event, team, player);
-    return;
-  }
-
-  const msg = `:no_good: *${player.nameWithFlag} manque son penalty (sauvé)* (${
-    event.MatchMinute
-  })`;
-
-  const attachments = [];
-
-  sendMessageQueue.push({
-    match,
-    event,
-    msg,
-    attachments,
+    title: getPenaltyFailedTitle(event.Type, player),
   });
 };
 
@@ -361,8 +324,7 @@ export const handleComingUpMatchEvent = (match) => {
 
   const diff = Math.floor(Math.abs(getNow().diff(match.getDate()) / 1000 / 60));
 
-  const msg = `:soon: *Le match commence bientôt* (${diff} min)`;
-
+  const title = `:soon: Le match commence bientôt (${diff} min)`;
   const attachments = [
     {
       title: '>> Pensez à vos pronos <<',
@@ -370,7 +332,7 @@ export const handleComingUpMatchEvent = (match) => {
     },
   ];
 
-  sendMessageQueue.push({ match, msg, attachments });
+  sendMessageQueue.push({ match, title, attachments });
 };
 
 export const handleVarEvent = (match, event) => {
@@ -385,11 +347,22 @@ export const handleVarEvent = (match, event) => {
   // Donc si j'en crois ce qui y est écrit, si on a la clé "Result" à 4, c'est
   // qu'un penalty à été annulé.
 
-  if (event.VarDetail !== 4) {
-    return;
+  const {
+    MatchMinute,
+    VarDetail: { Status, Result },
+  } = event;
+
+  let title = null;
+
+  if (Status === 2) {
+    title = `:tv: VAR demandée (${MatchMinute})`;
   }
 
-  const msg = `:no_entry_sign: *Penalty annulé après VAR* (${event.MatchMinute})`;
+  if (Result === 4) {
+    title = `:no_entry_sign: Penalty annulé après VAR (${MatchMinute})`;
+  }
 
-  sendMessageQueue.push({ match, msg });
+  if (title) {
+    sendMessageQueue.push({ match, title });
+  }
 };

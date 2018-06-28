@@ -6,15 +6,14 @@ import Match from './Match';
 import { getNow, isDev, log } from './utils';
 import { fetchLiveMatches, fetchMatchEvents, fetchMatches } from './api';
 import {
-  handleMatchStartEvent,
-  handleMatchEndEvent,
+  // handleMatchStartEvent,
+  // handleMatchEndEvent,
   handlePeriodEndEvent,
   handlePeriodStartEvent,
   handleCardEvent,
   handleGoalEvent,
   handlePenaltyEvent,
-  handlePenaltyMissedEvent,
-  handlePenaltySavedEvent,
+  handlePenaltyFailedEvent,
   handleComingUpMatchEvent,
   handleVarEvent,
 } from './events';
@@ -24,14 +23,13 @@ const matches = {};
 const createMatch = (data) => {
   const match = new Match(data);
 
-  match.on('matchStart', handleMatchStartEvent);
-  match.on('matchEnd', handleMatchEndEvent);
+  // match.on('matchStart', handleMatchStartEvent);
+  // match.on('matchEnd', handleMatchEndEvent);
   match.on('periodStart', handlePeriodStartEvent);
   match.on('periodEnd', handlePeriodEndEvent);
   match.on('goal', handleGoalEvent);
   match.on('penalty', handlePenaltyEvent);
-  match.on('penalty missed', handlePenaltyMissedEvent);
-  match.on('penalty saved', handlePenaltySavedEvent);
+  match.on('penaltyFailed', handlePenaltyFailedEvent);
   match.on('card', handleCardEvent);
   match.on('var', handleVarEvent);
 
