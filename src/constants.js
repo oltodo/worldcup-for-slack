@@ -1,8 +1,8 @@
 // Globals
 export const ID_COMPETITION = 17;
 export const ID_SEASON = 254645;
-export const LOCALE = "fr-FR";
-export const API_ENDPOINT = "https://api.fifa.com/api/v1";
+export const LOCALE = 'fr-FR';
+export const API_ENDPOINT = 'https://api.fifa.com/api/v1';
 
 // Match Statuses
 export const MATCH_STATUS_FINISHED = 0;
@@ -36,47 +36,46 @@ export const PERIOD_PENALTIES = 11;
 
 // Endpoints
 export const ENDPOINT_MATCHES = `${API_ENDPOINT}/calendar/matches?idCompetition=${ID_COMPETITION}&idSeason=${ID_SEASON}&count=500&language=${LOCALE}`;
-export const ENDPOINT_EVENTS = (stageId, matchId) =>
-  `${API_ENDPOINT}/timelines/${ID_COMPETITION}/${ID_SEASON}/${stageId}/${matchId}?language=${LOCALE}`;
+export const ENDPOINT_EVENTS = (stageId, matchId) => `${API_ENDPOINT}/timelines/${ID_COMPETITION}/${ID_SEASON}/${stageId}/${matchId}?language=${LOCALE}`;
 export const ENDPOINT_LIVE = `https://api.fifa.com/api/v1/live/football/now?idCompetition=${ID_COMPETITION}&idSeason=${ID_SEASON}&count=500&language=${LOCALE}`;
 
 // Penalties display
-export const PENALTY_OK = ":large_blue_circle:";
-export const PENALTY_NOK = ":red_circle:";
-export const PENALTY_INCOMING = ":white_circle:";
+export const PENALTY_OK = ':large_blue_circle:';
+export const PENALTY_NOK = ':red_circle:';
+export const PENALTY_INCOMING = ':white_circle:';
 
 export const COUNTRIES = {
-  RUS: { determiner: "la ", flag: "🇷🇺" },
-  URU: { determiner: "l'", flag: "🇺🇾" },
-  EGY: { determiner: "l'", flag: "🇪🇬" },
-  KSA: { determiner: "l'", flag: "🇸🇦" },
-  IRN: { determiner: "l'", flag: "🇮🇷" },
-  ESP: { determiner: "l'", flag: "🇪🇸" },
-  POR: { determiner: "le ", flag: "🇵🇹" },
-  MAR: { determiner: "le ", flag: "🇲🇦" },
-  FRA: { determiner: "la ", flag: "🇫🇷" },
-  DEN: { determiner: "le ", flag: "🇩🇰" },
-  AUS: { determiner: "l'", flag: "🇦🇺" },
-  PER: { determiner: "le ", flag: "🇵🇪" },
-  CRO: { determiner: "la ", flag: "🇭🇷" },
-  ISL: { determiner: "l'", flag: "🇮🇸" },
-  ARG: { determiner: "l'", flag: "🇦🇷" },
-  NGA: { determiner: "le ", flag: "🇳🇬" },
-  SRB: { determiner: "la ", flag: "🇷🇸" },
-  SUI: { determiner: "la ", flag: "🇨🇭" },
-  BRA: { determiner: "le ", flag: "🇧🇷" },
-  CRC: { determiner: "la ", flag: "🇨🇷" },
-  MEX: { determiner: "le ", flag: "🇲🇽" },
-  SWE: { determiner: "la ", flag: "🇸🇪" },
-  KOR: { determiner: "la ", flag: "🇰🇷" },
-  GER: { determiner: "l'", flag: "🇩🇪" },
-  BEL: { determiner: "la ", flag: "🇧🇪" },
-  PAN: { determiner: "le ", flag: "🇵🇦" },
-  TUN: { determiner: "la ", flag: "🇹🇳" },
-  ENG: { determiner: "l'", flag: "🇬🇧" },
-  POL: { determiner: "la ", flag: "🇵🇱" },
-  SEN: { determiner: "le ", flag: "🇸🇳" },
-  COL: { determiner: "la ", flag: "🇨🇴" },
-  JPN: { determiner: "le ", flag: "🇯🇵" },
-  DEF: { determiner: "", flag: "🏴" }
+  RUS: { determiner: 'la ', flag: '🇷🇺' },
+  URU: { determiner: "l'", flag: '🇺🇾' },
+  EGY: { determiner: "l'", flag: '🇪🇬' },
+  KSA: { determiner: "l'", flag: '🇸🇦' },
+  IRN: { determiner: "l'", flag: '🇮🇷' },
+  ESP: { determiner: "l'", flag: '🇪🇸' },
+  POR: { determiner: 'le ', flag: '🇵🇹' },
+  MAR: { determiner: 'le ', flag: '🇲🇦' },
+  FRA: { determiner: 'la ', flag: '🇫🇷' },
+  DEN: { determiner: 'le ', flag: '🇩🇰' },
+  AUS: { determiner: "l'", flag: '🇦🇺' },
+  PER: { determiner: 'le ', flag: '🇵🇪' },
+  CRO: { determiner: 'la ', flag: '🇭🇷' },
+  ISL: { determiner: "l'", flag: '🇮🇸' },
+  ARG: { determiner: "l'", flag: '🇦🇷' },
+  NGA: { determiner: 'le ', flag: '🇳🇬' },
+  SRB: { determiner: 'la ', flag: '🇷🇸' },
+  SUI: { determiner: 'la ', flag: '🇨🇭' },
+  BRA: { determiner: 'le ', flag: '🇧🇷' },
+  CRC: { determiner: 'la ', flag: '🇨🇷' },
+  MEX: { determiner: 'le ', flag: '🇲🇽' },
+  SWE: { determiner: 'la ', flag: '🇸🇪' },
+  KOR: { determiner: 'la ', flag: '🇰🇷' },
+  GER: { determiner: "l'", flag: '🇩🇪' },
+  BEL: { determiner: 'la ', flag: '🇧🇪' },
+  PAN: { determiner: 'le ', flag: '🇵🇦' },
+  TUN: { determiner: 'la ', flag: '🇹🇳' },
+  ENG: { determiner: "l'", flag: '🇬🇧' },
+  POL: { determiner: 'la ', flag: '🇵🇱' },
+  SEN: { determiner: 'le ', flag: '🇸🇳' },
+  COL: { determiner: 'la ', flag: '🇨🇴' },
+  JPN: { determiner: 'le ', flag: '🇯🇵' },
+  DEF: { determiner: '', flag: '🏴' },
 };

@@ -7,7 +7,8 @@
     "build": "babel src --out-dir dist",
     "start": "NODE_ENV=production babel-node src",
     "lint": "eslint --cache 'src/**/*.js'",
-    "format": "prettier --write '{src,cache}/**/*.{js,json}'",
+    "format": "prettier-eslint --write '{src,cache}/**/*.{js,json}'",
+    "format:dry-run": "prettier-eslint --list-different '{src,cache}/**/*.{js,json}'",
     "deploy": "now -e NODE_ENV=development --public",
     "dev": "NODE_ENV=development babel-node src"
   },
@@ -17,6 +18,7 @@
   },
   "dependencies": {
     "babel-cli": "6.26.0",
+    "babel-plugin-dynamic-import-node": "2.0.0",
     "babel-plugin-transform-object-rest-spread": "6.26.0",
     "babel-preset-env": "1.7.0",
     "better-queue": "3.8.7",
@@ -28,9 +30,13 @@
   },
   "devDependencies": {
     "babel-eslint": "7.2.3",
-    "eslint": "4.1.1",
+    "eslint": "4.19.1",
+    "eslint-config-airbnb": "17.0.0",
     "eslint-config-prettier": "2.9.0",
+    "eslint-plugin-import": "2.12.0",
+    "eslint-plugin-jsx-a11y": "6.0.3",
     "eslint-plugin-prettier": "2.6.1",
-    "prettier": "1.13.5"
+    "eslint-plugin-react": "7.9.1",
+    "prettier-eslint-cli": "4.7.1"
   }
 }

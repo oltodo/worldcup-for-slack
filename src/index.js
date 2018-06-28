@@ -1,18 +1,10 @@
-/**
- * todo:
- *
- *  [x] Se baser sur l'heure de début des matchs pour commencer à crawler
- *  [x] Avertir un quart d'heure avant du début d'un match
- *  - Gérer le cas des prolongations
- *  - Gérer le cas de la séance de tir au but
- */
-import cron from "cron";
-import { map, reduce } from "lodash";
+import cron from 'cron';
+import { map, reduce } from 'lodash';
 
-import Match from "./Match";
+import Match from './Match';
 
-import { getNow, IS_DEV } from "./utils";
-import { fetchLiveMatches, fetchMatchEvents, fetchMatches } from "./api";
+import { getNow, isDev, log } from './utils';
+import { fetchLiveMatches, fetchMatchEvents, fetchMatches } from './api';
 import {
   handleMatchStartEvent,
   handleMatchEndEvent,
@@ -24,24 +16,24 @@ import {
   handlePenaltyMissedEvent,
   handlePenaltySavedEvent,
   handleComingUpMatchEvent,
-  handleVarEvent
-} from "./events";
+  handleVarEvent,
+} from './events';
 
-let matches = {};
+const matches = {};
 
-const createMatch = data => {
+const createMatch = (data) => {
   const match = new Match(data);
 
-  match.on("matchStart", handleMatchStartEvent);
-  match.on("matchEnd", handleMatchEndEvent);
-  match.on("periodStart", handlePeriodStartEvent);
-  match.on("periodEnd", handlePeriodEndEvent);
-  match.on("goal", handleGoalEvent);
-  match.on("penalty", handlePenaltyEvent);
-  match.on("penalty missed", handlePenaltyMissedEvent);
-  match.on("penalty saved", handlePenaltySavedEvent);
-  match.on("card", handleCardEvent);
-  match.on("var", handleVarEvent);
+  match.on('matchStart', handleMatchStartEvent);
+  match.on('matchEnd', handleMatchEndEvent);
+  match.on('periodStart', handlePeriodStartEvent);
+  match.on('periodEnd', handlePeriodEndEvent);
+  match.on('goal', handleGoalEvent);
+  match.on('penalty', handlePenaltyEvent);
+  match.on('penalty missed', handlePenaltyMissedEvent);
+  match.on('penalty saved', handlePenaltySavedEvent);
+  match.on('card', handleCardEvent);
+  match.on('var', handleVarEvent);
 
   return match;
 };
@@ -60,7 +52,7 @@ const getComingUpMatches = () => {
 
       return acc;
     },
-    []
+    [],
   );
 };
 
@@ -68,7 +60,7 @@ const checkComingUpMatches = () => {
   // On annonce les matchs à venir dans (environ) un quart d'heure
   const comingUpMatches = getComingUpMatches();
 
-  comingUpMatches.forEach(match => {
+  comingUpMatches.forEach((match) => {
     // Si l'annonce à déjà été faite on quitte
     if (match.getForecasted() === true) {
       return;
@@ -87,18 +79,15 @@ const checkComingUpMatches = () => {
 const checkUncompleteMatches = async () => {
   let shouldUpdate = false;
 
-  map(matches, match => {
+  map(matches, (match) => {
     // On active la mise à jour si le match à commencé et qu'il n'a pas encore toutes les données
-    if (
-      !match.isComplete() &&
-      (match.isLive() || match.shouldHaveStarted(200))
-    ) {
+    if (!match.isComplete() && (match.isLive() || match.shouldHaveStarted(200))) {
       shouldUpdate = true;
     }
   });
 
   if (shouldUpdate) {
-    map(await fetchLiveMatches(), data => {
+    map(await fetchLiveMatches(), (data) => {
       matches[data.IdMatch].update(data);
     });
   }
@@ -110,11 +99,8 @@ const update = async () => {
 
   // On parcourt ensuite la liste des matchs pour savoir s'il faut en récupérer
   // les évènements. Il faut que le match ait démarré et ait les données complètes
-  map(matches, async match => {
-    if (
-      (match.isLive() || match.shouldHaveStarted(200)) &&
-      match.isComplete()
-    ) {
+  map(matches, async (match) => {
+    if ((match.isLive() || match.shouldHaveStarted(200)) && match.isComplete()) {
       const events = await fetchMatchEvents(match);
       match.updateEvents(events);
     }
@@ -123,27 +109,27 @@ const update = async () => {
 
 const init = async () => {
   // Récupération de tous les matchs de la compétition
-  map(await fetchMatches(), data => {
+  map(await fetchMatches(), (data) => {
     matches[data.IdMatch] = createMatch(data);
   });
 
-  if (IS_DEV) {
+  if (isDev()) {
     update();
     return;
   }
 
   cron
     .job(
-      "*/15 * * * * *",
+      '*/15 * * * * *',
       () => {
-        console.log("Update");
+        log('Update');
         update();
       },
-      false
+      false,
     )
     .start();
 
-  console.log("Cron job started");
+  log('Cron job started');
 };
 
 init();

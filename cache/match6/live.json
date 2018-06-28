@@ -78,8 +78,7 @@
         "Score": 0,
         "Side": null,
         "IdTeam": "1889588",
-        "PictureUrl":
-          "https://api.fifa.com/api/v1/picture/flags-{format}-{size}/ENG",
+        "PictureUrl": "https://api.fifa.com/api/v1/picture/flags-{format}-{size}/ENG",
         "IdCountry": "ENG",
         "TeamType": 1,
         "AgeType": 1,
@@ -749,8 +748,7 @@
         "Score": 0,
         "Side": null,
         "IdTeam": "1888308",
-        "PictureUrl":
-          "https://api.fifa.com/api/v1/picture/flags-{format}-{size}/JPN",
+        "PictureUrl": "https://api.fifa.com/api/v1/picture/flags-{format}-{size}/JPN",
         "IdCountry": "JPN",
         "TeamType": 1,
         "AgeType": 1,
