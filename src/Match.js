@@ -1,6 +1,6 @@
 import moment from "moment";
 import { EventEmitter } from "events";
-import { differenceWith, find, get } from "lodash";
+import { differenceWith, find, filter } from "lodash";
 import Team from "./Team";
 
 import { getNow, IS_DEV } from "./utils";
@@ -21,8 +21,6 @@ import {
   EVENT_PENALTY_MISSED,
   EVENT_FOUL_PENALTY,
   EVENT_VAR,
-  PERIOD_1ST_HALF,
-  PERIOD_2ND_HALF,
   MATCH_STATUS_FINISHED,
   MATCH_STATUS_LIVE
 } from "./constants";
@@ -97,10 +95,6 @@ export default class Match extends EventEmitter {
   }
 
   shouldHaveStarted(from) {
-    if (IS_DEV) {
-      return true;
-    }
-
     if (this.status === MATCH_STATUS_FINISHED) {
       return false;
     }
@@ -112,6 +106,19 @@ export default class Match extends EventEmitter {
 
   getName() {
     return `${this.homeTeam.getName()} / ${this.awayTeam.getName()}`;
+  }
+
+  getEvents({ eventTypes = null, period = null, teamId = null, until = null }) {
+    let result = filter(
+      this.events,
+      event =>
+        (teamId ? teamId === event.IdTeam : true) &&
+        (eventTypes ? eventTypes.indexOf(event.Type) >= 0 : true) &&
+        (period ? period === event.Period : true) &&
+        (until ? moment(event.Timestamp).diff(until) <= 0 : true)
+    );
+
+    return result;
   }
 
   getTeam(teamId) {
@@ -142,8 +149,11 @@ export default class Match extends EventEmitter {
       return diff <= 5;
     });
 
-    console.log(`${newEvents.length} new event(s)`);
+    console.log(
+      `${newEvents.length} new event(s) for ${this.getName()} (${this.getId()})`
+    );
 
+    this.events = events;
     newEvents.forEach(event => {
       const team = this.getTeam(event.IdTeam);
       const player = this.getPlayer(event.IdPlayer);
@@ -158,28 +168,11 @@ export default class Match extends EventEmitter {
           this.emit("matchEnd", this, event);
           break;
         case EVENT_PERIOD_START:
-          switch (event.Period) {
-            case PERIOD_1ST_HALF:
-              this.emit("firstPeriodStart", this, event);
-              break;
-            case PERIOD_2ND_HALF:
-              this.emit("secondPeriodStart", this, event);
-              break;
-            default:
-          }
+          this.emit("periodStart", this, event);
           break;
         case EVENT_PERIOD_END:
-          switch (event.Period) {
-            case PERIOD_1ST_HALF:
-              this.emit("firstPeriodEnd", this, event);
-              break;
-            case PERIOD_2ND_HALF:
-              this.emit("secondPeriodEnd", this, event);
-              break;
-            default:
-          }
+          this.emit("periodEnd", this, event);
           break;
-
         case EVENT_GOAL:
           this.emit("goal", this, event, team, player, "regular");
           break;
@@ -192,7 +185,6 @@ export default class Match extends EventEmitter {
         case EVENT_OWN_GOAL:
           this.emit("goal", this, event, team, player, "own");
           break;
-
         case EVENT_YELLOW_CARD:
           this.emit("card", this, event, team, player, "yellow");
           break;
@@ -223,8 +215,6 @@ export default class Match extends EventEmitter {
         default:
       }
     });
-
-    this.events = events;
     this.lastCheck = moment();
   }
 }

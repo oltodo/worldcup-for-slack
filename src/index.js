@@ -16,8 +16,8 @@ import { fetchLiveMatches, fetchMatchEvents, fetchMatches } from "./api";
 import {
   handleMatchStartEvent,
   handleMatchEndEvent,
-  handleFirstPeriodEndEvent,
-  handleSecondPeriodStartEvent,
+  handlePeriodEndEvent,
+  handlePeriodStartEvent,
   handleCardEvent,
   handleGoalEvent,
   handlePenaltyEvent,
@@ -34,8 +34,8 @@ const createMatch = data => {
 
   match.on("matchStart", handleMatchStartEvent);
   match.on("matchEnd", handleMatchEndEvent);
-  match.on("firstPeriodEnd", handleFirstPeriodEndEvent);
-  match.on("secondPeriodStart", handleSecondPeriodStartEvent);
+  match.on("periodStart", handlePeriodStartEvent);
+  match.on("periodEnd", handlePeriodEndEvent);
   match.on("goal", handleGoalEvent);
   match.on("penalty", handlePenaltyEvent);
   match.on("penalty missed", handlePenaltyMissedEvent);

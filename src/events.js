@@ -1,7 +1,23 @@
 import Queue from "better-queue";
-import { get } from "lodash";
+import { get, range } from "lodash";
 
 import { getNow } from "./utils";
+import {
+  PERIOD_PENALTIES,
+  EVENT_PENALTY_GOAL,
+  EVENT_PENALTY_MISSED,
+  EVENT_PENALTY_SAVED,
+  PENALTY_OK,
+  PENALTY_NOK,
+  PENALTY_INCOMING,
+  PERIOD_1ST_HALF,
+  PERIOD_2ND_HALF,
+  PERIOD_EXPAND_1ST_HALF,
+  PERIOD_EXPAND_2ND_HALF,
+  EVENT_MATCH_END,
+  EVENT_PERIOD_END,
+  EVENT_PERIOD_START
+} from "./constants";
 
 const SLACKHOOK =
   process.env.SLACKHOOK ||
@@ -9,11 +25,90 @@ const SLACKHOOK =
 
 const slackhook = require("slack-notify")(SLACKHOOK);
 
+const liveAttachment = [
+  {
+    type: "button",
+    text: ":tv: Accéder au live",
+    url: "http://neosportek.blogspot.com/p/world-cup.html"
+  }
+];
+
+const getPeriodName = periodId => {
+  let periodNumberName = "";
+
+  switch (periodId) {
+    case PERIOD_1ST_HALF:
+      periodNumberName = "première période";
+      break;
+    case PERIOD_2ND_HALF:
+      periodNumberName = "seconde période";
+      break;
+    case PERIOD_EXPAND_1ST_HALF:
+      periodNumberName = "première période de prolongation";
+      break;
+    case PERIOD_EXPAND_2ND_HALF:
+      periodNumberName = "seconde période de prolongation";
+      break;
+    case PERIOD_PENALTIES:
+      periodNumberName = "séance de tirs au but";
+      break;
+    default:
+  }
+  return periodNumberName;
+};
+
+const buildPenaltiesSeriesScore = data => {
+  let doneShootsString = "";
+  let remainingShoots = 5;
+
+  if (data) {
+    remainingShoots =
+      data.length <= remainingShoots ? remainingShoots - data.length : 0;
+    doneShootsString = data.reduce(
+      (acc, event) =>
+        acc + (EVENT_PENALTY_GOAL === event.Type ? PENALTY_OK : PENALTY_NOK),
+      ""
+    );
+  }
+
+  const remainingShootsString = range(remainingShoots).reduce(
+    acc => acc + PENALTY_INCOMING,
+    ""
+  );
+  return doneShootsString + remainingShootsString;
+};
+
+const buildPenaltiesSeriesfields = (match, time) => {
+  const homeTeam = match.getHomeTeam();
+  const awayTeam = match.getAwayTeam();
+
+  const fields = [homeTeam, awayTeam].map(team => {
+    const events = match.getEvents({
+      eventTypes: [
+        EVENT_PENALTY_GOAL,
+        EVENT_PENALTY_MISSED,
+        EVENT_PENALTY_SAVED
+      ],
+      period: PERIOD_PENALTIES,
+      teamId: team.getId(),
+      until: time
+    });
+
+    const scoreString = buildPenaltiesSeriesScore(events);
+
+    return {
+      title: `${team.getName(true)}`,
+      value: `*${scoreString}*`
+    };
+  });
+
+  return fields;
+};
+
 const sendMessageQueue = new Queue(
-  ({ match, event, msg, attachments = [] }, done) => {
+  ({ match, event, msg = "", attachments = [] }, done) => {
     const homeTeam = match.getHomeTeam();
     const awayTeam = match.getAwayTeam();
-
     let text = `${homeTeam.getName(true)} / ${awayTeam.getName(true)}`;
 
     if (event) {
@@ -53,20 +148,29 @@ export const handleMatchEndEvent = (match, event) => {
   });
 };
 
-export const handleFirstPeriodEndEvent = (match, event) => {
+export const handlePeriodEndEvent = (match, event) => {
   console.log("New event: firstPeriodEnd");
 
+  const periodName = getPeriodName(event.Period);
   sendMessageQueue.push({
     match,
     event,
-    msg: `:toilet: *Fin de la première période* (${event.MatchMinute})`
+    msg: `:toilet: *Fin de la ${periodName} * (${event.MatchMinute})`
   });
+
+  if (PERIOD_PENALTIES === event.Period) {
+    handleMatchEndEvent(match, event);
+  }
 };
 
-export const handleSecondPeriodStartEvent = (match, event) => {
+export const handlePeriodStartEvent = (match, event) => {
   console.log("New event: secondPeriodStart");
-
-  sendMessageQueue.push({ match, event, msg: ":runner: *C'est reparti !*" });
+  const periodName = getPeriodName(event.Period);
+  sendMessageQueue.push({
+    match,
+    event,
+    msg: `:runner: *Debut de la ${periodName}* `
+  });
 };
 
 export const handleCardEvent = (match, event, team, player, type) => {
@@ -109,13 +213,7 @@ export const handleOwnGoalEvent = (match, event, team, player) => {
     {
       text: `${player.nameWithFlag} marque contre son camp :face_palm:`,
       color: "danger",
-      actions: [
-        {
-          type: "button",
-          text: ":tv: Accéder au live",
-          url: "http://neosportek.blogspot.com/p/world-cup.html"
-        }
-      ]
+      actions: liveAttachment
     }
   ];
 
@@ -125,17 +223,23 @@ export const handleOwnGoalEvent = (match, event, team, player) => {
 export const handleGoalEvent = (match, event, team, player, type) => {
   console.log("New event: goal");
 
+  if (event.Period === PERIOD_PENALTIES) {
+    handlePenaltyShootOutGoalEvent(match, event, team, player);
+    return;
+  }
+
   if (type === "own") {
     handleOwnGoalEvent(match, event, team, player);
     return;
   }
 
-  const msg = `:soccer: *Goooooal! pour ${team.getNameWithDeterminer(
+  let msg = `:soccer: *Goooooal! pour ${team.getNameWithDeterminer(
     null,
     true
   )}* (${event.MatchMinute})`;
 
   let attachments = [];
+  let addLiveAttachment = true;
 
   switch (type) {
     case "freekick":
@@ -145,7 +249,10 @@ export const handleGoalEvent = (match, event, team, player, type) => {
       break;
     case "penalty":
       attachments.push({
-        text: `But de ${player.nameWithFlag} sur penalty`
+        text:
+          PERIOD_PENALTIES === event.Period
+            ? `But de ${player.nameWithFlag}`
+            : `But de ${player.name} sur penalty`
       });
       break;
     default:
@@ -155,13 +262,9 @@ export const handleGoalEvent = (match, event, team, player, type) => {
   }
 
   attachments[0].color = "good";
-  attachments[0].actions = [
-    {
-      type: "button",
-      text: ":tv: Accéder au live",
-      url: "http://neosportek.blogspot.com/p/world-cup.html"
-    }
-  ];
+  if (addLiveAttachment) {
+    attachments[0].actions = liveAttachment;
+  }
 
   sendMessageQueue.push({ match, event, msg, attachments });
 };
@@ -182,21 +285,72 @@ export const handlePenaltyEvent = (match, event, team) => {
 export const handlePenaltyMissedEvent = (match, event, team, player) => {
   console.log("New event: penaltyMissed");
 
+  if (event.Period === PERIOD_PENALTIES) {
+    handlePenaltyShootOutGoalEvent(match, event, team, player);
+    return;
+  }
+
+  let attachments = [];
   let msg = `:no_good: *${
     player.nameWithFlag
   } manque son penalty (non-cadré)* (${event.MatchMinute})`;
 
-  sendMessageQueue.push({ match, event, msg });
+  sendMessageQueue.push({ match, event, msg, attachments });
 };
 
 export const handlePenaltySavedEvent = (match, event, team, player) => {
   console.log("New event: penaltySaved");
 
+  if (event.Period === PERIOD_PENALTIES) {
+    handlePenaltyShootOutGoalEvent(match, event, team, player);
+    return;
+  }
+
   let msg = `:no_good: *${player.nameWithFlag} manque son penalty (sauvé)* (${
     event.MatchMinute
   })`;
 
-  sendMessageQueue.push({ match, event, msg });
+  let attachments = [];
+
+  sendMessageQueue.push({ match, event, msg, attachments });
+};
+
+export const handlePenaltyShootOutGoalEvent = (match, event, team, player) => {
+  let text = "";
+  let color = "";
+  let attachments = [];
+
+  switch (event.Type) {
+    case EVENT_PENALTY_GOAL:
+      attachments.push({
+        text: `:carlton: ${player.nameWithFlag} marque son penalty`,
+        color: "good"
+      });
+      break;
+    case EVENT_PENALTY_MISSED:
+      attachments.push({
+        text: `:haha: ${player.nameWithFlag} manque son penalty`,
+        color: "danger"
+      });
+      break;
+    case EVENT_PENALTY_SAVED:
+      attachments.push({
+        text: `:mkeyebrows: Le gardien arrête le penalty de ${
+          player.nameWithFlag
+        }`,
+        color: "danger"
+      });
+      break;
+    default:
+  }
+
+  attachments[0].fields = buildPenaltiesSeriesfields(match, event.Timestamp);
+
+  sendMessageQueue.push({
+    match,
+    event,
+    attachments
+  });
 };
 
 export const handleComingUpMatchEvent = match => {
