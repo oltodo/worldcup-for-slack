@@ -73,7 +73,7 @@ const buildPenaltiesSeriesfields = (match, time) => {
   return fields;
 };
 
-const getPenaltyFailedTitle = (type, player) => {
+const getPenaltyTitle = (type, player) => {
   switch (type) {
     case EVENT_PENALTY_GOAL:
       return `${getGoalEmoji()} ${player.nameWithFlag} marque le tir au but`;
@@ -93,7 +93,7 @@ const getPenaltyFailedTitle = (type, player) => {
 
 const sendMessageQueue = new Queue(
   ({
-    match, event, title, attachments = [],
+    match, event, title, attachments = [], showMatchMinute = true,
   }, done) => {
     const homeTeam = match.getHomeTeam();
     const awayTeam = match.getAwayTeam();
@@ -106,7 +106,11 @@ const sendMessageQueue = new Queue(
       text = ` ${homeTeam.getName(true)} *${homeScore}-${awayScore}* ${awayTeam.getName(
         true,
         true,
-      )} `;
+      )}`;
+
+      if (showMatchMinute) {
+        text += ` *(${event.MatchMinute})*`;
+      }
     }
 
     slackhook.send({
@@ -119,23 +123,50 @@ const sendMessageQueue = new Queue(
   { afterProcessDelay: 1000 },
 );
 
+export const handleMatchEndEvent = (match, event) => {
+  log('New event: matchEnd');
+
+  const {
+    HomeGoals, AwayGoals, HomePenaltyGoals, AwayPenaltyGoals,
+  } = event;
+
+  const diff = HomeGoals + HomePenaltyGoals - (AwayGoals + AwayPenaltyGoals);
+  const title = ':coin: Fin du match';
+  let text = null;
+
+  if (diff === 0) {
+    text = 'Les deux équipes se quittent sur un match nul.';
+  } else if (diff > 0) {
+    text = `Vitoire de ${match.getHomeTeam().getNameWithDeterminer(null, true)} !!!`;
+  } else {
+    text = `Vitoire de ${match.getAwayTeam().getNameWithDeterminer(null, true)} !!!`;
+  }
+
+  sendMessageQueue.push({
+    match,
+    event,
+    title,
+    attachments: [{ text }],
+  });
+};
+
 export const handlePeriodStartEvent = (match, event) => {
   log('New event: periodStart');
 
-  let title = ':redsiren:';
-
   const { Period } = event;
 
+  let title = ':redsiren:';
+
   if (Period === PERIOD_1ST_HALF) {
-    title = `${title} C'est parti, le match commence !`;
+    title = `${title} Le coup d'envoi a été donné`;
   } else if (Period === PERIOD_2ND_HALF) {
-    title = `${title} La mi-temps est terminée, le match reprend !`;
+    title = `${title} La mi-temps est terminée, le match reprend`;
   } else if (Period === PERIOD_EXPAND_1ST_HALF) {
-    title = `${title} C'est parti pour cette première période de prolongation !`;
+    title = `${title} C'est parti pour la première période de prolongation`;
   } else if (Period === PERIOD_EXPAND_2ND_HALF) {
-    title = `${title} La pause est finie, le prolongation reprend !`;
+    title = `${title} La pause est finie, la prolongation reprend`;
   } else if (Period === PERIOD_PENALTIES) {
-    title = `${title} C'est le début de la séance de tirs au but !`;
+    title = `${title} La séance de tirs au but commence`;
   } else {
     return;
   }
@@ -144,62 +175,57 @@ export const handlePeriodStartEvent = (match, event) => {
     match,
     event,
     title,
+    showMatchMinute: false,
   });
 };
 
-export const handlePeriodEndEvent = (/* match, event */) => {
-  // log('New event: firstPeriodEnd');
-  //
-  // const title = null;
-  // const {
-  //   Period, MatchMinute, HomeGoals, AwayGoals,
-  // } = event;
-  //   if (Period === PERIOD_1ST_HALF) {
-  //     title = `Fin de la première période. (${MatchMinute})`;
-  //   } else {
-  //
-  //     if (!match.isGroupStage() && HomeGoals === AwayGoals) {
-  //
-  //     }
-  //
-  //
-  //
-  //     if (Period === PERIOD_2ND_HALF) {
-  //     }
-  //
-  //     title = 'Le match reprend !';
-  //   } else if (Period === PERIOD_EXPAND_1ST_HALF) {
-  //     title = 'Les prolongations commencent !';
-  //   } else if (Period === PERIOD_EXPAND_2ND_HALF) {
-  //     title = 'Les prolongations reprennent !';
-  //   } else if (Period === PERIOD_PENALTIES) {
-  //     title = "C'est le début de la séance de tirs au but !";
-  //   } else {
-  //     return;
-  //   }
-  // }
-  //
-  // sendMessageQueue.push({
-  //   match,
-  //   event,
-  //   title,
-  // });
+export const handlePeriodEndEvent = (match, event) => {
+  const { Period, HomeGoals, AwayGoals } = event;
+
+  let title = ':redsiren:';
+  let text = null;
+
+  if (Period === PERIOD_1ST_HALF) {
+    title = `${title} Fin de la première période`;
+  } else if (Period === PERIOD_EXPAND_1ST_HALF) {
+    title = `${title} Fin de la première période de prolongation`;
+  } else if (HomeGoals !== AwayGoals || match.isGroupStage() || Period === PERIOD_PENALTIES) {
+    handleMatchEndEvent(match, event);
+    return;
+  } else if (Period === PERIOD_2ND_HALF) {
+    title = `${title} Fin de la seconde période`;
+    text = "Les deux équipes n'ont pas su se départager, il y aura une prolongation.";
+  } else if (Period === PERIOD_EXPAND_2ND_HALF) {
+    title = `${title} Fin de la seconde période de prolongation`;
+    text = 'Les deux équipes restent à égalité, il y aura donc une séance de tirs au but.';
+  } else {
+    return;
+  }
+
+  log('New event: periodEnd');
+
+  sendMessageQueue.push({
+    match,
+    event,
+    title,
+    attachments: [{ text }],
+  });
 };
 
 export const handleCardEvent = (match, event, team, player, type) => {
   log('New event: card');
 
-  let title = `(${event.MatchMinute})`;
+  let title = null;
 
   switch (type) {
     case 'yellow':
-      title = `:yellow_card: Carton jaune ${title}`;
+      title = ':yellow_card: Carton jaune';
       break;
     case 'red':
-      title = `:red_card: Carton rouge ${title}`;
+      title = ':red_card: Carton rouge';
       break;
     case 'yellow+yellow':
-      title = `:red_card: Carton rouge (deux jaunes) ${title}`;
+      title = ':red_card: Carton rouge (deux jaunes)';
       break;
     default:
       return;
@@ -223,18 +249,14 @@ export const handlePenaltyEvent = (match, event, team) => {
   sendMessageQueue.push({
     match,
     event,
-    title: `:exclamation: Penalty accordé ${oppTeam.getNameWithDeterminer('à', true)} (${
-      event.MatchMinute
-    })`,
+    title: `:exclamation: Penalty accordé ${oppTeam.getNameWithDeterminer('à', true)}`,
   });
 };
 
 export const handleOwnGoalEvent = (match, event, team, player) => {
   const oppTeam = match.getOppositeTeam(team);
 
-  const title = `:soccer: Goooooal! pour ${oppTeam.getNameWithDeterminer(null, true)} (${
-    event.MatchMinute
-  })`;
+  const title = `:soccer: Goooooal! pour ${oppTeam.getNameWithDeterminer(null, true)}`;
 
   const attachments = [
     {
@@ -256,7 +278,7 @@ export const handlePenaltyShootOutGoalEvent = (match, event, team, player) => {
   sendMessageQueue.push({
     match,
     event,
-    title: getPenaltyFailedTitle(event.Type, player),
+    title: getPenaltyTitle(event.Type, player),
     attachments: [{ fields: buildPenaltiesSeriesfields(match, event.Timestamp) }],
   });
 };
@@ -274,9 +296,7 @@ export const handleGoalEvent = (match, event, team, player, type) => {
     return;
   }
 
-  const title = `${getGoalEmoji()} Goooooal! pour ${team.getNameWithDeterminer(null, true)} (${
-    event.MatchMinute
-  })`;
+  const title = `${getGoalEmoji()} Goooooal! pour ${team.getNameWithDeterminer(null, true)}`;
 
   let text;
 
@@ -315,7 +335,7 @@ export const handlePenaltyFailedEvent = (match, event, team, player) => {
   sendMessageQueue.push({
     match,
     event,
-    title: getPenaltyFailedTitle(event.Type, player),
+    title: getPenaltyTitle(event.Type, player),
   });
 };
 
@@ -348,18 +368,17 @@ export const handleVarEvent = (match, event) => {
   // qu'un penalty à été annulé.
 
   const {
-    MatchMinute,
     VarDetail: { Status, Result },
   } = event;
 
   let title = null;
 
   if (Status === 2) {
-    title = `:tv: VAR demandée (${MatchMinute})`;
+    title = ':tv: VAR demandée';
   }
 
   if (Result === 4) {
-    title = `:no_entry_sign: Penalty annulé après VAR (${MatchMinute})`;
+    title = ':no_entry_sign: Penalty annulé après VAR';
   }
 
   if (title) {

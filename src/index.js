@@ -6,8 +6,6 @@ import Match from './Match';
 import { getNow, isDev, log } from './utils';
 import { fetchLiveMatches, fetchMatchEvents, fetchMatches } from './api';
 import {
-  // handleMatchStartEvent,
-  // handleMatchEndEvent,
   handlePeriodEndEvent,
   handlePeriodStartEvent,
   handleCardEvent,
@@ -23,8 +21,6 @@ const matches = {};
 const createMatch = (data) => {
   const match = new Match(data);
 
-  // match.on('matchStart', handleMatchStartEvent);
-  // match.on('matchEnd', handleMatchEndEvent);
   match.on('periodStart', handlePeriodStartEvent);
   match.on('periodEnd', handlePeriodEndEvent);
   match.on('goal', handleGoalEvent);
