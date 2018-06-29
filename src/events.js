@@ -97,7 +97,9 @@ const sendMessageQueue = new Queue(
   }, done) => {
     const homeTeam = match.getHomeTeam();
     const awayTeam = match.getAwayTeam();
+
     let text = `${homeTeam.getName(true)} / ${awayTeam.getName(true)}`;
+    let finalTitle = `*${title}*`;
 
     if (event) {
       const homeScore = get(event, 'HomeGoals', 0);
@@ -109,13 +111,13 @@ const sendMessageQueue = new Queue(
       )}`;
 
       if (showMatchMinute) {
-        text += ` *(${event.MatchMinute})*`;
+        finalTitle = `${finalTitle} (${event.MatchMinute})`;
       }
     }
 
     slackhook.send({
       text,
-      attachments: [{ title, color: 'good' }, ...attachments],
+      attachments: [{ text: finalTitle, color: 'good' }, ...attachments],
     });
 
     done();
