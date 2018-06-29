@@ -1,5 +1,5 @@
 import Queue from 'better-queue';
-import { get, shuffle, chain } from 'lodash';
+import { get, sample, chain } from 'lodash';
 
 import { getNow, log } from './utils';
 import {
@@ -33,9 +33,9 @@ const liveAttachment = [
   },
 ];
 
-const getGoalEmoji = () => shuffle(EMOJIS_FOR_GOAL)[0];
-const getPenaltyMissedEmoji = () => shuffle(EMOJIS_FOR_PENALTY_MISSED)[0];
-const getPenaltySavedEmoji = () => shuffle(EMOJIS_FOR_PENALTY_SAVED)[0];
+const getGoalEmoji = () => sample(EMOJIS_FOR_GOAL);
+const getPenaltyMissedEmoji = () => sample(EMOJIS_FOR_PENALTY_MISSED);
+const getPenaltySavedEmoji = () => sample(EMOJIS_FOR_PENALTY_SAVED);
 
 const buildPenaltiesSeriesScore = events => chain(Array(5))
   .fill(PENALTY_INCOMING)
