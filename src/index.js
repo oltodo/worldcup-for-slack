@@ -115,7 +115,7 @@ const init = async () => {
   await updateMatches();
 
   if (isDev()) {
-    update();
+    updateEvents();
     return;
   }
 
