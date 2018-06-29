@@ -1,6 +1,7 @@
 // Globals
 export const ID_COMPETITION = 17;
 export const ID_SEASON = 254645;
+export const ID_GROUP_STAGE = 275073;
 export const LOCALE = 'fr-FR';
 export const API_ENDPOINT = 'https://api.fifa.com/api/v1';
 
@@ -22,6 +23,7 @@ export const EVENT_FREE_KICK_GOAL = 39;
 export const EVENT_PENALTY_GOAL = 41;
 export const EVENT_PENALTY_SAVED = 60;
 export const EVENT_PENALTY_MISSED = 65;
+export const EVENT_PENALTY_CROSSBAR = 46;
 export const EVENT_FOUL_PENALTY = 72;
 export const EVENT_MATCH_START = 19;
 export const EVENT_MATCH_END = 26;
@@ -43,6 +45,20 @@ export const ENDPOINT_LIVE = `https://api.fifa.com/api/v1/live/football/now?idCo
 export const PENALTY_OK = ':large_blue_circle:';
 export const PENALTY_NOK = ':red_circle:';
 export const PENALTY_INCOMING = ':white_circle:';
+
+export const EMOJIS_FOR_GOAL = [
+  ':bananadance:',
+  ':party-parrot:',
+  ':leftshark:',
+  ':epic-sax-guy:',
+  ':carlton:',
+  ':awyeah:',
+  ':bim:',
+  ':bigboom:',
+  ':kirby_dance:',
+];
+export const EMOJIS_FOR_PENALTY_MISSED = [':thooo:', ':haha:', ':headesk:'];
+export const EMOJIS_FOR_PENALTY_SAVED = [...EMOJIS_FOR_PENALTY_MISSED, ':mkeyebrows:', ':ninja:'];
 
 export const COUNTRIES = {
   RUS: { determiner: 'la ', flag: '🇷🇺' },

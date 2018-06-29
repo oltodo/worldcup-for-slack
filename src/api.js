@@ -6,7 +6,7 @@ import {
 
 import { isDev, log } from './utils';
 
-const DEV_CURRENT_MATCH = `match${Math.abs(process.argv[2]) < 7 ? process.argv[2] : 1}`;
+const DEV_CURRENT_MATCH = `match${Math.abs(process.argv[2]) < 8 ? process.argv[2] : 1}`;
 
 export const fetchLiveMatches = async () => {
   if (isDev()) {
