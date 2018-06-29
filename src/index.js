@@ -87,7 +87,9 @@ const checkUncompleteMatches = async () => {
   }
 };
 
-const update = async () => {
+const updateEvents = async () => {
+  log('Update live matches');
+
   await checkComingUpMatches();
   await checkUncompleteMatches();
 
@@ -101,27 +103,27 @@ const update = async () => {
   });
 };
 
-const init = async () => {
-  // Récupération de tous les matchs de la compétition
+const updateMatches = async () => {
+  log('Update competition matches');
+
   map(await fetchMatches(), (data) => {
     matches[data.IdMatch] = createMatch(data);
   });
+};
+
+const init = async () => {
+  await updateMatches();
 
   if (isDev()) {
     update();
     return;
   }
 
-  cron
-    .job(
-      '*/15 * * * * *',
-      () => {
-        log('Update');
-        update();
-      },
-      false,
-    )
-    .start();
+  // Toutes les nuits à 3h
+  cron.job('0 0 3 * * *', updateMatches, false).start();
+
+  // Toutes les 15 secondes
+  cron.job('*/15 * * * * *', updateEvents, false).start();
 
   log('Cron job started');
 };
