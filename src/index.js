@@ -16,7 +16,7 @@ import {
   handleVarEvent,
   handleShootEvent,
   handleGardianBlockedEvent,
-  handleGardianSavedEvent
+  handleGardianSavedEvent,
 } from './events';
 
 const matches = {};

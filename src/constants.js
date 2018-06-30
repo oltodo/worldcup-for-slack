@@ -30,13 +30,12 @@ export const EVENT_MATCH_END = 26;
 export const EVENT_VAR = 71;
 
 // Secondary Events type
-export const SHOOT = 12; //tir cadré
-export const GARDIAN_SAVE = 17; //parade 
-export const GARDIAN_BLOCKED = 14; //arrêt ?
+export const SHOOT = 12; // tir cadré
+export const GARDIAN_SAVE = 17; // parade
+export const GARDIAN_BLOCKED = 9999; // je croyais que c etait 14 il semble que non// arrêt ?
 export const CORNER = 16;
 export const TRANSVERSALE = 32;
 export const COUP_FRANC = 18;
-
 
 // Periods
 export const PERIOD_1ST_HALF = 3;

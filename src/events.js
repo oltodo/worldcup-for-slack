@@ -392,12 +392,13 @@ export const handleShootEvent = (match, event, team, player) => {
   sendMessageQueue.push({
     match,
     event,
-    title: `:exclamation: Tir cadré pour ${player?player.nameWithFlag:team.getNameWithDeterminer(true, true)} !`,
+    title: `:exclamation: Tir cadré pour ${
+      player ? player.nameWithFlag : team.getNameWithDeterminer(true, true)
+    } !`,
   });
 };
 
 export const handleGardianBlockedEvent = (match, event, team) => {
-  return;
   sendMessageQueue.push({
     match,
     event,
