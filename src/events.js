@@ -21,7 +21,7 @@ import {
 } from './constants';
 
 const SLACKHOOK = process.env.SLACKHOOK
-  || 'https://hooks.slack.com/services/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';
+  || 'https://hooks.slack.com/services/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';
 
 const slackhook = require('slack-notify')(SLACKHOOK);
 
@@ -386,4 +386,29 @@ export const handleVarEvent = (match, event) => {
   if (title) {
     sendMessageQueue.push({ match, title });
   }
+};
+
+export const handleShootEvent = (match, event, team, player) => {
+  sendMessageQueue.push({
+    match,
+    event,
+    title: `:exclamation: Tir cadré pour ${player?player.nameWithFlag:team.getNameWithDeterminer(true, true)} !`,
+  });
+};
+
+export const handleGardianBlockedEvent = (match, event, team) => {
+  return;
+  sendMessageQueue.push({
+    match,
+    event,
+    title: `:exclamation: Arrêt du gardien de ${team.getNameWithDeterminer(true, true)} !`,
+  });
+};
+
+export const handleGardianSavedEvent = (match, event, team) => {
+  sendMessageQueue.push({
+    match,
+    event,
+    title: `:exclamation: Parrade du gardien de ${team.getNameWithDeterminer(true, true)} !`,
+  });
 };

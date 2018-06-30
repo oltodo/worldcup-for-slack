@@ -25,6 +25,9 @@ import {
   EVENT_VAR,
   MATCH_STATUS_FINISHED,
   MATCH_STATUS_LIVE,
+  SHOOT,
+  GARDIAN_SAVE,
+  GARDIAN_BLOCKED
 } from './constants';
 
 export default class Match extends EventEmitter {
@@ -32,6 +35,8 @@ export default class Match extends EventEmitter {
     super();
 
     this.events = [];
+    this.lastEmit = null;
+    this.previousLastEmit = null;
     this.forecasted = false;
     this.lastCheck = getNow();
     this.complete = false;
@@ -98,6 +103,21 @@ export default class Match extends EventEmitter {
 
   isGroupStage() {
     return this.getStageId() === ID_GROUP_STAGE;
+  }
+
+  resetLastEmit() {
+    this.lastEmit = this.previousLastEmit;
+  }
+
+  saveLastEmit() {
+    this.previousLastEmit = this.lastEmit;
+    this.lastEmit = getNow();
+  }
+
+  emit(){
+    console.log("emit ");
+    super.emit.apply(this,arguments);
+    this.saveLastEmit();
   }
 
   shouldHaveStarted(from) {
@@ -216,8 +236,42 @@ export default class Match extends EventEmitter {
           this.emit('var', this, event);
           break;
         default:
+          const diffSinceLastEmit = Math.floor(this.lastEmit.diff(event.Timestamp) / 1000 / 60);
+          if(diffSinceLastEmit >= 15 || isDev)
+          {
+            this.updateSecondaryEvent(event);
+          }
       }
     });
+
     this.lastCheck = moment();
+  }
+
+  updateSecondaryEvent(event){
+    if(!event)
+    {
+      return;
+    }
+
+    const team = this.getTeam(event.IdTeam);
+    let player = this.getPlayer(event.IdPlayer);
+
+    switch (event.Type) {
+        case SHOOT:
+          if(!event.IdSubPlayer)
+          {
+            break;
+          }
+          this.emit('shoot', this, event, team, player);
+          this.resetLastEmit(); // tirs cadrés doivent être suivis d'un évènement sinon on reste sur notre faim ;)
+          break;
+        case GARDIAN_SAVE:
+          this.emit('gardianSaved', this, event, team);
+          break;
+        case GARDIAN_BLOCKED:
+          this.emit('gardianBlocked', this, event, team);
+          break;
+        default:
+    }
   }
 }

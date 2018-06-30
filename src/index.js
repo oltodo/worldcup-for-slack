@@ -14,6 +14,9 @@ import {
   handlePenaltyFailedEvent,
   handleComingUpMatchEvent,
   handleVarEvent,
+  handleShootEvent,
+  handleGardianBlockedEvent,
+  handleGardianSavedEvent
 } from './events';
 
 const matches = {};
@@ -28,6 +31,9 @@ const createMatch = (data) => {
   match.on('penaltyFailed', handlePenaltyFailedEvent);
   match.on('card', handleCardEvent);
   match.on('var', handleVarEvent);
+  match.on('shoot', handleShootEvent);
+  match.on('gardianBlocked', handleGardianBlockedEvent);
+  match.on('gardianSaved', handleGardianSavedEvent);
 
   return match;
 };
