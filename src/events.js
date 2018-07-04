@@ -177,7 +177,7 @@ export const handlePeriodStartEvent = (match, event) => {
       break;
     default:
       return;
-    }
+  }
 
   sendMessageQueue.push({
     match,
