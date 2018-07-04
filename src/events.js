@@ -21,7 +21,7 @@ import {
 } from './constants';
 
 const SLACKHOOK = process.env.SLACKHOOK
-  || 'https://hooks.slack.com/services/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';
+  || 'https://hooks.slack.com/services/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';
 
 const slackhook = require('slack-notify')(SLACKHOOK);
 
