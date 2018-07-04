@@ -391,12 +391,20 @@ export const handleVarEvent = (match, event) => {
 export const handleShootEvent = (match, event, team, player) => {
   log('New event: Shoot');
 
+  let title = ':exclamation: Tir cadré';
+
+  if (!event.IdSubPlayer) {
+    title = ':exclamation: Tir non cadré';
+  }
+
   sendMessageQueue.push({
     match,
     event,
-    title: `:exclamation: Tir cadré ${
-      player ? `de ${player.nameWithFlag}` : ` pour ${team.getNameWithDeterminer(null, true)}`
-    } !`,
+    title:
+      `${title
+      } ${
+        player ? `de ${player.nameWithFlag}` : ` pour ${team.getNameWithDeterminer(null, true)}`
+      } !`,
   });
 };
 

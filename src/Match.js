@@ -238,9 +238,6 @@ export default class Match extends EventEmitter {
           this.emit('var', this, event);
           break;
         case EVENT_SHOOT:
-          if (!event.IdSubPlayer) {
-            break;
-          }
           this.emit('shoot', this, event, team, player);
           break;
         case EVENT_SHOOT_SAVED:
