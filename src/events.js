@@ -139,9 +139,9 @@ export const handleMatchEndEvent = (match, event) => {
   if (diff === 0) {
     text = 'Les deux équipes se quittent sur un match nul.';
   } else if (diff > 0) {
-    text = `Vitoire de ${match.getHomeTeam().getNameWithDeterminer(null, true)} !!!`;
+    text = `Victoire de ${match.getHomeTeam().getNameWithDeterminer(null, true)} !!!`;
   } else {
-    text = `Vitoire de ${match.getAwayTeam().getNameWithDeterminer(null, true)} !!!`;
+    text = `Victoire de ${match.getAwayTeam().getNameWithDeterminer(null, true)} !!!`;
   }
 
   sendMessageQueue.push({
