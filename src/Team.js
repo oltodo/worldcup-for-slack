@@ -17,6 +17,7 @@ export default class Team {
           [player.IdPlayer]: {
             name,
             nameWithFlag: `${name} ${this.getFlag()}`,
+            isGoalKeeper: player.Position === 0,
           },
         };
       },

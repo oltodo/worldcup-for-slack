@@ -26,8 +26,10 @@ import {
   MATCH_STATUS_FINISHED,
   MATCH_STATUS_LIVE,
   SHOOT,
-  GARDIAN_SAVE,
+  SHOOT_SAVED,
   GARDIAN_BLOCKED,
+  FOOL,
+  CORNER_SHOT,
 } from './constants';
 
 export default class Match extends EventEmitter {
@@ -35,7 +37,7 @@ export default class Match extends EventEmitter {
     super();
 
     this.events = [];
-    this.lastEmit = null;
+    this.lastEmit = getNow();
     this.previousLastEmit = null;
     this.forecasted = false;
     this.lastCheck = getNow();
@@ -235,6 +237,21 @@ export default class Match extends EventEmitter {
         case EVENT_VAR:
           this.emit('var', this, event);
           break;
+        case SHOOT:
+          if (!event.IdSubPlayer) {
+            break;
+          }
+          this.emit('shoot', this, event, team, player);
+          break;
+        case SHOOT_SAVED:
+          this.emit('shootSaved', this, event, team, player);
+          break;
+        case FOOL:
+          this.emit('fool', this, event, team, player);
+          break;
+        case CORNER_SHOT:
+          this.emit('cornerShot', this, event, team, player);
+          break;
         default:
           if (diffSinceLastEmit >= 15 || isDev) {
             this.updateSecondaryEvent(event);
@@ -253,7 +270,7 @@ export default class Match extends EventEmitter {
     const team = this.getTeam(event.IdTeam);
     const player = this.getPlayer(event.IdPlayer);
 
-    switch (event.Type) {
+    /* switch (event.Type) {
       case SHOOT:
         if (!event.IdSubPlayer) {
           break;
@@ -263,13 +280,7 @@ export default class Match extends EventEmitter {
         // sinon on reste sur notre faim ;)
         this.resetLastEmit();
         break;
-      case GARDIAN_SAVE:
-        this.emit('gardianSaved', this, event, team);
-        break;
-      case GARDIAN_BLOCKED:
-        this.emit('gardianBlocked', this, event, team);
-        break;
       default:
-    }
+    } */
   }
 }
