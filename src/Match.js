@@ -23,13 +23,13 @@ import {
   EVENT_PENALTY_CROSSBAR,
   EVENT_FOUL_PENALTY,
   EVENT_VAR,
+  EVENT_SHOOT,
+  EVENT_SHOOT_SAVED,
+  EVENT_FOUL,
+  EVENT_CORNER_SHOT,
+  EVENT_OFF_SIDE,
   MATCH_STATUS_FINISHED,
   MATCH_STATUS_LIVE,
-  SHOOT,
-  SHOOT_SAVED,
-  FOOL,
-  CORNER_SHOT,
-  OFF_SIDE,
 } from './constants';
 
 export default class Match extends EventEmitter {
@@ -237,19 +237,19 @@ export default class Match extends EventEmitter {
         case EVENT_VAR:
           this.emit('var', this, event);
           break;
-        case SHOOT:
+        case EVENT_SHOOT:
           if (!event.IdSubPlayer) {
             break;
           }
           this.emit('shoot', this, event, team, player);
           break;
-        case SHOOT_SAVED:
+        case EVENT_SHOOT_SAVED:
           this.emit('shootSaved', this, event, team, player);
           break;
-        case FOOL:
+        case EVENT_FOUL:
           this.emit('fool', this, event, team, player);
           break;
-        case CORNER_SHOT:
+        case EVENT_CORNER_SHOT:
           this.emit('cornerShot', this, event, team, player);
           break;
         default:
@@ -271,7 +271,7 @@ export default class Match extends EventEmitter {
     const player = this.getPlayer(event.IdPlayer);
 
     switch (event.Type) {
-      case OFF_SIDE:
+      case EVENT_OFF_SIDE:
         this.emit('offSide', this, event, team, player);
         break;
       /* case SHOOT:
