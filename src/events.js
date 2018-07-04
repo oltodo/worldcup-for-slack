@@ -389,6 +389,8 @@ export const handleVarEvent = (match, event) => {
 };
 
 export const handleShootEvent = (match, event, team, player) => {
+  log('New event: Shoot');
+
   sendMessageQueue.push({
     match,
     event,
@@ -399,6 +401,8 @@ export const handleShootEvent = (match, event, team, player) => {
 };
 
 export const handleGardianBlockedEvent = (match, event, team) => {
+  log('New event: Gardian blocked');
+
   sendMessageQueue.push({
     match,
     event,
@@ -407,6 +411,8 @@ export const handleGardianBlockedEvent = (match, event, team) => {
 };
 
 export const handleShootSavedEvent = (match, event, team, player) => {
+  log('New event: Shoot saved');
+
   const title = player.isGoalKeeper
     ? `:exclamation: Parrade du gardien ${team.getNameWithDeterminer('de', true)} !`
     : `:exclamation: Tir dévié par ${team.getNameWithDeterminer(true, true)} !`;
@@ -419,6 +425,8 @@ export const handleShootSavedEvent = (match, event, team, player) => {
 };
 
 export const handleFoolEvent = (match, event, team, player) => {
+  log('New event: Fool');
+
   const title = `:exclamation: Faute ${
     player ? `de ${player.nameWithFlag}` : team.getNameWithDeterminer('de', true)
   } !`;
@@ -430,6 +438,8 @@ export const handleFoolEvent = (match, event, team, player) => {
 };
 
 export const handleCornerShotEvent = (match, event, team, player) => {
+  log('New event: Corner shot');
+
   const title = `Corner tiré par ${
     player ? player.nameWithFlag : team.getNameWithDeterminer(true, true)
   } !`;
@@ -441,8 +451,11 @@ export const handleCornerShotEvent = (match, event, team, player) => {
 };
 
 export const handleOffSideEvent = (match, event, team, player) => {
+  log('New event: Off-side ');
+
+  const oppositeTeam = match.getOppositeTeam(team);
   const title = `Remise en jeu par ${
-    player ? player.nameWithFlag : team.getNameWithDeterminer(true, true)
+    player ? player.nameWithFlag : oppositeTeam.getNameWithDeterminer(true, true)
   } !`;
   sendMessageQueue.push({
     match,
