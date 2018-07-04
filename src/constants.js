@@ -36,6 +36,7 @@ export const TRANSVERSALE = 32;
 export const FOOL = 18;
 
 // Secondary Events type
+export const OFF_SIDE = 15; // hors jeu
 
 // Periods
 export const PERIOD_1ST_HALF = 3;

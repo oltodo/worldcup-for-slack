@@ -27,9 +27,9 @@ import {
   MATCH_STATUS_LIVE,
   SHOOT,
   SHOOT_SAVED,
-  GARDIAN_BLOCKED,
   FOOL,
   CORNER_SHOT,
+  OFF_SIDE,
 } from './constants';
 
 export default class Match extends EventEmitter {
@@ -117,7 +117,7 @@ export default class Match extends EventEmitter {
   }
 
   emit(...args) {
-    super.emit.apply(this, ...args);
+    super.emit.apply(this, [...args]);
     this.saveLastEmit();
   }
 
@@ -270,8 +270,11 @@ export default class Match extends EventEmitter {
     const team = this.getTeam(event.IdTeam);
     const player = this.getPlayer(event.IdPlayer);
 
-    /* switch (event.Type) {
-      case SHOOT:
+    switch (event.Type) {
+      case OFF_SIDE:
+        this.emit('offSide', this, event, team, player);
+        break;
+      /* case SHOOT:
         if (!event.IdSubPlayer) {
           break;
         }
@@ -279,8 +282,8 @@ export default class Match extends EventEmitter {
         // tirs cadrés doivent être suivis d'un évènement
         // sinon on reste sur notre faim ;)
         this.resetLastEmit();
-        break;
+        break; */
       default:
-    } */
+    }
   }
 }

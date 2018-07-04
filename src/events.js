@@ -408,7 +408,7 @@ export const handleGardianBlockedEvent = (match, event, team) => {
 
 export const handleShootSavedEvent = (match, event, team, player) => {
   const title = player.isGoalKeeper
-    ? `:exclamation: Parrade du gardien de ${team.getNameWithDeterminer(true, true)} !`
+    ? `:exclamation: Parrade du gardien ${team.getNameWithDeterminer('de', true)} !`
     : `:exclamation: Tir dévié par ${team.getNameWithDeterminer(true, true)} !`;
 
   sendMessageQueue.push({
@@ -419,8 +419,9 @@ export const handleShootSavedEvent = (match, event, team, player) => {
 };
 
 export const handleFoolEvent = (match, event, team, player) => {
-  const title = `:exclamation: Faute de ${player.nameWithFlag
-    || team.getNameWithDeterminer(true, true)} !`;
+  const title = `:exclamation: Faute ${
+    player ? `de ${player.nameWithFlag}` : team.getNameWithDeterminer('de', true)
+  } !`;
   sendMessageQueue.push({
     match,
     event,
@@ -429,8 +430,20 @@ export const handleFoolEvent = (match, event, team, player) => {
 };
 
 export const handleCornerShotEvent = (match, event, team, player) => {
-  const title = `:exclamation: Corner tiré par ${player.nameWithFlag
-    || team.getNameWithDeterminer(true, true)} !`;
+  const title = `Corner tiré par ${
+    player ? player.nameWithFlag : team.getNameWithDeterminer(true, true)
+  } !`;
+  sendMessageQueue.push({
+    match,
+    event,
+    title,
+  });
+};
+
+export const handleOffSideEvent = (match, event, team, player) => {
+  const title = `Remise en jeu par ${
+    player ? player.nameWithFlag : team.getNameWithDeterminer(true, true)
+  } !`;
   sendMessageQueue.push({
     match,
     event,

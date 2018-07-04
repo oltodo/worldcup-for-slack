@@ -19,6 +19,7 @@ import {
   handleShootSavedEvent,
   handleFoolEvent,
   handleCornerShotEvent,
+  handleOffSideEvent,
 } from './events';
 
 const matches = {};
@@ -38,6 +39,7 @@ const createMatch = (data) => {
   match.on('shootSaved', handleShootSavedEvent);
   match.on('fool', handleFoolEvent);
   match.on('cornerShot', handleCornerShotEvent);
+  match.on('offSide', handleOffSideEvent);
 
   return match;
 };
