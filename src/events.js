@@ -159,19 +159,25 @@ export const handlePeriodStartEvent = (match, event) => {
 
   let title = ':redsiren:';
 
-  if (Period === PERIOD_1ST_HALF) {
-    title = `${title} Le coup d'envoi a été donné`;
-  } else if (Period === PERIOD_2ND_HALF) {
-    title = `${title} La mi-temps est terminée, le match reprend`;
-  } else if (Period === PERIOD_EXPAND_1ST_HALF) {
-    title = `${title} C'est parti pour la première période de prolongation`;
-  } else if (Period === PERIOD_EXPAND_2ND_HALF) {
-    title = `${title} La pause est finie, la prolongation reprend`;
-  } else if (Period === PERIOD_PENALTIES) {
-    title = `${title} La séance de tirs au but commence`;
-  } else {
-    return;
-  }
+  switch (Period) {
+    case PERIOD_1ST_HALF:
+      title = `${title} Le coup d'envoi a été donné`;
+      break;
+    case PERIOD_2ND_HALF:
+      title = `${title} La mi-temps est terminée, le match reprend`;
+      break;
+    case PERIOD_EXPAND_1ST_HALF:
+      title = `${title} C'est parti pour la première période de prolongation`;
+      break;
+    case PERIOD_EXPAND_2ND_HALF:
+      title = `${title} La pause est finie, la prolongation reprend`;
+      break;
+    case PERIOD_PENALTIES:
+      title = `${title} La séance de tirs au but commence`;
+      break;
+    default:
+      return;
+    }
 
   sendMessageQueue.push({
     match,
@@ -182,6 +188,8 @@ export const handlePeriodStartEvent = (match, event) => {
 };
 
 export const handlePeriodEndEvent = (match, event) => {
+  log('New event: periodEnd');
+
   const { Period, HomeGoals, AwayGoals } = event;
 
   let title = ':redsiren:';
@@ -203,8 +211,6 @@ export const handlePeriodEndEvent = (match, event) => {
   } else {
     return;
   }
-
-  log('New event: periodEnd');
 
   sendMessageQueue.push({
     match,
