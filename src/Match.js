@@ -43,7 +43,7 @@ export default class Match extends EventEmitter {
     this.status = data.MatchStatus;
 
     this.events = [];
-    this.lastEmit = getNow();
+    this.lastEmit = moment();
     this.previousLastEmit = null;
     this.forecasted = false;
     this.lastCheck = moment();
@@ -114,7 +114,7 @@ export default class Match extends EventEmitter {
 
   saveLastEmit() {
     this.previousLastEmit = this.lastEmit;
-    this.lastEmit = getNow();
+    this.lastEmit = moment();
   }
 
   emit(...args) {

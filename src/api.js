@@ -14,7 +14,9 @@ const EVENTS_FILE_PATH = `${__dirname}/../fixtures/matches/${DEV_CURRENT_MATCH}-
 
 export const fetchLiveMatches = async () => {
   if (isDev()) {
-    const path = await new Promise(resolve => glob(MATCH_FILE_PATH, (err, files) => resolve(files[0] || null)));
+    const path = await new Promise((resolve) => {
+      glob(MATCH_FILE_PATH, (err, files) => resolve(files[0] || null));
+    });
     const match = await import(path);
 
     return [match];
@@ -29,7 +31,9 @@ export const fetchLiveMatches = async () => {
 
 export const fetchMatchEvents = async (match) => {
   if (isDev()) {
-    const path = await new Promise(resolve => glob(EVENTS_FILE_PATH, (err, files) => resolve(files[0] || null)));
+    const path = await new Promise((resolve) => {
+      glob(EVENTS_FILE_PATH, (err, files) => resolve(files[0] || null));
+    });
     const events = await import(path);
 
     return events.Event;
