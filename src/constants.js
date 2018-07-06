@@ -30,8 +30,10 @@ export const EVENT_MATCH_END = 26;
 export const EVENT_VAR = 71;
 export const EVENT_SHOOT = 12; // tir (cadré ou non)
 export const EVENT_SHOOT_SAVED = 17; // tir dévié ou parade
-export const EVENT_GARDIAN_BLOCKED = 9999; // je croyais que c etait 14 il semble que non// arrêt ?
+// je croyais que c etait 14 il semble que non// arrêt ?
+// export const EVENT_GARDIAN_BLOCKED = 9999;
 export const EVENT_CORNER_SHOT = 16; // corner tiré
+export const EVENT_FREE_KICK_SHOT = 1; // coup franc tiré
 export const EVENT_TRANSVERSALE = 32;
 export const EVENT_FOUL = 18;
 

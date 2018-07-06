@@ -139,9 +139,9 @@ export const handleMatchEndEvent = (match, event) => {
   if (diff === 0) {
     text = 'Les deux équipes se quittent sur un match nul.';
   } else if (diff > 0) {
-    text = `Victoire de ${match.getHomeTeam().getNameWithDeterminer(null, true)} !!!`;
+    text = `Victoire ${match.getHomeTeam().getNameWithDeterminer('de', true)} !!!`;
   } else {
-    text = `Victoire de ${match.getAwayTeam().getNameWithDeterminer(null, true)} !!!`;
+    text = `Victoire ${match.getAwayTeam().getNameWithDeterminer('de', true)} !!!`;
   }
 
   sendMessageQueue.push({
@@ -430,10 +430,10 @@ export const handleShootSavedEvent = (match, event, team, player) => {
   });
 };
 
-export const handleFoolEvent = (match, event, team, player) => {
-  log('New event: Fool');
+export const handleFoulEvent = (match, event, team, player) => {
+  log('New event: Foul');
 
-  const title = `:exclamation: Faute ${
+  const title = `:sifflet: Faute ${
     player ? `de ${player.nameWithFlag}` : team.getNameWithDeterminer('de', true)
   } !`;
   sendMessageQueue.push({
@@ -462,6 +462,19 @@ export const handleOffSideEvent = (match, event, team, player) => {
   const oppositeTeam = match.getOppositeTeam(team);
   const title = `Remise en jeu par ${
     player ? player.nameWithFlag : oppositeTeam.getNameWithDeterminer(null, true)
+  } !`;
+  sendMessageQueue.push({
+    match,
+    event,
+    title,
+  });
+};
+
+export const handleFreeKickShotEvent = (match, event, team, player) => {
+  log('New event: Free kick shot ');
+
+  const title = `Coup franc tiré par ${
+    player ? player.nameWithFlag : team.getNameWithDeterminer(null, true)
   } !`;
   sendMessageQueue.push({
     match,

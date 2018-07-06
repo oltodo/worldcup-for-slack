@@ -27,6 +27,7 @@ import {
   EVENT_SHOOT_SAVED,
   EVENT_FOUL,
   EVENT_CORNER_SHOT,
+  EVENT_FREE_KICK_SHOT,
   EVENT_OFF_SIDE,
   MATCH_STATUS_FINISHED,
   MATCH_STATUS_LIVE,
@@ -244,10 +245,13 @@ export default class Match extends EventEmitter {
           this.emit('shootSaved', this, event, team, player);
           break;
         case EVENT_FOUL:
-          this.emit('fool', this, event, team, player);
+          this.emit('foul', this, event, team, player);
           break;
         case EVENT_CORNER_SHOT:
           this.emit('cornerShot', this, event, team, player);
+          break;
+        case EVENT_FREE_KICK_SHOT:
+          this.emit('freeKickShot', this, event, team, player);
           break;
         default:
           if (diffSinceLastEmit >= 15 || isDev) {
