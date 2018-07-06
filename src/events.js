@@ -344,7 +344,7 @@ export const handlePenaltyFailedEvent = (match, event, team, player) => {
 export const handleComingUpMatchEvent = (match) => {
   log('New event: comingUpMatch');
 
-  const diff = Math.floor(Math.abs(getNow().diff(match.getDate()) / 1000 / 60));
+  const diff = Math.floor(Math.abs(moment().diff(match.getDate()) / 1000 / 60));
 
   const title = `:soon: Le match commence bientôt (${diff} min)`;
   const attachments = [
@@ -358,8 +358,6 @@ export const handleComingUpMatchEvent = (match) => {
 };
 
 export const handleVarEvent = (match, event) => {
-  log('New event: VAR');
-
   // Le but n'est pas de traiter tous les cas d'arbitrage vidéo possibles
   // mais simplement d'indiquer quand un but ou un penalty — ayant été annoncé —
   // est finalement annulé.
@@ -384,6 +382,8 @@ export const handleVarEvent = (match, event) => {
   }
 
   if (title) {
+    log('New event: VAR');
+
     sendMessageQueue.push({ match, title });
   }
 };

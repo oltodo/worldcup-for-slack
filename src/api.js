@@ -1,4 +1,5 @@
 import requestify from 'requestify';
+import glob from 'glob';
 
 import {
   ID_COMPETITION, ENDPOINT_MATCHES, ENDPOINT_LIVE, ENDPOINT_EVENTS,
@@ -6,11 +7,17 @@ import {
 
 import { isDev, log } from './utils';
 
-const DEV_CURRENT_MATCH = `match${Math.abs(process.argv[2]) < 8 ? process.argv[2] : 1}`;
+const DEV_CURRENT_MATCH = process.argv[2] || '300331503';
+const MATCHES_FILE_PATH = `${__dirname}/../fixtures/matches.json`;
+const MATCH_FILE_PATH = `${__dirname}/../fixtures/matches/${DEV_CURRENT_MATCH}-*/match.json`;
+const EVENTS_FILE_PATH = `${__dirname}/../fixtures/matches/${DEV_CURRENT_MATCH}-*/events.json`;
 
 export const fetchLiveMatches = async () => {
   if (isDev()) {
-    return (await import(`../cache/${DEV_CURRENT_MATCH}/live.json`)).Results;
+    const path = await new Promise(resolve => glob(MATCH_FILE_PATH, (err, files) => resolve(files[0] || null)));
+    const match = await import(path);
+
+    return [match];
   }
 
   log(`Fetching ${ENDPOINT_LIVE}`);
@@ -22,7 +29,10 @@ export const fetchLiveMatches = async () => {
 
 export const fetchMatchEvents = async (match) => {
   if (isDev()) {
-    return (await import(`../cache/${DEV_CURRENT_MATCH}/events.json`)).Event;
+    const path = await new Promise(resolve => glob(EVENTS_FILE_PATH, (err, files) => resolve(files[0] || null)));
+    const events = await import(path);
+
+    return events.Event;
   }
 
   const endpoint = ENDPOINT_EVENTS(match.getStageId(), match.getId());
@@ -34,7 +44,7 @@ export const fetchMatchEvents = async (match) => {
 
 export const fetchMatches = async () => {
   if (isDev()) {
-    return (await import('../cache/matches.json')).Results;
+    return (await import(MATCHES_FILE_PATH)).Results;
   }
 
   log(`Fetching ${ENDPOINT_MATCHES}`);

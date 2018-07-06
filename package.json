@@ -7,8 +7,10 @@
     "build": "babel src --out-dir dist",
     "start": "NODE_ENV=production babel-node src",
     "lint": "eslint --cache 'src/**/*.js'",
-    "format": "prettier-eslint --write '{src,cache}/**/*.{js,json}'",
-    "format:dry-run": "prettier-eslint --list-different '{src,cache}/**/*.{js,json}'",
+    "format": "yarn format:src && yarn format:fixtures",
+    "format:src": "prettier-eslint --write 'src/**/*.js'",
+    "format:fixtures": "prettier-eslint --write 'fixtures/**/*.json'",
+    "format:dry-run": "prettier-eslint --list-different '{src,fixtures}/**/*.{js,json}'",
     "deploy": "now -e NODE_ENV=development --public",
     "dev": "NODE_ENV=development babel-node src"
   },
@@ -37,6 +39,8 @@
     "eslint-plugin-jsx-a11y": "6.0.3",
     "eslint-plugin-prettier": "2.6.1",
     "eslint-plugin-react": "7.9.1",
+    "glob": "7.1.2",
+    "node-fetch": "2.1.2",
     "prettier-eslint-cli": "4.7.1"
   }
 }
