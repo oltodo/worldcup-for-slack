@@ -2,7 +2,7 @@ import Queue from 'better-queue';
 import { get, sample, chain } from 'lodash';
 import moment from 'moment';
 
-import { log, isDev } from './utils';
+import { log } from './utils';
 import {
   EVENT_PENALTY_GOAL,
   EVENT_PENALTY_MISSED,
