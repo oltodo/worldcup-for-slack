@@ -413,7 +413,7 @@ export const handleShootEvent = (match, event, team, player) => {
 };
 
 export const handleGardianBlockedEvent = (match, event, team) => {
-  log('New event: Gardian blocked');
+  log('New event: GardianBlocked');
 
   sendMessageQueue.push({
     match,
@@ -423,7 +423,7 @@ export const handleGardianBlockedEvent = (match, event, team) => {
 };
 
 export const handleShootSavedEvent = (match, event, team, player) => {
-  log('New event: Shoot saved');
+  log('New event: ShootSaved');
 
   const title = player.isGoalKeeper
     ? `:exclamation: Parade du gardien ${team.getNameWithDeterminer('de', true)} !`
@@ -450,7 +450,7 @@ export const handleFoulEvent = (match, event, team, player) => {
 };
 
 export const handleCornerShotEvent = (match, event, team, player) => {
-  log('New event: Corner shot');
+  log('New event: CornerShot');
 
   const title = `Corner tiré par ${
     player ? player.nameWithFlag : team.getNameWithDeterminer(null, true)
@@ -463,12 +463,12 @@ export const handleCornerShotEvent = (match, event, team, player) => {
 };
 
 export const handleOffSideEvent = (match, event, team, player) => {
-  log('New event: Off-side ');
+  log('New event: OffSide');
 
-  const oppositeTeam = match.getOppositeTeam(team);
-  const title = `Remise en jeu par ${
-    player ? player.nameWithFlag : oppositeTeam.getNameWithDeterminer(null, true)
+  const title = `L'arbitre signale une position de hors-jeu de ${
+    player ? player.nameWithFlag : team.getNameWithDeterminer(null, true)
   } !`;
+
   sendMessageQueue.push({
     match,
     event,
@@ -477,11 +477,12 @@ export const handleOffSideEvent = (match, event, team, player) => {
 };
 
 export const handleFreeKickShotEvent = (match, event, team, player) => {
-  log('New event: Free kick shot ');
+  log('New event: FreeKickShot');
 
   const title = `Coup franc tiré par ${
     player ? player.nameWithFlag : team.getNameWithDeterminer(null, true)
   } !`;
+
   sendMessageQueue.push({
     match,
     event,
