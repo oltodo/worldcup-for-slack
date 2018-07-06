@@ -38,7 +38,7 @@ const createMatch = (data) => {
   match.on('var', handleVarEvent);
   match.on('shoot', handleShootEvent);
   // match.on('gardianBlocked', handleGardianBlockedEvent);
-  match.on('shootSaved', handleShootSavedEvent);
+  // match.on('shootSaved', handleShootSavedEvent);
   match.on('foul', handleFoulEvent);
   match.on('cornerShot', handleCornerShotEvent);
   match.on('offSide', handleOffSideEvent);

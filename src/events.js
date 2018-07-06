@@ -308,27 +308,24 @@ export const handleGoalEvent = (match, event, team, player) => {
 
   let text;
 
-  switch (event.Type) {
-    case EVENT_FREE_KICK_GOAL:
-      text = `But de ${player.nameWithFlag} sur coup-franc`;
-      break;
-    case EVENT_PENALTY_GOAL:
-      text = `But de ${player.name} sur penalty`;
-      break;
-    default:
-      text = `But de ${player.nameWithFlag}`;
+  if (player) {
+    switch (event.Type) {
+      case EVENT_FREE_KICK_GOAL:
+        text = `But de ${player.nameWithFlag} sur coup-franc`;
+        break;
+      case EVENT_PENALTY_GOAL:
+        text = `But de ${player.name} sur penalty`;
+        break;
+      default:
+        text = `But de ${player.nameWithFlag}`;
+    }
   }
 
   sendMessageQueue.push({
     match,
     event,
     title,
-    attachments: [
-      {
-        text,
-        actions: liveAttachment,
-      },
-    ],
+    attachments: [{ text }],
   });
 };
 

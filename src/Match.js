@@ -238,7 +238,7 @@ export default class Match extends EventEmitter {
           eventName = 'shootSaved';
           break;
         default:
-          if (!isDev() || diffSinceLastEmit < 2) {
+          if (!isDev() && diffSinceLastEmit < 2) {
             break;
           }
 
