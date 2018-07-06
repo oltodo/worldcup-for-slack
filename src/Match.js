@@ -3,7 +3,7 @@ import { EventEmitter } from 'events';
 import { differenceWith, find, filter } from 'lodash';
 import Team from './Team';
 
-import { getNow, log, isDev } from './utils';
+import { log, isDev } from './utils';
 
 import {
   ID_GROUP_STAGE,
@@ -37,17 +37,17 @@ export default class Match extends EventEmitter {
   constructor(data) {
     super();
 
-    this.events = [];
-    this.lastEmit = getNow();
-    this.previousLastEmit = null;
-    this.forecasted = false;
-    this.lastCheck = getNow();
-    this.complete = false;
-
     this.id = data.IdMatch;
     this.stageId = data.IdStage;
     this.date = moment(data.Date);
     this.status = data.MatchStatus;
+
+    this.events = [];
+    this.lastEmit = moment();
+    this.previousLastEmit = null;
+    this.forecasted = false;
+    this.lastCheck = moment();
+    this.complete = false;
 
     this.homeTeam = data.Home ? new Team(data.Home) : null;
     this.awayTeam = data.Away ? new Team(data.Away) : null;
@@ -114,7 +114,7 @@ export default class Match extends EventEmitter {
 
   saveLastEmit() {
     this.previousLastEmit = this.lastEmit;
-    this.lastEmit = getNow();
+    this.lastEmit = moment();
   }
 
   emit(...args) {
@@ -131,7 +131,7 @@ export default class Match extends EventEmitter {
       return false;
     }
 
-    const diff = Math.floor(getNow().diff(this.getDate()) / 1000 / 60);
+    const diff = Math.floor(moment().diff(this.getDate()) / 1000 / 60);
 
     return diff >= 0 && diff < from;
   }
@@ -171,6 +171,10 @@ export default class Match extends EventEmitter {
       this.events,
       (event1, event2) => event1.EventId === event2.EventId,
     ).filter((event) => {
+      if (isDev()) {
+        return true;
+      }
+
       const diff = Math.floor(this.lastCheck.diff(event.Timestamp) / 1000 / 60);
 
       // Il semblerait que des évènements soient rajoutés antérieurement à la timeline,

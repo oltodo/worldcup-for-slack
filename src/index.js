@@ -1,9 +1,10 @@
 import cron from 'cron';
 import { map, reduce } from 'lodash';
+import moment from 'moment';
 
 import Match from './Match';
 
-import { getNow, isDev, log } from './utils';
+import { isDev, log } from './utils';
 import { fetchLiveMatches, fetchMatchEvents, fetchMatches } from './api';
 import {
   handlePeriodEndEvent,
@@ -47,7 +48,7 @@ const createMatch = (data) => {
 };
 
 const getComingUpMatches = () => {
-  const now = getNow();
+  const now = moment();
 
   return reduce(
     matches,
