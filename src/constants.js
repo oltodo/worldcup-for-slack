@@ -34,8 +34,6 @@ export const EVENT_CORNER_SHOT = 16; // corner tiré
 export const EVENT_FREE_KICK_SHOT = 1; // coup franc tiré
 export const EVENT_TRANSVERSALE = 32;
 export const EVENT_FOUL = 18;
-
-// Secondary Events type
 export const EVENT_OFF_SIDE = 15;
 
 // Periods

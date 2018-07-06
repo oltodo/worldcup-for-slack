@@ -4,6 +4,11 @@ import moment from 'moment';
 
 import { log } from './utils';
 import {
+  EVENT_YELLOW_CARD,
+  EVENT_STRAIGHT_RED,
+  EVENT_SECOND_YELLOW_CARD_RED,
+  EVENT_FREE_KICK_GOAL,
+  EVENT_OWN_GOAL,
   EVENT_PENALTY_GOAL,
   EVENT_PENALTY_MISSED,
   EVENT_PENALTY_SAVED,
@@ -215,19 +220,19 @@ export const handlePeriodEndEvent = (match, event) => {
   });
 };
 
-export const handleCardEvent = (match, event, team, player, type) => {
+export const handleCardEvent = (match, event, team, player) => {
   log('New event: card');
 
   let title = null;
 
-  switch (type) {
-    case 'yellow':
+  switch (event.Type) {
+    case EVENT_YELLOW_CARD:
       title = ':yellow_card: Carton jaune';
       break;
-    case 'red':
+    case EVENT_STRAIGHT_RED:
       title = ':red_card: Carton rouge';
       break;
-    case 'yellow+yellow':
+    case EVENT_SECOND_YELLOW_CARD_RED:
       title = ':red_card: Carton rouge (deux jaunes)';
       break;
     default:
@@ -286,7 +291,7 @@ export const handlePenaltyShootOutGoalEvent = (match, event, team, player) => {
   });
 };
 
-export const handleGoalEvent = (match, event, team, player, type) => {
+export const handleGoalEvent = (match, event, team, player) => {
   log('New event: goal');
 
   if (event.Period === PERIOD_PENALTIES) {
@@ -294,7 +299,7 @@ export const handleGoalEvent = (match, event, team, player, type) => {
     return;
   }
 
-  if (type === 'own') {
+  if (event.Type === EVENT_OWN_GOAL) {
     handleOwnGoalEvent(match, event, team, player);
     return;
   }
@@ -303,11 +308,11 @@ export const handleGoalEvent = (match, event, team, player, type) => {
 
   let text;
 
-  switch (type) {
-    case 'freekick':
+  switch (event.Type) {
+    case EVENT_FREE_KICK_GOAL:
       text = `But de ${player.nameWithFlag} sur coup-franc`;
       break;
-    case 'penalty':
+    case EVENT_PENALTY_GOAL:
       text = `But de ${player.name} sur penalty`;
       break;
     default:

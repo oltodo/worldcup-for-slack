@@ -189,6 +189,7 @@ export default class Match extends EventEmitter {
     newEvents.forEach((event) => {
       const team = this.getTeam(event.IdTeam);
       const player = this.getPlayer(event.IdPlayer);
+      const subPlayer = this.getPlayer(event.IdSubPlayer);
       const diffSinceLastEmit = Math.floor(this.lastEmit.diff(event.Timestamp) / 1000 / 60);
 
       switch (event.Type) {
@@ -207,52 +208,32 @@ export default class Match extends EventEmitter {
           this.emit('periodEnd', this, event);
           break;
         case EVENT_GOAL:
-          this.emit('goal', this, event, team, player, 'regular');
-          break;
         case EVENT_FREE_KICK_GOAL:
-          this.emit('goal', this, event, team, player, 'freekick');
-          break;
         case EVENT_OWN_GOAL:
-          this.emit('goal', this, event, team, player, 'own');
-          break;
         case EVENT_PENALTY_GOAL:
-          this.emit('goal', this, event, team, player, 'penalty');
+          this.emit('goal', this, event, team, player, subPlayer);
           break;
         case EVENT_PENALTY_MISSED:
-          this.emit('penaltyFailed', this, event, team, player);
-          break;
         case EVENT_PENALTY_SAVED:
-          this.emit('penaltyFailed', this, event, team, player);
-          break;
         case EVENT_PENALTY_CROSSBAR:
-          this.emit('penaltyFailed', this, event, team, player);
+          this.emit('penaltyFailed', this, event, team, player, subPlayer);
           break;
         case EVENT_YELLOW_CARD:
-          this.emit('card', this, event, team, player, 'yellow');
-          break;
         case EVENT_SECOND_YELLOW_CARD_RED:
-          this.emit('card', this, event, team, player, 'yellow+yellow');
-          break;
         case EVENT_STRAIGHT_RED:
-          this.emit('card', this, event, team, player, 'red');
+          this.emit('card', this, event, team, player, subPlayer);
           break;
         case EVENT_FOUL_PENALTY:
-          this.emit('penalty', this, event, team, player);
+          this.emit('penalty', this, event, team, player, subPlayer);
           break;
         case EVENT_VAR:
           this.emit('var', this, event);
           break;
         case EVENT_SHOOT:
-          this.emit('shoot', this, event, team, player);
+          this.emit('shoot', this, event, team, player, subPlayer);
           break;
         case EVENT_SHOOT_SAVED:
-          this.emit('shootSaved', this, event, team, player);
-          break;
-        case EVENT_CORNER_SHOT:
-          this.emit('cornerShot', this, event, team, player);
-          break;
-        case EVENT_FREE_KICK_SHOT:
-          this.emit('freeKickShot', this, event, team, player);
+          this.emit('shootSaved', this, event, team, player, subPlayer);
           break;
         default:
           if (diffSinceLastEmit >= 2 || isDev) {
@@ -271,13 +252,20 @@ export default class Match extends EventEmitter {
 
     const team = this.getTeam(event.IdTeam);
     const player = this.getPlayer(event.IdPlayer);
+    const subPlayer = this.getPlayer(event.IdSubPlayer);
 
     switch (event.Type) {
       case EVENT_OFF_SIDE:
-        this.emit('offSide', this, event, team, player);
+        this.emit('offSide', this, event, team, player, subPlayer);
         break;
       case EVENT_FOUL:
-        this.emit('foul', this, event, team, player);
+        this.emit('foul', this, event, team, player, subPlayer);
+        break;
+      case EVENT_CORNER_SHOT:
+        this.emit('cornerShot', this, event, team, player, subPlayer);
+        break;
+      case EVENT_FREE_KICK_SHOT:
+        this.emit('freeKickShot', this, event, team, player, subPlayer);
         break;
       default:
     }
