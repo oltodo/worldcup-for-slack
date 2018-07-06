@@ -394,40 +394,43 @@ export const handleVarEvent = (match, event) => {
   }
 };
 
-export const handleShootEvent = (match, event, team, player) => {
+export const handleShootEvent = (match, event, team, player, subPlayer) => {
   log('New event: Shoot');
 
-  let title = ':exclamation: Tir cadré';
+  let title;
 
-  if (!event.IdSubPlayer) {
-    title = ':exclamation: Tir non cadré';
+  if (!subPlayer) {
+    title = `:exclamation: ${player.nameWithFlag} tire mais ne cadre pas !`;
+  } else {
+    title = `:exclamation: Frappe de ${player.nameWithFlag}, contrée par `;
+    title += subPlayer.isGoalKeeper
+      ? `le gardien ${subPlayer.nationality}`
+      : subPlayer.nameWithFlag;
   }
 
   sendMessageQueue.push({
     match,
     event,
-    title: `${title} ${
-      player ? `de ${player.nameWithFlag}` : ` pour ${team.getNameWithDeterminer(null, true)}`
-    } !`,
+    title,
   });
 };
 
-export const handleGardianBlockedEvent = (match, event, team) => {
-  log('New event: GardianBlocked');
-
-  sendMessageQueue.push({
-    match,
-    event,
-    title: `:exclamation: Arrêt du gardien ${team.getNameWithDeterminer('de', true)} !`,
-  });
-};
+// export const handleGardianBlockedEvent = (match, event, team) => {
+//   log('New event: GardianBlocked');
+//
+//   sendMessageQueue.push({
+//     match,
+//     event,
+//     title: `:exclamation: Arrêt du gardien ${team.getNameWithDeterminer('de', true)} !`,
+//   });
+// };
 
 export const handleShootSavedEvent = (match, event, team, player) => {
   log('New event: ShootSaved');
 
   const title = player.isGoalKeeper
-    ? `:exclamation: Parade du gardien ${team.getNameWithDeterminer('de', true)} !`
-    : `:exclamation: Tir dévié par ${team.getNameWithDeterminer(null, true)} !`;
+    ? `:exclamation: Parade du gardien ${team.getNationality()} !`
+    : `:exclamation: Sauvetage de ${player.nameWithFlag} !`;
 
   sendMessageQueue.push({
     match,
