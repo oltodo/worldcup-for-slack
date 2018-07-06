@@ -1,5 +1,7 @@
 import Queue from 'better-queue';
-import { get, sample, chain } from 'lodash';
+import {
+  get, sample, chain, capitalize,
+} from 'lodash';
 
 import { getNow, log } from './utils';
 import {
@@ -73,18 +75,45 @@ const buildPenaltiesSeriesfields = (match, time) => {
   return fields;
 };
 
-const getPenaltyTitle = (type, player) => {
+const getPenaltyTitle = (type, team, player) => {
   switch (type) {
     case EVENT_PENALTY_GOAL:
-      return `${getGoalEmoji()} ${player.nameWithFlag} marque le tir au but`;
+      if (get(player, 'nameWithFlag')) {
+        return `${getGoalEmoji()} ${player.nameWithFlag} marque le tir au but`;
+      }
+
+      return `${getGoalEmoji()} ${capitalize(
+        team.getNameWithDeterminer(null, true),
+      )} marque son tir au but`;
+
     case EVENT_PENALTY_MISSED:
-      return `${getPenaltyMissedEmoji()} ${player.nameWithFlag} manque son penalty`;
+      if (get(player, 'nameWithFlag')) {
+        return `${getPenaltyMissedEmoji()} ${player.nameWithFlag} manque son penalty`;
+      }
+
+      return `${getPenaltyMissedEmoji()} ${capitalize(
+        team.getNameWithDeterminer(null, true),
+      )} manque son tir au but`;
+
     case EVENT_PENALTY_SAVED:
-      return `${getPenaltySavedEmoji()} Le gardien arrête le penalty de ${player.nameWithFlag}`;
+      if (get(player, 'nameWithFlag')) {
+        return `${getPenaltySavedEmoji()} Le gardien arrête le penalty de ${player.nameWithFlag}`;
+      }
+
+      return `${getPenaltySavedEmoji()} Le gardien arrête le penalty ${team.getNameWithDeterminer(
+        'de',
+        true,
+      )}`;
     case EVENT_PENALTY_CROSSBAR:
-      return `${getPenaltyMissedEmoji()} ${
-        player.nameWithFlag
-      } tire son penalty sur la barre transversale`;
+      if (get(player, 'nameWithFlag')) {
+        return `${getPenaltyMissedEmoji()} ${
+          player.nameWithFlag
+        } tire son penalty sur la barre transversale`;
+      }
+
+      return `${getPenaltyMissedEmoji()} ${capitalize(
+        team.getNameWithDeterminer(null, true),
+      )} tire son penalty sur la barre transversale`;
     default:
   }
 
@@ -218,6 +247,7 @@ export const handleCardEvent = (match, event, team, player, type) => {
   log('New event: card');
 
   let title = null;
+  let text = null;
 
   switch (type) {
     case 'yellow':
@@ -233,7 +263,11 @@ export const handleCardEvent = (match, event, team, player, type) => {
       return;
   }
 
-  const text = `Pour ${player.nameWithFlag}`;
+  if (get(player, 'nameWithFlag')) {
+    text = `Pour ${player.nameWithFlag}`;
+  } else {
+    text = `Pour ${team.getNameWithDeterminer(null, true)}`;
+  }
 
   sendMessageQueue.push({
     match,
@@ -259,10 +293,19 @@ export const handleOwnGoalEvent = (match, event, team, player) => {
   const oppTeam = match.getOppositeTeam(team);
 
   const title = `:soccer: Goooooal! pour ${oppTeam.getNameWithDeterminer(null, true)}`;
+  let text = null;
+
+  if (get(player, 'nameWithFlag')) {
+    text = `${player.nameWithFlag} marque contre son camp :facepalm:`;
+  } else {
+    text = `${capitalize(
+      team.getNameWithDeterminer(null, true),
+    )} marque contre son camp :facepalm:`;
+  }
 
   const attachments = [
     {
-      text: `${player.nameWithFlag} marque contre son camp :facepalm:`,
+      text,
       color: 'danger',
       actions: liveAttachment,
     },
@@ -280,7 +323,7 @@ export const handlePenaltyShootOutGoalEvent = (match, event, team, player) => {
   sendMessageQueue.push({
     match,
     event,
-    title: getPenaltyTitle(event.Type, player),
+    title: getPenaltyTitle(event.Type, team, player),
     attachments: [{ fields: buildPenaltiesSeriesfields(match, event.Timestamp) }],
   });
 };
@@ -300,17 +343,27 @@ export const handleGoalEvent = (match, event, team, player, type) => {
 
   const title = `${getGoalEmoji()} Goooooal! pour ${team.getNameWithDeterminer(null, true)}`;
 
-  let text;
+  let text = null;
 
   switch (type) {
     case 'freekick':
-      text = `But de ${player.nameWithFlag} sur coup-franc`;
+      if (get(player, 'nameWithFlag')) {
+        text = `But de ${player.nameWithFlag} sur coup-franc`;
+      } else {
+        text = 'Sur coup-franc';
+      }
       break;
     case 'penalty':
-      text = `But de ${player.name} sur penalty`;
+      if (get(player, 'nameWithFlag')) {
+        text = `But de ${player.name} sur penalty`;
+      } else {
+        text = 'Sur penalty';
+      }
       break;
     default:
-      text = `But de ${player.nameWithFlag}`;
+      if (get(player, 'nameWithFlag')) {
+        text = `But de ${player.nameWithFlag}`;
+      }
   }
 
   sendMessageQueue.push({
@@ -337,7 +390,7 @@ export const handlePenaltyFailedEvent = (match, event, team, player) => {
   sendMessageQueue.push({
     match,
     event,
-    title: getPenaltyTitle(event.Type, player),
+    title: getPenaltyTitle(event.Type, team, player),
   });
 };
 
