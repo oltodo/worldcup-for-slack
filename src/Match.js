@@ -192,82 +192,78 @@ export default class Match extends EventEmitter {
       const subPlayer = this.getPlayer(event.IdSubPlayer);
       const diffSinceLastEmit = Math.floor(this.lastEmit.diff(event.Timestamp) / 1000 / 60);
 
+      let eventName = null;
+
       switch (event.Type) {
         case EVENT_MATCH_START:
           this.status = MATCH_STATUS_LIVE;
-          this.emit('matchStart', this, event);
+          eventName = 'matchStart';
           break;
         case EVENT_MATCH_END:
           this.status = MATCH_STATUS_FINISHED;
-          this.emit('matchEnd', this, event);
+          eventName = 'matchEnd';
           break;
         case EVENT_PERIOD_START:
-          this.emit('periodStart', this, event);
+          eventName = 'periodStart';
           break;
         case EVENT_PERIOD_END:
-          this.emit('periodEnd', this, event);
+          eventName = 'periodEnd';
           break;
         case EVENT_GOAL:
         case EVENT_FREE_KICK_GOAL:
         case EVENT_OWN_GOAL:
         case EVENT_PENALTY_GOAL:
-          this.emit('goal', this, event, team, player, subPlayer);
+          eventName = 'goal';
           break;
         case EVENT_PENALTY_MISSED:
         case EVENT_PENALTY_SAVED:
         case EVENT_PENALTY_CROSSBAR:
-          this.emit('penaltyFailed', this, event, team, player, subPlayer);
+          eventName = 'penaltyFailed';
           break;
         case EVENT_YELLOW_CARD:
         case EVENT_SECOND_YELLOW_CARD_RED:
         case EVENT_STRAIGHT_RED:
-          this.emit('card', this, event, team, player, subPlayer);
+          eventName = 'card';
           break;
         case EVENT_FOUL_PENALTY:
-          this.emit('penalty', this, event, team, player, subPlayer);
+          eventName = 'penalty';
           break;
         case EVENT_VAR:
-          this.emit('var', this, event);
+          eventName = 'var';
           break;
         case EVENT_SHOOT:
-          this.emit('shoot', this, event, team, player, subPlayer);
+          eventName = 'shoot';
           break;
         case EVENT_SHOOT_SAVED:
-          this.emit('shootSaved', this, event, team, player, subPlayer);
+          eventName = 'shootSaved';
           break;
         default:
-          if (diffSinceLastEmit >= 2 || isDev) {
-            this.updateSecondaryEvent(event);
+          if (!isDev() || diffSinceLastEmit < 2) {
+            break;
           }
+
+          switch (event.Type) {
+            case EVENT_OFF_SIDE:
+              eventName = 'offSide';
+              break;
+            case EVENT_FOUL:
+              eventName = 'foul';
+              break;
+            case EVENT_CORNER_SHOT:
+              eventName = 'cornerShot';
+              break;
+            case EVENT_FREE_KICK_SHOT:
+              eventName = 'freeKickShot';
+              break;
+            default:
+          }
+      }
+
+      if (eventName) {
+        this.emit(eventName, this, event, team, player, subPlayer);
       }
     });
 
     this.lastCheck = moment();
-  }
-
-  updateSecondaryEvent(event) {
-    if (!event) {
-      return;
-    }
-
-    const team = this.getTeam(event.IdTeam);
-    const player = this.getPlayer(event.IdPlayer);
-    const subPlayer = this.getPlayer(event.IdSubPlayer);
-
-    switch (event.Type) {
-      case EVENT_OFF_SIDE:
-        this.emit('offSide', this, event, team, player, subPlayer);
-        break;
-      case EVENT_FOUL:
-        this.emit('foul', this, event, team, player, subPlayer);
-        break;
-      case EVENT_CORNER_SHOT:
-        this.emit('cornerShot', this, event, team, player, subPlayer);
-        break;
-      case EVENT_FREE_KICK_SHOT:
-        this.emit('freeKickShot', this, event, team, player, subPlayer);
-        break;
-      default:
-    }
   }
 }
