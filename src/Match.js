@@ -190,7 +190,7 @@ export default class Match extends EventEmitter {
       const team = this.getTeam(event.IdTeam);
       const player = this.getPlayer(event.IdPlayer);
       const subPlayer = this.getPlayer(event.IdSubPlayer);
-      const diffSinceLastEmit = Math.floor(this.lastEmit.diff(event.Timestamp) / 1000 / 60);
+      const diffSinceLastEmit = -Math.floor(this.lastEmit.diff(event.Timestamp) / 1000 / 60);
 
       let eventName = null;
 
