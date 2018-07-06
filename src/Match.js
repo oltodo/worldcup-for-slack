@@ -248,9 +248,6 @@ export default class Match extends EventEmitter {
         case EVENT_SHOOT_SAVED:
           this.emit('shootSaved', this, event, team, player);
           break;
-        case EVENT_FOUL:
-          this.emit('foul', this, event, team, player);
-          break;
         case EVENT_CORNER_SHOT:
           this.emit('cornerShot', this, event, team, player);
           break;
@@ -258,7 +255,7 @@ export default class Match extends EventEmitter {
           this.emit('freeKickShot', this, event, team, player);
           break;
         default:
-          if (diffSinceLastEmit >= 15 || isDev) {
+          if (diffSinceLastEmit >= 2 || isDev) {
             this.updateSecondaryEvent(event);
           }
       }
@@ -279,15 +276,9 @@ export default class Match extends EventEmitter {
       case EVENT_OFF_SIDE:
         this.emit('offSide', this, event, team, player);
         break;
-      /* case SHOOT:
-        if (!event.IdSubPlayer) {
-          break;
-        }
-        this.emit('shoot', this, event, team, player);
-        // tirs cadrés doivent être suivis d'un évènement
-        // sinon on reste sur notre faim ;)
-        this.resetLastEmit();
-        break; */
+      case EVENT_FOUL:
+        this.emit('foul', this, event, team, player);
+        break;
       default:
     }
   }
