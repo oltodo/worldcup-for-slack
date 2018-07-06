@@ -400,11 +400,9 @@ export const handleShootEvent = (match, event, team, player) => {
   sendMessageQueue.push({
     match,
     event,
-    title:
-      `${title
-      } ${
-        player ? `de ${player.nameWithFlag}` : ` pour ${team.getNameWithDeterminer(null, true)}`
-      } !`,
+    title: `${title} ${
+      player ? `de ${player.nameWithFlag}` : ` pour ${team.getNameWithDeterminer(null, true)}`
+    } !`,
   });
 };
 
