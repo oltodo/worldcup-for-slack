@@ -17,6 +17,7 @@ export default class Team {
           [player.IdPlayer]: {
             name,
             nameWithFlag: `${name} ${this.getFlag()}`,
+            nationality: this.getNationality(),
             isGoalKeeper: player.Position === 0,
           },
         };
@@ -71,6 +72,10 @@ export default class Team {
 
   getFlag() {
     return COUNTRIES[this.getCountryId()].flag;
+  }
+
+  getNationality() {
+    return COUNTRIES[this.getCountryId()].nat;
   }
 
   getPlayer(playerId) {
